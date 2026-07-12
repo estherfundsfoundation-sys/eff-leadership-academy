@@ -1,0 +1,42 @@
+const client = window.effSupabase;
+const gate = document.querySelector('#staffGate');
+const dashboard = document.querySelector('#staffDashboard');
+const tbody = document.querySelector('#staffRows');
+const safe = value => String(value || '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
+
+async function loadStaff() {
+  if (!client) { gate.innerHTML = '<b>Setup needed</b><p>Add the Academy public Supabase values first, then return here.</p>'; return; }
+  const { data: { session } } = await client.auth.getSession();
+  if (!session) { gate.innerHTML = '<b>Staff sign-in required</b><p><a href="auth.html">Sign in with your designated EFF staff account →</a></p>'; return; }
+  const { data: role } = await client.from('academy_staff').select('role').eq('email', session.user.email).maybeSingle();
+  if (!role) { gate.innerHTML = '<b>Verified staff only</b><p>Your account is signed in, but it has not been assigned Academy staff access yet. Ask EFF Nationals to add your email.</p>'; return; }
+
+  const [{ data: profiles, error: profileError }, { data: progress, error: progressError }, { data: submissions, error: submissionError }] = await Promise.all([
+    client.from('academy_profiles').select('id,email,full_name,chapter,position,member_type'),
+    client.from('academy_progress').select('user_id,updated_at'),
+    client.from('academy_submissions').select('user_id,lesson_id,assignment_title,response,submitted_at,status')
+  ]);
+  if (profileError || progressError || submissionError) { gate.textContent = 'The Command Center could not load data yet. Please try again.'; return; }
+  gate.hidden = true;
+  dashboard.hidden = false;
+  const grouped = {};
+  for (const item of progress || []) {
+    if (!grouped[item.user_id]) grouped[item.user_id] = { count: 0, last: '' };
+    grouped[item.user_id].count++;
+    if (!grouped[item.user_id].last || item.updated_at > grouped[item.user_id].last) grouped[item.user_id].last = item.updated_at;
+  }
+  const users = (profiles || []).map(profile => ({ ...profile, ...(grouped[profile.id] || { count: 0, last: '' }) }));
+  const byUser = Object.fromEntries(users.map(user => [user.id, user]));
+  document.querySelector('#learnerCount').textContent = users.length;
+  document.querySelector('#completionCount').textContent = (progress || []).length;
+  document.querySelector('#submissionCount').textContent = (submissions || []).length;
+  const draw = filter => tbody.innerHTML = users.filter(row => JSON.stringify(row).toLowerCase().includes(filter.toLowerCase())).sort((a, b) => b.count - a.count).map(row => `<tr><td><b>${safe(row.full_name || 'EFF learner')}</b><br><small>${safe(row.email)}</small></td><td>${safe(row.chapter || '—')}<br><small>${safe(row.position || row.member_type || 'Role not set')}</small></td><td>${row.count}</td><td>${row.last ? new Date(row.last).toLocaleDateString() : 'Not started'}</td></tr>`).join('') || '<tr><td colspan="4">No learners match that search.</td></tr>';
+  draw('');
+  document.querySelector('#staffSearch').oninput = event => draw(event.target.value);
+  document.querySelector('#submissionRows').innerHTML = (submissions || []).sort((a, b) => new Date(b.submitted_at) - new Date(a.submitted_at)).map(item => {
+    const user = byUser[item.user_id] || {};
+    return `<tr><td><b>${safe(user.full_name || 'EFF learner')}</b><br><small>${safe(user.email)}</small></td><td>${safe(item.assignment_title || item.lesson_id)}</td><td>${safe(item.response).slice(0, 330)}${item.response?.length > 330 ? '…' : ''}</td><td>${new Date(item.submitted_at).toLocaleDateString()}</td></tr>`;
+  }).join('') || '<tr><td colspan="4">No assignments submitted yet.</td></tr>';
+}
+
+loadStaff();

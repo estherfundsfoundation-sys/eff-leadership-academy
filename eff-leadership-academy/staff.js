@@ -1,0 +1,19 @@
+const reviewClient = window.effSupabase;
+const reviewGate = document.querySelector('#reviewGate');
+const reviewPanel = document.querySelector('#reviewPanel');
+const reviewRows = document.querySelector('#reviewRows');
+const reviewEscape = value => String(value || '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+async function loadReview() {
+  if (!reviewClient) { reviewGate.textContent = 'The Academy connection is not ready.'; return; }
+  const {data:{session}} = await reviewClient.auth.getSession();
+  if (!session) { reviewGate.innerHTML = '<b>Staff sign-in required</b><p><a href="auth.html">Sign in with your staff account →</a></p>'; return; }
+  const {data:role} = await reviewClient.from('academy_staff').select('role').eq('email',session.user.email).maybeSingle();
+  if (!role) { reviewGate.innerHTML = '<b>Staff access required</b><p>This account is not assigned to Academy staff access.</p>'; return; }
+  const {data:rows,error} = await reviewClient.from('academy_service_submissions').select('*').order('created_at',{ascending:false});
+  if (error) { reviewGate.textContent = 'Service review will activate after the Academy expansion setup is run.'; return; }
+  reviewGate.hidden = true; reviewPanel.hidden = false;
+  const draw = filter => reviewRows.innerHTML = rows.filter(row=>JSON.stringify(row).toLowerCase().includes(filter.toLowerCase())).map(row=>`<tr><td><b>${reviewEscape(row.member_name)}</b><br><small>${reviewEscape(row.chapter)}</small></td><td><b>${reviewEscape(row.event_name)}</b><br><small>${reviewEscape(row.service_date)} · ${reviewEscape(row.service_category)}</small><br><small>${reviewEscape(row.duties)}</small></td><td><b>${Number(row.calculated_hours||0).toFixed(2)} submitted</b><br><small>${row.duplicate_alert?'⚠ Possible duplicate ':''}${row.overlapping_time_alert?'⚠ Overlapping time ':''}</small></td><td><select data-status="${row.id}"><option ${row.status==='Submitted'?'selected':''}>Submitted</option><option ${row.status==='Pending Verification'?'selected':''}>Pending Verification</option><option ${row.status==='Approved'?'selected':''}>Approved</option><option ${row.status==='Partially Approved'?'selected':''}>Partially Approved</option><option ${row.status==='Returned for Correction'?'selected':''}>Returned for Correction</option><option ${row.status==='Rejected'?'selected':''}>Rejected</option></select><input data-hours="${row.id}" type="number" min="0" step="0.25" value="${row.approved_hours ?? row.calculated_hours ?? 0}" aria-label="Approved hours"><input data-note="${row.id}" value="${reviewEscape(row.administrator_notes||'')}" placeholder="Reviewer note" aria-label="Reviewer note"><button class="done-button" data-save="${row.id}">Save review</button></td></tr>`).join('')||'<tr><td colspan="4">No service submissions match that search.</td></tr>';
+  draw(''); document.querySelector('#reviewSearch').oninput = event=>draw(event.target.value);
+  reviewRows.addEventListener('click',async event=>{const id=event.target.dataset.save;if(!id)return;const status=reviewRows.querySelector(`[data-status="${id}"]`).value;const approved_hours=Number(reviewRows.querySelector(`[data-hours="${id}"]`).value);const administrator_notes=reviewRows.querySelector(`[data-note="${id}"]`).value;event.target.disabled=true;const {error}=await reviewClient.from('academy_service_submissions').update({status,approved_hours,administrator_notes,reviewed_by:session.user.email,reviewed_at:new Date().toISOString()}).eq('id',id);if(error){event.target.disabled=false;alert(error.message);return;}loadReview();});
+}
+loadReview();
