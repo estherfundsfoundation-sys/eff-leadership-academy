@@ -1,28 +1,95 @@
-import fs from 'node:fs/promises';
-import path from 'node:path';
+import fs from 'node:fs';
 
-const source = process.argv[2];
-if (!source) throw new Error('Provide the path to the teachable-export folder.');
-const coursesDir = path.join(source, 'courses');
-const entries = await fs.readdir(coursesDir, { withFileTypes: true });
-const courses = [];
-for (const entry of entries.filter(entry => entry.isDirectory() && !/^\d{2}-course-\d+$/.test(entry.name))) {
-  const root = path.join(coursesDir, entry.name);
-  const course = JSON.parse(await fs.readFile(path.join(root, 'course.json'), 'utf8'));
-  const modules = JSON.parse(await fs.readFile(path.join(root, 'modules', 'structure.json'), 'utf8'))
-    .sort((a, b) => (a.position ?? 0) - (b.position ?? 0));
-  const lessonsDir = path.join(root, 'lessons');
-  const lessonFolders = (await fs.readdir(lessonsDir, { withFileTypes: true })).filter(entry => entry.isDirectory()).sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }));
-  const lessons = [];
-  for (const folder of lessonFolders) {
-    const lesson = JSON.parse(await fs.readFile(path.join(lessonsDir, folder.name, 'lesson.json'), 'utf8'));
-    const lecture = lesson.lecture || lesson;
-    const markdown = await fs.readFile(path.join(lessonsDir, folder.name, 'lesson.md'), 'utf8');
-    const attachments = lecture.attachments || [];
-    lessons.push({ id: String(lecture.id), title: lecture.name || folder.name, sectionId: String(lecture.lecture_section_id || ''), position: lecture.position || 0, markdown, quizzes: attachments.filter(item => item.kind === 'quiz' && item.quiz).map(item => item.quiz), activities: attachments.filter(item => ['open_response_question', 'native_comments'].includes(item.kind)).map(item => item.kind), assets: attachments.filter(item => item.url).map(item => ({ name: item.name || item.kind, kind: item.kind, url: item.url })) });
-  }
-  courses.push({ id: String(course.id), title: course.name, description: course.description || '', published: Boolean(course.is_published), image: course.image_url || '', modules: modules.map(module => ({ id: String(module.id), title: module.name || 'Learning section', position: module.position || 0 })), lessons });
+const source = new URL('./data/courses.json', import.meta.url);
+const data = JSON.parse(fs.readFileSync(source, 'utf8'));
+
+const groups = [
+  ['Chapter Operations', [
+    ['chapter-effective-meetings','How to Run an Effective Chapter Meeting','Chapter presidents, secretaries, officers and advisors','2 hours','agendas, minutes, parliamentary basics, attendance, officer reports, motions, voting, time management, action items and follow-up'],
+    ['event-planning','Event Planning From Start to Finish','Officers and chapter event teams','2.5 hours','event purpose, audience, goals, budgets, campus approvals, space reservations, marketing, volunteers, safety, execution and post-event reporting'],
+    ['campus-engagement','Chapter Programming and Campus Engagement','Programming chairs, officers and members','2 hours','student needs, semester calendars, educational programs, service activities, member bonding, collaborations, promotion, attendance and evaluation'],
+    ['recruitment-retention','Membership Recruitment and Retention','Membership chairs, presidents and officers','2 hours','interest meetings, recruitment campaigns, applications, interviews, the Esther Experience, induction, Join It enrollment, engagement and reengagement'],
+    ['chapter-culture','Building a Strong Chapter Culture','All officers, advisors and members','2 hours','preventing cliques, belonging, respectful communication, accountability, feedback, difficult seasons, celebration, reputation and national escalation'],
+    ['chapter-compliance','Chapter Compliance and Documentation','Presidents, secretaries, treasurers and advisors','2 hours','national forms, deadlines, rosters, attendance, minutes, event approvals, financial and service reports, campus requirements and chapter standing'],
+    ['advisor-partnership','Advisor Partnership Training','Chapter officers and advisors','90 minutes','advisor communication, meeting preparation, responsibilities, decision records and national collaboration'],
+    ['rebuild-chapter','How to Rebuild an Inactive Chapter','Returning leaders, chapter founders and regional leaders','2 hours','campus recognition, leadership recruitment, membership rebuilding, advisors, programming and a 30-, 60- and 90-day recovery plan']
+  ]],
+  ['Financial & Fundraising', [
+    ['financial-stewardship','Financial Stewardship for Chapters','Treasurers, presidents and advisors','2.5 hours','chapter budgets, receipts, reimbursements, spending approvals, accounts, restricted funds, monthly reports, fraud prevention and transitions'],
+    ['fundraising-fundamentals','Fundraising Fundamentals','Fundraising chairs and chapter officers','2 hours','goals, campaign selection, costs, profit, timelines, responsibilities, marketing, donation tracking and evaluation'],
+    ['sponsorship-partnerships','Sponsorship and Partnership Development','Presidents, development leads and regional leaders','2 hours','sponsor research, outreach, sponsorship levels, benefit packages, meetings, follow-up and commitments'],
+    ['donor-stewardship','Donor Communication and Stewardship','Development, fundraising and communications teams','90 minutes','acknowledgments, thank-you messages, impact updates, privacy, recognition, retention and honest communication'],
+    ['ethical-fundraising','Ethical Fundraising and Donation Language','Anyone communicating about money or donations','90 minutes','donations, donation-based voting, scholarships, refunds, tax deductibility, restricted funds, campaign outcomes and truthful use-of-funds language'],
+    ['grant-writing','Grant Writing for Beginners','Chapter and national grant writers','2.5 hours','grant research, eligibility, guidelines, needs statements, goals, activities, outcomes, budgets, attachments and submission tracking']
+  ]],
+  ['Student Support & Advocacy', [
+    ['serving-with-dignity','Serving Students With Dignity','All EFF volunteers and student-facing leaders','2 hours','support without shame, privacy, person-centered language, consent, media consent, boundaries, nonperformative service, ethical referrals and first-generation support'],
+    ['resource-navigator','Student Resource Navigator Certification','EFF members who connect peers to support','3 hours','emergency grants, food, housing, transportation, financial aid, counseling, tutoring, advising, disability, career, childcare, community assistance and EFF programs'],
+    ['college-retention','College Retention and Dropout Prevention','REACH ambassadors and student advocates','2 hours','financial hardship, food insecurity, academics, housing, mental health, belonging, family obligations, administrative barriers and early intervention'],
+    ['scholarship-support','Scholarship Support Specialist Training','Scholarship mentors and peer leaders','2.5 hours','searches, eligibility, calendars, resumes, personal statements, essays, recommendations, interviews, scams and ethical application support'],
+    ['financial-aid-literacy','Financial Aid Literacy','Students, parents and EFF resource navigators','3 hours','FAFSA, Student Aid Index, grants, scholarships, work-study, loans, cost of attendance, net price, award letters, SAP, appeals, verification, special circumstances and emergency aid'],
+    ['academic-recovery','Academic Recovery and Student Success','Student advocates and members','2 hours','probation, GPA recovery, tutoring, advising, study plans, professor communication, withdrawals, incompletes, appeals, repeats and recovery semesters'],
+    ['first-generation-support','Supporting First-Generation College Students','Peer mentors, chapter officers and advocates','90 minutes','hidden expectations, asking for help, family pressure, financial barriers, support networks and college terminology'],
+    ['disability-support','Supporting Students With Disabilities','All EFF student-facing leaders','90 minutes','accommodations, visible and non-visible disabilities, disability offices, accessible events, confidentiality and referrals'],
+    ['student-parents','Supporting Student Parents','Peer advocates and service leaders','90 minutes','childcare, scheduling, housing, transportation, finances, flexibility and campus resources'],
+    ['trauma-informed','Trauma-Informed Student Support','All student support volunteers','2 hours','safety, trust, choice, collaboration, empowerment, boundaries, retraumatization and professional referrals'],
+    ['mental-health-referral','Mental Health Awareness and Crisis Referral','All EFF leaders and volunteers','2 hours','stress, anxiety, depression, burnout, isolation, concerning behavior, active listening, boundaries, counseling, crisis support and emergency referrals']
+  ]],
+  ['REACH Advanced Certifications', [
+    ['reach-box-coordinator','REACH Box Distribution Coordinator','REACH distribution teams and chapter officers','2 hours','inventory, shipping, storage, approvals, assembly, distribution, privacy, volunteers, media consent, documentation and reporting'],
+    ['reach-facilitator','REACH Workshop Facilitator','REACH ambassadors and workshop leaders','2 hours','preparation, presentation, interactive activities, resource sessions, referrals and follow-up'],
+    ['reach-outreach','REACH Campus Outreach Strategy','REACH ambassadors and campus teams','90 minutes','residence halls, advisors, departments, organizations, fairs, ethical outreach and referral pathways'],
+    ['stay-enrolled-72','The 72-Hour Stay-Enrolled Plan Certification','REACH ambassadors and student advocates','2 hours','immediate need identification, financial aid, advising, emergency resources, food, housing, referrals, professor communication, withdrawal alternatives and follow-up'],
+    ['reach-impact-reporting','REACH Impact and Reporting','REACH officers, ambassadors and program teams','90 minutes','boxes, students served, referrals, events, workshops, attendance, hours, consent, privacy, outcomes and national reporting'],
+    ['reach-ambassador-leadership','REACH Ambassador Leadership Training','Lead and regional REACH ambassadors','2 hours','supervision, communication, delegation, accountability, campus support, conflict resolution, reporting and standards']
+  ]],
+  ['Communication & Branding', [
+    ['professional-email','Professional Email and Communication Etiquette','All EFF leaders and members','90 minutes','subject lines, greetings, tone, timely responses, absences, follow-ups, advisor, national and student communication'],
+    ['eff-brand','EFF Brand Certification','Marketing officers and chapter leaders','2 hours','approved logos, colors, typography, photography, tone, naming, chapter branding, approvals and accessibility'],
+    ['social-media','Social Media Management for Chapters','Social media and marketing teams','2 hours','calendars, captions, alt text, analytics, passwords, access, approvals, comments, consent, privacy and consistency'],
+    ['storytelling-dignity','Storytelling With Dignity','Communications and program leaders','90 minutes','informed consent, privacy, avoiding savior language and trauma exploitation, interviews and accurate representation'],
+    ['photo-event-content','Photography and Event Content Training','Chapter photographers and content teams','90 minutes','lighting, framing, vertical and horizontal content, video, consent, organization, upload practices and protection of minors'],
+    ['crisis-communication','Crisis Communication and Reputation Management','Presidents, communications leads and national teams','2 hours','complaints, negative comments, misinformation, mistakes, statements, media requests, escalation, documentation, apologies and corrective communication']
+  ]],
+  ['Community Service & Program Development', [
+    ['meaningful-service','Designing Meaningful Community Service','Service chairs and chapter officers','2 hours','needs assessment, mission alignment, partners, preparation, dignity, sustainability, outcomes and reflection'],
+    ['volunteer-management','Volunteer Management','Service chairs, program leads and officers','2 hours','recruiting, training, scheduling, supervision, communication, safety, attendance, conflict, recognition and retention'],
+    ['community-partnerships','Community Partnership Building','Officers, program leads and regional teams','90 minutes','schools, nonprofits, churches, businesses, departments, agencies and community leaders'],
+    ['program-development','Program Development 101','Program chairs and chapter officers','2.5 hours','needs, target populations, goals, activities, timelines, responsibility, budgets, outputs, outcomes, evaluation and sustainability'],
+    ['impact-measurement','Measuring and Communicating Impact','Program, service and communications leaders','90 minutes','attendance, service hours, outcomes, donations, surveys, testimonials, privacy, accuracy and reporting']
+  ]],
+  ['Career & Professional Development', [
+    ['resume-linkedin','Resume and LinkedIn Development','College students and emerging professionals','2 hours','resume strategy, achievement statements, LinkedIn profile, keywords, portfolio and peer feedback'],
+    ['interview-prep','Interview Preparation','Students preparing for jobs, internships and scholarships','2 hours','research, stories, behavioral questions, practice, questions to ask, follow-up and negotiation basics'],
+    ['professional-networking','Professional Networking','Students and emerging leaders','90 minutes','relationship building, introductions, informational interviews, follow-up, events and mentorship'],
+    ['career-readiness','Career Readiness for College Students','College students and new graduates','2 hours','career exploration, internships, workplace expectations, communication, teamwork and transition planning'],
+    ['personal-brand-integrity','Building a Personal Brand With Integrity','Students and leaders using public platforms','90 minutes','values, consistency, reputation, online presence, boundaries and credibility'],
+    ['entrepreneurship-nonprofit','Entrepreneurship and Nonprofit Leadership','Students exploring ventures or mission work','2 hours','mission, customers, stakeholders, governance, finances, partnerships and ethical leadership'],
+    ['board-governance','Board Service and Nonprofit Governance','Officers, advisors and future board members','2 hours','fiduciary duty, bylaws, meetings, committees, conflict of interest and accountability'],
+    ['project-management','Introduction to Project Management','Student leaders and program teams','2 hours','scope, timelines, roles, risk, communication, tracking, closure and reflection'],
+    ['ai-responsibly','Using AI and Technology Responsibly','All EFF members and leaders','90 minutes','privacy, accuracy, bias, academic integrity, permissions, decision support and human accountability'],
+    ['digital-safety','Digital Safety and Cybersecurity','All EFF leaders and members','90 minutes','passwords, multifactor authentication, phishing, file sharing, account access, sensitive information and incident reporting']
+  ]]
+];
+
+const slug = text => text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const learn = (title, focus, audience, duration) => ({
+  id: `eff-${slug(title)}`, title, description: `${title} is a practical EFF learning experience for ${audience.toLowerCase()}. It combines EFF-specific examples, a scenario activity, a written implementation plan, and a 100% knowledge check. Estimated time: ${duration}.`, audience, duration,
+  objectives: [`Apply EFF standards to ${focus.split(',')[0]}.`, `Use a documented, student-centered decision process.`, `Create a practical next-step plan for your chapter or program.`], lastReviewed: 'July 12, 2026', references: ['EFF 2026 Bylaws and Chapter Resource Hub', 'Applicable campus policies and professional resources'],
+  modules: [{id:'foundation',title:'Foundation & Standards'},{id:'practice',title:'Applied Practice'},{id:'assessment',title:'Assessment & Action'}], lessons: []
+});
+const lesson = (course, sectionId, position, title, markdown, question, answers, correct) => course.lessons.push({id:`${course.id}-${sectionId}-${position}`,sectionId,position,title,markdown,assets:[],quizzes:[{questions:[{question,answers,correct_answers:[correct]}]}]});
+
+for (const [category, courses] of groups) for (const [key,title,audience,duration,focus] of courses) {
+  const course = learn(title, focus, audience, duration); course.category = category; course.key = key;
+  lesson(course,'foundation',1,`The EFF standard for ${title}`,`## What this course covers\nThis course addresses: ${focus}.\n\nEFF leaders use clear records, respectful communication, informed consent when appropriate, and national guidance when a situation exceeds a chapter's authority.\n\n**EFF example:** Before acting, identify the student or chapter need, the responsible role, the approval required, and the follow-up record.`, 'Which practice best protects EFF members and students?', ['Act first and document later','Use clear roles, approvals, and follow-up records','Share private information to speed up decisions'], 'Use clear roles, approvals, and follow-up records');
+  lesson(course,'foundation',2,'Roles, boundaries, and decisions',`## Decision map\nFor ${title}, leaders should distinguish what a member can do, what a chapter officer can approve, and what must be escalated to an advisor, regional leader, or EFF Nationals.\n\nUse a written record for commitments, money, sensitive student information, and any decision that affects chapter standing.`, 'When a decision may affect chapter standing, what should a leader do?', ['Handle it privately without records','Escalate through the appropriate EFF channel and document it','Post about it on social media'], 'Escalate through the appropriate EFF channel and document it');
+  lesson(course,'practice',1,`Planning ${title} with excellence`, `## Practical workflow\n1. Define the purpose and the people served.\n2. Set a measurable outcome.\n3. Identify approvals, resources, roles, timeline, and risks.\n4. Communicate clearly.\n5. Document results and follow-up.\n\nApply this workflow to: ${focus}.`, 'Which comes first in an effective EFF plan?', ['Choose a flyer design','Define the purpose and people served','Announce the event'], 'Define the purpose and people served');
+  lesson(course,'practice',2,'Scenario lab: make the right call',`## Scenario\nYour chapter is asked to move quickly on an opportunity related to this topic: ${focus}. A teammate wants to skip the usual approval and recordkeeping steps.\n\n**Your task:** Explain how you would protect students, follow EFF standards, communicate with the team, and still move the work forward.`, 'What is the strongest response to pressure to skip safeguards?', ['Skip safeguards because the opportunity is urgent','Use the fastest documented approval path and explain the reason','Let one person decide without telling anyone'], 'Use the fastest documented approval path and explain the reason');
+  lesson(course,'assessment',1,'Create your chapter implementation plan',`## Your implementation plan\nCreate a one-page plan that names: purpose, audience, outcome, timeline, owner, approvals, resources, privacy or safety considerations, and how your chapter will measure success.\n\nThis plan becomes part of your leadership record.`, 'Which item belongs in every EFF implementation plan?', ['A measurable outcome','A promise of a guaranteed result','A public list of private student details'], 'A measurable outcome');
+  lesson(course,'assessment',2,'Final knowledge check and reflection',`## Finish with integrity\nReview the full course. Then write the specific step you will take in the next 30 days and the person who will help you stay accountable.\n\nEFF leaders turn learning into accountable action.`, 'What completes this EFF course?', ['A thoughtful reflection, 100% knowledge check, and practical action step','Opening every lesson without reading it','Sharing an unapproved course link'], 'A thoughtful reflection, 100% knowledge check, and practical action step');
+  if (!data.courses.some(existing => existing.id === course.id)) data.courses.push(course);
 }
-await fs.mkdir('data', { recursive: true });
-await fs.writeFile('data/courses.json', JSON.stringify({ generatedAt: new Date().toISOString(), courses }, null, 2));
-console.log(`Wrote ${courses.length} courses to data/courses.json`);
+
+fs.writeFileSync(source, JSON.stringify(data, null, 2));
+console.log(`Added ${groups.flatMap(([,courses])=>courses).length} EFF courses.`);
