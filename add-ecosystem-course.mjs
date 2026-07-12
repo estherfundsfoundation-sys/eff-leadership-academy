@@ -1,183 +1,6202 @@
-import fs from 'node:fs';
-
-const file = new URL('./data/courses.json', import.meta.url);
-const data = JSON.parse(fs.readFileSync(file, 'utf8'));
-
-const quiz = (question, correct, other1, other2) => [{
-  id: `ecosystem-${question.slice(0, 22).replace(/[^a-z0-9]/gi, '')}`,
-  type: 'Quiz',
-  questions: [{ question, question_type: 'single', answers: [correct, other1, other2], correct_answers: [correct], graded: true }]
-}];
-const lesson = (id, title, sectionId, position, markdown, question, correct, other1, other2) => ({
-  id, title, sectionId, position, markdown, quizzes: quiz(question, correct, other1, other2), activities: ['open_response_question'], assets: []
-});
-
-const course = {
-  id: 'eff-ecosystem-board-excellence',
-  title: 'EFF Ecosystem & Board Excellence',
-  description: 'A required practical pathway for leaders who need to confidently use every major EFF resource, guide students to the right support, run organized board meetings, and respond to conflict with care and accountability.',
-  published: true,
-  image: 'assets/academy-visual-board.png',
-  modules: [
-    { id: 'ecosystem-map', title: 'Module 1 — The EFF Ecosystem', position: 1 },
-    { id: 'chapter-hub', title: 'Module 2 — Mastering the Chapter Hub', position: 2 },
-    { id: 'board-excellence', title: 'Module 3 — Board Meetings, Communication & Conflict', position: 3 }
-  ],
-  lessons: [
-    lesson('eco-01', 'Welcome: You Are a Resource Guide', 'ecosystem-map', 1,
-`# Welcome: You Are a Resource Guide
-
-EFF leaders do more than host events. You are often the first person a student trusts when they need help staying enrolled, finding community, asking for prayer, or getting connected to an opportunity.
-
-This pathway teaches you how to navigate the full EFF ecosystem with confidence. Your job is not to promise every answer. Your job is to listen carefully, protect privacy, and make the right next connection.
-
-Before you continue, open the official [EFF website](https://estherfundsfoundation.org/) in a new tab. Notice the programs, REACH Action Hub, EFF Chapter Hub, ministry, and Pretty Girls Who Serve links.`,
-'What is an EFF leader’s first responsibility when a student needs help?', 'Listen, protect privacy, and connect them to an appropriate next step', 'Promise that EFF can solve every problem immediately', 'Send every student to the same resource without asking questions'),
-    lesson('eco-02', 'The EFF Website: Know the Front Door', 'ecosystem-map', 2,
-`# The EFF Website: Know the Front Door
-
-The official EFF website is the home base for our mission, public programs, national resources, and the stories that show students they are not alone. Learn where each major experience begins so you can give students a clear link instead of vague directions.
-
-Use the website when someone asks: “What is EFF?”, “How do I get involved?”, “Where can I find support?”, or “How does my campus start a chapter?”
-
-**Practice:** Write a two-sentence message you could send to a new student introducing EFF and naming one page they should visit first.`,
-'Which page should be your starting point when explaining EFF publicly?', 'The official Esther Funds Foundation website', 'A personal social-media post', 'An unofficial screenshot from a group chat'),
-    lesson('eco-03', 'REACH: Match the Need to a Pathway', 'ecosystem-map', 3,
-`# REACH: Match the Need to a Pathway
-
-REACH helps students take action before challenges become reasons to leave school. Leaders should know the seven pathways:
-
-- [Reach for Yourself](https://estherfundsfoundation.org/reach-yourself): personal support, scholarships, emergency aid, food, housing, hygiene, academic and mental-health resources.
-- [Reach for a Friend](https://estherfundsfoundation.org/reach-a-friend): listen, encourage, connect, and follow up.
-- [Reach Your Campus](https://estherfundsfoundation.org/reach-your-campus-1): host workshops, scholarship search parties, resource drives, and campus events.
-- [Reach Your Community](https://estherfundsfoundation.org/reach-your-community): student-run projects and service.
-- [Reach Beyond Your Campus](https://estherfundsfoundation.org/beyond-your-campus): advocacy, partnerships, chapters, and ambassadors.
-- [Reach K-12](https://estherfundsfoundation.org/reach-k-12): mentoring, readiness workshops, tutoring, and family support.
-- [Reach for Professionals](https://estherfundsfoundation.org/reach-for-professionals): mentors, sponsors, internships, and advisory support.
-
-**Scenario:** A student says her groceries are running out and she is thinking about leaving campus. Explain what you would say first, and which pathway you would open with her.`,
-'Which REACH pathway is built for a student seeking direct support for herself?', 'Reach for Yourself', 'Reach Your Campus', 'Reach for Professionals'),
-    lesson('eco-04', 'REACH Action Hub: Turn Concern into Action', 'ecosystem-map', 4,
-`# REACH Action Hub: Turn Concern into Action
-
-The [REACH Action Hub](https://estherfundsfoundation.org/reach-action-hub) is where a concern turns into a practical action plan. Use it when your chapter needs to decide how to support a student, plan a campus activation, or connect a friend without trying to carry the whole situation alone.
-
-Leaders should follow up after referring someone. A follow-up can be as simple as: “I am thinking of you. Were you able to open the resource? What would be helpful as your next step?”
-
-Do not collect personal crisis details in a public group chat or promise confidentiality you cannot keep. In an immediate emergency, contact 911; for a mental-health crisis in the U.S., call or text 988.`,
-'What should an EFF leader do after sharing a REACH resource?', 'Follow up respectfully and ask what next support would help', 'Assume the link fixed everything', 'Post the student’s situation publicly so others can advise'),
-    lesson('eco-05', 'Esther’s Light: Ministry with Care', 'ecosystem-map', 5,
-`# Esther’s Light: Ministry with Care
-
-[Esther’s Light](https://esthers-light.vercel.app/) is a faith-centered place for reflection, Scripture, prayer, Bible plans, and encouragement. It can support a leader’s personal walk and help a chapter create spiritually grounded moments.
-
-Ministry is not pressure. Invite students; do not shame them. Keep Scripture, personal reflection, and practical help distinct. Prayer can accompany a referral, but it is not a substitute for healthcare, counseling, emergency services, or campus support.
-
-**Practice:** Draft a short invitation to a Bible study that is warm, optional, and welcoming to a student who is under stress.`,
-'What is the healthiest way to offer a ministry resource?', 'Offer it as an invitation while respecting the student’s choice and practical needs', 'Use it to pressure every student to disclose personal struggles', 'Treat prayer as a replacement for urgent professional support'),
-    lesson('eco-06', 'Pretty Girls Who Serve: Sisterhood with Purpose', 'ecosystem-map', 6,
-`# Pretty Girls Who Serve: Sisterhood with Purpose
-
-[Pretty Girls Who Serve](https://pretty-girls-who-serve.vercel.app/) is an EFF sisterhood branch focused on faith, service, confidence, leadership, and becoming women of purpose. Leaders should understand when it is the right invitation for someone seeking a women-centered community, mentorship, ministry, chapter connection, or self-esteem support.
-
-Never use beauty language to exclude or rank people. The heart of this experience is dignity, service, confidence, and growth.
-
-**Practice:** Compare a REACH referral and a PGWS invitation. Write one sentence explaining when you would use each.`,
-'What should be at the center of a PGWS invitation?', 'Dignity, sisterhood, service, confidence, and purposeful growth', 'Competition over who looks best', 'Pressure to join before learning about the community'),
-    lesson('eco-07', 'The Member Experience: Belonging Beyond One Event', 'ecosystem-map', 7,
-`# The Member Experience: Belonging Beyond One Event
-
-The [EFF Membership Hub](https://eff-membership-hub.vercel.app/) helps members continue their journey through national membership, the Esther Experience, service tracking, fundraising participation, scholarships, mentoring, community, and recognition.
-
-Use the Membership Hub when a student asks what happens after joining, how to document service, how to stay engaged between meetings, or where to find national opportunities. It is not enough to recruit members—leaders must make the next step clear.
-
-**Practice:** Create a first-week welcome checklist for a new member. Include one relationship-building action, one learning action, and one service action.`,
-'What turns recruitment into retention?', 'A clear and caring next-step experience after someone joins', 'Only contacting members when you need volunteers', 'Giving members no place to grow after the first event'),
-    lesson('eco-08', 'Chapter Hub: Start with Governance', 'chapter-hub', 1,
-`# Chapter Hub: Start with Governance
-
-The [EFF Chapter Resource Hub](https://estherfundsfoundation.org/eff-chapter-resources) is the operational home for chapters. Start with **Governance**: the National Bylaws, Chapter Constitution, Code of Conduct, Chapter Agreement, and expectations each chapter agrees to uphold.
-
-These documents do not exist to make leadership difficult. They protect students, clarify authority, and create consistency across the national movement. Read them before building policies of your own.
-
-**Practice:** Name one decision your board should never make without first checking the governing documents. Explain why.`,
-'Which resources establish the foundation every EFF chapter is expected to uphold?', 'Bylaws, constitution, code of conduct, chapter agreement, and expectations', 'Only social-media templates', 'Only last year’s event flyers'),
-    lesson('eco-09', 'Chapter Hub: Operations, Forms & Financial Order', 'chapter-hub', 2,
-`# Chapter Hub: Operations, Forms & Financial Order
-
-The **Operations & Forms** section of the Chapter Hub is your repeat-use toolbox: meeting agendas and minutes, financial tracking, event planning, officer applications and transitions, and recurring request forms.
-
-Strong chapters document decisions while they are fresh. The secretary protects the record; the treasurer protects the financial trail; the president protects follow-through. Use the official forms rather than keeping critical information scattered across personal notes and chats.
-
-**Practice:** Write the three documents you would prepare before a chapter event involving money.`,
-'Why should chapters use the official operations forms?', 'They keep decisions, responsibilities, and financial records organized and consistent', 'They make meetings longer without a purpose', 'They remove the need for any board communication'),
-    lesson('eco-10', 'Chapter Hub: Programming, Branding & Training', 'chapter-hub', 3,
-`# Chapter Hub: Programming, Branding & Training
-
-The Chapter Hub includes ready-to-use programming toolkits for tabling, fundraising, icebreakers, REACH Week, and campus programming. It also includes official brand guidance, social-media materials, templates, and leadership training.
-
-Start with the mission and the student need—not the flyer. Then choose an official toolkit, create a simple plan, assign owners, and represent the EFF name with care.
-
-**Practice:** Choose one student need on your campus. Write a three-part event concept: purpose, activity, and follow-up.`,
-'What should come before designing an event flyer?', 'Identifying the student need and selecting the right mission-aligned toolkit', 'Posting a graphic before a plan exists', 'Choosing a theme with no student purpose'),
-    lesson('eco-11', 'Chapter Hub: Compliance, Recruitment & Service', 'chapter-hub', 4,
-`# Chapter Hub: Compliance, Recruitment & Service
-
-The Chapter Hub connects you to semesterly compliance reporting, the good-standing checklist, advisor guidance, membership and recruitment materials, the Esther Experience, and community-service resources.
-
-Compliance is not punishment. It is how national EFF knows a chapter is supported, active, accountable, and eligible for access to resources. Recruitment is not a one-day rush; it is a process of welcome, induction, training, and care.
-
-**Practice:** Make a mini calendar with one compliance deadline, one recruitment moment, and one service action your board should track this semester.`,
-'What is the purpose of compliance reporting?', 'To help chapters remain supported, accountable, and in good standing', 'To replace all chapter programming', 'To rank students by popularity'),
-    lesson('eco-12', 'How to Run a Board Meeting that Moves Work Forward', 'board-excellence', 1,
-`# How to Run a Board Meeting that Moves Work Forward
-
-A strong board meeting has a written agenda, a clear facilitator, a timekeeper, notes, decisions, owners, and deadlines. The goal is not to talk the longest. The goal is to leave with work that can actually be completed.
-
-**Simple meeting flow:** opening and purpose; review of previous action items; financial and program updates; decisions; upcoming dates; assignments; closing and follow-up.
-
-Send the agenda early. Keep minutes during the meeting. End by reading each action item out loud: who owns it, what they will do, and by when.
-
-**Practice:** Draft a 30-minute agenda for your next board meeting with at least four timed sections.`,
-'What must every actionable board decision include?', 'An owner and a deadline', 'Only a general group agreement', 'A promise to remember it later'),
-    lesson('eco-13', 'Board Communication: Decisions, Documentation & Accountability', 'board-excellence', 2,
-`# Board Communication: Decisions, Documentation & Accountability
-
-Healthy boards communicate in ways people can find later. Put final decisions, deadlines, meeting minutes, and approved files in the chapter’s agreed workspace. Do not rely on disappearing messages for important records.
-
-Clarify the difference between brainstorming and a decision. A vote, officer authority, or national guidance may be required depending on the issue. When you are unsure, pause and check the bylaws or ask National EFF—not a public group chat.
-
-**Practice:** Turn this vague message into an accountable action item: “Someone should work on the event soon.”`,
-'Which message is an accountable action item?', 'Jordan will finalize the event room request by Friday at 5 p.m.', 'We should probably do the room request eventually', 'Everybody needs to figure it out'),
-    lesson('eco-14', 'Conflict Resolution: Address It Early, Respectfully & Privately', 'board-excellence', 3,
-`# Conflict Resolution: Address It Early, Respectfully & Privately
-
-Conflict is normal; disrespect, avoidance, gossip, and public humiliation are not. Begin privately and directly when it is safe to do so. Describe the specific behavior, explain the impact, listen without interrupting, identify a shared next step, and document agreements when the issue affects chapter work.
-
-Use the [EFF conflict-resolution resource](https://estherfundsfoundation.org/conflict-resolution) and Code of Conduct. Involve an advisor or National EFF when the issue is serious, ongoing, involves safety, harassment, discrimination, finances, or a conflict of interest. Do not investigate serious allegations alone.
-
-**Practice:** Write a calm opening sentence for a private conversation with a board member who has missed two agreed deadlines.`,
-'What is the best first step for a manageable board conflict?', 'Address the specific issue respectfully and privately when it is safe', 'Post about it in the chapter group chat', 'Ignore it until it becomes a larger problem'),
-    lesson('eco-15', 'Board Excellence Capstone: Build Your Campus Resource Plan', 'board-excellence', 4,
-`# Board Excellence Capstone: Build Your Campus Resource Plan
-
-You now know the EFF ecosystem, the Chapter Hub, and the practices that make a board trustworthy. Complete this capstone as if your board were preparing for the next 30 days.
-
-In your submission, include:
-
-1. One student-support need and the EFF resource you would use.
-2. One REACH action your chapter will take.
-3. One Chapter Hub tool your board will use this month.
-4. A date for your next board meeting, with an agenda owner.
-5. One respectful step your board will take to prevent or address conflict.
-
-This is a working leadership plan—not a perfect document. Keep it, bring it to your board, and update it as you lead.`,
-'What does the capstone prove?', 'You can turn EFF resources into a clear, accountable campus action plan', 'You memorized a list of links without applying them', 'You can complete a lesson without making decisions')
+{
+  "generatedAt": "2026-07-12T17:47:35.636Z",
+  "courses": [
+    {
+      "id": "2788873",
+      "title": "Called to Completion: Leading with Integrity, Faith & Excellence in Esther Funds Foundation",
+      "description": "Called to Completion is the official Esther Funds Foundation leadership training and certification course for executive board members, ambassadors, and chapter founders. Rooted in the Book of Nehemiah, this course equips students to lead with spiritual integrity, organizational excellence, and faith-based purpose. You'll learn chapter operations, financial management, event planning, ministry integration, and more. Each module includes lessons, quizzes, and practical tools to guide your leadership journey. Certification is awarded after completing the course and final exam. All leaders must complete this course to serve.",
+      "published": true,
+      "image": "https://uploads.teachablecdn.com/attachments/ea21FFqUTzuNxAIKlAnU_Orange+and+White+Training+Session+Video+%281%29.png",
+      "modules": [
+        {
+          "id": "12235738",
+          "title": "Welcome + Orientation",
+          "position": 1
+        },
+        {
+          "id": "12235751",
+          "title": "Spiritual Launch – Building Like Nehemiah",
+          "position": 2
+        },
+        {
+          "id": "12235759",
+          "title": "Module 1 – Welcome to EFF Leadership",
+          "position": 3
+        },
+        {
+          "id": "12246508",
+          "title": "Did You Know?",
+          "position": 4
+        },
+        {
+          "id": "12235760",
+          "title": "Module 2 – The Heart of Our Mission",
+          "position": 5
+        },
+        {
+          "id": "12246051",
+          "title": "DID YOU KNOW? ",
+          "position": 6
+        },
+        {
+          "id": "12235761",
+          "title": "Module 3 – Executive Board Roles & Structure",
+          "position": 7
+        },
+        {
+          "id": "12235762",
+          "title": "Module 4 – Code of Conduct & Spiritual Accountability",
+          "position": 8
+        },
+        {
+          "id": "12235763",
+          "title": "MODULE 5: Mastering Branding, Marketing & Public Representation",
+          "position": 9
+        },
+        {
+          "id": "12246241",
+          "title": "Hear From Tamara – President, EFF UNCC",
+          "position": 10
+        },
+        {
+          "id": "12235765",
+          "title": "Module 6 – Financial Stewardship & Fundraising Ethics",
+          "position": 11
+        },
+        {
+          "id": "12235767",
+          "title": "Module 7 – Chapter Compliance & Responsibilities",
+          "position": 12
+        },
+        {
+          "id": "12235768",
+          "title": "Module 8 – Faith in Leadership & Ministry Integration",
+          "position": 13
+        },
+        {
+          "id": "12246059",
+          "title": "Mental Health & Faith Check-In",
+          "position": 14
+        },
+        {
+          "id": "12235769",
+          "title": "Module 9 – Membership, Recruitment & The Esther’s Experience",
+          "position": 15
+        },
+        {
+          "id": "12235771",
+          "title": " Module 10 – Event Planning & Chapter Growth",
+          "position": 16
+        },
+        {
+          "id": "12235773",
+          "title": "Module 11: Maximizing Chapter Resources & Tools for Impact",
+          "position": 17
+        },
+        {
+          "id": "12246053",
+          "title": "DID YOU KNOW? ",
+          "position": 18
+        },
+        {
+          "id": "12235776",
+          "title": "Module 12 – Dropout Prevention Events & Campaigns",
+          "position": 19
+        },
+        {
+          "id": "12246056",
+          "title": "DID YOU KNOW?",
+          "position": 20
+        },
+        {
+          "id": "12235777",
+          "title": "Module 13 – Internal & External Leadership Skills",
+          "position": 21
+        },
+        {
+          "id": "12246057",
+          "title": "DID YOU KNOW? ",
+          "position": 22
+        },
+        {
+          "id": "12235781",
+          "title": "Final Exam & Certification",
+          "position": 23
+        }
+      ],
+      "lessons": [
+        {
+          "id": "61433404",
+          "title": "Lesson 1: Welcome to the Leadership Course",
+          "sectionId": "12235738",
+          "position": 1,
+          "markdown": "# 01-lesson-61433404\n\nWelcome to the Esther Funds Foundation Leadership Training Course!\n\nYou made it. You’ve officially stepped into national leadership—and that means more than just a title. You’re part of a faith-driven movement to keep students in school and walking in purpose.\n\nWhether you're a President, Fundraising Chair, or Social Media Lead—this course will equip you with the tools to lead with excellence, integrity, and fire.\n\nAnd don't worry... we’re not here to waste your time. This course is short, interactive, and packed with what you actually need to know.\n\nYou’ll learn:\n\n\nWhat your role really means\nHow to handle finances and fundraising the right way\nHow to plan powerful events and stay compliant\nHow to lead spiritually, not just organizationally\nYou're not just running a chapter. You’re helping rebuild the future for students who almost gave up.\n\nLet’s build something holy, bold, and lasting.\n",
+          "quizzes": [],
+          "activities": [
+            "open_response_question",
+            "native_comments"
+          ],
+          "assets": [
+            {
+              "name": "Banner.png",
+              "kind": "image",
+              "url": "https://uploads.teachablecdn.com/attachments/0jzgvgySRwKfn3BQ63QP_Banner.png"
+            }
+          ]
+        },
+        {
+          "id": "61433633",
+          "title": "How This Course Works + Accommodations",
+          "sectionId": "12235738",
+          "position": 2,
+          "markdown": "# 02-lesson-61433633\n\nLet’s keep it real: nobody wants to sit through a boring training. This course was created so you can actually learn what matters—without feeling like you're back in class.\n\nHere’s what to expect:\n\n\nYou’ll walk through 13 short modules (they don’t drag—we promise).\nAt the end of each module, there’s a quick quiz to help you retain what you just learned.\nThere’s a final exam at the end to receive your certification.\nOnce you pass, you’ll be added to our National Leader Registry and officially recognized as an EFF-certified leader.\nYou’ll have 14 days to complete the course from the day you had your leadership session with the National team. That gives you plenty of time to pace yourself—about 2 modules per day. Training must be completed by June 17, 2025.\n\nThis course includes reading, reflection, and decision-making. If you need more time because of a disability or learning difference, don’t hesitate to reach out. We're here to support you.\n\nEmail: info@estherfundsfoundation.org Subject Line: Leadership Course \n\nHere’s the bottom line: This isn’t school. This isn’t busywork. This is about your calling, and the real-life impact you’re about to make on your campus and in the lives of students who need what you carry\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61476825",
+          "title": "Icebreaker",
+          "sectionId": "12235738",
+          "position": 3,
+          "markdown": "# 03-lesson-61476825\n\n_Written content was not exposed in the API response. See lesson.json._\n",
+          "quizzes": [],
+          "activities": [
+            "native_comments",
+            "open_response_question"
+          ],
+          "assets": [
+            {
+              "name": "ADX06910 (2).jpg",
+              "kind": "image",
+              "url": "https://uploads.teachablecdn.com/attachments/2P6ajVrjROSw67rBZdgm_ADX06910+%282%29.jpg"
+            }
+          ]
+        },
+        {
+          "id": "61483034",
+          "title": "COMPLETED TRAINING=CERTIFIED",
+          "sectionId": "12235738",
+          "position": 4,
+          "markdown": "# 04-lesson-61483034\n\nReminder: This is a certification course. That means you’re not just here to scroll, click, and disappear.\n\nOnce you complete this full course (modules + final exam): ✅ You’ll be officially certified as an Esther Funds Foundation leader ✅ You’ll receive a digital certificate ✅ Your certification will be valid for 1 year from your completion date ✅ You’ll earn the right to say, “I’m trained, trusted, and tapped in.”\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61433728",
+          "title": "The Burden to Build",
+          "sectionId": "12235751",
+          "position": 1,
+          "markdown": "# 05-lesson-61433728\n\nNehemiah wasn’t a pastor.\n\nHe wasn’t a prophet.He was just someone who cared enough to act.\n\nHe saw something broken—and said, “I’ll build.”\n\nThat’s what made him a leader. Not a title. Not a platform. A burden.\n\nAnd that’s what makes you a leader in Esther Funds Foundation. You saw something on your campus, in your life, or in this world—and felt the pull to help rebuild futures.\n\n📖 Bible Verse to Reflect On: “Then I said to them, ‘You see the trouble we are in... Come, let us rebuild the wall of Jerusalem, and we will no longer be in disgrace.’” – Nehemiah 2:17 (NIV)\nIf you’d like to learn more about Nehemiah’s story, take 3 minutes to read Nehemiah Chapter 1 when you get a chance.\n",
+          "quizzes": [],
+          "activities": [
+            "native_comments",
+            "open_response_question"
+          ],
+          "assets": [
+            {
+              "name": "ttsMP3.com_VoiceText_2025-5-21_11-18-53.mp3",
+              "kind": "audio",
+              "url": "https://uploads.teachablecdn.com/attachments/S1e2lucoS12SxhlvMC1Z_ttsMP3.com_VoiceText_2025-5-21_11-18-53.mp3"
+            }
+          ]
+        },
+        {
+          "id": "61433744",
+          "title": "Leadership Starts with Prayer, Not Performance",
+          "sectionId": "12235751",
+          "position": 2,
+          "markdown": "# 06-lesson-61433744\n\nNehemiah didn’t lead from ego. He didn’t build to be seen.\n\nHe prayed. He fasted. He planned. And he moved when God said move.\n\nEFF leaders are called to lead with that same posture.\n\nWe’re not building chapters just to host events. We’re building so that students can finish what they started—spiritually, emotionally, and academically.\n\nLet’s keep it simple: Pray first. Plan well. Persevere always.\n\nBefore You Go\n\nLet this be your foundation as a leader:\n\nYou don’t need to be perfect. You just need to be willing. And if God called you to it, He’ll help you build it.\n",
+          "quizzes": [],
+          "activities": [
+            "native_comments",
+            "open_response_question"
+          ],
+          "assets": [
+            {
+              "name": "ttsMP3.com_VoiceText_2025-5-21_11-23-1.mp3",
+              "kind": "audio",
+              "url": "https://uploads.teachablecdn.com/attachments/udKow2j1TKCBLKKD69ix_ttsMP3.com_VoiceText_2025-5-21_11-23-1.mp3"
+            },
+            {
+              "name": "IMG_0005.jpeg",
+              "kind": "image",
+              "url": "https://uploads.teachablecdn.com/attachments/j8XhmgW6QcaLHr9uXmhF_IMG_0005.jpeg"
+            }
+          ]
+        },
+        {
+          "id": "61435431",
+          "title": "Module 1 – Welcome to EFF Leadership",
+          "sectionId": "12235759",
+          "position": 1,
+          "markdown": "# 07-lesson-61435431\n\nQuiz: Yes (included at the end) \n\n⏱ Estimated Time: 15–20 minutes\n",
+          "quizzes": [],
+          "activities": [
+            "open_response_question"
+          ],
+          "assets": [
+            {
+              "name": "IMG_9533.jpg",
+              "kind": "image",
+              "url": "https://uploads.teachablecdn.com/attachments/5ss7iZl9QX6ZA4y5sN4J_IMG_9533.jpg"
+            }
+          ]
+        },
+        {
+          "id": "61435590",
+          "title": "What You Just Stepped Into",
+          "sectionId": "12235759",
+          "position": 2,
+          "markdown": "# 08-lesson-61435590\n\nYou didn’t just accept a position. You accepted a mission.\n\nEsther Funds Foundation (EFF) isn’t just a student organization. It’s a faith-driven national nonprofit on a Kingdom assignment: to help students stay in school and finish well—spiritually, academically, emotionally, and financially.\n\nWe are the collegiate version of the National Dropout Prevention Center—but we lead with prayer, purpose, and people.\n\nHere’s what makes us different:\n\n\nWe are Christ-centered\n\nWe are student-led\n\nWe are impact-driven\n\nWe are rooted in the story of Esther — rising up “for such a time as this.”\n💭 You were chosen to lead, not to perform—but to protect purpose on your campus.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": [
+            {
+              "name": "ttsMP3.com_VoiceText_2025-5-21_11-30-20.mp3",
+              "kind": "audio",
+              "url": "https://uploads.teachablecdn.com/attachments/WO7fdPzKRrqEu5xoeWbV_ttsMP3.com_VoiceText_2025-5-21_11-30-20.mp3"
+            }
+          ]
+        },
+        {
+          "id": "61463442",
+          "title": "What Makes EFF Different",
+          "sectionId": "12235759",
+          "position": 3,
+          "markdown": "# 09-lesson-61463442\n\nHere’s what sets us apart:\n\n\nWe are Christ-centered: Faith isn’t separate from what we do—it’s the foundation.\nWe are student-led: Chapters are run by students for students.\nWe are impact-driven: Every event, meeting, and moment is focused on helping people finish.\nWe are a nonprofit, meaning we operate for purpose, not profit. And we are a ministry, meaning we serve students not just academically, but spiritually.\n\nEvery Bible study, service project, and workshop is part of something holy.\n\nOur Slogan – \"Every Future Fulfilled\"\n\nOur slogan, \"Every Future Fulfilled,\" encapsulates our commitment to ensuring that every student, regardless of their background, has the opportunity and support to complete their education and achieve their dreams. This guiding principle drives all our initiatives and programs.\n",
+          "quizzes": [
+            {
+              "id": 2593562,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "What is the official slogan of Esther Funds Foundation?",
+                  "question_type": "single",
+                  "answers": [
+                    " “No Student Left Behind”",
+                    "Graduation Over Everything”",
+                    "“Every Future Fulfilled”",
+                    " “Finish the Race, Keep the Faith”"
+                  ],
+                  "correct_answers": [
+                    "“Every Future Fulfilled”"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [],
+          "assets": [
+            {
+              "name": "ttsMP3.com_VoiceText_2025-5-21_11-32-38.mp3",
+              "kind": "audio",
+              "url": "https://uploads.teachablecdn.com/attachments/dybxyjuMRAOzGoN6yxEY_ttsMP3.com_VoiceText_2025-5-21_11-32-38.mp3"
+            },
+            {
+              "name": "istockphoto-1135067042-612x612.jpg",
+              "kind": "image",
+              "url": "https://uploads.teachablecdn.com/attachments/JKmE7HHBQvCxmhsWJA5v_istockphoto-1135067042-612x612.jpg"
+            }
+          ]
+        },
+        {
+          "id": "61463454",
+          "title": "Leadership Is Stewardship",
+          "sectionId": "12235759",
+          "position": 4,
+          "markdown": "# 10-lesson-61463454\n\nAs a leader within EFF, your role is one of stewardship, not status. This means:\n\n\n\nServing with humility: Recognizing that leadership is about serving others and meeting their needs.\n\nLeading with integrity: Upholding ethical standards and being a role model for others.\n\nEmpowering others: Encouraging and supporting team members to reach their full potential.\n\nBeing accountable: Taking responsibility for your actions and decisions.\nYour leadership is a trust placed in you to guide and support students on their educational journey.\n\nEFF operates as a Christ-centered nonprofit ministry dedicated to preventing college dropouts by providing emergency support, educational resources, and faith-based encouragement. Our approach combines practical assistance with spiritual guidance, addressing both the tangible and intangible challenges students face.\n\nWe believe that higher education should not be a privilege but an accessible reality for all students, especially those facing financial hardship and a lack of support. Through our programs, we aim to eliminate financial barriers and provide the necessary support, knowledge, and faith to help students finish what they started.\n",
+          "quizzes": [
+            {
+              "id": 2593563,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "As a leader in Esther Funds Foundation, what does your role represent?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Popularity and visibility on campus",
+                    "b) A temporary role with no long-term responsibility",
+                    "c) Stewardship — serving with humility, integrity, and accountability",
+                    "d) Control over chapter decisions and creative freedom"
+                  ],
+                  "correct_answers": [
+                    "c) Stewardship — serving with humility, integrity, and accountability"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [
+            "native_comments"
+          ],
+          "assets": []
+        },
+        {
+          "id": "61435598",
+          "title": " The Origin Story",
+          "sectionId": "12235759",
+          "position": 5,
+          "markdown": "# 11-lesson-61435598\n\nEsther Funds Foundation (EFF) was founded on January 23, 2024, by Shayna Vincent, a college student from Tampa, Florida, majoring in Elementary Education at Florida A&M University. Shayna faced significant challenges during her academic journey, including ADHD and behavioral issues, which led to multiple instances of dropping out. These personal experiences ignited a passion in her to support other students facing similar obstacles.\n\nRecognizing the systemic barriers that underrepresented, first-generation, and low-income college students encounter, Shayna established EFF to provide emergency support, educational resources, and faith-based encouragement. The foundation began as a vision in 2023 to break financial and systemic barriers that hinder students from completing their education.\n\nWhat started at Florida A&M University became a movement:\n\n\nOver a dozen chapters\nScholarship funding for students in crisis\nEmergency support, Bible studies, advocacy, and leadership\nAnd now—you.\n\nIf you're reading this, you are part of the next chapter of this story.\n\n📖 Esther 4:14 —And who knows but that you have come to your position for such a time as this?”\n\nMission: We work to prevent college dropouts in the United States by providing emergency support to minority, first-generation, and low-income college students—especially in the South—who face financial and systemic barriers to completing their education. Through advocacy, mentoring, service, and donations, we increase the graduation rate and equip underrepresented college students with the immediate resources, long-term knowledge, and faith-based support they need to persist and graduate.\n\nVision: We envision a world where underrepresented, first-generation, and low-income students graduate at higher rates, achieve financial stability, and secure equitable representation in every field of the workforce. Our goal is to help 7 million underrepresented college students graduate—gaining the economic and educational knowledge needed to break generational cycles of poverty, empowering them to build a future of success for themselves and those who come after them.\n\nShayna Vincent\n\nFounder & Executive Director\n\nEFF Colors & National Mascot\n\nPart of representing EFF well means understanding the meaning behind the brand—why we use certain colors, what the dove represents, and how it connects to our mission and message.\n\nEFF Official Colors\n\n💜 Royal Purple\n\n\nRepresents royalty, purpose, and identity\n\nInspired by Queen Esther’s calling in the Bible\nReminds every student that no matter their past, they are chosen and worthy\n\n⚪ White\n\n\nSymbolizes purity, healing, and new beginnings\n\nReflects God’s grace and the restoration that happens when students are given the support they need to stay in school and walk in purpose\n🕊️ EFF National Mascot: The Dove\n\n\nEFF’s official symbol is the dove, representing:\n\n\nPeace in the middle of pressure\nPurity and protection\n\nThe Holy Spirit, which guides everything we do as a Christ-centered ministry\n\nGentle strength — we’re not loud to be effective; we’re grounded to be impactful\nThe dove is a reminder that even in the chaos of college, God’s presence, peace, and provision are near. Every flyer, wristband, and shirt with the dove is a symbol of hope, safety, and calling.\n",
+          "quizzes": [
+            {
+              "id": 2593568,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "Who is the founder of Esther Funds Foundation?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Tamara Lewis",
+                    "b) Shayna Vincent",
+                    "c) Jordan Smith",
+                    "d) Jasmine Carter"
+                  ],
+                  "correct_answers": [
+                    "b) Shayna Vincent"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "When was Esther Funds Foundation officially incorperated/founded?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) 2023",
+                    "b) January 23, 2024",
+                    "c) Fall 2022",
+                    "d) February 1, 2024"
+                  ],
+                  "correct_answers": [
+                    "b) January 23, 2024"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": " What is the official primary color of Esther Funds Foundation?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Navy Blue",
+                    "b) Rose Gold ",
+                    "c) Royal Purple and Pure White",
+                    "d) Forest Green"
+                  ],
+                  "correct_answers": [
+                    "c) Royal Purple and Pure White"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What is the official national mascot or symbol of EFF?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) The Olive Branch",
+                    "b) The Dove",
+                    "c) The Crown",
+                    "d) The Lion"
+                  ],
+                  "correct_answers": [
+                    "b) The Dove"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Why is the dove used as EFF’s official symbol?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) It represents college victory",
+                    "b) It looks good on merchandise",
+                    "c) It symbolizes peace, purity, the Holy Spirit, and gentle strength",
+                    "d) It’s a common religious symbol"
+                  ],
+                  "correct_answers": [
+                    "c) It symbolizes peace, purity, the Holy Spirit, and gentle strength"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61477183",
+          "title": "Module 1 Activity",
+          "sectionId": "12235759",
+          "position": 6,
+          "markdown": "# 12-lesson-61477183\n\nModule 1 Activity: Mission & Vision Reflection\n\n📍 As a leader, it’s important to know the mission and vision of EFF. It is required to read both aloud at the start of every General Body Meeting and every Executive Board Meeting.\n\n📜 Mission of Esther Funds Foundation\n\n\nWe work to prevent college dropouts in the United States by providing emergency support to minority, first-generation, and low-income college students—especially in the South—who face financial and systemic barriers to completing their education. Through advocacy, mentoring, service, and donations, we increase the graduation rate and equip underrepresented college students with the immediate resources, long-term knowledge, and faith-based support they need to persist and graduate. \n\n🌍 Vision of Esther Funds Foundation\n\n\nWe envision a world where minority, first-generation, and low-income students graduate at higher rates, achieve financial stability, and secure equitable representation in every field of the workforce. Our goal is to help 7 million underrepresented college students graduate—gaining the economic and educational knowledge needed to break generational cycles of poverty, empowering them to build a future of success for themselves and those who come after them.\n",
+          "quizzes": [],
+          "activities": [
+            "open_response_question"
+          ],
+          "assets": []
+        },
+        {
+          "id": "61463821",
+          "title": "Quiz",
+          "sectionId": "12235759",
+          "position": 7,
+          "markdown": "# 13-lesson-61463821\n\nModule 1 Quiz – Welcome to EFF Leadership\n\nPassing Score: 80% Instructions: Choose the best answer for each question. You may reference your notes.\n",
+          "quizzes": [
+            {
+              "id": 2593566,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "What is the official slogan of Esther Funds Foundation?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Graduation is the Goal",
+                    "b) No Future Left Behind",
+                    "c) Every Future Fulfilled",
+                    "d) Powered by Purpose"
+                  ],
+                  "correct_answers": [
+                    "c) Every Future Fulfilled"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What is the role of a leader in EFF?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) To be in control of chapter decisions",
+                    "b) To gain influence and visibility on campus",
+                    "c) To serve with stewardship, integrity, and humility",
+                    "d) To manage events and promote themselves"
+                  ],
+                  "correct_answers": [
+                    "c) To serve with stewardship, integrity, and humility"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What should be read at every GBM and Executive Board meeting?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Upcoming events",
+                    "b) The weekly prayer",
+                    "c) Member announcements",
+                    "d) EFF’s Mission and Vision"
+                  ],
+                  "correct_answers": [
+                    "d) EFF’s Mission and Vision"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Which of the following best describes EFF’s organizational identity?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) A college club focused on community service",
+                    "b) A social ministry group",
+                    "c) A Christ-centered nonprofit ministry focused on dropout prevention",
+                    "d) A mentorship initiative for Christian women"
+                  ],
+                  "correct_answers": [
+                    "c) A Christ-centered nonprofit ministry focused on dropout prevention"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": " What is the purpose of this leadership course?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) To earn volunteer hours",
+                    "b) To gain visibility on social media",
+                    "c) To be certified and equipped to lead with integrity",
+                    "d) To train students to become motivational speakers"
+                  ],
+                  "correct_answers": [
+                    "c) To be certified and equipped to lead with integrity"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What does it mean to steward your leadership position?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Make decisions without oversight",
+                    "b) Use your platform to build your brand",
+                    "c) Guard what you’ve been entrusted with and serve well",
+                    "d) Lead through popularity"
+                  ],
+                  "correct_answers": [
+                    "c) Guard what you’ve been entrusted with and serve well"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What kind of students does EFF primarily serve?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Students in graduate school",
+                    "b) First-generation, low-income, and underrepresented college students",
+                    "c) Only students from HBCUs",
+                    "d) Religious studies majors"
+                  ],
+                  "correct_answers": [
+                    "b) First-generation, low-income, and underrepresented college students"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What is one reason EFF was created?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) To help students transfer to different schools",
+                    "b) To provide emotional support through faith and community",
+                    "c) To replace existing university programs",
+                    "d) To focus on Greek life and college culture"
+                  ],
+                  "correct_answers": [
+                    "b) To provide emotional support through faith and community"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Which of the following is NOT part of your responsibility as an EFF leader?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Leading with integrity",
+                    "b) Supporting students spiritually and practically",
+                    "c) Making personal decisions for your members",
+                    "d) Being accountable to your board and HQ"
+                  ],
+                  "correct_answers": [
+                    "c) Making personal decisions for your members"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": " What does EFF believe about education?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) It should be earned only by the privileged",
+                    "b) It is a privilege, not a right",
+                    "c) It should be accessible to all students, especially those facing hardship",
+                    "d) It’s only valuable with a 4.0 GPA"
+                  ],
+                  "correct_answers": [
+                    "c) It should be accessible to all students, especially those facing hardship"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [
+            "native_comments"
+          ],
+          "assets": []
+        },
+        {
+          "id": "61463460",
+          "title": "This Course Will Equip You",
+          "sectionId": "12235759",
+          "position": 8,
+          "markdown": "# 14-lesson-61463460\n\nNavigating This Course\n\nCongratulations! You just completed your first quiz! This leadership training course is designed to equip you with the knowledge and skills necessary to effectively lead within EFF. Here's how to navigate it:\n\n\n\nModules: The course consists of 13 short modules, each focusing on different aspects of leadership and EFF operations.\n\nPacing: Aim to complete 2 modules per day, finishing the course within 14 days of your onboarding session.\n\nQuizzes: At the end of each module, there will be a short quiz to reinforce your learning.\n\nFinal Exam: Upon completing all modules, you'll take a final exam to earn your certification.\n\nSupport: If you have a learning disability or learning difference, please email us at info@estherfundsfoundation.org with the subject line: \"Leadership Course Request.\"\nRemember, this course is not just about acquiring knowledge—it's about preparing to make a meaningful impact in the lives of students on your campus!\n",
+          "quizzes": [],
+          "activities": [
+            "native_comments"
+          ],
+          "assets": []
+        },
+        {
+          "id": "61479950",
+          "title": "Did you know?",
+          "sectionId": "12246508",
+          "position": 1,
+          "markdown": "# 15-lesson-61479950\n\nEFF has an official hand sign that represents both the heart and the dove? 🕊️💜\n\nThe EFF hand sign is made by:\n\n\nCreating a heart shape with your hands 💜\nCrossing your fingers gently within it to symbolize the dove’s wings\n\nIt’s more than just a cute photo pose.\n\nThe EFF hand sign represents:\n\n\nLove + peace\nIdentity + covering\n\nThe heart of Esther Funds Foundation: gentle strength, unity, and purpose\n💡 Every time you throw it up in a picture or at an event, remember what (and who) you represent.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61463583",
+          "title": "Lesson 1: Why College Dropout Prevention Matters",
+          "sectionId": "12235760",
+          "position": 1,
+          "markdown": "# 16-lesson-61463583\n\nWhy College Dropout Prevention Matters\n\nToo many students don’t make it to graduation—not because they’re not smart, but because life hits hard.\n\nStudents are dropping out every year because:\n\n\nThey can’t afford tuition, food, or housing\nThey’re overwhelmed by mental health struggles\nThey’re the first in their family to go to college and don’t know where to turn\nThey’re carrying adult-sized responsibilities with little support\nEFF exists to say: you don’t have to do this alone.\n\nWe're here to intervene early, offer support, speak life, and walk with students so they don’t just survive college—they finish it.\n\nThis is why what you’re building matters. It's not just about membership. It’s about miracles in motion.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61463589",
+          "title": "Lesson 2: Who We Serve",
+          "sectionId": "12235760",
+          "position": 2,
+          "markdown": "# 17-lesson-61463589\n\nEsther Funds Foundation is for the students who feel like giving up. Specifically:\n\n\nFirst-generation college students\nLow-income students\nBlack and Brown students facing systemic barriers\nWorking students trying to juggle it all\nStudents raising children, dealing with trauma, or navigating chronic stress\nStudents who want more than academic help—they want hope\n\nWe’re here to stand in the gap—practically and spiritually.\n",
+          "quizzes": [],
+          "activities": [
+            "native_comments"
+          ],
+          "assets": [
+            {
+              "name": "Graduate_1-1.jpg",
+              "kind": "image",
+              "url": "https://uploads.teachablecdn.com/attachments/E1Vd2fxbTYC0WD3YHRWG_Graduate_1-1.jpg"
+            }
+          ]
+        },
+        {
+          "id": "61463595",
+          "title": "Lesson 3: Faith + Equity + Retention",
+          "sectionId": "12235760",
+          "position": 3,
+          "markdown": "# 18-lesson-61463595\n\nEFF blends faith, equity, and retention into everything we do. That means:\n\n\nWe pray and we provide\nWe support the whole student—mind, body, and spirit\nWe advocate for students who are overlooked or forgotten\nWe believe your GPA matters—but so does your well-being and your walk with God\nThis isn’t about putting religion on people—it’s about serving with love and boldness, the way Jesus did.\n\nWe believe college graduation can be a Kingdom victory.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61463698",
+          "title": "Lesson 4: Our Four National Initiatives",
+          "sectionId": "12235760",
+          "position": 4,
+          "markdown": "# 19-lesson-61463698\n\nEverything EFF does flows through four national initiatives—each one designed to meet a specific need in the student journey.\n\n1. The Campus Ambassador Program\n\nThis is our outreach and student voice initiative. Campus Ambassadors are the hands and feet of EFF on their campus.\n\nThis program includes:\n\n\n\nAmbassadors, who spread the mission, host drives, and lead initiatives\n\nRoyal Courts, a creative extension of the Ambassador Program that blends student leadership, advocacy, and campus representation\nIf your chapter plans to have a Royal Court, you’ll want to refer to the Esther Funds Foundation National Royal Court Policy and Guidelines, located in the Chapter Resources section. (We’ll go deeper into this later in the course.)\n\n2. The James Pillar Project\n\nThis is where every collegiate chapter operates.\n\nNamed after the Book of James (wisdom + faith in action), this initiative focuses on:\n\n\nAcademic and professional development\nMentorship\nStudent success workshops\nSoft skill training and career prep\nIf you're leading a chapter on campus, this is your zone. Everything from your events to your impact reports falls under this project.\n\n3. The EFF Lift Fund\n\nThis is our emergency support vision. Our long-term goal is to officially launch the EFF Lift Fund, a national emergency fund to provide:\n\n\nMicro-grants for groceries, gas, or textbooks\nTransportation and housing aid\nCritical retention resources\nWhile some chapters may already give in crisis situations, our national Lift Fund is still being developed. You’re helping lay the foundation.\n\n4. Esther’s Light Ministry\n\nThis is the spiritual heart of EFF. Esther’s Light is our national ministry initiative focused on discipleship, Scripture, and healing.\n\nEach chapter’s Director of Collegiate Ministry runs this initiative locally, through:\n\n\nBible studies\nPrayer nights\nDevotionals and spiritual check-ins\nWe’ll go deeper into what this looks like later in the course, but just know: you are leading a real ministry—not just an organization.\n\nThese four initiatives keep us focused, mission-aligned, and organized as we grow.\n\nTogether, they reflect the pillars of EFF: Presence. Preparation. Provision. Prayer.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61477403",
+          "title": "Module 2 Activity: The Heart of Our Mission",
+          "sectionId": "12235760",
+          "position": 5,
+          "markdown": "# 20-lesson-61477403\n\nModule 2 Activity: Scenario-Based Mission Application\n\n📍This activity will help you apply what you learned about EFF’s mission and the students we serve. Read each scenario and respond with how your chapter should respond — based on the heart of our mission.\n\nScenario 1: A Student on the Verge of Dropping Out\n\nYou meet a first-generation student on campus who shares that they’re considering dropping out due to financial stress, lack of support, and academic burnout. They’ve stopped attending class and don’t know who to talk to.\n\nScenario 2: Planning an Event That Honors the Mission\n\nYour chapter is planning an event and someone suggests a casual hangout night with no clear purpose—just food and music. It’s easy, fun, and low effort.\n\nScenario 3: Campus Doesn’t Understand What EFF Does\n\nYou’re tabling at your school’s student org fair and someone asks, “So is EFF just like a Bible study club?”\n",
+          "quizzes": [],
+          "activities": [
+            "open_response_question",
+            "native_comments",
+            "open_response_question",
+            "open_response_question"
+          ],
+          "assets": []
+        },
+        {
+          "id": "61463820",
+          "title": "Quiz",
+          "sectionId": "12235760",
+          "position": 6,
+          "markdown": "# 21-lesson-61463820\n\nModule 2 Quiz – The Heart of Our Mission\n\nInstructions: Choose the best answer for each question. You must answer all 3 questions to proceed.\n",
+          "quizzes": [
+            {
+              "id": 2593601,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "What is the primary mission of Esther Funds Foundation?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) To help students host fun events on campus",
+                    "b) To create a faith-based social club for college students",
+                    "c) To prevent college dropouts by supporting underrepresented students with faith, mentorship, and resources",
+                    "d) To provide scholarships to graduate students only"
+                  ],
+                  "correct_answers": [
+                    "c) To prevent college dropouts by supporting underrepresented students with faith, mentorship, and resources"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Which of the following groups is EFF specifically focused on serving?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) International graduate students",
+                    "b) High school seniors preparing for college",
+                    "c) First-generation, low-income, and underrepresented college students",
+                    "d) Only students who attend HBCUs"
+                  ],
+                  "correct_answers": [
+                    "c) First-generation, low-income, and underrepresented college students"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What national initiative are collegiate chapters a part of?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) The Royal Court Network",
+                    "b) The James Pillar Project",
+                    "c) The Drip Don’t Drop Fund",
+                    "d) The Higher Learning Lab"
+                  ],
+                  "correct_answers": [
+                    "b) The James Pillar Project"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61478317",
+          "title": "Did you know? #1",
+          "sectionId": "12246051",
+          "position": 1,
+          "markdown": "# 22-lesson-61478317\n\nDid You Know? EFF Was Featured on the News!\n\n🎥 Did you know Esther Funds Foundation was featured on WCTV? That’s right — our movement to prevent college dropouts made the news!\n\nEFF was recognized for its innovative approach to supporting students through emergency resources, mentorship, faith, and leadership. What started at one campus is now a national nonprofit with growing chapters across the country.\n\n💬 This isn’t just a campus org. This is a national ministry—and the world is watching.\nYou are now a part of something that’s bigger than you—and making real headlines. Lead accordingly.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61463705",
+          "title": "MODULE 3 – Executive Board Roles & Chapter Structure",
+          "sectionId": "12235761",
+          "position": 1,
+          "markdown": "# 23-lesson-61463705\n\nThis module walks through the leadership positions that make up an EFF chapter, how the board should function, and how to protect order, clarity, and alignment across campuses.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61463707",
+          "title": "Lesson 1: What Makes a Strong Chapter?",
+          "sectionId": "12235761",
+          "position": 2,
+          "markdown": "# 24-lesson-61463707\n\nWhat Makes a Strong Chapter?\n\nA strong EFF chapter isn’t about popularity—it’s about purpose and order.\n\nEvery EFF chapter must:\n\n\nHave a full executive board in place\nAssign clear roles and responsibilities\nOperate in alignment with national policies and structure\nSubmit updates and communicate with HQ regularly\nWe’re not running casual clubs. We are leading ministry-based nonprofits on campus. That means structure protects the mission.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": [
+            {
+              "name": "IMG_3833 (2).jpg",
+              "kind": "image",
+              "url": "https://uploads.teachablecdn.com/attachments/N5JmDqRKQ4CFWLpCaKnB_IMG_3833+%282%29.jpg"
+            }
+          ]
+        },
+        {
+          "id": "61463710",
+          "title": "Lesson 2: Executive Board Positions & Responsibilities",
+          "sectionId": "12235761",
+          "position": 3,
+          "markdown": "# 25-lesson-61463710\n\nFull Executive Board & Leadership Structure\n\nEvery chapter of Esther Funds Foundation must be built on spiritual alignment, professional order, and shared responsibility. Below is a breakdown of all required, recommended, and extended leadership roles, including their expectations.\n\nPresident\n\n\nLeads the chapter with spiritual grounding, order, and vision\nOversees all chapter operations, events, and board communication\nHosts executive board and general body meetings\nServes as the main liaison to National Headquarters\nUpholds national policy, mission, and branding standards\nMakes final decisions with maturity and prayer\nVice President(s) – VP 1 and VP 2\n\n\nSupports the President and steps in when needed\nOversees e-board communication and semester planning\nHelps track goals, accountability, and campus impact\nPlays a major role in executing workshops and The Esther’s Experience\nCoordinates internal structure (VP 1) and programming (VP 2) as needed\n Secretary\n\n\n\nTakes minutes during all board and general meetings\nOrganizes all chapter documents, contact lists, and meeting records\nMaintains folders (Google Drive, Canva, reports, etc.)\nAssists with distributing reminders, recaps, and compliance documents\n Treasurer / Financial Chair\n\n\n\nManages all chapter funds, fundraising records, and spending\nLogs all financial activity and submits reports each semester\nWorks with HQ and university to remain compliant\nCollaborates with Fundraising Chair on every campaign\n Director of Collegiate Ministry\n\n\n\nLeads the chapter spiritually through prayer, Bible study, and devotionals\nOversees the Esther’s Light Ministry initiative locally\nChecks in spiritually with members and board\nCoordinates prayer events, faith reflections, and Scripture posts\nMembership Chair\n\n\nLeads all recruitment efforts and onboarding of new members\nPlans and hosts interest meetings and orientations\nOversees The Esther’s Experience\nManages attendance, member lists, and retention\nFundraising Chair\n\n\nPlans, executes, and tracks fundraising events\nPartners with Treasurer for proper financial reporting\nLeads creativity in campus-based and online fundraisers\nHelps chapters reach scholarship, event, and service goals\n Community Service Chair\n\n\n\nCoordinates all volunteer efforts and donation drives\nPartners with organizations for service opportunities\nLogs all volunteer hours and submits documentation\nAligns service with EFF’s dropout prevention mission\n Public Relations / Social Media Chair\n\n\n\nManages the chapter’s social media and digital presence\nCreates flyers, announcements, and post captions using approved branding\nPromotes events, recruitment, and national campaigns\nResponds to DM inquiries and oversees professional public image\n Parliamentarian\n\n\n\nMaintains order and structure during all meetings\nAssists President in enforcing Robert’s Rules of Order\nSupports voting, agenda control, and respectful board conduct\nHistorian\n\n\nDocuments chapter activities through photos, highlights, and archives\nAssists PR Chair with recap posts and visual storytelling\nSubmits key milestones and media for national newsletter or website features\nVolunteer Manager\n\n\nTracks and calculates all volunteer hours for each event\nSubmits a full Volunteer Report to HQ each semester\nWorks with Community Service Chair and Secretary to log hours accurately\nEnsures individual and chapter-wide totals are submitted by deadline\n\n🟦 Extended Leadership Support Roles\n\nThese roles may not be on the executive board but are still nationally recognized as part of your leadership team.\n\n🟪 Advisor / Co-Advisor (Faculty or Staff)\n\n\n\nEnsures chapter is in good standing with the university\nSupports the executive board with oversight and guidance\nAttends major events and meetings (as able)\nReviews the semester compliance packet before submission\nMay be asked to verify fundraising, conflict resolution, or discipline\n🟪 National Chapter Liaison (Assigned by HQ)\n\n\n\nServes as your direct support from National HQ\nHelps track chapter progress, answer questions, and offer accountability\nChecks in monthly or as needed\nSupports conflict resolution, compliance, and leadership transitions\nKeeps communication flowing between HQ and the chapter\n🟪 Campus Ambassador\n\n\n\nRepresents EFF through social media, outreach, or fundraising\nParticipates in national campaigns and donor engagement\nMay or may not be part of the chapter’s executive board\nRequired to complete Ambassador training and participate in 1–2 initiatives per semester\n🟪 Royal Court Member / Royal Court Ambassador\n\n\n\nParticipates in campus representation and chapter visibility\nOften serves during interest meetings, social events, and scholarship campaigns\nMay hold special duties during induction, fundraisers, and collabs\nExpected to embody EFF values and attend leadership-based events\n💡 Note: Every leader is part of a national movement. Titles reflect responsibility, but your character reflects the mission.\n",
+          "quizzes": [],
+          "activities": [
+            "native_comments",
+            "open_response_question"
+          ],
+          "assets": []
+        },
+        {
+          "id": "61463740",
+          "title": "Lesson 3: Chapter Structure & Chain of Command",
+          "sectionId": "12235761",
+          "position": 4,
+          "markdown": "# 26-lesson-61463740\n\nChapter Structure & Chain of Command\n\nYour EFF chapter is part of a nationally structured nonprofit—not an independent student club. That means you operate under clear accountability and order.\n\nHere’s how the chain of command works:\n\nNational Headquarters (HQ)\n\nOversees all chapters, initiatives, policies, and structureChapter’s National Liaison (if assigned)\n\n\nServes as the direct point of contact between your chapter and National HQ\nHelps monitor progress, offer support, and communicate updates\nChapter Executive Board\n\n\nPresident, Vice Presidents, and other board roles carry out all day-to-day operations on campus\nResponsible for following national policies and submitting required reports\nGeneral Body Members\n\nAttend events, engage in service, participate in programming, and contribute to chapter cultureVolunteers and Participants\n\nMay attend one-time events or help on a limited basis but are not official members unless inducted\n\n🚨 What to Do If There’s an Issue\n\nIf a conflict arises or something goes wrong in your chapter:\n\n\n\nTry to resolve it within the board. Private conversation &gt; group chat drama.\nIf needed, bring in your chapter advisor.\n\nThen contact your National Liaison if one is assigned.\nIf it’s still unresolved or serious (ex: legal, ethical, or spiritual violations), reach out to National HQ directly.\n\nNo gossip. No group chat explosions. No rebellion. Follow the order—and let God honor your maturity and submission to structure.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61463810",
+          "title": "Lesson 4: Leadership ≠ Friendship",
+          "sectionId": "12235761",
+          "position": 5,
+          "markdown": "# 27-lesson-61463810\n\nThis part matters.\n\nLeading EFF doesn’t mean picking your best friends or holding on to positions because of loyalty. That’s how confusion and conflict happen.\n\nEvery person on your board must:\n\n\nBe active (not just on the roster)\nBe committed to the mission\nBe teachable and willing to grow\nRespect the spiritual and professional tone of EFF\nIf someone isn't contributing, you have the authority—and the responsibility—to make changes. We’ll go into this more in the Code of Conduct module.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": [
+            {
+              "name": "webimage-24B2AE38-4CF5-4254-9BA93F03C8B2FCEA.png",
+              "kind": "image",
+              "url": "https://uploads.teachablecdn.com/attachments/f0JzV1TAQauQppwHvhqf_webimage-24B2AE38-4CF5-4254-9BA93F03C8B2FCEA.png"
+            }
+          ]
+        },
+        {
+          "id": "61463815",
+          "title": "Lesson 5: Preparing for Transitions",
+          "sectionId": "12235761",
+          "position": 6,
+          "markdown": "# 28-lesson-61463815\n\nPreparing for Transitions\n\nStrong chapters don’t just run—they transition well.\n\nEvery executive board role in Esther Funds Foundation is a position of stewardship, and it must be treated with integrity from start to finish.\n\nLeadership Terms & Expectations\n\n\nAll executive board members are considered active for up to one academic year after training and certification.\nNew leaders must complete national leadership training and pass the certification exam before officially serving.\nChapters are required to have all core roles filled (President, VP, Treasurer, etc.) to remain in good standing.\nIf your chapter fails to maintain an executive board:\n\n\nYou may be placed on CND (Cease & Desist) status\n\nYou may lose access to events, recruitment, or funding\nNational HQ may request a formal meeting or audit\n🧭 How to Bring on New E-Board Members Mid-Year\n\n\nIf a position becomes vacant or your chapter is expanding leadership, there are 3 approved ways to bring on new board members:\n\n\n\nInterviews: The chapter hosts interviews and selects the best-fit candidate with board approval.\n\nMajority Vote: The chapter takes a formal vote during an e-board or GBM meeting.\n\nElections: Candidates campaign and speak; voting is opened to members.\n💡 All leadership selections must be clearly documented—names, roles, dates, and method of selection must be saved for compliance.\n\n📝 National Auditing\n\n\nAt any time, National HQ has the right to audit your executive board, especially if:\n\n\nConcerns arise\nMultiple reports are missing\nChapter growth is stalled\nUncertified leaders are serving in official roles\nMake sure your board is always in alignment, trained, and active.\n\n📥 What to Include in a Transition Plan\n\n\nBefore the semester ends or a role is handed off:\n\n\nHost a transition meeting\nProvide passwords, templates, and chapter materials\nShare role expectations and documentation practices\nSubmit a leadership roster update to HQ if changes occur mid-year\nSupport incoming leaders spiritually, practically, and professionally\n",
+          "quizzes": [],
+          "activities": [
+            "open_response_question",
+            "native_comments"
+          ],
+          "assets": []
+        },
+        {
+          "id": "61477891",
+          "title": " Module 3 Activity: Know Your Role – Leading With Clarity",
+          "sectionId": "12235761",
+          "position": 7,
+          "markdown": "# 29-lesson-61477891\n\nEvery successful EFF chapter runs on clear structure, communication, and shared leadership. Use this activity to reflect on your role and understand how to work with others on your board.\n\n“The Late Flyer Situation”\n\nYour chapter is hosting a Bible Study on Thursday night. It’s already Tuesday evening and the flyer still hasn’t been posted. The President is frustrated, the PR Chair says they never received the event details, and the Secretary isn’t sure what’s been confirmed. Tensions are high, and now the whole board is scrambling.\n",
+          "quizzes": [],
+          "activities": [
+            "native_comments",
+            "open_response_question",
+            "open_response_question"
+          ],
+          "assets": []
+        },
+        {
+          "id": "61463818",
+          "title": "Quiz",
+          "sectionId": "12235761",
+          "position": 8,
+          "markdown": "# 30-lesson-61463818\n\nModule 3 Quiz – Executive Board Roles & Chapter Structure\n\nInstructions: Choose the best answer for each question. You must pass with at least 80%.\n",
+          "quizzes": [
+            {
+              "id": 2593634,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "Who is primarily responsible for tracking and logging volunteer hours for the compliance report?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Secretary",
+                    "b) Parliamentarian",
+                    "c) Community Service Chair and or Volunteer Manager",
+                    "d) Public Relations Chair"
+                  ],
+                  "correct_answers": [
+                    "c) Community Service Chair and or Volunteer Manager"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Which role leads Bible studies, devotionals, and oversees the spiritual health of the chapter?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Membership Chair",
+                    "b) Historian",
+                    "c) Director of Collegiate Ministry",
+                    "d) Fundraising Chair"
+                  ],
+                  "correct_answers": [
+                    "c) Director of Collegiate Ministry"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What does your assigned National Chapter Liaison do?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Approves all events and budgets",
+                    "b) Handles flyer design for your chapter",
+                    "c) Supports your chapter through accountability, communication, and monthly check-ins",
+                    "d) Leads your chapter’s GBMs"
+                  ],
+                  "correct_answers": [
+                    "c) Supports your chapter through accountability, communication, and monthly check-ins"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": " What is the role of the Parliamentarian?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Promote fundraisers on social media",
+                    "b) Record chapter event attendance",
+                    "c) Maintain order during meetings using Robert’s Rules",
+                    "d) Approve financial disbursements"
+                  ],
+                  "correct_answers": [
+                    "c) Maintain order during meetings using Robert’s Rules"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Which of the following is TRUE about chapter board requirements?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Every board must include only 3 members",
+                    "b) All leaders must complete the national training and exam",
+                    "c) Only Presidents and VPs are required to attend training",
+                    "d) Advisors are optional and only needed at induction"
+                  ],
+                  "correct_answers": [
+                    "b) All leaders must complete the national training and exam"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What must the Fundraising Chair and Treasurer do together?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Manage devotional planning",
+                    "b) Write chapter meeting notes",
+                    "c) Collaborate to plan, track, and report fundraising income",
+                    "d) Approve general member applications"
+                  ],
+                  "correct_answers": [
+                    "c) Collaborate to plan, track, and report fundraising income"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [
+            "native_comments"
+          ],
+          "assets": []
+        },
+        {
+          "id": "61463925",
+          "title": "MODULE 4 – Code of Conduct & Spiritual Accountability",
+          "sectionId": "12235762",
+          "position": 1,
+          "markdown": "# 31-lesson-61463925\n\nThis module breaks down how you are expected to lead, what behaviors are unacceptable, and how accountability is handled inside Esther Funds Foundation.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": [
+            {
+              "name": "IMG_9290.jpg",
+              "kind": "image",
+              "url": "https://uploads.teachablecdn.com/attachments/GU0TSIJ5TAmYkCxEN7Hc_IMG_9290.jpg"
+            }
+          ]
+        },
+        {
+          "id": "61463928",
+          "title": "Lesson 1: What We Expect from You as a Leader",
+          "sectionId": "12235762",
+          "position": 2,
+          "markdown": "# 32-lesson-61463928\n\nWhat We Expect from You as a Leader\n\nAs an EFF leader, you are a representative of:\n\n\nChrist\nOur national mission\nYour chapter’s culture\nThat means:\n\n\nLeading with humility, not ego\nPracticing professionalism at all times\nServing others, not using your title as a pass\nShowing up to meetings, events, and initiatives prepared and on time\nBeing spiritually grounded and emotionally mature\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61463929",
+          "title": "Lesson 2: Boundaries in Leadership",
+          "sectionId": "12235762",
+          "position": 3,
+          "markdown": "# 33-lesson-61463929\n\nEFF leaders are called to protect the emotional, spiritual, and physical safety of others. This means respecting:\n\n\nPersonal space and boundaries\nConfidentiality in sensitive conversations\nNo favoritism or cliques\nNo romantic abuse of power\nNo inappropriate jokes, posts, or DMs\nBoundaries also include knowing when to step back, take a break, or ask for help. Burnt-out, bitter leadership is not holy leadership.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": [
+            {
+              "name": "boundaries-clipart-1.png",
+              "kind": "image",
+              "url": "https://uploads.teachablecdn.com/attachments/mjmhPMPeTY2x8FvvZQzp_boundaries-clipart-1.png"
+            }
+          ]
+        },
+        {
+          "id": "61463930",
+          "title": "Lesson 3: Our Code of Conduct – What’s Not Allowed",
+          "sectionId": "12235762",
+          "position": 4,
+          "markdown": "# 34-lesson-61463930\n\nThe Esther Funds Foundation Code of Conduct outlines the national expectations for all members, leaders, and affiliates. It is a binding policy that must be reviewed and agreed to by every executive board member and inducted member.\n\n📍 Where to Find It:\n\n\nYou can view the full Code of Conduct at any time by visiting: ➡️ www.estherfundsfoundation.org Then click on “Chapter Resources” and locate the file titled: 🔒 Esther Funds Foundation National Code of Conduct\n\n🚨 Every member must:\n\n\nAdhere to the document in full\nAgree to it when applying or being inducted\nUphold it in person and online\nThis is not optional. Violations of the Code may result in warnings, probation, or immediate removal.\n\nThese actions can result in immediate removal and potential reporting:\n\n🚫 Hazing 🚫 Rebellion or mutiny against national policies 🚫 Fund misuse or financial dishonesty 🚫 Disrespecting national liaisons, advisors, or executive team 🚫 Cyberbullying, public defamation, or toxic leadership 🚫 Inappropriate DMs, sexual misconduct, or spiritual manipulation\n\nEFF is a safe space. If your actions make others feel unsafe, unsupported, or uncomfortable—there will be consequences.\n",
+          "quizzes": [],
+          "activities": [
+            "native_comments",
+            "open_response_question"
+          ],
+          "assets": [
+            {
+              "name": "no-sign-empty-red-crossed-out-circle-not-allowed-sign-isolate-on-white-background-illustration-eps-10-free-vector.jpg",
+              "kind": "image",
+              "url": "https://uploads.teachablecdn.com/attachments/D1WHyMHCQpAdxgfYoiQj_no-sign-empty-red-crossed-out-circle-not-allowed-sign-isolate-on-white-background-illustration-eps-10-free-vector.jpg"
+            },
+            {
+              "name": "Esther Funds Foundation National Code of Condu (1).pdf",
+              "kind": "pdf_embed",
+              "url": "https://uploads.teachablecdn.com/attachments/NaaNyeIHSVSxSvXSVBNv_Esther+Funds+Foundation+National+Code+of+Condu+%281%29.pdf?Expires=1783876702&Signature=sd1FVDS7NEvXHXRU6Yqm~k56nkONhyKkJm9UA96yWj3novpT1TeNPBSWocad81JhSNVfOEissj-bzCfZBKDh~U0pUjKFw6IiCLPCWaI~1xKjwVt~jOwsBjiGjFyAgGvXlzIII6Za2YNXH0e-8~FaHWvcJPdrgd6P1qDqaqr-eXbdeJKXr-8eHPVN2bs4Z1FV9X35kyeCSc7Aw9XOkAhVLksOZFjZd8T53Ba30Z5n-YTwr7E0zEvlTa-zA~8FcqvHbpHVznkMp9kzX8Oxl4UuEODy4M1eF1PN2M3QDdfWzzQ4ga9Tut1WvNMH5jkqkXGgoF0nJbIkeNL~MsQWqoWwSQ__&Key-Pair-Id=K1P55R7QWDGXRN"
+            }
+          ]
+        },
+        {
+          "id": "61463932",
+          "title": "Lesson 4: What Happens if the Code is Violated",
+          "sectionId": "12235762",
+          "position": 5,
+          "markdown": "# 35-lesson-61463932\n\nWhat Happens if the Code is Violated\n\nDiscipline within EFF is not about shame—it’s about protecting the mission.\n\nSteps of the process:\n\n\n\nInitial documentation (verbal or written complaint submitted)\nReview by the chapter advisor and/or liaison\nOfficial warning or probation (if needed)\nRemoval from leadership or membership (if serious or unresolved)\nEach case is handled with confidentiality, professionalism, and prayer.\n\nYou don’t need to be perfect—but you must be accountable.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61463936",
+          "title": "Lesson 5: Grace and Growth Still Matter",
+          "sectionId": "12235762",
+          "position": 6,
+          "markdown": "# 36-lesson-61463936\n\nGrace and Growth Still Matter\n\nEFF believes in restoration. If you make a mistake, don’t hide it—grow through it.\n\n\nApologize when needed\nAccept correction with humility\nTake spiritual inventory of your heart\nCommit to learning and improving\nWe believe in second chances—but we don’t ignore serious harm.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61463985",
+          "title": "Lesson 6: Character Over Clout",
+          "sectionId": "12235762",
+          "position": 7,
+          "markdown": "# 37-lesson-61463985\n\nYour position doesn’t make you powerful—your posture does.\n\nAs a leader:\n\n\nBe above reproach\nStay teachable\nKeep your character clean even when no one’s watching\nAsk for accountability and spiritual covering\nRemember: you’re not just building a chapter—you’re building credibility, legacy, and trust.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": [
+            {
+              "name": "ADX06878 (6).jpg",
+              "kind": "image",
+              "url": "https://uploads.teachablecdn.com/attachments/cbusUYaEQRuOHvy8nM8t_ADX06878+%286%29.jpg"
+            }
+          ]
+        },
+        {
+          "id": "61464010",
+          "title": "Lesson 7: How to Report a Code of Conduct Violation",
+          "sectionId": "12235762",
+          "position": 8,
+          "markdown": "# 38-lesson-61464010\n\nHow to Report a Code of Conduct Violation\n\nIf someone violates the code of conduct:\n\n\nDon’t handle it on your own. There is a process in place to protect everyone involved.Here’s how to report:\n\n\nGo to the Esther Funds Foundation website\n\nNavigate to the “Chapter Resources” section\n\nClick the “Code of Conduct Violation Form”\n\nFill out all required fields with detailed, honest information\nYou can report:\n\n\nMisconduct by an EFF leader or member\nSituations of harm, abuse, or boundary crossing\nFinancial or ethical concerns\nRepeated disrespect or rebellion\nReports go directly to National HQ and are reviewed with full discretion. Retaliation against someone who reports is strictly prohibited and will result in removal.\n\nIf you are unsure whether something counts as a violation—report it anyway. It’s better to ask than ignore it.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61464014",
+          "title": "Quiz",
+          "sectionId": "12235762",
+          "position": 9,
+          "markdown": "# 39-lesson-61464014\n\n_Written content was not exposed in the API response. See lesson.json._\n",
+          "quizzes": [
+            {
+              "id": 2593657,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "Which of the following is a violation of the EFF Code of Conduct?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Praying before a board meeting",
+                    "b) Hosting a Bible study off campus",
+                    "c) Gossiping about another board member in a group chat",
+                    "d) Posting a flyer on your personal Instagram"
+                  ],
+                  "correct_answers": [
+                    "c) Gossiping about another board member in a group chat"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What is the proper first step if a leader is struggling with their role or behavior?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Step down immediately",
+                    "b) Keep it to yourself until the end of the semester",
+                    "c) Acknowledge it, ask for accountability, and work toward growth",
+                    "d) Ignore it unless someone says something"
+                  ],
+                  "correct_answers": [
+                    "c) Acknowledge it, ask for accountability, and work toward growth"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What should happen if someone violates the Code of Conduct?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) The board handles it privately without documentation",
+                    "b) Retaliation is permitted if it was serious",
+                    "c) It should be reported using the official form under Chapter Resources on the website",
+                    "d) It must be announced publicly to set an example"
+                  ],
+                  "correct_answers": [
+                    "c) It should be reported using the official form under Chapter Resources on the website"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Which of these is an example of healthy spiritual accountability as a leader?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Leading others in prayer and receiving correction humbly",
+                    "b) Only doing your spiritual role when reminded",
+                    "c) Rebuking others online when they mess up",
+                    "d) Refusing to admit mistakes to maintain status"
+                  ],
+                  "correct_answers": [
+                    "a) Leading others in prayer and receiving correction humbly"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": " If a leader repeatedly ignores responsibilities, speaks rudely in meetings, and refuses correction, what should happen?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Their role should be quietly reassigned",
+                    "b) They should be prayed for and ignored",
+                    "c) Their behavior should be documented and addressed through the discipline process",
+                    "d) They should be publicly rebuked at the next GBM"
+                  ],
+                  "correct_answers": [
+                    "c) Their behavior should be documented and addressed through the discipline process"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": " Which behavior is strictly prohibited under EFF’s zero-tolerance policy?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Forgetting to respond in the group chat",
+                    "b) Posting a late flyer",
+                    "c) Hazing, bullying, sexual misconduct, or fund misuse"
+                  ],
+                  "correct_answers": [
+                    "c) Hazing, bullying, sexual misconduct, or fund misuse"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What should you do if you witness behavior that violates the code?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Call the person out in a group chat",
+                    "b) Wait to see if it happens again",
+                    "c) Submit a report using the Code of Conduct form under Chapter Resources",
+                    "d) Ask your friends what they think first"
+                  ],
+                  "correct_answers": [
+                    "c) Submit a report using the Code of Conduct form under Chapter Resources"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": " What happens if a leader breaks the code of conduct and refuses to change?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Nothing — they just finish out the semester",
+                    "b) They can continue as long as the rest of the board agrees",
+                    "c) They may be placed on probation or removed by HQ"
+                  ],
+                  "correct_answers": [
+                    "c) They may be placed on probation or removed by HQ"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [
+            "native_comments"
+          ],
+          "assets": []
+        },
+        {
+          "id": "61464058",
+          "title": " MODULE 5 – Branding, Marketing & Public Representation",
+          "sectionId": "12235763",
+          "position": 1,
+          "markdown": "# 40-lesson-61464058\n\nBranding, Marketing & Public Representation\n\nCore Goal: Equip every chapter leader to become a professional, Spirit-led brand ambassador for EFF — on social media, on campus, and in real life. Branding is our first impression, and as a ministry, it must reflect purpose, excellence, and integrity.\n\nThis is one of the most important modules in this entire training.\n\nWhy? Because you are the first impression of EFF—online, on campus, and in your community. You are the post. You are the caption. You are the invite. And you’re also the follow-up.\n\nHow you present EFF matters. People will decide whether to trust the mission based on how you post, speak, design, and carry yourself. This module will guide you through official branding, social media expectations, flyer design rules, and how to represent the organization well in every space.\n\n📢 Representation Matters. You’re not just representing an org—you’re representing a movement, a ministry, and a mission.\n\nEvery post, caption, outfit, and conversation reflects Esther Funds Foundation. Branding = stewardship.\n",
+          "quizzes": [],
+          "activities": [
+            "open_response_question"
+          ],
+          "assets": []
+        },
+        {
+          "id": "61464080",
+          "title": "Lesson 1: Representing the Brand with Excellence",
+          "sectionId": "12235763",
+          "position": 2,
+          "markdown": "# 41-lesson-61464080\n\nRepresenting the Brand with Excellence\n\nYou are not just representing a campus org—you’re representing a national nonprofit and ministry.\n\nEverything you post, say, or create in relation to EFF must reflect:\n\n\nProfessionalism\nSpiritual integrity\nClear, mission-driven messaging\nThis includes:\n\n\nFlyers\nSocial media posts\nEmails\nCollaborations\nAnnouncements\nYour personal behavior while wearing merch or using the name\n\nWhy Representation Matters\n\nWhether you post on your story, wear your EFF shirt, or speak at a campus event—you are representing a national nonprofit and a faith-based ministry.\n\nThis means:\n\n\nWhat you post matters.\nHow you carry yourself matters.\nThe language you use matters.\nAnd the way you show up reflects not only EFF, but the God we serve.\n\n💬 “Let your light shine before others, so they may see your good works and glorify your Father in heaven.” – Matthew 5:16\n",
+          "quizzes": [],
+          "activities": [
+            "open_response_question"
+          ],
+          "assets": []
+        },
+        {
+          "id": "61464086",
+          "title": "Lesson 2: Official EFF Branding Rules (This is Non-Negotiable)",
+          "sectionId": "12235763",
+          "position": 3,
+          "markdown": "# 42-lesson-61464086\n\nLesson 2: Official Branding Rules\n\nEvery chapter must follow Esther Funds Foundation’s National Brand Guidelines.\n\n📍 You can find the full brand guide under the Chapter Resources section on our website.\n\nHere are the basics:\n\n✅ USE:\n\n\nYour official chapter logo provided by HQ\nThe Royal Purple and White color palette\nLeague Spartan and Libre Baskerville fonts\nTransparent logo PNGs sent to your email or available on request\nNational taglines: “Every Future Fulfilled”\n\n🚫 DO NOT:\n\n\nRecolor or redesign the logo\nUse national logos for chapter-only events\nCreate knockoff flyers with non-approved fonts, random colors, or distorted logos\nAdd mascots or club branding to EFF materials\nPost graphics using outdated or off-brand templates\nIf you're ever unsure, email us at info@estherfundsfoundation.org for approval.\n\nEFF has a clear, powerful, and consistent visual identity—and every chapter is expected to follow it. This protects the brand, builds trust, and sets you apart as a national movement—not just another club.\n\n✅ Branding Rules (You Must Follow):\n\n\nOnly use official EFF logos, fonts, and colors\n\nNever stretch, recolor, or redesign EFF logos\nAll flyers must include the purple dove and follow the official palette\nUse templates from the Chapter Resource Hub\nAvoid personal branding that conflicts with or overpowers EFF visuals\n\nDownload & Review These Branding Resources:\n",
+          "quizzes": [],
+          "activities": [
+            "open_response_question",
+            "native_comments"
+          ],
+          "assets": [
+            {
+              "name": "Esther Funds Foundation Official Brand Guideli.pdf",
+              "kind": "pdf_embed",
+              "url": "https://uploads.teachablecdn.com/attachments/dq9pzhqReeXXNVvcCspw_Esther+Funds+Foundation+Official+Brand+Guideli.pdf?Expires=1783876704&Signature=LrqsXDvj~9vfwc65bEvpX0osQkl-OsA4-WK7C4FD9MKiEBquBuojzM7rI4CW6MN6L9m9r0rBqf-zxOENq~K6Opi8nlmmL4ldy~CcNS516PG3wxFcYfaaJj8pAOLWIy5shqV7AzlfvLJ27abvHBi3M9iy8vShJiZK7IrJNm50X7PtqNnQf3JYB2ht3iUzVooz4W9LLB~k-7AuE9CTH7cIKnprRoRskRS5x55A8VCK-0K1~DYS9UbUtqBMUAGyodpG1LB7JTFooZ~6yWlWRbgEuLQWmvo2hR0MlEijrCJIL0vnA7cnTK2mwmGUc0WfgT83ypjBYq2uqmYh2RjIghtGiQ__&Key-Pair-Id=K1P55R7QWDGXRN"
+            },
+            {
+              "name": "Esther Funds Foundation Branding, Social Media.pdf",
+              "kind": "pdf_embed",
+              "url": "https://uploads.teachablecdn.com/attachments/cQbLIr9R6ihx6GHkQoqq_Esther+Funds+Foundation+Branding%2C+Social+Media.pdf?Expires=1783876704&Signature=qFHXY2JCR5n66~t~yE-wUdgHpCMONIsCygUGQ6kr3qNz8Ad2nP6jpqlFHCGoPP~lXbulnPnwKw0GyIxsc~k0FBlKGoeMKsu2vmWJ-v3ZKmmpgU8Qm2Syc6k8cDmJWkNU8m6kwOsbIER85m-EAbf78pL~3ZpfZxujhS9WyROOsUAPNQ8jAODjaBReqLevMVziXfdj0KaGdC4UMVna5eVwlc8ciBlpVt-Z~YWIdvOtX9kYQN-z0vY7z9jLpXzoBlnUQwv0VzDjmG-EvulUZ2d9VhsWgu1qBctO1M1lI1XiaBwQBA0xdw6JAUjhx82mrRKaxPMEkjKcWyEY7pRUwRkpNQ__&Key-Pair-Id=K1P55R7QWDGXRN"
+            }
+          ]
+        },
+        {
+          "id": "61464094",
+          "title": "Lesson 3: Flyer Design & Posting Expectations",
+          "sectionId": "12235763",
+          "position": 4,
+          "markdown": "# 43-lesson-61464094\n\nFlyer Design & Posting Expectations\n\nAll flyers should:\n\n\nBe clean, clear, and professional\nInclude the chapter-specific logo, not the national one\nBe spell-checked\nInclude correct times, dates, locations, and contact info\nReflect a tone of encouragement, purpose, and honor—not chaos or sloppiness\nFlyers should never include:\n\n\nCurse words, inappropriate jokes, or trendy content that goes against EFF values\nLast-minute low-quality graphics\nConfusing or misleading language\nWant help? Use Canva templates we’ve created or request support from the national PR team.\n\nUse the Social Media Kits – We Made This Easy For You\n\nYou do NOT need to reinvent the wheel. You have full access to:\n\n\nPre-made flyer templates\nCanva story templates\nCaptions you can adjust for your chapter\nBranded graphics for events, fundraisers, Bible studies, and more\nWhere to Find Them:\n\nVisit the Chapter Resource Hub and download the full EFF Social Media Kit + Flyer Templates Folder\n\nYour chapter should not be posting off-brand flyers, low-res images, or random colors. You’re running a national ministry—so it needs to look like it.\n",
+          "quizzes": [],
+          "activities": [
+            "open_response_question"
+          ],
+          "assets": []
+        },
+        {
+          "id": "61464095",
+          "title": "Lesson 4: Social Media Expectations",
+          "sectionId": "12235763",
+          "position": 5,
+          "markdown": "# 44-lesson-61464095\n\nSocial Media Expectations\n\nYour chapter’s social media page is public-facing. It reflects our values.\n\nThat means:\n\n\nYou must post at least 2x a month\n\nYou must avoid posting EFF events on your personal page only\n\nYou must manage DMs in a timely and respectful way\nAll major flyers should be approved by your President and posted professionally\nAvoid oversharing memes, TikToks, or trending sounds that don’t reflect the mission\nIf someone comments negatively—don’t argue online. Bring it to your President or national liaison.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61464100",
+          "title": "Lesson 5: Collaborations and Co-Hosting",
+          "sectionId": "12235763",
+          "position": 6,
+          "markdown": "# 45-lesson-61464100\n\nCollaborations and Co-Hosting\n\nYour chapter can collaborate with other orgs on or off campus—but you must follow these rules:\n\n✅ DO:\n\n\nUse your chapter logo\nMaintain EFF’s values in all event language and design\nGet approval from your chapter President before agreeing\nEnsure you still represent our mission (not just hype)\n🚫 DON’T:\n\n\nCo-host with businesses that conflict with EFF values (ex: alcohol-focused bars, clubs, or inappropriate brands)\nLet another org take over the flyer\nUse collabs as a way to skip over chapter responsibilities\nAll collabs must align with EFF’s mission: dropout prevention, student success, and Christ-centered support\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61464104",
+          "title": "Lesson 6: Crisis Communication",
+          "sectionId": "12235763",
+          "position": 7,
+          "markdown": "# 46-lesson-61464104\n\nCrisis Communication\n\nIf there’s ever an issue with:\n\n\nA social media post that goes viral\nA complaint or crisis reported to EFF\nA student or leader saying something inappropriate publicly\nHere’s what to do:\n\n\nPause. Don’t react emotionally.\nScreenshot or save evidence.\nReport the situation to your chapter President and advisor.\nContact your national liaison or HQ if it’s serious.\nDo NOT post apologies, stories, or responses without national guidance. We are a legally trademarked organization—every response must be professional and aligned.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61491128",
+          "title": "Lesson 7: Social Media & PR Roles – Lead the Brand",
+          "sectionId": "12235763",
+          "position": 8,
+          "markdown": "# 47-lesson-61491128\n\n🧑🏽‍💻 PR Chair Responsibilities:\n\n\nDesign branded flyers using official colors, logos, and templates\nManage the chapter’s Instagram and digital presence\nWrite captions that reflect the mission\nPost consistently with quality and clarity\nCoordinate with other board members to promote events\n📸 Social Media Chair or Committee:\n\n\nSchedule weekly content\nUse kits and templates from HQ\nCreate reels, stories, and engagement-based posts\nReport insights and engagement during board meetings\n",
+          "quizzes": [],
+          "activities": [
+            "native_comments"
+          ],
+          "assets": [
+            {
+              "name": "Social Media Policy EFF.pdf",
+              "kind": "pdf_embed",
+              "url": "https://uploads.teachablecdn.com/attachments/cBNG3QnPTaKVKSzX8AIO_Social+Media+Policy+EFF.pdf?Expires=1783876707&Signature=Ocd7OFOFjOvK-Lh2wi6atmfclZ1eMj68xR0XnOaG5BtPKnKQL4bvHmdIcNW9MVbEOOh8Sl~kH9LbQ~Fjt89QNCT7qXYQ4wpEMQmBX2gn~T~H9XwMlQgWYIfWmMFVq7CZqXdIMzUUOZeOMZHCtM3GfE~l28ZvsrhO4h7eXTxTGa1x5YJtpRJ-N9ba4HN2C73Wss7DKedrDq8Y~T9bqRjYtH4mqWXYmFfiD7QQ~mGyZeivOXPWz1jkTjg6cofyiAc0OPRQ5Ah2T9CKvZtR65swBoGf~fnodX-uZ9yrMcsgQNmB3j3l21osFd3-m65W0Wvsz8ny5mt7HFfH4uaP~L9pbQ__&Key-Pair-Id=K1P55R7QWDGXRN"
+            }
+          ]
+        },
+        {
+          "id": "61491130",
+          "title": "Lesson 8: Merchandise & Brand Integrity",
+          "sectionId": "12235763",
+          "position": 9,
+          "markdown": "# 48-lesson-61491130\n\nMerchandise & Brand Integrity\n\nEFF merch is part of the movement—but it must be ordered, posted, and worn correctly.\n\n✅ All merch must:\n\n\nBe approved and/or purchased through the national merch store or bulk order form\n\nUse official colors and logos only\nNever be modified or reproduced independently\n➡️ You cannot make your own merch without national approval.\n\nAll approved merch can be found on store at estherfundsfoundation.store\n",
+          "quizzes": [
+            {
+              "id": 2594429,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "Where can approved EFF merchandise be found?",
+                  "question_type": "single",
+                  "answers": [
+                    "estherfundsfoundation.store",
+                    "estherfundsfoundation.org",
+                    "estherfundsfoundation.com",
+                    "estherfundsfoundation.co"
+                  ],
+                  "correct_answers": [
+                    "estherfundsfoundation.store"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [
+            "native_comments"
+          ],
+          "assets": []
+        },
+        {
+          "id": "61491169",
+          "title": "Lesson 9: Social Media Do's and Don'ts",
+          "sectionId": "12235763",
+          "position": 10,
+          "markdown": "# 49-lesson-61491169\n\nSocial Media Do’s & Don’ts\n\nBecause how you post matters.\n\nWhen someone sees your flyer or story post, they’re not just seeing a design—they’re seeing our mission, ministry, and movement. One off-brand flyer can hurt your credibility more than you realize.\n\nThis lesson will help you stay spirit-led AND brand-aligned in every post.\n\n✅ DO’s – Every Post Should Reflect These Standards:\n\n\n\n\nDouble-check spelling — No typos, no lazy grammar. Proofread before you post.\n\nUse official EFF colors only — Royal purple, white, black, soft lavender (ONLY when approved).\n\n\nUse white text on dark purple backgrounds — It’s readable, clean, and professional.\n\nInclude your chapter name on every flyer — Not just “Esther organization.” Be specific: Esther Funds Foundation at [Your University]\n\n\nUse the purple dove logo — Use it in its official form. Never recolor, stretch, or crop it.\n\nChoose clean music — No profanity, no alcohol references, no sexually suggestive content in reels or stories. You’re representing a ministry.\n\nCheck your design contrast — White on dark purple, black on white. No pink text. No unreadable neon on neon.\n\nSave shield logo for formal or major chapter documents (e.g., induction, press, or partnership decks) — not casual flyers.\n❌ DON’Ts – Even One of These Can Undermine Your Message:\n\n\n\nDon’t use random shades of purple (no light purples, lavenders, or pastels unless part of an official template).\nDon’t post flyers without your chapter name AND the correct logo.\nDon’t call EFF “Esther Club” or “Esther organization.” Our full name is Esther Funds Foundation.\nDon’t repost viral content that conflicts with our values—even on your personal page if you’re in leadership.\nDon’t blast graphics that haven’t been reviewed by your PR Chair or President.\nDon’t pick music with curse words, sexual content, or party/drug themes for posts.\nDon’t use your personal branding to override our national branding. This is about mission, not ego.\n",
+          "quizzes": [
+            {
+              "id": 2594434,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "What must every chapter include on all flyers and chapter related shirts?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Just the dove logo",
+                    "b) The phrase “Esther Club”",
+                    "c) Their full chapter name and official EFF branding",
+                    "d) Their favorite Bible verse"
+                  ],
+                  "correct_answers": [
+                    "c) Their full chapter name and official EFF branding"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": " Which of the following is NOT allowed in EFF merchandise design?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Custom chapter shirt using approved brand palette",
+                    "b) Recolored shield logo in pastel pink",
+                    "c) Using the official purple dove",
+                    "d) Ordering through the national bulk merch form"
+                  ],
+                  "correct_answers": [
+                    "b) Recolored shield logo in pastel pink"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "When is it appropriate to use the EFF shield logo?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) On every casual post and IG story",
+                    "b) Only on formal documents ",
+                    "c) On Canva mockups before approval",
+                    "d) For group chat memes"
+                  ],
+                  "correct_answers": [
+                    "b) Only on formal documents "
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": " Why is it important to order merch through the national store or approved process?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) So it looks better in pictures",
+                    "b) To maintain brand consistency, avoid legal violations, and honor EFF’s visual integrity",
+                    "c) To compete with other orgs",
+                    "d) Because HQ said so"
+                  ],
+                  "correct_answers": [
+                    "b) To maintain brand consistency, avoid legal violations, and honor EFF’s visual integrity"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [
+            "native_comments"
+          ],
+          "assets": []
+        },
+        {
+          "id": "61491208",
+          "title": " Lesson 9 Activity: Merch Request Walkthrough",
+          "sectionId": "12235763",
+          "position": 11,
+          "markdown": "# 50-lesson-61491208\n\nLesson 9 Activity: Merch Request Walkthrough\n\nYour chapter wants to create custom t-shirts for an upcoming event. You want them to look great, match your campus vibe, and still represent EFF the right way.\n\nBefore you jump into Canva or place an order, let’s walk through what needs to happen first.\n",
+          "quizzes": [],
+          "activities": [
+            "open_response_question",
+            "native_comments"
+          ],
+          "assets": []
+        },
+        {
+          "id": "61478900",
+          "title": "Hear From Tamara – President, EFF UNCC",
+          "sectionId": "12246241",
+          "position": 1,
+          "markdown": "# 51-lesson-61478900\n\n“The biggest thing for me was connection.”“I think the number one thing for me was making a connection with people who were interested in joining. I already knew a lot of people because of my other leadership roles, but I made sure not to limit myself to people I was already connected with.I reached out to people I didn’t know at all—and I let them know this isn’t just about joining a group. It’s about being seen, heard, and supported.One thing I’ve learned is that members grow when they feel like the President actually knows them—not just the e-board. I’ve heard so many people say they’ve been in orgs where the President never connected with them... and it made them feel invisible. That won’t happen here.”“EFF is really ‘come as you are.’”“I always remind people—this isn’t a perfect Christian club. You don’t need to have your spiritual life together to show up.Whether you’re figuring out your relationship with God, or you’re literally on the verge of dropping out, you’re welcome here.Our job is to support your growth—not to judge your starting point.”\n",
+          "quizzes": [],
+          "activities": [
+            "native_comments",
+            "open_response_question"
+          ],
+          "assets": []
+        },
+        {
+          "id": "61464285",
+          "title": "MODULE 6 – Financial Stewardship & Fundraising Ethics",
+          "sectionId": "12235765",
+          "position": 1,
+          "markdown": "# 52-lesson-61464285\n\nFinancial Stewardship & Fundraising Ethics\n\nHandling money in EFF is not just a job—it’s a trust. When a student donates, when a business gives, or when someone supports your fundraiser, they’re trusting you to be transparent, responsible, and honest.\n\nThis module will teach you the basics of chapter finance, fundraising do’s and don’ts, and how to keep everything clean and reportable.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61464292",
+          "title": "Lesson 1: Financial Roles in the Chapter",
+          "sectionId": "12235765",
+          "position": 2,
+          "markdown": "# 53-lesson-61464292\n\nFinancial Roles in the Chapter\n\nThere are three key financial leaders in your chapter:\n\n🟪 Treasurer\n\n\n\nTracks all money in and out\nLogs every transaction with receipts\nSubmits semesterly financial reports\nWorks closely with the President and advisor\nUses only approved platforms and methods\n🟪 Fundraising Chair\n\n\n\nPlans and executes fundraisers\nPromotes giving campaigns and coordinates with the PR team\nHelps track participation and results\nCollaborates with the Treasurer to ensure funds are documented properly\n🟪 President\n\n\n\nOversees and approves all spending\nEnsures fundraising is compliant with national rules\nSubmits updates to HQ if needed\n📌 Note: No one should be fundraising without your chapter’s knowledge or record keeping. “Silent” or secret fundraising is prohibited.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61464294",
+          "title": "Lesson 2: Where Chapter Money Can Go",
+          "sectionId": "12235765",
+          "position": 3,
+          "markdown": "# 54-lesson-61464294\n\nWhere Chapter Money Can Go\n\nHere’s what EFF funds can be used for:\n\n\nCommunity service supplies (kits, hygiene products, etc.)\nChapter events (food, decorations, printing)\nMember materials (Bibles, folders, pens, wristbands)\nMarketing tools (flyers, ads, Canva Pro)\nFunds should NOT be used for: 🚫 Personal expenses 🚫 Giving money directly to individuals without documentation 🚫 Travel unrelated to EFF 🚫 Unapproved merchandise or giveaways 🚫 Anything outside the mission\n\nAll expenses must be trackable and reportable.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61464345",
+          "title": "Lesson 3: Fundraiser Planning & Rules",
+          "sectionId": "12235765",
+          "position": 4,
+          "markdown": "# 55-lesson-61464345\n\nFundraiser Planning & Rules\n\nFundraisers should always be: ✅ Mission-aligned ✅ Approved by your advisor and executive board ✅ Tracked (how much raised, how, and where it’s going) ✅ Transparent to donors and students\n\nCommon fundraisers:\n\n\nDonation drives (clothes, hygiene kits, school supplies)\nOnline giving campaigns (Cash App, PayPal)\nRaffles, merch sales, or challenge-based campaigns (like Double Good Popcorn or Drip Don’t Drop)\n🧾 Be sure to keep screenshots of Cash App receipts, PayPal reports, or Google Sheets logs! These will be required for your compliance packet.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61464371",
+          "title": "Lesson 4: Approved Giving Platforms",
+          "sectionId": "12235765",
+          "position": 5,
+          "markdown": "# 56-lesson-61464371\n\nApproved Giving Platforms\n\nChapters may use:\n\n\nCash App\nPayPal\nVenmo (business)\n\nSquare or GiveButter if approved by your university\nAll fundraisers must be connected to one official EFF chapter account, not personal student accounts.\n\nChapter Cash Apps should be labeled clearly, like:\n\n\n$EFFGrambling or $EstherFundsTXSO\nDo NOT use personal Cash Apps for official fundraising.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61464374",
+          "title": "Lesson 5: Financial Red Flags",
+          "sectionId": "12235765",
+          "position": 6,
+          "markdown": "# 57-lesson-61464374\n\nFinancial Red Flags\n\nThese are signs something is going wrong:\n\n\nFundraisers being run without receipts or tracking\nA leader is collecting cash or digital funds and not reporting it\nConfusion about where money went\nStudents questioning where funds are\nNo one submitting a financial report at semester’s end\nIf these things are happening: PAUSE EVERYTHING and report to your chapter advisor and HQ. It’s better to get clarity than risk trust.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61464376",
+          "title": "Lesson 6: Semester Financial Reports",
+          "sectionId": "12235765",
+          "position": 7,
+          "markdown": "# 58-lesson-61464376\n\nSemester Financial Reports\n\nEvery chapter must submit a financial stewardship report in the compliance packet. It should include:\n\n\nList of all fundraisers\nHow much was raised\nWhat the funds were used for\nScreenshots or receipts for proof\nAdvisor or Treasurer signature\nThis keeps your chapter in good standing, shows donors you’re trustworthy, and protects your chapter from confusion or future issues.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61480025",
+          "title": "Lesson 7: Fundraising for Chapter-Based Scholarships",
+          "sectionId": "12235765",
+          "position": 8,
+          "markdown": "# 59-lesson-61480025\n\nFundraising for Chapter-Based Scholarships\n\nOne of the most powerful things your chapter can do is create your own local scholarship to bless a student on your campus. But with great impact comes great responsibility—especially when it involves money.\n\n🎓 Why Offer a Chapter Scholarship?\n\n\nCreating a scholarship allows your chapter to:\n\n\nDirectly support a student who’s at risk of dropping out\nShow donors where their money is going\nRepresent EFF’s mission in action\n\nBuild visibility and trust on campus\nEmpower your members to give back\n💸 Fundraising Dos & Don’ts for Chapter Scholarships\n\n\n✅ DO:\n\n\n\nPlan a dedicated fundraiser with clear scholarship branding\nOpen a Google Form or application that includes eligibility, GPA, short responses, and deadlines\nCollect funds through an official chapter account only (Cash App, PayPal, etc.)\nKeep detailed records of how much was raised and how it will be disbursed\n\nPromote the winner with professionalism and prayer\n\n🚫 DON’T:\n\n\n\nChoose winners based on popularity or bias\nCollect money through a personal account\nAnnounce the scholarship without a plan or process\nUse leftover funds for unrelated events\nForget to document and submit the results in your compliance report\n📁 How to Stay in Compliance:\n\n\n\nInclude your scholarship flyer, promo post, winner announcement, and payout receipts in your semester compliance packet\nInclude the scholarship summary in your fundraising report\n\nAsk your advisor to verify the final selection (optional but recommended)\n",
+          "quizzes": [],
+          "activities": [
+            "native_comments",
+            "open_response_question"
+          ],
+          "assets": []
+        },
+        {
+          "id": "61479967",
+          "title": "Module 6 Activity: Stewarding Every Dollar",
+          "sectionId": "12235765",
+          "position": 9,
+          "markdown": "# 60-lesson-61479967\n\nModule 6 Activity: “Fix That Fundraiser!” \n\nYour job is to step into these 3 quick mini-scenarios as the Financial Chair or President and decide what went wrong — and how to fix it.\n\n🧩 Scenario 1: The Cash App Confusion\n\n\nYour chapter raises $300 through a fundraiser, but it was collected through someone’s personal Cash App. Now there’s no clear log of who donated or how it’ll be spent.\n\nFlyer & Funds\n\nYou hosted a bake sale but forgot to promote it properly, and no one tracked who paid what. You made money—but can’t prove anything.\n",
+          "quizzes": [
+            {
+              "id": 2593763,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "What should have been done differently?",
+                  "question_type": "single",
+                  "answers": [
+                    "A) Collect through a chapter-labeled account with screenshots and a tracker",
+                    " B) Let everyone use their own Cash App to split responsibility",
+                    " C) Just cash out and Venmo it to the Treasurer later"
+                  ],
+                  "correct_answers": [
+                    "A) Collect through a chapter-labeled account with screenshots and a tracker"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [
+            "native_comments",
+            "open_response_question"
+          ],
+          "assets": []
+        },
+        {
+          "id": "61464650",
+          "title": " Module 6 Quiz – Financial Stewardship & Fundraising Ethics",
+          "sectionId": "12235765",
+          "position": 10,
+          "markdown": "# 61-lesson-61464650\n\nModule 6 Quiz – Financial Stewardship & Fundraising Ethics\n\nPassing Score: 80% Instructions: Choose the best answer for each question.\n",
+          "quizzes": [
+            {
+              "id": 2593768,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "Which of the following is an approved use of chapter funds?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Uber rides for e-board members",
+                    "b) Gift cards for personal use",
+                    "c) Purchasing supplies for a hygiene kit drive",
+                    "d) Birthday lunch for a member"
+                  ],
+                  "correct_answers": [
+                    "c) Purchasing supplies for a hygiene kit drive"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What is one platform your chapter can use for fundraising (if clearly labeled and documented)?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Personal Cash App",
+                    "b) Chapter-designated Cash App or PayPal",
+                    "c) Someone’s parent’s Zelle",
+                    "d) Personal Venmo"
+                  ],
+                  "correct_answers": [
+                    "b) Chapter-designated Cash App or PayPal"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Which of the following would be considered financial misuse?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Submitting receipts to your advisor",
+                    "b) Using chapter funds for groceries for your own home",
+                    "c) Posting your chapter Cash App publicly for a fundraiser",
+                    "d) Partnering with your Treasurer on a budget"
+                  ],
+                  "correct_answers": [
+                    "b) Using chapter funds for groceries for your own home"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Before you begin a fundraiser, what should always be in place?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Snacks and decorations",
+                    "b) A board vote only",
+                    "c) A clear plan, chapter approval, and a way to track funds",
+                    "d) A group chat flyer"
+                  ],
+                  "correct_answers": [
+                    "c) A clear plan, chapter approval, and a way to track funds"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What is one of the Treasurer’s responsibilities?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Host prayer nights",
+                    "b) Document all fundraiser income and submit a financial report",
+                    "c) Recruit members",
+                    "d) Order merch"
+                  ],
+                  "correct_answers": [
+                    "b) Document all fundraiser income and submit a financial report"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Why should your chapter NEVER use a personal account to collect donations?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) It’s inconvenient",
+                    "b) It’s a national branding violation",
+                    "c) It creates confusion, no accountability, and potential for misuse"
+                  ],
+                  "correct_answers": [
+                    "c) It creates confusion, no accountability, and potential for misuse"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Which item should NOT be funded with EFF chapter money?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Bible Study snacks",
+                    "b) Canva Pro subscription for flyers",
+                    "c) Gas money for someone’s trip to Target",
+                    "d) Hygiene drive supplies"
+                  ],
+                  "correct_answers": [
+                    "c) Gas money for someone’s trip to Target"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What should be done at the end of every fundraiser?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Celebrate and move on",
+                    "b) Delete any financial records",
+                    "c) Submit a flyer of the event",
+                    "d) Track and log what was raised and where it went"
+                  ],
+                  "correct_answers": [
+                    "d) Track and log what was raised and where it went"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What’s a major red flag in chapter fundraising?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) A late flyer",
+                    "b) A Treasurer who has no access to the account",
+                    "c) Using a branded flyer",
+                    "d) Posting about the fundraiser in GroupMe"
+                  ],
+                  "correct_answers": [
+                    "b) A Treasurer who has no access to the account"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What’s an important thing to consider when fundraising for a chapter-based scholarship?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Whether you like the applicant",
+                    "b) Who raised the most money",
+                    "c) How the scholarship will be tracked, disbursed, and reported",
+                    "d) What color the flyer is"
+                  ],
+                  "correct_answers": [
+                    "c) How the scholarship will be tracked, disbursed, and reported"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [
+            "native_comments"
+          ],
+          "assets": []
+        },
+        {
+          "id": "61464390",
+          "title": "MODULE 7 – Chapter Compliance & Semester Responsibilities",
+          "sectionId": "12235767",
+          "position": 1,
+          "markdown": "# 62-lesson-61464390\n\nChapter Compliance & Semester Responsibilities\n\nBeing a leader means doing more than showing up. It means making sure your chapter is active, accountable, and in alignment with EFF’s mission. This module walks through what’s required each semester and how to stay in good standing with National Headquarters.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61464564",
+          "title": "Lesson 1: What is Compliance?",
+          "sectionId": "12235767",
+          "position": 2,
+          "markdown": "# 63-lesson-61464564\n\nLesson 1: What is Compliance?\n\nCompliance is how we make sure:\n\n\nYour chapter is doing the work\nNational can track real impact\nYou’re eligible for grants, partnerships, awards, and recognition\nEvery chapter must submit a Compliance Packet at the end of each semester. Think of it like your chapter’s final exam.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61464573",
+          "title": "Lesson 2: Required Semester Activities",
+          "sectionId": "12235767",
+          "position": 3,
+          "markdown": "# 64-lesson-61464573\n\nRequired Semester Activities\n\nTo remain in good standing, your chapter must complete the following every semester:\n\n✅ 2 Bible Studies or Faith-Based Discussions ✅ 2 Workshops or Educational Events ✅ 1 Donation Drive ✅ 2 General Body Meetings (GBMs) ✅ Membership Recruitment (if applicable) ✅ 2–3 Collaborations with other organizations ✅ Participation in a National EFF Initiative ✅ 1 Scholarship or Resource-Based Event ✅ Monthly Executive Board Meetings ✅ Active Campus Engagement ✅ Active Social Media Presence (minimum 2 posts/month) ✅ Leadership Training Attendance ✅ Financial Stewardship Report ✅ Advisor Signature Verification\n\n📌 All of this is tracked and submitted through your Compliance Packet.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61464591",
+          "title": "Lesson 3: How to Document Activities",
+          "sectionId": "12235767",
+          "position": 4,
+          "markdown": "# 65-lesson-61464591\n\nHow to Document Activities\n\nDo not wait until the last week of the semester. Start tracking from day one.\n\nHere’s what to save:\n\n\n📸 Photos from each event\n📄 Flyers or promotional graphics\n✅ Sign-in sheets or QR code check-ins\n💬 Recaps or reflection notes\n📱 Screenshots of social media posts\n🧾 Fundraising receipts and Cash App screenshots\n🖊 Advisor-signed forms or verification emails\n📁 Create a folder named “EFF Compliance – [Your Chapter Name]” and drop all of this in as the semester goes.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61464596",
+          "title": "Lesson 4: How to Submit the Packet",
+          "sectionId": "12235767",
+          "position": 5,
+          "markdown": "# 66-lesson-61464596\n\nHow to Submit the Packet\n\nPackets are due:\n\n\n📅 December 15 (Fall Semester)\n📅 May 8 (Spring Semester)\nUpload it to the official form link (sent via email or group chat), or email to info@estherfundsfoundation.org if instructed otherwise.\n\nMake sure your advisor signs off before submitting.\n\nLate or incomplete packets may result in:\n\n\nProbation\nIneligibility for fundraising or scholarship support\nTemporary pause on recruitment or royal court activity\nDeactivation or C&D letter\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61464613",
+          "title": "Lesson 5: Pro Tips for Staying Organized",
+          "sectionId": "12235767",
+          "position": 6,
+          "markdown": "# 67-lesson-61464613\n\nPro Tips for Staying Organized\n\n✅ Hold a “compliance meeting” near the end of each semester ✅ Assign each e-board member a section of the form ✅ Create shared folders (Google Drive, OneDrive) for storing event proof ✅ Label your photos and receipts clearly ✅ Ask questions early—not the night before\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61464645",
+          "title": "Lesson 6: Mission-Focused Events (Quick Ideas)",
+          "sectionId": "12235767",
+          "position": 7,
+          "markdown": "# 68-lesson-61464645\n\nMission-Focused Events (Quick Ideas)\n\nIf you’re stuck on what events to host, here are a few mission-aligned ideas:\n\nBible Study Topics:\n\n\nTrusting God in College\nIdentity in Christ\nMental Health & Scripture\nWorkshop Ideas:\n\n\nFinding Scholarships\nBudgeting in College\nCareer Planning for First-Gen Students\nDonation Drive Ideas:\n\n\nFinals Survival Kits\nHygiene Products\nGrocery Gift Card Fundraiser\nCollab Ideas:\n\n\nCampus Ministries\nCareer Centers\nStudent Government\nNational Initiative Ideas:\n\n\nDrip Don’t Drop Challenge\nPrayer & Purpose Campaign\nFirst-Gen Celebration Week\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61482313",
+          "title": "Module 7 Activity: Compliance Walkthrough – Protecting Your Chapter",
+          "sectionId": "12235767",
+          "position": 8,
+          "markdown": "# 69-lesson-61482313\n\nCompliance Walkthrough – Protecting Your Chapter\n\n📍Every active chapter is required to submit a semester compliance packet. This activity will guide you through what’s expected and why it matters—using a visual tool already created just for you.\n\n🔗 Step 1: Open the Compliance Guide Presentation\n\n\nThe full guide is uploaded under Chapter Resources on the Esther Funds Foundation website. You can also click here: https://estherfundsfoundation.org/eff-chapter-resources\n\n👀 Step 2: Browse Through These Key Sections:\n\n\n\nWhy Compliance Matters\nRequired Activities Checklist\nHow to Document Throughout the Semester\nPro Tips & Common Mistakes\nMission-Focused Event Ideas\nFinal Reminders\n",
+          "quizzes": [],
+          "activities": [
+            "native_comments",
+            "open_response_question"
+          ],
+          "assets": [
+            {
+              "name": "Esther Funds Foundation Compliance Packet Guid (1).pdf",
+              "kind": "pdf_embed",
+              "url": "https://uploads.teachablecdn.com/attachments/8ZOdG2lxQlCxVQqybCr4_Esther+Funds+Foundation+Compliance+Packet+Guid+%281%29.pdf?Expires=1783876714&Signature=QJ6M5~pA~mBXM0Spsm9i3wHo55sCzi3jKhWeWsM040BpsMXgaJd8pjA7SFqbdxnmVep8K6loNzXsgAqPMyqGOkLi2mG5i4AiES9x0JG6jXPZw9XEQaPWBzF~UxipOiRDFCmnHDKfAqlYmXJWTp2B9URZprx4kT4ixiGmtuDSoF4vJlH6J8wYnNEV-UQBdBpXwWwxwxFIW4uaJrITV~-Rd6eiffFFc3hsnR3Egm-kFs7prDTVF9NDWKzSiSuVBgWjbv6HxXOxkR24meg1fOHARfTZFTIOd2GD6WmcE2zFuE~tr972-QNBirnCsMz4BAn28KyHV0yqk~kp1Zf0VkkNoQ__&Key-Pair-Id=K1P55R7QWDGXRN"
+            }
+          ]
+        },
+        {
+          "id": "61464649",
+          "title": "Module 7 Quiz – Chapter Compliance & Semester Responsibilities",
+          "sectionId": "12235767",
+          "position": 9,
+          "markdown": "# 70-lesson-61464649\n\nModule 7 Quiz – Chapter Compliance & Semester Responsibilities\n\nInstructions: Choose the best answer. Passing score: 80%.\n",
+          "quizzes": [
+            {
+              "id": 2593774,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "What is the purpose of the semester compliance packet?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) To apply for graduation",
+                    "b) To track how many followers your chapter gained",
+                    "c) To show National HQ that your chapter is active, aligned, and completing required activities",
+                    "d) To submit designs for national merch"
+                  ],
+                  "correct_answers": [
+                    "c) To show National HQ that your chapter is active, aligned, and completing required activities"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Which of the following is NOT a required semester activity?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) A donation drive",
+                    "b) 2 General Body Meetings",
+                    "c) 1 Fashion Show",
+                    "d) Participation in a national initiative"
+                  ],
+                  "correct_answers": [
+                    "c) 1 Fashion Show"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "When is the semester compliance packet due?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) December 15 (Fall) and May 8 (Spring)",
+                    "b) First day of the next semester",
+                    "c) Whenever your advisor says",
+                    "d) January 1 and June 1"
+                  ],
+                  "correct_answers": [
+                    "a) December 15 (Fall) and May 8 (Spring)"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What should be included in your compliance folder?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Personal notes and devotions",
+                    "b) Budget projections for the next year only",
+                    "c) Flyers, attendance, recap photos, financial report, and volunteer hour log",
+                    "d) Only your Instagram highlights"
+                  ],
+                  "correct_answers": [
+                    "c) Flyers, attendance, recap photos, financial report, and volunteer hour log"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What happens if your chapter fails to submit a compliance packet?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Nothing—it’s optional",
+                    "b) You may be placed on probation or CND status",
+                    "c) Your advisor gets promoted",
+                    "d) You get to start a fundraiser instead"
+                  ],
+                  "correct_answers": [
+                    "b) You may be placed on probation or CND status"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61464671",
+          "title": " MODULE 8 – Faith in Leadership: Ministry Integration",
+          "sectionId": "12235768",
+          "position": 1,
+          "markdown": "# 71-lesson-61464671\n\nFaith in Leadership: Ministry Integration\n\nEFF is not just a nonprofit. It’s a ministry. Every leader must understand how to lead spiritually and create an environment where God is welcome, not an afterthought.\n\nThis module equips you with tools to make faith part of your leadership, not just something you mention once a semester.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": [
+            {
+              "name": "christian-college-degrees-students-studying.jpg",
+              "kind": "image",
+              "url": "https://uploads.teachablecdn.com/attachments/L2YrxFknSbGuBws71kGf_christian-college-degrees-students-studying.jpg"
+            }
+          ]
+        },
+        {
+          "id": "61464676",
+          "title": "Lesson 1: Why Faith Is the Foundation",
+          "sectionId": "12235768",
+          "position": 2,
+          "markdown": "# 72-lesson-61464676\n\nWhy Faith Is the Foundation\n\nEsther Funds Foundation is a Christ-centered organization.\n\nThat means:\n\n\nWe pray together\nWe lead Bible studies\nWe reflect God’s character in how we serve\nWe don’t separate spiritual growth from academic success\nYour role as a leader includes protecting the spiritual tone of your chapter.\n\nThis doesn’t mean forcing religion—it means building a culture that reflects the love, power, and peace of God.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": [
+            {
+              "name": "pexels-photo-7683882.jpeg",
+              "kind": "image",
+              "url": "https://uploads.teachablecdn.com/attachments/4i0GugxRq6sRnqd2pffC_pexels-photo-7683882.jpeg"
+            }
+          ]
+        },
+        {
+          "id": "61464680",
+          "title": "Lesson 2: The Role of the Director of Collegiate Ministry",
+          "sectionId": "12235768",
+          "position": 3,
+          "markdown": "# 73-lesson-61464680\n\nThe Role of the Director of Collegiate Ministry\n\nThis position is one of the most important on the board.\n\nThe Director of Collegiate Ministry is responsible for:\n\n\nHosting Bible studies or prayer nights\nOffering spiritual check-ins to the board or members\nRunning the Esther’s Light Ministry Initiative at the chapter level\nPlanning faith-based content and supporting events with scripture\nPartnering with the President to open/close meetings in prayer\nThis person must be spiritually mature, prayerful, and grounded in their walk with Christ.\n\nIf your chapter doesn’t have this position filled, pray about who’s ready for it—it’s vital to your growth and protection.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": [
+            {
+              "name": "IMG_1514.JPG",
+              "kind": "image",
+              "url": "https://uploads.teachablecdn.com/attachments/QF4dXgFSQhSeS9X4JEhC_IMG_1514.JPG"
+            }
+          ]
+        },
+        {
+          "id": "61464685",
+          "title": "Lesson 3: What is Esther’s Light?",
+          "sectionId": "12235768",
+          "position": 4,
+          "markdown": "# 74-lesson-61464685\n\nWhat is Esther’s Light?\n\nEsther’s Light is the official national ministry initiative of EFF.\n\nEach chapter runs Esther’s Light locally through:\n\n\nBible study series\nScripture devotionals\nInstagram faith content\nPrayer & Purpose Campaigns\nMonthly reflection moments\nThis initiative ensures that ministry doesn’t get lost in the middle of all the programming.\n\nYou’ll hear more about this in later modules, but know now: your chapter should always have a spiritual rhythm.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": [
+            {
+              "name": "bible-study.webp",
+              "kind": "image",
+              "url": "https://uploads.teachablecdn.com/attachments/1dNE8adTKS0snh2CLOYC_bible-study.webp"
+            }
+          ]
+        },
+        {
+          "id": "61464687",
+          "title": "Lesson 4: Required Spiritual Practices for Chapters",
+          "sectionId": "12235768",
+          "position": 5,
+          "markdown": "# 75-lesson-61464687\n\nRequired Spiritual Practices for Chapters\n\nTo stay aligned with the mission, each chapter is required to: ✅ Host at least 2 Bible studies or spiritual events per semester ✅ Open executive board meetings with prayer or scripture ✅ Reflect Christ’s love in leadership conversations and decisions ✅ Ensure social media posts reflect spiritual maturity and respect ✅ Create space for students to grow in faith, not just show up for events\n\nThis can look different chapter to chapter—but the presence of God must be visible.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": [
+            {
+              "name": "47910-church-fellowship-1200.1200w.tn.jpg",
+              "kind": "image",
+              "url": "https://uploads.teachablecdn.com/attachments/P9MZQFmoSOGiKeMBB8zg_47910-church-fellowship-1200.1200w.tn.jpg"
+            }
+          ]
+        },
+        {
+          "id": "61464697",
+          "title": "Lesson 5: Making Room for God in Everything",
+          "sectionId": "12235768",
+          "position": 6,
+          "markdown": "# 76-lesson-61464697\n\nMaking Room for God in Everything\n\nYou don’t need to be a pastor or perfect. But as a leader, you must be:\n\n\nPrayerful\nHumble\nOpen to God’s voice\nBold about your faith\nWilling to let God interrupt your plans when needed\nMake room for the Holy Spirit in:\n\n\nPlanning meetings\nMember gatherings\nUnexpected moments on campus\nConversations with discouraged students\nThe way you respond to conflict\nThis is Kingdom work. And Kingdom leaders stay close to the King.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61482411",
+          "title": "Module 8 Activity: Leading with Faith on Your Campus",
+          "sectionId": "12235768",
+          "position": 7,
+          "markdown": "# 77-lesson-61482411\n\nLeading with Faith on Your Campus\n\n📍In EFF, leadership is ministry, not performance. This activity will help you think about what it means to spiritually lead—not just host events.\n\n✨ Instructions: Choose One Prompt to Complete\n\n\nPick one of the following prompts and respond with honesty and heart. No fluff, no perfection required.\n\nOption 1: Think about the students on your campus who feel spiritually disconnected or discouraged. How can your chapter’s Bible studies, devotionals, or presence help them feel seen and loved by God? (Write 3–4 sentences.)\n\nOption 2: Imagine someone joins your chapter who’s unsure about their relationship with God. How would you explain what it means to be part of a Christ-centered nonprofit that still welcomes people where they are? (Write 3–4 sentences.)\n",
+          "quizzes": [],
+          "activities": [
+            "open_response_question",
+            "native_comments"
+          ],
+          "assets": [
+            {
+              "name": "istockphoto-174792161-612x612.jpg",
+              "kind": "image",
+              "url": "https://uploads.teachablecdn.com/attachments/s5uB0i6ETPsTXqvf2hEn_istockphoto-174792161-612x612.jpg"
+            }
+          ]
+        },
+        {
+          "id": "61482507",
+          "title": "Quiz",
+          "sectionId": "12235768",
+          "position": 8,
+          "markdown": "# 78-lesson-61482507\n\n_Written content was not exposed in the API response. See lesson.json._\n",
+          "quizzes": [
+            {
+              "id": 2593935,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "What is the name of EFF’s official ministry initiative?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Purpose in Progress",
+                    "b) The James Pillar Project",
+                    "c) Esther’s Light",
+                    "d) Leading in Love"
+                  ],
+                  "correct_answers": [
+                    "c) Esther’s Light"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What is the primary role of the Director of Collegiate Ministry?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Track finances and give updates",
+                    "b) Manage Instagram content",
+                    "c) Lead prayer, Bible study, and faith-based support for members",
+                    "d) Oversee general body meetings"
+                  ],
+                  "correct_answers": [
+                    "c) Lead prayer, Bible study, and faith-based support for members"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What does EFF mean by “come as you are”?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) You can wear whatever you want",
+                    "b) You don’t need to have a deep relationship with God to join",
+                    "c) You don’t have to do any work to be in the group",
+                    "d) You can choose not to follow the Code of Conduct"
+                  ],
+                  "correct_answers": [
+                    "b) You don’t need to have a deep relationship with God to join"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Why is it important to integrate prayer or scripture into chapter life?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) It fills time during meetings",
+                    "b) It helps make things feel more spiritual",
+                    "c) It reminds members that God is the foundation of the mission",
+                    "d) It keeps EFF from getting boring"
+                  ],
+                  "correct_answers": [
+                    "c) It reminds members that God is the foundation of the mission"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": " Which of the following is NOT required for your chapter to stay spiritually aligned?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Two Bible studies per semester",
+                    "b) Praying before e-board meetings",
+                    "c) Posting verses every single day",
+                    "d) Offering a safe space for spiritual growth"
+                  ],
+                  "correct_answers": [
+                    "c) Posting verses every single day"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61478853",
+          "title": "Mental Health Check In",
+          "sectionId": "12246059",
+          "position": 1,
+          "markdown": "# 79-lesson-61478853\n\n_Written content was not exposed in the API response. See lesson.json._\n",
+          "quizzes": [],
+          "activities": [
+            "open_response_question"
+          ],
+          "assets": [
+            {
+              "name": "istockphoto-904060854-612x612.jpg",
+              "kind": "image",
+              "url": "https://uploads.teachablecdn.com/attachments/xf4VVB4wQ7OQPJcJalnb_istockphoto-904060854-612x612.jpg"
+            }
+          ]
+        },
+        {
+          "id": "61492346",
+          "title": "FYI: DISCLAIMER",
+          "sectionId": "12235769",
+          "position": 1,
+          "markdown": "# 80-lesson-61492346\n\nFYI: As we get closer to recruitment season, National Headquarters will host a dedicated meeting to dive deeper into the full recruitment process. While this course provides a strong foundation, we understand everything may not be covered in full detail here — so we’ll walk through things together when the time comes!\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61464727",
+          "title": "MODULE 9 – Membership, Recruitment & The Esther’s Experience",
+          "sectionId": "12235769",
+          "position": 2,
+          "markdown": "# 81-lesson-61464727\n\nMembership, Recruitment & The Esther’s Experience\n\nRecruitment is not just about growing numbers. In EFF, recruitment is ministry. Every new member is a student whose life you’re about to impact—so it must be done with purpose, planning, and prayer.\n",
+          "quizzes": [],
+          "activities": [
+            "open_response_question"
+          ],
+          "assets": [
+            {
+              "name": "IMG_2587.jpg",
+              "kind": "image",
+              "url": "https://uploads.teachablecdn.com/attachments/gXXDApkWSLSCbDE2mQvp_IMG_2587.jpg"
+            }
+          ]
+        },
+        {
+          "id": "61464728",
+          "title": "Lesson 1: Overview of Recruitment",
+          "sectionId": "12235769",
+          "position": 3,
+          "markdown": "# 82-lesson-61464728\n\nOverview of Recruitment\n\nNo chapter can begin recruitment until they’ve:\n\n\nReceived national approval via the Membership Recruitment Planning Form\nHave all required executive board roles filled\n\nGained advisor and university event approval\n\nCompleted this leadership training course\n\nChapters that recruit without approval will be placed on probation.\n\n📍 All recruitment must follow the 2025 National Membership Recruitment Manual found under Chapter Resources.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61464732",
+          "title": "Lesson 2: Required Recruitment Roles",
+          "sectionId": "12235769",
+          "position": 4,
+          "markdown": "# 83-lesson-61464732\n\nRequired Recruitment Roles\n\nBefore recruitment begins, these chapter roles must be filled:\n\n\nPresident\nVice President(s)\nMembership Chair\nDirector of Collegiate Ministry\nCommunity Service Chair\nFundraising Chair\nTreasurer\nThese roles are essential for supporting every phase of the process—from planning to prayer to service and induction.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61464739",
+          "title": "Lesson 3: Recruitment Process Step-by-Step",
+          "sectionId": "12235769",
+          "position": 5,
+          "markdown": "# 84-lesson-61464739\n\nRecruitment Process Step-by-Step\n\nHere’s the approved national flow for recruitment:\n\n\n\nSubmit Planning Form to HQ for approval\n(Optional) Host an Informational Session\n\nHost a Mandatory Interest Meeting\n\nOpen the Membership Application\n\nCollect and submit all applicant data to HQ\nWait for national approval before sending out Acceptance Letters\nAccepted students begin The Esther’s Experience\n\nHold a formal Induction Ceremony\n\nMembers complete national enrollment via Join It\n\nNo steps should be skipped. This is a national standard process.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61464744",
+          "title": "Lesson 4: The Esther’s Experience",
+          "sectionId": "12235769",
+          "position": 6,
+          "markdown": "# 85-lesson-61464744\n\nThe Esther’s Experience\n\nThis is the pre-induction process every accepted student must complete before being inducted. It is non-negotiable.\n\nRequired Components: ✅ Orientation or Membership Mixer ✅ Bible Study or Prayer Event ✅ Community Service Event ✅ Fundraising Participation ✅ Bonding or Sisterhood Event\n\nThis process is not about hazing. It’s about preparing students spiritually, emotionally, and socially for what it means to be part of Esther Funds Foundation.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61464769",
+          "title": "Lesson 5: Hosting a Powerful Interest Meeting",
+          "sectionId": "12235769",
+          "position": 7,
+          "markdown": "# 86-lesson-61464769\n\nHosting a Powerful Interest Meeting\n\nThe Interest Meeting is the official start of recruitment.\n\nYou must:\n\n\nClearly explain the mission and expectations of EFF\nReview The Esther’s Experience in full\nPresent the Code of Conduct\nLet students know the cost of membership ($30 national fee via GoDaddy)\nProvide next steps for applying\nIt should be professional, organized, and led by the executive board—not just one person talking for an hour.\n",
+          "quizzes": [],
+          "activities": [
+            "open_response_question",
+            "native_comments"
+          ],
+          "assets": [
+            {
+              "name": "ESTHER FUNDS CHAPTER NAME INTEREST MEETING EXA.pdf",
+              "kind": "pdf_embed",
+              "url": "https://uploads.teachablecdn.com/attachments/DEBrgeCzRLmteprRJexY_ESTHER+FUNDS+CHAPTER+NAME+INTEREST+MEETING+EXA.pdf?Expires=1783876720&Signature=e8sLKULzUZbRKxg9mF4uowaRS10RSmB5duMFHX3vqaMkI5tmK3vUYwRs1KqO2xDj02MsUadLehYhceVr0S9d-dOQ7KkV3RhDNjuoHM0g0jol34RK7xMbcx4Wj6tBLa6c5ZU0NVOvckd3-x0xF6o-HZ2PPPb0ZITWUJsXwiNpMfkou-sSyN84ayOmzpdK3qvYQ98s75JHDeVoHMXAJqTc23zJVRHOx5Q71oNXsghenXZGeIP4IeNU2qnNAhbcj2HmsSkNf2mweoymsEqbtPeDjur3PSnLILIQy4WrXMxTyygSk2kSKAXq9Qw6J9rRASDNPU~z04QYrXlwH2VhhcXDvg__&Key-Pair-Id=K1P55R7QWDGXRN"
+            }
+          ]
+        },
+        {
+          "id": "61464771",
+          "title": "Lesson 6: Application Process",
+          "sectionId": "12235769",
+          "position": 8,
+          "markdown": "# 87-lesson-61464771\n\nApplication Process\n\nAll membership applications must:\n\n\nBe digital (Google Forms preferred)\nCollect full name, GPA (min 2.0), and proof of payment\nInclude Code of Conduct acknowledgment\nStay open no longer than 2 weeks\nOnce the application closes:\n\n\nSubmit a complete spreadsheet to National HQ\nWait for official approval before sending acceptance letters\nOnly the President or Vice President may send acceptance letters using the national template.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61464772",
+          "title": "Lesson 7: Induction Ceremony Requirements",
+          "sectionId": "12235769",
+          "position": 9,
+          "markdown": "# 88-lesson-61464772\n\nInduction Ceremony Requirements\n\nOnce students complete The Esther’s Experience, they must be formally inducted.\n\nInduction must include:\n\n\nOpening and closing prayers\nScripture reading\nCharge to new members\nNational Membership Pledge\nRecognition of board and inductees\nA professional, faith-filled atmosphere\nYou can add guest speakers, music, or personal touches—but it must reflect excellence and reverence.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61464778",
+          "title": "Lesson 8: Final Enrollment",
+          "sectionId": "12235769",
+          "position": 10,
+          "markdown": "# 89-lesson-61464778\n\nFinal Enrollment\n\nAfter induction, all new members must:\n\n\nRegister through the official national platform, Join It\n\nComplete their digital profile\nReceive their digital membership card\nThis gives them access to national opportunities, scholarships, and recognition.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61482738",
+          "title": "Lesson 9: Collecting National Membership Fees ",
+          "sectionId": "12235769",
+          "position": 11,
+          "markdown": "# 90-lesson-61482738\n\nNational One-Time Induction Fee & Join It Membership\n\nWhen a student is accepted into Esther Funds Foundation, they are required to pay a one-time national induction fee. This is not optional—it is the only way they become officially recognized as a member of the organization.\n\n💳 How to Pay the National Fee\n\n\nAll national membership dues must be paid through the official EFF website: 👉 www.estherfundsfoundation.org\n\n🚫 Do NOT collect national dues through your chapter Cash App, Venmo, or in person. This is a national policy. Collecting dues this way is a compliance violation and may result in chapter probation.\n\n🟣 Why It Matters: Join It = National Proof of Membership\n\n\nOnce a student pays their national fee through the website, they will be automatically enrolled in EFF’s national membership platform: Join It.\n\nThis is how National HQ:\n\n\nConfirms who is officially inducted\nSends certifications and communications\nTracks national impact\nProtects the integrity of our growing member base\n📌 If a student is not in Join It, they are not recognized as a member—no matter what events they attend.\n\n📝 Quick Facts About the One-Time Fee:\n\n\n\nIt’s only paid once, not monthly or yearly\nCovers national induction, access to training, and digital membership\nStarting Summer 2025, it will not include merchandise (members can purchase items separately on the merch store)\nThe Join It registration form will be linked directly on the front page of our website during recruitment season\n\n✅ Chapter Reminders:\n\n\n\nDo NOT induct any member who hasn’t paid through the website and been added to Join It\nIf someone says they paid but isn’t showing up in the system, contact info@estherfundsfoundation.org immediately\nDouble-check that your team sends the correct link during onboarding\n📢 Join It = official national recognition. No fee + no Join It = no membership.\n",
+          "quizzes": [
+            {
+              "id": 2593941,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "Where must the national induction fees be paid?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Through the chapter’s Cash App",
+                    "b) By giving cash to the Membership Chair",
+                    "c) Through the official Esther Funds Foundation website",
+                    "d) On Instagram via DMs"
+                  ],
+                  "correct_answers": [
+                    "c) Through the official Esther Funds Foundation website"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What is the purpose of Join It?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) It’s a place to post flyers",
+                    "b) It tracks event attendance",
+                    "c) It is EFF’s national membership system that verifies official inducted members",
+                    "d) It replaces GroupMe"
+                  ],
+                  "correct_answers": [
+                    "c) It is EFF’s national membership system that verifies official inducted members"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What will happen starting Summer 2025 regarding national fees?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Members will pay monthly",
+                    "b) The fee will be optional",
+                    "c) Merchandise will no longer be included with the national induction fee",
+                    "d) Members will pay their advisors"
+                  ],
+                  "correct_answers": [
+                    "c) Merchandise will no longer be included with the national induction fee"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [
+            "native_comments"
+          ],
+          "assets": []
+        },
+        {
+          "id": "61482847",
+          "title": "Lesson 9: Chapter Dues – Supporting Your Local Impact",
+          "sectionId": "12235769",
+          "position": 12,
+          "markdown": "# 91-lesson-61482847\n\nChapter Dues – Supporting Your Local Impact\n\nWhile national dues support EFF’s structure, resources, and certification at the national level, chapter dues are how you fund your impact locally.\n\nThese are small, campus-based contributions that help your chapter run smoothly and stay consistent throughout the semester.\n\n💸 What Are Chapter Dues?\n\n\nChapter dues are monthly or semester-based fees your executive board sets to help fund everyday chapter needs.\n\nYou can collect chapter dues to support:\n\n\nSnacks for general body meetings\nSupplies for events and donation drives\nPrinted flyers or signage\nSmall giveaways or welcome gifts for members\nJournals, devotionals, or Bibles\n✅ These dues stay with your chapter and are managed by your Treasurer.📌 Important Rules About Chapter Dues\n\n\n✔️ Chapter dues are optional, but recommended ✔️ Must be clearly communicated at interest meetings ✔️ Collected through your chapter’s Cash App, PayPal, or university-approved platform ✔️ Must be tracked in your semester financial report ✔️ Should be affordable (ex: $5–$10/month or $15–$25/semester)\n\n🚫 Chapter Dues Cannot Be Used For:\n\n\n\nGas, personal meals, or reimbursements\nLeader gifts or outside group expenses\nAnything unrelated to EFF’s mission\nAnything not pre-approved by your advisor or not budgeted properly\n📣 Pro Tips:\n\n\n\nOffer flexibility for students in financial hardship\nUse incentives like “dues-paid only” raffles or perks\nAssign the Membership Chair or Secretary to track who’s paid\nKeep it low-stress and low-cost, but consistent\n💬 Chapter dues are your fuel. Use them wisely, track them well, and make sure your members know where the money goes.\n",
+          "quizzes": [
+            {
+              "id": 2593942,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "What is the purpose of chapter dues?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) To cover national induction into EFF",
+                    "b) To reimburse board members for gas",
+                    "c) To help fund local events, meetings, and supplies",
+                    "d) To give gifts to general body members"
+                  ],
+                  "correct_answers": [
+                    "c) To help fund local events, meetings, and supplies"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": " Which of the following is NOT an approved use of chapter dues?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Buying snacks for a Bible study",
+                    "b) Ordering Bibles for new members",
+                    "c) Paying for the President’s Uber to Target ",
+                    "d) Printing flyers for a donation drive"
+                  ],
+                  "correct_answers": [
+                    "c) Paying for the President’s Uber to Target "
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What is the best way to collect and manage chapter dues?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Through your chapter’s Cash App or approved platform, tracked by the Treasurer",
+                    "b) Through personal Zelle accounts",
+                    "c) By giving cash to the Membership Chair",
+                    "d) Only at the final GBM of the semester"
+                  ],
+                  "correct_answers": [
+                    "a) Through your chapter’s Cash App or approved platform, tracked by the Treasurer"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [
+            "native_comments"
+          ],
+          "assets": []
+        },
+        {
+          "id": "61482941",
+          "title": "Module 9 Activity: Build Your Recruitment Week",
+          "sectionId": "12235769",
+          "position": 13,
+          "markdown": "# 92-lesson-61482941\n\nBuild Your Recruitment Period\n\n📍You’ve just been approved to start recruitment. You’re now responsible for welcoming new members into EFF with structure, purpose, and love. Let’s plan it out.\n\n✨ Instructions: Complete Each Section Below\n\n\nThis activity helps you walk through what your Esther’s Experience week could look like — and ensures you’re covering all required parts.\n\n🧠 Step 1: Set the Tone\n\n\nTheme (Optional): Come up with a title or spiritual theme for your recruitment period (ex: Planted for Purpose, Called & Covered, Every Future Begins Here)\n\n🗓️ Step 2: Build the Experience Schedule\n\n\nFill in a possible outline for your recruitment week (use any day names):\n\n\nInterest Meeting:\nBible Study or Prayer Night:\nService Event (Donation Drive or Outreach):\nBonding or Fun Event:\nWorkshop or Growth Activity:\nFinal Induction Planning / Reflection:\n✅ Make sure your schedule includes everything required in The Esther’s Experience. You can reference your handbook or the course content.\n\n💬 Step 3: Heart Check\n\n\nWrite 2–3 sentences: How can you make this experience more than just a checklist? What can your chapter do to make students feel welcomed, seen, and spiritually supported?\n\n💡 Remember: this process sets the tone for someone’s entire EFF journey. Lead it with structure, serve with heart.\n",
+          "quizzes": [],
+          "activities": [
+            "open_response_question"
+          ],
+          "assets": []
+        },
+        {
+          "id": "61464796",
+          "title": "Module 9 Quiz – Membership, Recruitment & The Esther’s Experience",
+          "sectionId": "12235769",
+          "position": 14,
+          "markdown": "# 93-lesson-61464796\n\nModule 9 Quiz – Membership, Recruitment & The Esther’s Experience\n\nPassing Score: 85% Instructions: Select the best answer for each question.\n",
+          "quizzes": [
+            {
+              "id": 2593950,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "What is the purpose of The Esther’s Experience?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) To promote EFF’s mission through giveaways",
+                    "b) To introduce college students to church life",
+                    "c) To help integrate new members into EFF, foster bonding, and prepare them to lead in dropout prevention",
+                    "d) To test student commitment through competitive challenges"
+                  ],
+                  "correct_answers": [
+                    "c) To help integrate new members into EFF, foster bonding, and prepare them to lead in dropout prevention"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": " When can a student be officially inducted into EFF?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Once they are added to the GroupMe",
+                    "b) After completing a workshop",
+                    "c) Once they complete The Esther’s Experience and have verified national payment",
+                    "d) Once their advisor approves them"
+                  ],
+                  "correct_answers": [
+                    "c) Once they complete The Esther’s Experience and have verified national payment"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": " What ensures that a student has paid their national one-time fee before beginning The Esther’s Experience?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) The Membership Chair confirms it during the mixer",
+                    "b) They are added to a text group",
+                    "c) Proof of payment is required at the time of submitting their membership application",
+                    "d) They pay during induction"
+                  ],
+                  "correct_answers": [
+                    "c) Proof of payment is required at the time of submitting their membership application"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Where must all national induction fees be paid?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Through your chapter’s Instagram bio",
+                    "b) Directly to the Treasurer",
+                    "c) Only on the official EFF website",
+                    "d) During the first GBM"
+                  ],
+                  "correct_answers": [
+                    "c) Only on the official EFF website"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What platform does National HQ use to track and recognize officially inducted members?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Google Sheets",
+                    "b) Join It",
+                    "c) Linktree",
+                    "d) Canva"
+                  ],
+                  "correct_answers": [
+                    "b) Join It"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Which of the following would make a recruitment process non-compliant?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Hosting a prayer night during The Esther’s Experience",
+                    "b) Inducting students without submitting a membership recruitment request form",
+                    "c) Including a donation drive during the recruitment period",
+                    "d) Hosting a bonding night with your board"
+                  ],
+                  "correct_answers": [
+                    "b) Inducting students without submitting a membership recruitment request form"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Which statement best describes the difference between national fee and chapter dues?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) National dues are monthly, chapter dues are optional",
+                    "b) National dues are used for merch, chapter dues pay the board",
+                    "c) National dues are paid to HQ for induction; chapter dues support local events and operations",
+                    "d) There is no difference"
+                  ],
+                  "correct_answers": [
+                    "c) National dues are paid to HQ for induction; chapter dues support local events and operations"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61464804",
+          "title": "MODULE 10 – Event Planning, Execution & Chapter Growth",
+          "sectionId": "12235771",
+          "position": 1,
+          "markdown": "# 94-lesson-61464804\n\nEvent Planning, Execution & Chapter Growth\n\nPlanning events isn’t just about filling a room. It’s about creating moments that build community, shift culture, and prevent dropouts. This module walks you through what types of events matter, how to plan them well, and how to reflect EFF’s mission in every detail.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61464809",
+          "title": "Lesson 1: Planning with Purpose",
+          "sectionId": "12235771",
+          "position": 2,
+          "markdown": "# 95-lesson-61464809\n\nPlanning with Purpose\n\nEvery event your chapter hosts should:\n\n\nAlign with EFF’s mission: dropout prevention, student success, and Christ-centered support\nBe accessible and inclusive\nServe a clear purpose (faith, resources, community, or fundraising)\nBe well-documented and communicated\nAvoid hosting events just because they’re trendy. Focus on impact over popularity.\n\nA “silent study night” with 10 people who stay enrolled is more powerful than a packed event with no purpose.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61464817",
+          "title": "Lesson 2: Required Events Each Semester",
+          "sectionId": "12235771",
+          "position": 3,
+          "markdown": "# 96-lesson-61464817\n\nRequired Events Each Semester\n\nHere’s a reminder of what every chapter is expected to complete:\n\n✅ 2 Bible studies ✅ 2 workshops or educational events ✅ 1 donation drive ✅ 2 general body meetings ✅ 1 scholarship or resource event ✅ 2–3 campus collaborations ✅ Participation in at least 1 national initiative\n\nThese events are not optional—they are part of your compliance packet.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61464823",
+          "title": "Lesson 3: Types of EFF-Aligned Events",
+          "sectionId": "12235771",
+          "position": 4,
+          "markdown": "# 97-lesson-61464823\n\nTypes of EFF-Aligned Events\n\n📘 Faith-Based Events\n\n\nBible Studies\nPrayer Nights\nWorship + Word Sessions\nDevotional Brunches\n🎓 Academic Events\n\n\nScholarship Application Parties\nStudy Halls or Finals Prep Nights\n“First-Gen Talks” and Graduation Panels\n💜 Community Service\n\n\nCampus cleanups\nDonation drives\nVolunteer days with local orgs\n🛠️ Workshops\n\n\nHow to Budget in College\nTime Management\n“I Almost Dropped Out” Panels\nMental Health + Academic Resilience\n🎉 Bonding & Culture Building\n\n\nGame nights\nPaint & Praise\nMember mixers\nRoyal Court events\n",
+          "quizzes": [],
+          "activities": [
+            "native_comments",
+            "open_response_question"
+          ],
+          "assets": [
+            {
+              "name": "ESTHER FUNDS FOUNDATION EVENT-IN-A-BOX RESOURC.pdf",
+              "kind": "pdf_embed",
+              "url": "https://uploads.teachablecdn.com/attachments/57MQtWlASiS15uB7JhHK_ESTHER+FUNDS+FOUNDATION+EVENT-IN-A-BOX+RESOURC.pdf?Expires=1783876725&Signature=L6m1fMX0CdFMj1aPJO6urOguoT1gBA6JHAsP2tkTfdWVKeBBpzjh44UQXJ0YYXIuvC4J2PVs23--vRzhbkZjLoU9uDTLlLmatvGCO77seJvBomXBA~n508K6wgYYABmRokazkkFJxXsxvnQtmY0qUOH1YmWRDdltuDzYobs5sWdiQmBR9VEEJh~J3njE6RsrGKcixllILDwRAtHWultNGngRSH8CQO2rd1E7hf8vEC-eLM1caNmX4q3SSHGWBMHSrMP7vHwM~0F8x~loGD1grtgGvIzcQ70fFL~S7ENVfX3BkbOhCieiAnUtG1tqbgIpE0HRCXfWE8SstDqDH3PiDw__&Key-Pair-Id=K1P55R7QWDGXRN"
+            }
+          ]
+        },
+        {
+          "id": "61464829",
+          "title": "Lesson 4: Event Planning Checklist",
+          "sectionId": "12235771",
+          "position": 5,
+          "markdown": "# 98-lesson-61464829\n\nEvent Planning Checklist\n\nEvery event should answer:\n\n\nWhat’s the purpose?\nWhat resources do we need?\nWho’s leading what?\nWhat’s the promotion plan?\nHow are we documenting this for compliance?\nBefore hosting, confirm: ✅ Advisor or university approval ✅ Clear start/end time ✅ GroupMe, social, or email promotion ✅ Roles assigned to each board member ✅ Attendance tracker ready (sign-in sheet or QR code)\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61464836",
+          "title": "Lesson 5: Growth Beyond Events",
+          "sectionId": "12235771",
+          "position": 6,
+          "markdown": "# 99-lesson-61464836\n\nGrowth Beyond Events\n\nEvents are just one part of growth. Chapters grow when they:\n\n\nBuild real relationships with members\nStay consistent on social media\nFollow up after events\nInvite students into leadership\nCreate space for students to share testimonies and struggles\nCollaborate with groups who care about equity, graduation, or student wellness\nIf you want a packed room, serve your campus with intention.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61489961",
+          "title": " Lesson 6: Staying On Mission – Every Event Has a Purpose",
+          "sectionId": "12235771",
+          "position": 7,
+          "markdown": "# 100-lesson-61489961\n\nStaying On Mission – Every Event Has a Purpose\n\nJust because an event is fun doesn’t mean it’s fruitful.\n\nAs a chapter of Esther Funds Foundation, every event you host should reflect our core mission: 👉 Preventing college dropouts through mentorship, faith, resources, service, and education.\n\nThat doesn’t mean everything has to be serious or spiritual — it just means there must be purpose behind it.\n\n🧭 Examples of On-Mission vs. Off-Mission Events\n\n\n✅ On-Mission Events:\n\n\n\nScholarship Application Night\nFinals Prep + Prayer Session\n“I Almost Dropped Out” Testimony Panel\nBudgeting for Broke College Students Workshop\nDonation Drive for Students in Crisis\nMental Health & God Discussion\nFaith + Career Vision Board Night\nThese events are creative, but they equip, encourage, and elevate students.\n\n🚫 Off-Mission Events (and why they don’t work):\n\n\n\nGame night with no purpose or connection to EFF values\nTalent show with no promotion of student success or dropout prevention\nFashion show with no educational, service, or spiritual tie-in\nAny event where the chapter focus shifts toward clout, aesthetics, or hype over impact\n\n🔁 Key Filter: Ask Before You Plan\n\n\nBefore every event, ask your team:\n\n“Does this help a student feel more supported, connected, and likely to graduate?”If yes → plan it with excellence. If no → shift the purpose or let it go.\n",
+          "quizzes": [],
+          "activities": [
+            "open_response_question"
+          ],
+          "assets": []
+        },
+        {
+          "id": "61479151",
+          "title": "Quiz",
+          "sectionId": "12235771",
+          "position": 8,
+          "markdown": "# 101-lesson-61479151\n\n_Written content was not exposed in the API response. See lesson.json._\n",
+          "quizzes": [
+            {
+              "id": 2594410,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": " What is the core mission of EFF events?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) To promote chapter creativity",
+                    "b) To raise the most money",
+                    "c) To prevent college dropouts through impact, faith, and support",
+                    "d) To match campus trends"
+                  ],
+                  "correct_answers": [
+                    "c) To prevent college dropouts through impact, faith, and support"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Which of the following is a strong example of an on-mission event?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Silent disco in the student center",
+                    "b) TikTok dance battle",
+                    "c) Mental health + scripture panel",
+                    "d) Paint party only for fun"
+                  ],
+                  "correct_answers": [
+                    "c) Mental health + scripture panel"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What question should you ask before hosting any event?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) “Will this get a lot of reposts?”",
+                    "b) “Is this easy to throw together?”",
+                    "c) “Will this help students feel supported and stay in school?”",
+                    "d) “Can we wear matching outfits?”"
+                  ],
+                  "correct_answers": [
+                    "c) “Will this help students feel supported and stay in school?”"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61464872",
+          "title": "MODULE 11 – Maximizing Chapter Resources & Tools for Impact",
+          "sectionId": "12235773",
+          "position": 1,
+          "markdown": "# 102-lesson-61464872\n\nMaximizing Chapter Resources & Tools for Impact\n\nEvery Esther Funds Foundation chapter has access to templates, branding materials, trackers, and guides designed to make leadership easier, more professional, and more organized.\n\nBut these tools only work if you use them.\n\nThis module walks through what’s in the Chapter Resource Hub and how to use it to stay in compliance, grow your chapter, and lead with excellence.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61464876",
+          "title": "Lesson 1: What is the Chapter Resource Hub?",
+          "sectionId": "12235773",
+          "position": 2,
+          "markdown": "# 103-lesson-61464876\n\nWhat is the Chapter Resource Hub?\n\nThe Chapter Resource Hub is your online folder of tools, templates, and downloads provided by National HQ.\n\n📍 You can access it anytime via: ➡️ www.estherfundsfoundation.org → Chapter Resources\n\nInside the Hub, you’ll find everything you need to operate your chapter smoothly and stay nationally aligned.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61464880",
+          "title": "Lesson 2: What You’ll Find in the Resource Hub",
+          "sectionId": "12235773",
+          "position": 3,
+          "markdown": "# 104-lesson-61464880\n\nWhat You’ll Find in the Resource Hub\n\nHere’s what’s included:\n\n✅ Branding Kit\n\n\nChapter logos\nOfficial fonts and colors\nGuidelines for flyers and social media\n✅ Templates\n\n\nGeneral Body Meeting (GBM) slides\nExecutive Board meeting agendas\nVolunteer letter and hour log templates\nInterest and informational meeting slides\nCompliance Packet Guide\n✅ Trackers & Forms\n\n\nVolunteer hour tracking spreadsheet\nFundraising report form\nMembership application templates\nFinancial report templates\nEvent recap forms\n✅ Pre-made Graphics\n\n\nInstagram content\nNational initiative posts\nBible study promo templates\nSocial media best practices guide\n✅ Chapter Planning Tools\n\n\nSemester calendar planner\nChapter to-do list template\nCompliance checklist\nMembership recruitment planning form\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61464885",
+          "title": "Lesson 3: Why These Resources Matter",
+          "sectionId": "12235773",
+          "position": 4,
+          "markdown": "# 105-lesson-61464885\n\nWhy These Resources Matter\n\nUsing these tools helps your chapter:\n\n\nStay organized and professional\n\nKeep consistent branding across campuses\nSubmit strong compliance packets\nSave time on design and planning\nAvoid confusion and burnout\nYou don’t have to build from scratch. The foundation is already here—use it.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61464887",
+          "title": "Lesson 4: How to Keep Chapter Files Organized",
+          "sectionId": "12235773",
+          "position": 5,
+          "markdown": "# 106-lesson-61464887\n\nHow to Keep Chapter Files Organized\n\nTo avoid losing track of things:\n\n\nCreate a Google Drive folder labeled: EFF – [Your Chapter Name]\n\nCreate subfolders: Events, Photos, Receipts, Compliance, Flyers\n\nAssign one board member to help keep it organized (usually the Secretary, VP, or President)\nBackup photos and flyers after every event\nOrganization reflects stewardship. Don’t wing it—lead with intention.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61464895",
+          "title": "Lesson 5: When in Doubt, Ask",
+          "sectionId": "12235773",
+          "position": 6,
+          "markdown": "# 107-lesson-61464895\n\nWhen in Doubt, Ask\n\nIf you ever feel unsure about:\n\n\nA design\nWhat form to use\nWhat template is outdated\nHow to submit your packet\n📧 Email: info@estherfundsfoundation.org Or ask your chapter liaison if one has been assigned to you.\n\nWe are here to help you succeed.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61490163",
+          "title": "Lesson 6: Navigating the Chapter Resource Hub – You’re Not On Your Own",
+          "sectionId": "12235773",
+          "position": 7,
+          "markdown": "# 108-lesson-61490163\n\nNavigating the Chapter Resource Hub – You’re Not On Your Own\n\nImagine trying to run a full chapter with no structure, no templates, and no direction. We don’t do that here.\n\nThe Chapter Resource Hub exists so that every chapter leader has the tools, documents, and guidance needed to lead with excellence. This is where you'll find the things that protect your chapter, keep you compliant, and save you hours of stress.\n\n🧭 Where to Find It\n\n\nYou can access the Chapter Resource Hub anytime at: ➡️ www.estherfundsfoundation.org &gt; Chapter Resources\n\nBookmark it. Share it. Visit it often. Everything is kept up to date and will be referred to throughout your leadership journey.\n\n📚 Important Documents in the Hub Include:\n\n\nHere are just a few critical resources you’ll find there:\n\n\n✅ Collegiate Chapter Event Proposal Templates\n\n✅ Membership Recruitment Guide & Application Templates\n\n✅ National Constitution + Bylaws (2025)\n\n✅ Advisor Information Guide\n\n✅ National Compliance Packet Guide Presentation\n\n✅ Financial Procedures & Volunteer Reporting Tools\n\n✅ Social Media Policy, Branding Guidelines, and Merch Rules\n\n✅ Sample Meeting Agendas & Executive Board Templates\n\n✅ Whistleblower Policy & Conflict of Interest Form\n\n✅ Scholarship Promotion & Ethics Policy\n\nThese are NOT optional tools—they are your chapter’s protection plan and professional playbook.\n",
+          "quizzes": [],
+          "activities": [
+            "native_comments",
+            "open_response_question"
+          ],
+          "assets": []
+        },
+        {
+          "id": "61490190",
+          "title": "Module 11 Activity: Resource Hunt Challenge",
+          "sectionId": "12235773",
+          "position": 8,
+          "markdown": "# 109-lesson-61490190\n\nInstructions:\n\nVisit the Chapter Resource Hub (you can find it on the website or through this course). Then:\n\n\n\nPick 3 documents from the list above that you think your chapter will use the most this semester.\nFor each one, answer:\n\nWhat is it?\nWhy is it important?\nWho on your board should be using it regularly?\n\nExample: 📄 Compliance Packet Guide\nHelps us know what to turn in each semester\nProtects our chapter from getting put on probation\nPresident, Secretary, and Community Service Chair should all use this\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61464901",
+          "title": " Module 11 Quiz – Chapter Resources",
+          "sectionId": "12235773",
+          "position": 9,
+          "markdown": "# 110-lesson-61464901\n\n_Written content was not exposed in the API response. See lesson.json._\n",
+          "quizzes": [
+            {
+              "id": 2594414,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "Where can you find all official EFF documents, templates, and policies?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) In the group chat",
+                    "b) On the Instagram page",
+                    "c) Under Chapter Resources at www.estherfundsfoundation.org",
+                    "d) Inside the Join It platform"
+                  ],
+                  "correct_answers": [
+                    "c) Under Chapter Resources at www.estherfundsfoundation.org"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Which of the following documents is REQUIRED for every executive board and GBM meeting?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) A Canva post",
+                    "b) An official EFF interest meeting flyer",
+                    "c) A Meeting Minutes Template",
+                    "d) A devotional plan"
+                  ],
+                  "correct_answers": [
+                    "c) A Meeting Minutes Template"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Why is it important to use documents like the Financial Procedures Guide, Compliance Packet, and Constitution?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) They look good in a binder",
+                    "b) They are only for HQ",
+                    "c) They help your chapter stay compliant, consistent, and protected",
+                    "d) You only need them once a year"
+                  ],
+                  "correct_answers": [
+                    "c) They help your chapter stay compliant, consistent, and protected"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61478788",
+          "title": "Did you know? Fact 2",
+          "sectionId": "12246053",
+          "position": 1,
+          "markdown": "# 111-lesson-61478788\n\nDid You Know?\n\nEsther Funds Foundation is the FIRST Christian ministry in the U.S. to establish collegiate chapters focused on preventing college dropouts.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": [
+            {
+              "name": "number-1-purple-o0K99yF-600.jpg",
+              "kind": "image",
+              "url": "https://uploads.teachablecdn.com/attachments/jVmNwGIAQXC3ly11VUqJ_number-1-purple-o0K99yF-600.jpg"
+            }
+          ]
+        },
+        {
+          "id": "61465089",
+          "title": "MODULE 12 – College Dropout Prevention: Events, Campaigns & Impact",
+          "sectionId": "12235776",
+          "position": 1,
+          "markdown": "# 112-lesson-61465089\n\nCollege Dropout Prevention: Events, Campaigns & Impact\n\nEsther Funds Foundation is here to stop the cycle of college dropout—especially among first-generation, low-income, and underrepresented students.\n\nThis module shows you how to design events and campaigns that make real impact, support student retention, and spread awareness of our mission.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": [
+            {
+              "name": "IMG_6726.jpg",
+              "kind": "image",
+              "url": "https://uploads.teachablecdn.com/attachments/ys5VttHjSigLVFNmHL3c_IMG_6726.jpg"
+            }
+          ]
+        },
+        {
+          "id": "61465094",
+          "title": "Lesson 1: Why Students Drop Out of College",
+          "sectionId": "12235776",
+          "position": 2,
+          "markdown": "# 113-lesson-61465094\n\nWhy Students Drop Out of College\n\nHere are just a few reasons students leave school early:\n\n\nFinancial pressure\nHousing insecurity\nMental health struggles\nLack of support or mentorship\nFirst-gen navigation stress\nSpiritual isolation\nPoor academic planning or burnout\nEFF events, Bible studies, campaigns, and services are all created to interrupt those risk factors and help students finish strong.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": [
+            {
+              "name": "istockphoto-936011660-612x612.jpg",
+              "kind": "image",
+              "url": "https://uploads.teachablecdn.com/attachments/dJdnSMfPQwaysV8JxnWE_istockphoto-936011660-612x612.jpg"
+            }
+          ]
+        },
+        {
+          "id": "61465097",
+          "title": "Lesson 2: What EFF Does to Prevent Dropouts",
+          "sectionId": "12235776",
+          "position": 3,
+          "markdown": "# 114-lesson-61465097\n\nWhat EFF Does to Prevent Dropouts\n\nAs a chapter, your presence on campus can:\n\n\nConnect students to community\nOffer encouragement and faith\nProvide financial or emergency resources\nCreate structure through workshops and meetings\nCelebrate students who stay enrolled\nHelp them believe that graduation is possible\n\nYou are a light in the middle of the chaos. Show up with intention.\n",
+          "quizzes": [],
+          "activities": [
+            "open_response_question"
+          ],
+          "assets": []
+        },
+        {
+          "id": "61465102",
+          "title": "Lesson 3: High-Impact Events That Prevent Dropouts",
+          "sectionId": "12235776",
+          "position": 4,
+          "markdown": "# 115-lesson-61465102\n\nHigh-Impact Events That Prevent Dropouts\n\nThese types of events directly support retention:\n\n🧠 Mental Health Check-ins Host safe spaces where students can decompress, journal, pray, or hear testimonies.\n\n💵 Scholarship & FAFSA Nights Walk students through applying for aid or help them research opportunities.\n\n📚 Academic Survival Skills Workshops Teach time management, productivity tips, or study habits.\n\n✝️ Faith-Based Encouragement Events Bible studies that tackle stress, identity, healing, and perseverance.\n\n💬 \"I Almost Dropped Out\" Panels Let students or alumni share their stories of almost quitting—but finishing.\n\n🤝 Resource Fairs or Collab Days Partner with other orgs to bring campus offices (like counseling, advising, or financial aid) to the students in one room.\n\n📦 Donation Drives for Students Survival kits, emergency groceries, hygiene products—all help reduce dropout pressure.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": [
+            {
+              "name": "IMG_8463.jpg",
+              "kind": "image",
+              "url": "https://uploads.teachablecdn.com/attachments/cqB5I879SO2DsRIb6tjs_IMG_8463.jpg"
+            }
+          ]
+        },
+        {
+          "id": "61465104",
+          "title": "Lesson 4: Campaigns with a Message",
+          "sectionId": "12235776",
+          "position": 5,
+          "markdown": "# 116-lesson-61465104\n\nCampaigns with a Message\n\nIn addition to events, social media campaigns raise awareness and allow your chapter to educate, encourage, and activate your campus.\n\nEFF National Campaigns include:\n\n🚶🏾‍♀️ College Dropout Prevention Walk A public campus walk where members and students wear purple, carry signs, and share facts or testimonies related to college retention. This walk symbolizes the fight to finish, honoring students who stay enrolled against the odds.\n\n📖 Prayer & Purpose Campaign Encourages scripture sharing, prayer posts, and spiritual encouragement for students during tough academic seasons.\n\n👩🏽‍🎓 First-Gen Celebration Week Honors the experiences and strength of first-generation college students through posts, events, and affirmations.\n\n🧠 Mental Health & Faith Series Explores how faith and mental wellness intersect—offering students peace, reflection, and healing.\n\n🏁 Finals Grand Prix A motivational series leading up to finals that encourages students to stay focused, stay prayed up, and finish the semester strong.\n\nChapters are expected to participate in at least one national campaign per semester. You can also create your own campus campaigns—as long as they align with EFF’s mission.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61489833",
+          "title": " Lesson 5: Putting the Funds in Esther Funds",
+          "sectionId": "12235776",
+          "position": 6,
+          "markdown": "# 117-lesson-61489833\n\nLet’s be real—money is one of the top reasons students drop out of college.\n\nMany students are just one emergency, one unpaid balance, or one financial mistake away from walking away from school. As an EFF chapter, your job isn’t just to host events. It’s to advocate, educate, and equip students financially.\n\nHere’s How You Can “Put the Funds in Esther Funds”:\n\n✅ Share scholarships regularly Use your chapter’s Instagram to promote active scholarships—especially local ones. Check your school’s scholarship portal weekly and repost opportunities.\n\n✅ Host financial literacy workshops Teach students how to budget, understand their loans, save money, or find emergency resources. Partner with local banks, campus financial aid, or guest speakers.\n\n✅ Create a money-saving resource guide Collect links to campus emergency grants, food pantry hours, textbook swaps, or rent help and make it into a Canva graphic or Linktree page.\n\n✅ Talk about it often Use Bible studies or group discussions to talk about the burden of financial stress—because students need faith and a financial plan.\n",
+          "quizzes": [],
+          "activities": [
+            "open_response_question"
+          ],
+          "assets": []
+        },
+        {
+          "id": "61489847",
+          "title": "Module 12 Activity: Prevention in Practice",
+          "sectionId": "12235776",
+          "position": 7,
+          "markdown": "# 118-lesson-61489847\n\nPrevention in Practice\n\n📍You’ve learned the why—now it’s time to think about the how.\n\nThis activity helps you connect everything from this module to what your chapter can actually do on campus to keep students enrolled, supported, and encouraged.\n\nYour Mission: Create a Dropout Prevention Plan\n\nAnswer the following prompt in a bulleted list or short sentences:\n\n\nName one EFF-style event your chapter could host that directly helps students stay in school. (Example: “Finals Prep & Prayer Night” or “Scholarship Application Party”)💡 The best chapters aren’t just fun—they’re effective. What will your chapter do to leave a real impact?\n",
+          "quizzes": [],
+          "activities": [
+            "open_response_question"
+          ],
+          "assets": []
+        },
+        {
+          "id": "61489911",
+          "title": "Module 12 Quiz – Quick Check",
+          "sectionId": "12235776",
+          "position": 8,
+          "markdown": "# 119-lesson-61489911\n\n_Written content was not exposed in the API response. See lesson.json._\n",
+          "quizzes": [
+            {
+              "id": 2594408,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "What is one of the biggest reasons college students drop out?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Lack of interest in classes",
+                    "b) Too many friend groups",
+                    "c) Financial pressure and emergency expenses",
+                    "d) Not knowing what major to choose"
+                  ],
+                  "correct_answers": [
+                    "c) Financial pressure and emergency expenses"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What’s one thing every EFF chapter is encouraged to do to help prevent dropouts?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Host bake sales for merch",
+                    "b) Share scholarship resources and support financial literacy",
+                    "c) Only recruit upperclassmen",
+                    "d) Require members to attend Bible study every week"
+                  ],
+                  "correct_answers": [
+                    "b) Share scholarship resources and support financial literacy"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61478791",
+          "title": "Did you know? Fact #3",
+          "sectionId": "12246056",
+          "position": 1,
+          "markdown": "# 120-lesson-61478791\n\nEsther Funds Foundation placed 3rd in the 2024 GIVE TLH Awards! 🏆\n\nOut of dozens of impactful nonprofits across Tallahassee, EFF was honored for its commitment to faith-driven leadership, dropout prevention, and service to underrepresented students.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": [
+            {
+              "name": "IMG_5525.JPG",
+              "kind": "image",
+              "url": "https://uploads.teachablecdn.com/attachments/6bCJpPCSJaRIG4feW3uQ_IMG_5525.JPG"
+            }
+          ]
+        },
+        {
+          "id": "61465137",
+          "title": "MODULE 13 – Internal & External Skills of an EFF Leader",
+          "sectionId": "12235777",
+          "position": 1,
+          "markdown": "# 121-lesson-61465137\n\nInternal & External Skills of an EFF Leader\n\nBeing a leader in EFF means more than running events and hosting meetings. It’s about who you are behind the scenes, how you carry yourself in public, and how you lead people both spiritually and professionally.\n\nThis module breaks down the two areas every leader must grow in:\n\n\nInternal (spiritual & emotional)\nExternal (professional & practical)\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61465144",
+          "title": "Lesson 1: Internal Skills – The Heart of a Leader",
+          "sectionId": "12235777",
+          "position": 2,
+          "markdown": "# 122-lesson-61465144\n\nInternal Skills – The Heart of a Leader\n\nThese are the skills that no one sees at first, but everyone feels over time.\n\n🧠 Emotional Intelligence Being able to lead without reacting out of emotion. Practicing patience, empathy, and self-awareness in stressful moments.\n\n🕊️ Humility Knowing when to admit you don’t know everything. Leading from a place of service, not ego.\n\n💭 Accountability Owning your responsibilities, following through, and letting others correct you without defensiveness.\n\n🕯️ Integrity Doing what’s right even when it’s hard or when no one’s watching. Keeping your word. Representing EFF and Christ with consistency.\n\n🕊️ Resilience Not quitting when things get hard. Leading with endurance through conflict, disorganization, or disappointment.\n\n📿 Spiritual Discernment Praying before reacting. Leaning on God’s wisdom, not just logic or popularity. Being sensitive to the atmosphere in your chapter.\n\nInternal skills are the foundation. If your inner world is messy, your leadership will be too.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61465150",
+          "title": "Lesson 2: External Skills – How You Carry the Mission",
+          "sectionId": "12235777",
+          "position": 3,
+          "markdown": "# 123-lesson-61465150\n\nExternal Skills – How You Carry the Mission\n\nThese are the skills you’ll use in real-time as a public representative of EFF.\n\n🎤 Public Speaking & Communication Being able to speak with clarity, energy, and conviction—whether you're welcoming people to a GBM or presenting to a university department.\n\n📁 Event Planning & Execution Knowing how to build a timeline, assign roles, and prepare for what could go wrong. Hosting doesn’t mean chaos—it means order.\n\n📸 Social Media & Branding Awareness Understanding the EFF look, tone, and voice. Representing the brand well in posts, flyers, and captions.\n\n🤝 Collaboration & Delegation Working with other orgs, not taking over. Knowing how to delegate tasks to avoid burnout and build team trust.\n\n💰 Fundraising Strategy Promoting fundraisers with purpose, explaining why donations matter, and communicating impact clearly.\n\n🧭 Navigating Campus Culture Understanding what your students need and what your campus climate looks like. Making EFF relevant but still aligned with our values.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61465160",
+          "title": "Lesson 3: What Real Leadership Looks Like",
+          "sectionId": "12235777",
+          "position": 4,
+          "markdown": "# 124-lesson-61465160\n\nWhat Real Leadership Looks Like\n\nLeadership isn’t about being loud. It’s about being anchored.\n\nYou lead when you:\n\n\nPray before responding\nStay calm under pressure\nShow up when no one else does\nCorrect your peers with love, not ego\nMake others feel seen, heard, and valued\nRepresent EFF even when you’re off the clock\nPeople are watching how you:\n\n\nTreat your board\nPost online\nRespond to conflict\nCarry yourself after the event is over\nYou may be the only example of God’s love some students see. Let your leadership be salt and light.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": [
+            {
+              "name": "student-speaking-at-spdp-800.jpg",
+              "kind": "image",
+              "url": "https://uploads.teachablecdn.com/attachments/ojCoFw0PRqOVii1PMP45_student-speaking-at-spdp-800.jpg"
+            }
+          ]
+        },
+        {
+          "id": "61482975",
+          "title": "Lesson 4: Accountability in Leadership – Holding the Standard",
+          "sectionId": "12235777",
+          "position": 5,
+          "markdown": "# 125-lesson-61482975\n\nAccountability in Leadership – Holding the Standard\n\nIn EFF, leadership isn’t just about having a title—it’s about consistently showing up, growing, and honoring the call.\n\nThat’s why accountability is not optional. It protects the health of your chapter, the trust of your members, and the strength of your leadership team.\n\n🧩 Why Accountability Matters\n\n\nWithout accountability, leaders:\n\n\nStop showing up or serving with excellence\nCreate division, confusion, and resentment\nDamage the mission and ministry environment\nWith accountability, leaders:\n\n\nStay aligned with expectations\nGrow personally and spiritually\nBuild trust with each other and the general body\nCreate a culture of consistency and honor\n🟪 Accountability Within the Executive Board\n\n\nHere’s how to keep your board focused and responsible:\n\n✅ Hold monthly or biweekly board check-ins ✅ Review leadership goals and progress ✅ Be honest when someone is slipping—address issues early ✅ Recommend a Leadership Expectations Contract (sample can be found in Chapter Resources) ✅ Use probation periods for leaders who fall short but are willing to grow\n\n📌 You can love someone and still hold them accountable. That’s biblical and that’s leadership.\n🟨 Using Leadership Contracts & Probation Periods\n\n\nLeadership Contracts (recommended):\n\n\nOutline expectations (attendance, behavior, communication, spiritual tone)\nSigned by each executive board member\nReviewed at mid-semester check-in\nProbation Periods (used with grace):\n\n\n2–4 weeks of accountability after repeated issues\nSet goals, check progress weekly, and make decisions after\nCan lead to restoration—or replacement if needed\nThese tools protect the health of the board without shame—they create structure, honor, and alignment.\n\n🟩 Accountability for General Body Members\n\n\nWhile your general body isn’t held to the same standard as your board, they should still experience structure and follow-through.\n\nHow to keep them accountable:\n\n\nTrack attendance and engagement\nCommunicate expectations clearly during recruitment\nProvide growth opportunities (teams, prayer roles, support roles)\nOffer grace—but call out disrespect, inconsistency, or toxicity early\nCelebrate their wins publicly!\n💬 You can be a welcoming chapter and still have structure. That’s how you grow—and last.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": [
+            {
+              "name": "accountability-1024x518.webp",
+              "kind": "image",
+              "url": "https://uploads.teachablecdn.com/attachments/ZxDaPhqUSb2OuejfA2l8_accountability-1024x518.webp"
+            }
+          ]
+        },
+        {
+          "id": "61465184",
+          "title": "Lesson 5: Final Things to Know Before the Exam",
+          "sectionId": "12235777",
+          "position": 6,
+          "markdown": "# 126-lesson-61465184\n\nFinal Things to Know Before the Exam\n\nBefore you take the final exam and officially become a certified EFF leader, there are a few key reminders that will carry you through your semester:\n\n⏱️ Time Management Matters\n\n\nYou're a student. You’re busy. But your leadership role is still real.\n\nMake time for:\n\n\nE-board meetings\nPrepping for events\nFollowing up with members\nSubmitting reports and updates\nUse calendars, reminders, and shared folders to stay on top of your role. Don’t lead from a place of chaos—lead from a place of structure.\n\n🤝 Conflict Resolution Starts With Maturity\n\n\nIssues will come up. People will misunderstand each other. You might even disagree with your board or advisor. That’s normal.\n\nBut here’s what EFF leadership does NOT do:\n\n\nGossip in group chats\nPublicly bash someone online\nSplit the chapter into sides\nGo around leadership structure\nInstead:\n\n\nTalk directly.\nUse “I” statements.\nInvite your advisor or liaison into the conversation if needed.\nPray before reacting.\nMature leaders handle conflict with grace and truth.\n\n📬 Stay Connected to National HQ\n\n\nYou’re not alone. National HQ is here to support you.\n\nWe ask that you:\n\n\nCheck in with your chapter liaison (if assigned)\nRead messages in the group chat\nSubmit compliance packets and updates on time\nEmail info@estherfundsfoundation.org with any issues or questions\nWe are here to help you win—not micromanage you. Let’s work as a team.\n\n🧭 Keep Your Events on Mission\n\n\nJust because something is popular doesn’t mean it’s purposeful.\n\nAsk before every event:\n\n\nDoes this reflect Christ?\nDoes this align with EFF’s mission?\nWill this help someone stay in school or grow in faith?\nKeep your events: ✅ Impact-driven ✅ Spirit-led ✅ Organized ✅ Documented ✅ Beautifully branded\n\n🌱 Grow Your Internal & External Leadership Skills Daily\n\n\nYou now know the two sides of leadership:\n\n\nInternal: integrity, emotional maturity, prayer life, humility\nExternal: public speaking, planning, branding, communication\nWork on both. Every week. Every semester.\n\nIf you only grow one and ignore the other, your leadership will always be off balance.\n\n🔑 Final Thought:\n\nYou’re about to be certified. That means something.\n\nYou’re saying: “I’m ready to serve.” “I’m willing to lead with excellence.” “I’m committed to helping students stay in school and walk with God.”\n\nTake a breath. Pray. And let’s finish strong.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61483017",
+          "title": "Mini Activity: Accountability in Action",
+          "sectionId": "12235777",
+          "position": 7,
+          "markdown": "# 127-lesson-61483017\n\nMini Activity: Accountability in Action\n\n📍Every great leader needs both grace and structure. Read the situations below and choose how you would respond as a mature, Spirit-led leader.\n\n🧩 Scenario 1: The Disconnected Vice President\n\n\nYour VP has missed 3 meetings, hasn’t responded in the group chat, and forgot to turn in their portion of the event plan. They’re going through personal stuff but haven’t communicated.\n\nWhat’s your next move? \n\na) Remove them from their position without warning b) Gossip to other board members about how frustrating it is c) Set up a 1-on-1 conversation and recommend a short-term accountability plan\n",
+          "quizzes": [
+            {
+              "id": 2593960,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "Scenario 2: A GBM Member Shows Up Disruptive A new member keeps arriving late, talking over others, and making jokes during prayer time. It's starting to affect the culture. How do you handle it?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Ignore it and hope it stops",
+                    "b) Call them out in front of the whole group",
+                    "c) Pull them aside, affirm them, and lovingly explain expectations"
+                  ],
+                  "correct_answers": [
+                    "c) Pull them aside, affirm them, and lovingly explain expectations"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [
+            "open_response_question"
+          ],
+          "assets": []
+        },
+        {
+          "id": "61465275",
+          "title": "Quiz",
+          "sectionId": "12235777",
+          "position": 8,
+          "markdown": "# 128-lesson-61465275\n\nQuick Tip Before You Go: Accountability isn’t about being harsh — it’s about protecting the mission and the people.\n\nNo GroupMe explosions. No shady side-eyes. No power trips. Just real leaders doing what they said they’d do.\n\n AND GOOD NEWS: There’s NO quiz for this one. But don’t get too comfortable — we’re still watching 👀\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61478831",
+          "title": "Did know you? Fact #4",
+          "sectionId": "12246057",
+          "position": 1,
+          "markdown": "# 129-lesson-61478831\n\nDid You Know?\n\nEsther Funds Foundation is working toward launching an emergency grant called the Esther Emergency Grant Fund? 💡\n\nThis future grant will help students facing real crises—whether it’s unexpected tuition balances, emergency housing, groceries, or transportation needs.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61465353",
+          "title": "FINAL EXAM OVERVIEW – You Made It!",
+          "sectionId": "12235781",
+          "position": 1,
+          "markdown": "# 130-lesson-61465353\n\n🎉 Congratulations, Leader.\n\n\nYou’ve officially completed all 13 modules of the Esther Funds Foundation National Leadership Course.\n\nYou’ve walked through:\n\n\nWhat EFF is and why we exist\nHow to lead with faith and structure\nHow to host impactful, mission-aligned events\nWhat’s required for compliance and reporting\nWhat it means to steward a chapter—not just run one\nHow to protect your personal character while representing a national brand\nAnd now… you’re almost done.\n\n✅ What’s Next? The Final Exam.\n\n\nTo complete your certification, you must:\n\n\nPass the Final Exam with an 85% or higher\n\nReview any answers you miss (you’ll get 2 retake chances if needed)\nOnce passed, your name will be submitted to HQ\nYour Certificate of Completion will be emailed to you\nYou’ll be added to the official EFF National Leader Registry\n\n📝 Final Exam Details:\n\n\n\n30–40 multiple choice and scenario-based questions\nCovers all 13 modules\nOpen-note, but time-limited (if you're enforcing that via platform)\nBe prepared to apply what you’ve learned, not just remember facts\n⏳ Important Reminder:\n\n\nYou must complete the course within 14 days of your leadership session unless you’ve been granted an extension. If you need more time due to disability, personal hardship, or academic accommodations, email us at: 📧 info@estherfundsfoundation.org Subject: Leadership Course Extension Request\n\n🕊️ Final Words Before You Begin:\n\nTake a moment to breathe. You’ve already shown excellence by getting this far.\n\nPray for clarity. Lead with confidence. And remember:\n\nYou are not just representing a chapter. You’re carrying a mantle to build, serve, and lead “for such a time as this.”We’re proud of you. Let’s finish what we started.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "61465355",
+          "title": "Esther Funds Foundation National Collegiate Leadership Certification Exam",
+          "sectionId": "12235781",
+          "position": 2,
+          "markdown": "# 131-lesson-61465355\n\nEsther Funds Foundation National Collegiate Leadership Certification Final Exam\n\n📜 Instructions:\n\n\nThis is your final exam to become a certified E-board leader of Esther Funds Foundation.\nAll questions are multiple choice. Select the best answer for each.\nYou must earn an 85% or higher to pass.\nSubmit through your designated Teachable platform or chapter training portal.\nYou will be issued a certificate upon completion,\nOnce you receive your certificate you have permission to share on any social media platform.\n",
+          "quizzes": [
+            {
+              "id": 2594459,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "What does the slogan “Every Future Fulfilled” represent?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Getting every student a scholarship",
+                    "b) Supporting students to reach graduation and purpose",
+                    "c) Making every semester fun",
+                    "d) Financial literacy programs only"
+                  ],
+                  "correct_answers": [
+                    "b) Supporting students to reach graduation and purpose"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What kind of organization is EFF?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) A social club",
+                    "b) A nonprofit church",
+                    "c) A Christ-centered nonprofit focused on college dropout prevention",
+                    "d) A tutoring company"
+                  ],
+                  "correct_answers": [
+                    "c) A Christ-centered nonprofit focused on college dropout prevention"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Who founded Esther Funds Foundation?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Tamara Lewis",
+                    "b) Shayna Vincent",
+                    "c) Jordan James",
+                    "d) Kayla Parker"
+                  ],
+                  "correct_answers": [
+                    "b) Shayna Vincent"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "When was Esther Funds Foundation officially incorperated/founded?",
+                  "question_type": "single",
+                  "answers": [
+                    "January 23, 2024",
+                    "2023",
+                    "July 15, 2000",
+                    "September 7, 2024"
+                  ],
+                  "correct_answers": [
+                    "January 23, 2024"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": " What is the main mission of EFF?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Help students get internships",
+                    "b) Prevent college dropouts through mentorship, faith, and resources",
+                    "c) Provide housing only",
+                    "d) Focus only on Bible studies"
+                  ],
+                  "correct_answers": [
+                    "b) Prevent college dropouts through mentorship, faith, and resources"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Which of the following is one of EFF’s national initiatives?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Prayer Hotline",
+                    "b) The Esther Experience",
+                    "c) The James Pillar Project",
+                    "d) Club Expansion Network"
+                  ],
+                  "correct_answers": [
+                    "c) The James Pillar Project"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Who does EFF primarily serve?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Graduate students",
+                    "b) First-gen, low-income, and underrepresented college students",
+                    "c) Students at private schools only",
+                    "d) Middle school students"
+                  ],
+                  "correct_answers": [
+                    "b) First-gen, low-income, and underrepresented college students"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Who is responsible for managing the chapter’s social media and flyer designs?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Secretary",
+                    "b) Membership Chair",
+                    "c) PR/Social Media Chair",
+                    "d) Parliamentarian"
+                  ],
+                  "correct_answers": [
+                    "c) PR/Social Media Chair"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What does the Parliamentarian do?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Lead Bible study",
+                    "b) Take photos",
+                    "c) Enforce structure using Robert’s Rules",
+                    "d) Design T-shirts"
+                  ],
+                  "correct_answers": [
+                    "c) Enforce structure using Robert’s Rules"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Who is the main liaison between the chapter and National HQ?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Community Service Chair",
+                    "b) President",
+                    "c) Historian",
+                    "d) Advisor"
+                  ],
+                  "correct_answers": [
+                    "b) President"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Where can the national Code of Conduct be found?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Google Drive",
+                    "b) The Chapter Resource Hub",
+                    "c) Instagram",
+                    "d) GroupMe"
+                  ],
+                  "correct_answers": [
+                    "b) The Chapter Resource Hub"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Which of the following is a violation of EFF’s Code of Conduct?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Missing one meeting",
+                    "b) Asking questions",
+                    "c) Gossiping and spreading conflict within the group",
+                    "d) Hosting a Bible study"
+                  ],
+                  "correct_answers": [
+                    "c) Gossiping and spreading conflict within the group"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What should you do if someone violates the Code of Conduct?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Ignore it",
+                    "b) Call them out on social media",
+                    "c) Submit a report through the official form",
+                    "d) Handle it privately with no documentation"
+                  ],
+                  "correct_answers": [
+                    "c) Submit a report through the official form"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Where must all official merch be purchased from?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Canva",
+                    "b) Amazon",
+                    "c) estherfundsfoundation.store",
+                    "d) Custom vendors"
+                  ],
+                  "correct_answers": [
+                    "c) estherfundsfoundation.store"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Which is an approved brand color for EFF?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Neon green",
+                    "b) Royal purple",
+                    "c) Light pink",
+                    "d) Navy blue"
+                  ],
+                  "correct_answers": [
+                    "b) Royal purple"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What should NEVER be included in a reel or flyer?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Worship music",
+                    "b) Encouraging message",
+                    "c) Cursing or sexually explicit content",
+                    "d) National logo"
+                  ],
+                  "correct_answers": [
+                    "c) Cursing or sexually explicit content"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What is one platform chapters can use to collect funds?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Personal Cash App",
+                    "b) Chapter-designated Cash App or PayPal",
+                    "c) Instagram DMs",
+                    "d) Advisor's Venmo "
+                  ],
+                  "correct_answers": [
+                    "b) Chapter-designated Cash App or PayPal"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What must every fundraiser include?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) A flyer",
+                    "b) Candy",
+                    "c) Documentation of funds raised and purpose",
+                    "d) Only a flyer"
+                  ],
+                  "correct_answers": [
+                    "c) Documentation of funds raised and purpose"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What’s a red flag in fundraising?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Collecting through your chapter Cash App",
+                    "b) Partnering with another org",
+                    "c) Personal account used to collect money",
+                    "d) Having a signup sheet"
+                  ],
+                  "correct_answers": [
+                    "c) Personal account used to collect money"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What is the purpose of the compliance packet?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) To impress campus officials",
+                    "b) To prove chapter activity and alignment",
+                    "c) To submit shirt designs",
+                    "d) To help plan events"
+                  ],
+                  "correct_answers": [
+                    "b) To prove chapter activity and alignment"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "When is the compliance packet due?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Whenever your board decides",
+                    "b) Before your birthday",
+                    "c) December 15 (Fall) and May 8 (Spring)",
+                    "d) The first week of the semester"
+                  ],
+                  "correct_answers": [
+                    "c) December 15 (Fall) and May 8 (Spring)"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What happens if your chapter fails to submit compliance?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Nothing",
+                    "b) You may be placed on probation or CND",
+                    "c) Your flyers are deleted",
+                    "d) Your merch is refunded"
+                  ],
+                  "correct_answers": [
+                    "b) You may be placed on probation or CND"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What is the name of EFF’s national ministry initiative?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Esther’s Light",
+                    "b) Light the Way",
+                    "c) Jesus at Work",
+                    "d) Faith Matters"
+                  ],
+                  "correct_answers": [
+                    "a) Esther’s Light"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Who is responsible for hosting Bible studies?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Membership Chair",
+                    "b) Treasurer",
+                    "c) Director of Collegiate Ministry",
+                    "d) President"
+                  ],
+                  "correct_answers": [
+                    "c) Director of Collegiate Ministry"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What does “come as you are” mean in EFF?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Show up late",
+                    "b) You can join no matter where you are spiritually or emotionally",
+                    "c) You don’t have to attend events",
+                    "d) You can do what you want"
+                  ],
+                  "correct_answers": [
+                    "b) You can join no matter where you are spiritually or emotionally"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What is The Esther’s Experience?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) A game night",
+                    "b) The official pre-induction process",
+                    "c) A finals prep week",
+                    "d) A mentorship program"
+                  ],
+                  "correct_answers": [
+                    "b) The official pre-induction process"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What must be submitted with the membership application?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) A selfie",
+                    "b) Proof of national induction fee payment",
+                    "c) Screenshot of flyer",
+                    "d) None"
+                  ],
+                  "correct_answers": [
+                    "b) Proof of national induction fee payment"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What platform confirms national membership?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Slack",
+                    "b) Linktree",
+                    "c) Join It",
+                    "d) Canva"
+                  ],
+                  "correct_answers": [
+                    "c) Join It"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What is a key question to ask before hosting any event?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Will this be fun?",
+                    "b) Will this get us followers?",
+                    "c) Does this help a student stay in school and walk in purpose?",
+                    "d) Can we go viral?"
+                  ],
+                  "correct_answers": [
+                    "c) Does this help a student stay in school and walk in purpose?"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What’s an example of an off-mission event?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Scholarship night",
+                    "b) Mental health and God talk",
+                    "c) Finals prep",
+                    "d) Talent show with no purpose"
+                  ],
+                  "correct_answers": [
+                    "d) Talent show with no purpose"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Why must events stay on mission?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Because it looks good",
+                    "b) To impress sponsors",
+                    "c) Because EFF is built to help college students graduate",
+                    "d) For the content"
+                  ],
+                  "correct_answers": [
+                    "c) Because EFF is built to help college students graduate"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": " Where can all national resources and templates be found?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Instagram",
+                    "b) Canva",
+                    "c) Chapter Resource Hub on the EFF website",
+                    "d) Facebook"
+                  ],
+                  "correct_answers": [
+                    "c) Chapter Resource Hub on the EFF website"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What template is required at every board or GBM meeting?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Branding slideshow",
+                    "b) Minutes template",
+                    "c) Interest meeting flyer",
+                    "d) Devotional plan"
+                  ],
+                  "correct_answers": [
+                    "b) Minutes template"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Why is it important to use national templates and tools?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) So your chapter isn’t confused and stays aligned",
+                    "b) To show off",
+                    "c) It’s not important",
+                    "d) For fun"
+                  ],
+                  "correct_answers": [
+                    "a) So your chapter isn’t confused and stays aligned"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What is one of the top reasons students drop out?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Sports",
+                    "b) Roommates",
+                    "c) Financial emergencies and stress",
+                    "d) Not liking their major"
+                  ],
+                  "correct_answers": [
+                    "c) Financial emergencies and stress"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What’s something your chapter can post to help students stay in school?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Reels only",
+                    "b) Scholarship opportunities and resource links",
+                    "c) Fashion tips",
+                    "d) Memes"
+                  ],
+                  "correct_answers": [
+                    "b) Scholarship opportunities and resource links"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What’s one example of an event that supports dropout prevention?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Movie night only",
+                    "b) Talent showcase",
+                    "c) Finals Survival Night with prayer + tips",
+                    "d) Dance party"
+                  ],
+                  "correct_answers": [
+                    "c) Finals Survival Night with prayer + tips"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What does accountability do in a chapter?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Creates conflict",
+                    "b) Helps enforce structure and growth",
+                    "c) Replaces leadership",
+                    "d) Makes people nervous"
+                  ],
+                  "correct_answers": [
+                    "b) Helps enforce structure and growth"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What tool can be used to help leaders stay on track?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) GroupMe poll",
+                    "b) Probation plan or accountability check-in",
+                    "c) Instagram comments",
+                    "d) Stickers"
+                  ],
+                  "correct_answers": [
+                    "b) Probation plan or accountability check-in"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What’s one sign of a healthy executive board?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Everyone posts the most",
+                    "b) There’s open communication, structure, and spiritual maturity",
+                    "c) Everyone does their own thing",
+                    "d) No one checks in"
+                  ],
+                  "correct_answers": [
+                    "b) There’s open communication, structure, and spiritual maturity"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Your chapter wants to host a “Midnight Dance Bash” with no educational or spiritual focus. It’s just vibes. What should you do as a board?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Go with it—students need fun too",
+                    "b) Add free pizza and call it a dropout prevention event",
+                    "c) Rework the event to include a short testimony and college survival tips",
+                    "d) Post it anyway and figure out the messaging later"
+                  ],
+                  "correct_answers": [
+                    "c) Rework the event to include a short testimony and college survival tips"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "A new flyer is made for your upcoming interest meeting. It has pink text on a lavender background, with no chapter name listed. What’s the first step?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Repost it anyway to avoid delays",
+                    "b) Ask the PR Chair to edit it and follow branding guidelines",
+                    "c) Add emojis to make it pop",
+                    "d) Use it for stories only"
+                  ],
+                  "correct_answers": [
+                    "b) Ask the PR Chair to edit it and follow branding guidelines"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": " Someone on your team wants to design their own version of the EFF dove in pastel pink for a new shirt. How do you respond?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Approve it—it’s cute and creative",
+                    "b) Post it and see if HQ notices",
+                    "c) Let them print one just for themselves",
+                    "d) Redirect them to use the official logo and merch site"
+                  ],
+                  "correct_answers": [
+                    "d) Redirect them to use the official logo and merch site"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "A member creates a reel using a song with curse words and alcohol references. What’s your next move?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Like it to support them",
+                    "b) Leave it alone since it’s on their personal page",
+                    "c) Ask them to remove or replace it due to the social media policy",
+                    "d) Repost it with a Bible verse"
+                  ],
+                  "correct_answers": [
+                    "c) Ask them to remove or replace it due to the social media policy"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "A GBM member shares they are considering dropping out due to finances. What is your best immediate response?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Offer prayer and send them scholarships and help",
+                    "b) Say “We’ve all been there” and move on",
+                    "c) Tell them to stay and not think about it",
+                    "d) DM them a funny meme to cheer them up"
+                  ],
+                  "correct_answers": [
+                    "a) Offer prayer and send them scholarships and help"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Your flyer for a Bible study is missing your chapter name and has no call to action. What’s the best fix?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Add the chapter name, update the design, and re-upload it",
+                    "b) Post it anyway and explain in the caption",
+                    "c) Leave it for stories only",
+                    "d) Add hashtags to make it more visible"
+                  ],
+                  "correct_answers": [
+                    "a) Add the chapter name, update the design, and re-upload it"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "A fellow e-board member isn’t showing up to meetings, missing deadlines, and refusing feedback. What’s the best step to take?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Post about it in your group chat to vent",
+                    "b) Ignore it until the semester ends",
+                    "c) Have a 1-on-1 conversation and consider probation with clear expectations",
+                    "d) Remove them without warning"
+                  ],
+                  "correct_answers": [
+                    "c) Have a 1-on-1 conversation and consider probation with clear expectations"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "You’re planning a finals prep night. Which version of the event best reflects EFF’s mission?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Finals Bash: Food, Music, Chill Vibes",
+                    "b) Finals Survival Night: Prayer + Study Kits + Encouragement",
+                    "c) Late-Night Snacks Only",
+                    "d) Come Cry With Us – Rant Night"
+                  ],
+                  "correct_answers": [
+                    "b) Finals Survival Night: Prayer + Study Kits + Encouragement"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "A student messages your chapter asking, “Is EFF just a Christian group?” What’s the best way to respond?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) “Not really, it’s more of a girl gang.”",
+                    "b) “Yes, and we only take Christians.”",
+                    "c) “EFF is a Christ-centered nonprofit that supports all students regardless of where they are spiritually.”",
+                    "d) “Nope, just events and fundraisers.”"
+                  ],
+                  "correct_answers": [
+                    "c) “EFF is a Christ-centered nonprofit that supports all students regardless of where they are spiritually.”"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Your chapter receives a DM requesting an interview with your President. Who should respond and how?",
+                  "question_type": "single",
+                  "answers": [
+                    "a) Anyone can reply; just say yes",
+                    "b) Leave it unread until you figure it out",
+                    "c) The PR Chair or President should respond professionally, using proper language and branding",
+                    "d) React with a fire emoji and forward it to GroupMe"
+                  ],
+                  "correct_answers": [
+                    "c) The PR Chair or President should respond professionally, using proper language and branding"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [
+            "native_comments"
+          ],
+          "assets": []
+        }
+      ]
+    },
+    {
+      "id": "2921485",
+      "title": "Pretty Girls Who Serve National Leadership Training: Building Sisterhood, Leadership, and Impact",
+      "description": "The Pretty Girls Who Serve National Leadership Training Course is the official training program for all National Executive Board members, national leaders, and Royal Court leaders serving within the Pretty Girls Who Serve initiative under the Esther Funds Foundation.\n\nThis course exists to fully equip women leaders to operate, expand, and steward Pretty Girls Who Serve as a national sisterhood rooted in service, faith, leadership, and excellence. Leaders who complete this course will be prepared to independently manage membership growth, oversee chapter-level programming, lead women-centered events, foster authentic sisterhood, and uphold the values and standards of Esther Funds Foundation.\n\nThis training is required for all women serving in leadership roles within Pretty Girls Who Serve, including national officers, program directors, chapter-facing leaders, and members of the Miss Pretty Girls Who Serve Royal Court.",
+      "published": false,
+      "image": "https://uploads.teachablecdn.com/attachments/0ac8d8f747f1418d87c72bc50a6d3e0c.png",
+      "modules": [
+        {
+          "id": "12822509",
+          "title": "SECTION 1: Welcome to PGWS Leadership",
+          "position": 1
+        },
+        {
+          "id": "12822767",
+          "title": "Next Steps — Let’s Get to Work, Pretty Girl",
+          "position": 2
+        }
+      ],
+      "lessons": [
+        {
+          "id": "64234922",
+          "title": "Welcome, Sister",
+          "sectionId": "12822509",
+          "position": 1,
+          "markdown": "# 01-lesson-64234922\n\nWelcome to Pretty Girls Who Serve leadership.\n\nIf you are here, it means you were seen as someone who can lead women with care, responsibility, and intention. PGWS leadership is not JUST about titles. It is about stewardship. We build women. We support EFF chapters. We move with alignment.\n\nThis course authorizes you to operate in your PGWS national leadership role. You are not expected to know everything yet. You are expected to stay aligned, ask questions, and lead with integrity.\n\nEverything within PGWS operates under Esther Funds Foundation Nationals. This protects our sisterhood and allows us to grow safely and sustainably.\n",
+          "quizzes": [
+            {
+              "id": 2806414,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "Pretty Girls Who Serve operates under which entity?",
+                  "question_type": "single",
+                  "answers": [
+                    "A. Individual chapters",
+                    " B. Independent leadership",
+                    " C. Esther Funds Foundation Nationals",
+                    " D. Social media leadership"
+                  ],
+                  "correct_answers": [
+                    " C. Esther Funds Foundation Nationals"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What does completing this course authorize you to do?",
+                  "question_type": "single",
+                  "answers": [
+                    "A. Create PGWS chapters independently ",
+                    "B. Operate in your PGWS national leadership role ",
+                    "C. Fundraise without approval ",
+                    "D. Skip national meetings"
+                  ],
+                  "correct_answers": [
+                    "B. Operate in your PGWS national leadership role "
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [
+            "open_response_question"
+          ],
+          "assets": [
+            {
+              "name": "Gemini_Generated_Image_janomjjanomjjano.png",
+              "kind": "image",
+              "url": "https://uploads.teachablecdn.com/attachments/2d0cab705e2a4b4e826996529e546de9.png"
+            }
+          ]
+        },
+        {
+          "id": "64234988",
+          "title": "The History of Pretty Girls Who Serve",
+          "sectionId": "12822509",
+          "position": 2,
+          "markdown": "# 02-lesson-64234988\n\nPretty Girls Who Serve was created to provide women within Esther Funds Foundation a dedicated sisterhood space where faith, service, leadership, and femininity meet.\n\nPGWS began with intentional experiences such as brunches, sisterhood gatherings, national challenges, and the Miss Pretty Girls Who Serve Scholarship Competition. These experiences shaped PGWS into a structured, national sisterhood designed to grow across campuses and cities.\n\nPGWS was created to last, scale, and unify women nationally.\n",
+          "quizzes": [
+            {
+              "id": 2806416,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "Why was Pretty Girls Who Serve created?",
+                  "question_type": "single",
+                  "answers": [
+                    "A. To replace Esther Funds Foundation",
+                    " B. To provide intentional sisterhood for women and improve EFF member bonding and engagement",
+                    "C. To operate as a short-term program",
+                    " D. To focus only on merchandise"
+                  ],
+                  "correct_answers": [
+                    " B. To provide intentional sisterhood for women and improve EFF member bonding and engagement"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Which experiences helped shape PGWS early on?",
+                  "question_type": "single",
+                  "answers": [
+                    "A. Academic conferences only ",
+                    "B. Brunches, gatherings, and national initiatives ",
+                    "C. Athletic competitions ",
+                    "D. Study halls"
+                  ],
+                  "correct_answers": [
+                    "B. Brunches, gatherings, and national initiatives "
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "64234998",
+          "title": "Mission & Vision of PGWS",
+          "sectionId": "12822509",
+          "position": 3,
+          "markdown": "# 03-lesson-64234998\n\nMission \n\nPretty Girls Who Serve exists to cultivate a national sisterhood of college and post-graduate women who love Jesus and are committed to serving with excellence. Powered by Esther Funds Foundation, PGWS develops women leaders and supports consistent national programming.\n\nVision PGWS envisions a nationally recognized sisterhood where women discover their beauty in Christ, lead confidently, and serve purposefully across campuses and beyond.\n",
+          "quizzes": [
+            {
+              "id": 2806418,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "PGWS exists primarily to:",
+                  "question_type": "single",
+                  "answers": [
+                    "A. Host social events",
+                    " B. Cultivate faith-centered sisterhood and leadership ",
+                    "C. Operate independently",
+                    " D. Replace chapter leadership"
+                  ],
+                  "correct_answers": [
+                    " B. Cultivate faith-centered sisterhood and leadership "
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "PGWS supports Esther Funds Foundation by:",
+                  "question_type": "single",
+                  "answers": [
+                    "A. Competing with chapters ",
+                    "B. Strengthening leadership, belonging, and engagement ",
+                    "C. Focusing only on branding ",
+                    "D. Eliminating structure"
+                  ],
+                  "correct_answers": [
+                    "B. Strengthening leadership, belonging, and engagement "
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "64235001",
+          "title": "PGWS Identity, Colors & Branding",
+          "sectionId": "12822509",
+          "position": 4,
+          "markdown": "# 04-lesson-64235001\n\nPretty Girls Who Serve maintains a consistent national identity.\n\nOfficial Colors: Hot Pink and White Official Merchandise: All PGWS merchandise is sold exclusively through the Esther Funds Foundation online store.\n\nLeadership Requirements\n\n\nAll National Executive Board members must order a PGWS T-shirt\nAll National Executive Board members must order a PGWS Executive Board polo\nAll leaders must maintain active PGWS National Membership\n",
+          "quizzes": [
+            {
+              "id": 2806420,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "What are the official PGWS colors?",
+                  "question_type": "single",
+                  "answers": [
+                    "A. Purple and gold ",
+                    "B. Pink and black ",
+                    "C. Hot pink and white ",
+                    "D. Nude and brown"
+                  ],
+                  "correct_answers": [
+                    "C. Hot pink and white "
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Where is PGWS merchandise purchased?",
+                  "question_type": "single",
+                  "answers": [
+                    "A. Amazon ",
+                    "B. Independent vendors",
+                    " C. Chapter stores ",
+                    "D. Esther Funds Foundation online store"
+                  ],
+                  "correct_answers": [
+                    "D. Esther Funds Foundation online store"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "64235003",
+          "title": "Membership, Induction & National Sisterhood",
+          "sectionId": "12822509",
+          "position": 5,
+          "markdown": "# 05-lesson-64235003\n\nPGWS operates as a national sisterhood. All members are PGWS National Members.\n\nOnce per semester, PGWS Nationals host a virtual induction ceremony to welcome new sisters. All inducted members receive a PGWS National Membership Certificate.\n\nInduction reinforces belonging, expectations, and unity across campuses.\n",
+          "quizzes": [
+            {
+              "id": 2806421,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "How often are PGWS inductions held?",
+                  "question_type": "single",
+                  "answers": [
+                    "A. Monthly ",
+                    "B. Once per year ",
+                    "C. Once per semester ",
+                    "D. Only when requested"
+                  ],
+                  "correct_answers": [
+                    "C. Once per semester "
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What do members receive after induction?",
+                  "question_type": "single",
+                  "answers": [
+                    "A. Merchandise credit ",
+                    "B. Chapter approval ",
+                    "C. PGWS National Membership Certificate ",
+                    "D. Leadership title"
+                  ],
+                  "correct_answers": [
+                    "C. PGWS National Membership Certificate "
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "64235007",
+          "title": "Leadership Expectations & Monthly Rhythm",
+          "sectionId": "12822509",
+          "position": 6,
+          "markdown": "# 06-lesson-64235007\n\nPGWS leadership is active.\n\nEach month, leaders will:\n\n\nMeet nationally at least once\nHost one virtual sisterhood bonding event\nSupport chapters hosting PGWS brunches\nMaintain the PGWS national calendar\nAll leaders receive official PGWS email addresses and are expected to check them regularly.\n",
+          "quizzes": [
+            {
+              "id": 2806423,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "How often must PGWS leadership meet?",
+                  "question_type": "single",
+                  "answers": [
+                    "A. Once per semester ",
+                    "B. Once per year",
+                    " C. Once per month ",
+                    "D. Only when needed"
+                  ],
+                  "correct_answers": [
+                    " C. Once per month "
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Why is checking your PGWS email important?",
+                  "question_type": "single",
+                  "answers": [
+                    "A. For personal branding ",
+                    "B. To stay aligned and responsive",
+                    " C. Only for emergencies ",
+                    "D. It is optional"
+                  ],
+                  "correct_answers": [
+                    "B. To stay aligned and responsive"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "64235013",
+          "title": "Programming, Brunches & National Workshops",
+          "sectionId": "12822509",
+          "position": 7,
+          "markdown": "# 07-lesson-64235013\n\nPGWS must host at least one national workshop per semester. Leaders also support chapters as they host PGWS brunches and adopt PGWS into their programming.\n\nEvery chapter must appoint a Director of Sisterhood Initiatives to lead women-centered programming locally.\n\nPGWS National Leadership will also plan one large national PGWS meetup.\n\nAll fundraising and initiatives must be approved by Esther Funds Foundation Nationals.\n",
+          "quizzes": [
+            {
+              "id": 2806424,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "How many national PGWS workshops are required per semester?",
+                  "question_type": "single",
+                  "answers": [
+                    "A. Optional",
+                    " B. One",
+                    " C. Two ",
+                    "D. Monthly"
+                  ],
+                  "correct_answers": [
+                    " B. One"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Who must approve PGWS fundraisers?",
+                  "question_type": "single",
+                  "answers": [
+                    "A. Chapter leaders ",
+                    "B. Ambassadors ",
+                    "C. Esther Funds Foundation Nationals ",
+                    "D. Social media team"
+                  ],
+                  "correct_answers": [
+                    "C. Esther Funds Foundation Nationals "
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "64235015",
+          "title": "Miss Pretty Girls Who Serve Competition",
+          "sectionId": "12822509",
+          "position": 8,
+          "markdown": "# 08-lesson-64235015\n\nPGWS hosts one Miss Pretty Girls Who Serve Scholarship Competition per year.\n\nThe competition highlights service-driven women, supports scholarship fundraising, and selects Royal Court ambassadors who represent PGWS nationally.\n\nRoyal Court members are leaders and ambassadors of sisterhood.\n",
+          "quizzes": [
+            {
+              "id": 2806425,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "How often is the Miss PGWS competition held?",
+                  "question_type": "single",
+                  "answers": [
+                    "A. Twice a year",
+                    " B. Monthly",
+                    " C. Once per year ",
+                    "D. Every semester"
+                  ],
+                  "correct_answers": [
+                    " C. Once per year "
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Royal Court members primarily serve as:",
+                  "question_type": "single",
+                  "answers": [
+                    "A. Event staff only ",
+                    "B. Ambassadors and leaders ",
+                    "C. Fundraising-only roles ",
+                    "D. Chapter presidents"
+                  ],
+                  "correct_answers": [
+                    "B. Ambassadors and leaders "
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "64235017",
+          "title": "Sisterhood & Being a Good Sister",
+          "sectionId": "12822509",
+          "position": 9,
+          "markdown": "# 09-lesson-64235017\n\nSisterhood is the foundation of PGWS.\n\nBeing a good sister means supporting rather than competing, communicating with care, addressing conflict maturely, and creating safe spaces for women.\n\nLeadership requires emotional maturity and grace.\n",
+          "quizzes": [
+            {
+              "id": 2806426,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "Being a good sister includes:",
+                  "question_type": "single",
+                  "answers": [
+                    "A. Competition ",
+                    "B. Gossip ",
+                    "C. Support and accountability ",
+                    "D. Avoiding responsibility"
+                  ],
+                  "correct_answers": [
+                    "C. Support and accountability "
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "How should conflict be handled?",
+                  "question_type": "single",
+                  "answers": [
+                    "A. Publicly ",
+                    "B. Ignored ",
+                    "C. Maturely and privately ",
+                    "D. Through social media"
+                  ],
+                  "correct_answers": [
+                    "C. Maturely and privately "
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "64235019",
+          "title": "Christ-Centered Sisterhood (Bible Study)",
+          "sectionId": "12822509",
+          "position": 10,
+          "markdown": "# 10-lesson-64235019\n\nPGWS is rooted in faith.\n\nKey Scripture: Ecclesiastes 4:9–10 “Two are better than one… If either of them falls down, one can help the other up.”\n\nThis scripture reminds us that sisterhood is about support, not isolation. We lift one another when leadership feels heavy and celebrate one another when victories come.\n\nFaith anchors our leadership, our compassion, and our service.\n",
+          "quizzes": [
+            {
+              "id": 2806427,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "The scripture emphasizes:",
+                  "question_type": "single",
+                  "answers": [
+                    "A. Individual success ",
+                    "B. Competition ",
+                    "C. Support and partnership ",
+                    "D. Independence"
+                  ],
+                  "correct_answers": [
+                    "C. Support and partnership "
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "How does faith strengthen PGWS leadership?",
+                  "question_type": "single",
+                  "answers": [
+                    "A. It replaces structure ",
+                    "B. It anchors leadership with purpose and care ",
+                    "C. It removes accountability ",
+                    "D. It limits growth"
+                  ],
+                  "correct_answers": [
+                    "B. It anchors leadership with purpose and care "
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "64235221",
+          "title": "National Executive Board Roles & National Operations",
+          "sectionId": "12822509",
+          "position": 11,
+          "markdown": "# 11-lesson-64235221\n\nHow the PGWS National Executive Board Works\n\nPretty Girls Who Serve is designed to scale nationally, which means leadership must be structured, accountable, and unified.\n\nThe National Executive Board works together to run the entire PGWS program. While each role has a lane, no role operates in isolation. Collaboration, communication, and respect are required at all times.\n\nLeadership Flow (Important):\n\n\nThe National President oversees the entire PGWS program\nThe National President reports to the Executive Director of Esther Funds Foundation\n\nThe Executive Board reports to and supports the National President\nAll Executive Board members:\n\n\nMeet once per month\n\nAre expected to complete assigned tasks on time\nAre held accountable through a strike system\n\nNational President\n\nThe National President oversees all aspects of Pretty Girls Who Serve.\n\nThis role includes:\n\n\nLeading and directing the PGWS National Executive Board\nOverseeing programming, membership, events, branding, and growth\nEnsuring all PGWS initiatives align with Esther Funds Foundation standards\nServing as the primary point of contact between PGWS and EFF leadership\nReviewing progress, addressing challenges, and guiding national vision\nThe National President does not do everything alone. She leads, delegates, follows up, and ensures accountability.\n\nVice Presidents (2 Positions)\n\nThe Vice Presidents assist and support the National President.\n\nResponsibilities include:\n\n\nHelping oversee daily operations of PGWS\nSupporting execution of national initiatives\nStepping in when the National President is unavailable\nHelping ensure executive board members stay on task\nVice Presidents help keep the program running smoothly and act as support pillars within leadership.\n\nSecretary (National Calendar & Documentation)\n\nThe Secretary is responsible for organization and structure.\n\nResponsibilities include:\n\n\nManaging the PGWS National Calendar\n\nRecording notes from monthly executive board meetings\nTracking deadlines, initiatives, and meeting schedules\nReporting directly to the National President\nThe Secretary ensures leadership stays organized and informed.\n\nFundraising Chair(s)\n\nThe Fundraising Chair(s) help raise funds for Esther Funds Foundation Nationals through PGWS initiatives.\n\nResponsibilities include:\n\n\nDeveloping PGWS fundraising ideas\nSubmitting fundraising proposals for approval\nSupporting approved PGWS fundraisers\nCollaborating with the National President on fundraising goals\nFundraising cannot move forward without national approval.\n\nHistorian (Data, Tracking & Feedback)\n\nThe Historian plays a critical role in growth and evaluation.\n\nResponsibilities include:\n\n\nTracking all PGWS initiatives, including chapter-level PGWS activities\nRecording data from events, brunches, workshops, and challenges\nCollecting feedback from chapters and members\nMaintaining records that show PGWS impact and growth\nThe Historian helps leadership understand what is working and where improvement is needed.\n\nEvents & Brunch Advisor Chair\n\nThis role oversees PGWS brunches and women-centered events.\n\nResponsibilities include:\n\n\nSupporting chapters that host PGWS brunches\nHelping coordinate brunch timelines and expectations\nEnsuring brunches include:\nBeauty-themed activities\nPink-themed decor or elements\nIntentional bonding moments\n\n\nServing as a support contact for Directors of Sisterhood Initiatives at chapters\nThis role should actively reach out to chapter leaders to ensure they feel supported.\n\nMembership Coordinator\n\nThe Membership Coordinator oversees all women in PGWS.\n\nResponsibilities include:\n\n\nManaging PGWS membership questions\nSupporting virtual inductions once per semester\n\nEnsuring all members receive PGWS National Membership Certificates\n\nOverseeing membership pricing:\n$45 for women joining both EFF and PGWS\n$15 for women already EFF members joining PGWS\n\n\nEnsuring all PGWS members are registered in Join It\n\nIf you ever need to look up a PGWS member, Join It is the system.\n\nSocial Media & Branding Chair\n\nThis role manages PGWS’s public presence.\n\nResponsibilities include:\n\n\nPosting weekly PGWS flyers and scriptures\n\nPlanning PGWS social media initiatives\nPromoting women-centered and PGWS initiatives\nMaintaining branding consistency with hot pink and white\nCoordinating closely with the PGWS Ambassador President\nThis role ensures PGWS is visible, polished, and aligned online.\n\nCommunity Service Chair\n\nResponsibilities include:\n\n\nDeveloping PGWS service initiatives\nSupporting chapters with service opportunities\nAligning service with PGWS values and EFF mission\nChaplain (Faith-Based Leadership)\n\nThe Chaplain oversees the spiritual health of PGWS.\n\nResponsibilities include:\n\n\nLeading PGWS Bible studies\nCoordinating prayer initiatives\nOffering spiritual encouragement and support\nSupporting leaders and members through faith-based guidance\nWellness & Sisterhood Coordinator\n\nThis role protects the emotional health of the sisterhood.\n\nResponsibilities include:\n\n\nChecking in on sisters in the group chat multiple times per week\nHosting safe spaces for women to vent and feel supported\nSupporting sisterhood bonding and wellness initiatives\nHelping de-escalate tension and encourage healthy communication\nPGWS Ambassador President\n\nThis role oversees PGWS ambassadors and visibility.\n\nResponsibilities include:\n\n\nAssigning monthly ambassador tasks\n\nCoordinating video creation and promotion\nWorking closely with the Social Media & Branding Chair\nSupporting promotion of PGWS initiatives and events\nAmbassadors help PGWS reach new women nationally.\n",
+          "quizzes": [
+            {
+              "id": 2806530,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "Who oversees the entire PGWS program?",
+                  "question_type": "single",
+                  "answers": [
+                    "A. Vice President ",
+                    "B. Historian ",
+                    "C. National President ",
+                    "D. Ambassador President"
+                  ],
+                  "correct_answers": [
+                    "C. National President "
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Who manages the PGWS national calendar?",
+                  "question_type": "single",
+                  "answers": [
+                    "A. Membership Coordinator",
+                    " B. Secretary ",
+                    "C. Fundraising Chair ",
+                    "D. Chaplain"
+                  ],
+                  "correct_answers": [
+                    " B. Secretary "
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Where should leaders look up PGWS members?",
+                  "question_type": "single",
+                  "answers": [
+                    "A. Instagram ",
+                    "B. Google Sheets ",
+                    "C. Join It ",
+                    "D. Email"
+                  ],
+                  "correct_answers": [
+                    "C. Join It "
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Which role ensures brunches include beauty-themed and bonding elements?",
+                  "question_type": "single",
+                  "answers": [
+                    "A. Historian ",
+                    "B. Events & Brunch Advisor Chair ",
+                    "C. Community Service Chair ",
+                    "D. Secretary"
+                  ],
+                  "correct_answers": [
+                    "B. Events & Brunch Advisor Chair "
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Which two roles must collaborate closely for promotion?",
+                  "question_type": "single",
+                  "answers": [
+                    "A. Chaplain and Historian",
+                    " B. Secretary and Fundraising",
+                    " C. Ambassador President and Social Media & Branding Chair ",
+                    "D. Vice Presidents"
+                  ],
+                  "correct_answers": [
+                    " C. Ambassador President and Social Media & Branding Chair "
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Who oversees Bible studies and prayer?",
+                  "question_type": "single",
+                  "answers": [
+                    "A. Wellness Coordinator",
+                    " B. National President ",
+                    "C. Chaplain ",
+                    "D. Historian"
+                  ],
+                  "correct_answers": [
+                    "C. Chaplain "
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "64235266",
+          "title": "Equity, Presentation, Conduct & Accountability",
+          "sectionId": "12822509",
+          "position": 12,
+          "markdown": "# 12-lesson-64235266\n\nHow We Treat Each Other Matters\n\nPretty Girls Who Serve leadership is built on equity, respect, and professionalism.\n\nLeaders are expected to:\n\n\nTreat one another with respect at all times\nNever gossip about another leader or member\nAddress concerns privately and appropriately\nRepresent PGWS with maturity and grace\nPresentation matters. How you speak, act, and show up reflects PGWS and Esther Funds Foundation.\n\nThe Strike System & Accountability\n\nPGWS leadership operates under a strike system.\n\nA strike may be issued if:\n\n\nYou fail to complete assigned tasks\nYou miss meetings without communication\nYou do not meet deadlines\nYou are disrespectful, gossip, or act unprofessionally\nImportant:\n\n\nIf you cannot attend a meeting or meet a deadline, you must communicate in advance\nRepeated strikes may result in removal from leadership\n\nAccountability protects the sisterhood and ensures everyone is carrying their weight.\n",
+          "quizzes": [
+            {
+              "id": 2806531,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "Gossip about another leader is",
+                  "question_type": "single",
+                  "answers": [
+                    "A. Allowed if private ",
+                    "B. Acceptable if emotional ",
+                    "C. Not allowed under any circumstance ",
+                    "D. Handled publicly"
+                  ],
+                  "correct_answers": [
+                    "C. Not allowed under any circumstance "
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What happens if you miss meetings or tasks without communication?",
+                  "question_type": "single",
+                  "answers": [
+                    "A. Nothing ",
+                    "B. A warning only ",
+                    "C. A strike ",
+                    "D. Immediate promotion"
+                  ],
+                  "correct_answers": [
+                    "C. A strike "
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Why does PGWS use a strike system?",
+                  "question_type": "single",
+                  "answers": [
+                    "A. To punish leaders",
+                    " B. To create fear ",
+                    "C. To ensure accountability and fairness ",
+                    "D. To limit leadership"
+                  ],
+                  "correct_answers": [
+                    "C. To ensure accountability and fairness "
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "If you cannot meet a deadline, what should you do?",
+                  "question_type": "single",
+                  "answers": [
+                    "A. Ignore it ",
+                    "B. Wait until asked",
+                    " C. Communicate in advance",
+                    " D. Post in the group chat only"
+                  ],
+                  "correct_answers": [
+                    " C. Communicate in advance"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "64235283",
+          "title": "Final Reminder",
+          "sectionId": "12822509",
+          "position": 13,
+          "markdown": "# 13-lesson-64235283\n\nFINAL REMINDER: Leadership Standards & Decision-Making\n\nBefore you officially step into action, please remember these non-negotiable leadership practices for Pretty Girls Who Serve.\n\nMeeting Minutes Are Required\n\nAll PGWS National Executive Board meetings must have minutes taken.\n\nMinutes should clearly document:\nAttendance\nTopics discussed\nDecisions made\nAction items and deadlines\n\nMeeting minutes protect the sisterhood, keep leadership aligned, and ensure accountability. The Secretary is responsible for recording and maintaining these minutes, but all leaders are expected to review them.\n\nExecutive Board Voting Is Required\n\nBefore any event, initiative, or program is added to the PGWS calendar:\n\n\nThe idea must be discussed during an Executive Board meeting\nThe Executive Board must vote on the event or initiative\nOnly approved items may be adopted onto the national calendar\nVoting ensures shared ownership, fairness, and alignment across leadership.\n\nWhy This Matters\n\nThese practices:\n\n\nKeep PGWS organized and professional\nPrevent confusion or last-minute changes\nEnsure all leaders have a voice\nSupport national growth and sustainability\nLeadership is not just creativity. It’s structure, communication, and shared decision-making.\n",
+          "quizzes": [
+            {
+              "id": 2806532,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "Why are meeting minutes required for all PGWS National Executive Board meetings?",
+                  "question_type": "single",
+                  "answers": [
+                    "A. To post on social media",
+                    "B. To document decisions, action items, and maintain accountability",
+                    " C. To replace email communication ",
+                    "D. Only for fundraising purposes"
+                  ],
+                  "correct_answers": [
+                    "B. To document decisions, action items, and maintain accountability"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Before an event or initiative is added to the PGWS national calendar, what must happen?",
+                  "question_type": "single",
+                  "answers": [
+                    "A. The National President approves it alone ",
+                    "B. The idea is posted in the group chat ",
+                    "C. The Executive Board discusses and votes on it ",
+                    "D. The Social Media Chair promotes it"
+                  ],
+                  "correct_answers": [
+                    "C. The Executive Board discusses and votes on it "
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "64235277",
+          "title": "Next Steps — Let’s Get to Work, Pretty Girl",
+          "sectionId": "12822767",
+          "position": 1,
+          "markdown": "# 14-lesson-64235277\n\nYou did it. You’ve completed the Pretty Girls Who Serve National Leadership onboarding, and we are so excited to have you officially step into this sisterhood and leadership space.\n\nPretty Girls Who Serve is the official sisterhood branch of Esther Funds Foundation, and now it’s time to move from training into action.\n\nBelow are your immediate next steps as a PGWS National Executive Board leader.\n\n1. Attend Your First PGWS National Executive Board Meeting\n\nYour first official step is to join or host your first PGWS National Executive Board meeting.\n\nThis meeting sets the tone for:\n\n\nHow you work together as a team\nCommunication expectations\nPlanning priorities for the semester\nCome prepared, on time, and ready to collaborate.\n\n2. Build the PGWS Monthly & Semester Calendar\n\nAs a national team, you will:\n\n\nBuild the PGWS shared national calendar\n\nPlan monthly touchpoints\n\nRemember that PGWS must host at least one national workshop per semester\n\nThe shared calendar is essential. It keeps everyone aligned, avoids overlap, and helps PGWS scale smoothly.\n\n3. Plan Sisterhood Bonding Moments\n\nSisterhood does not have to be overwhelming to be effective.\n\nYour goal is to plan:\n\n\n2–3 intentional sisterhood bonding moments per semester\nThese can be virtual, relaxed, and welcoming\nFocus on connection, encouragement, and community\nQuality over quantity always.\n\n4. Strengthen PGWS Programming & Visibility\n\nPGWS leadership should focus on:\n\n\nBuilding women-centered initiatives\nCreating meaningful PGWS programming\nSupporting a strong and consistent PGWS social media presence\n\nThis includes sharing flyers, scriptures, sisterhood initiatives, and national moments that reflect PGWS values.\n\n5. Check In on Chapters With PGWS Programs\n\nOne of the most important parts of your role is chapter support.\n\nYou should:\n\n\nCheck in on chapters that already have PGWS programs\nOffer guidance, encouragement, and resources\nSupport chapters hosting PGWS brunches and initiatives\n6. Encourage Chapters to Adopt PGWS\n\nThe purpose of PGWS is to support chapter membership engagement and retention.\n\nEncourage chapters to adopt PGWS because:\n\n\nStrong sisterhood increases retention\nWomen stay involved when they feel connected\nPGWS gives chapters structured women-centered programming\nThis is how PGWS grows nationally and sustainably.\n\n7. Become an Official PGWS National Member\n\nIf you have not already done so:\n\n\nComplete your PGWS National Membership\n\nEnsure you are registered in Join It\n\nAll PGWS leaders are expected to be active national members.\n\n8. Order Your PGWS Apparel\n\nAll National Executive Board members should:\n\n\nPurchase their PGWS T-shirt\n\nPurchase their PGWS Executive Board polo\n\nThese are worn at meetings, events, and official PGWS moments. Presentation matters.\n\n9. Bond With Your Sisters\n\nTake time to:\n\n\nGet to know your fellow leaders\nBuild genuine connections\nSupport one another beyond tasks\nStrong leadership teams are built on trust and sisterhood\n\n10. Share the Sisterhood\n\nPGWS needs your gifts, creativity, and talent.\n\nHelp spread the sisterhood by:\n\n\nSharing PGWS initiatives\nInviting women into community\nShowing up fully in your role\nYou were chosen for a reason.\n",
+          "quizzes": [
+            {
+              "id": 2806534,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "After completing PGWS onboarding, which actions should you take first?",
+                  "question_type": "single",
+                  "answers": [
+                    "A. Plan a national fundraiser ",
+                    "B. Bond with other Executive Board members through an activity and host or join your first PGWS National Executive Board meeting",
+                    " C. Create a personal PGWS initiative ",
+                    "D. Order merchandise only"
+                  ],
+                  "correct_answers": [
+                    "B. Bond with other Executive Board members through an activity and host or join your first PGWS National Executive Board meeting"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What tool should the PGWS National Executive Board use to stay aligned and up to date?",
+                  "question_type": "single",
+                  "answers": [
+                    "A. Individual planners",
+                    " B. Group chat only ",
+                    "C. A shared PGWS national calendar ",
+                    "D. Social media"
+                  ],
+                  "correct_answers": [
+                    "C. A shared PGWS national calendar "
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "How often is PGWS required to host a national workshop?",
+                  "question_type": "single",
+                  "answers": [
+                    "A. Monthly ",
+                    "B. Once per year ",
+                    "C. Once per semester ",
+                    "D. Only when requested"
+                  ],
+                  "correct_answers": [
+                    "C. Once per semester "
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "How many sisterhood bonding moments should leadership aim to plan each semester?",
+                  "question_type": "single",
+                  "answers": [
+                    "A. Every week ",
+                    "B. One per month ",
+                    "C. Two to three per semester ",
+                    "D. Only during retreats"
+                  ],
+                  "correct_answers": [
+                    "C. Two to three per semester "
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "One of the main purposes of PGWS at the chapter level is to:",
+                  "question_type": "single",
+                  "answers": [
+                    "A. Replace chapter leadership ",
+                    "B. Increase social media followers only ",
+                    "C. Support membership engagement and retention ",
+                    "D. Focus only on brunches"
+                  ],
+                  "correct_answers": [
+                    "C. Support membership engagement and retention "
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What should PGWS leaders do regarding chapters that do not yet have a PGWS program?",
+                  "question_type": "single",
+                  "answers": [
+                    "A. Ignore them until next year ",
+                    "B. Encourage and support them in adopting the PGWS program",
+                    " C. Require them to join immediately ",
+                    "D. Post about them on social media"
+                  ],
+                  "correct_answers": [
+                    "B. Encourage and support them in adopting the PGWS program"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What must all PGWS National Executive Board members do if they have not already?",
+                  "question_type": "single",
+                  "answers": [
+                    "A. Create their own merchandise ",
+                    "B. Join PGWS National Membership and register in Join It ",
+                    "C. Open a new social media page ",
+                    "D. Host an event independently"
+                  ],
+                  "correct_answers": [
+                    "B. Join PGWS National Membership and register in Join It "
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Which items are National Executive Board members expected to purchase?",
+                  "question_type": "single",
+                  "answers": [
+                    "A. Only a PGWS T-shirt ",
+                    "B. Only a PGWS polo ",
+                    "C. A PGWS T-shirt and Executive Board polo",
+                    " D. Merchandise is optional"
+                  ],
+                  "correct_answers": [
+                    "C. A PGWS T-shirt and Executive Board polo"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Why is checking in with chapters that have PGWS programs important?",
+                  "question_type": "single",
+                  "answers": [
+                    "A. To monitor them ",
+                    "B. To replace their leadership ",
+                    "C. To support, encourage, and help strengthen their programming ",
+                    "D. Only to collect data"
+                  ],
+                  "correct_answers": [
+                    "C. To support, encourage, and help strengthen their programming "
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What is one way PGWS leaders are encouraged to help grow the sisterhood?",
+                  "question_type": "single",
+                  "answers": [
+                    "A. Keep PGWS exclusive ",
+                    "B. Share PGWS initiatives and invite women into community ",
+                    "C. Focus only on leadership tasks ",
+                    "D. Limit visibility"
+                  ],
+                  "correct_answers": [
+                    "B. Share PGWS initiatives and invite women into community "
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [],
+          "assets": [
+            {
+              "name": "Gemini_Generated_Image_janomjjanomjjano.png",
+              "kind": "image",
+              "url": "https://uploads.teachablecdn.com/attachments/5ca8fc99bfc34b84a2bbe744c3cc2f4e.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2998574",
+      "title": "Rooted: Prepare to Charter an EFF Chapter A Pre-Training Course for Chartering Presidents · Blossom & Impact Leadership Academy",
+      "description": "Before you build a chapter, you must become the leader who can carry it. Rooted is where that begins.\n\nThis pre-training course prepares Chartering Presidents to bring Esther Funds Foundation to their campus. It isn't about recruiting or events yet — it's about preparation, character, and leadership. You'll get to know EFF deeply, sharpen your \"why,\" grow into a servant leader who sets a healthy culture (not a power trip), define your chapter's mission and vision, and plan the chapter you're called to start.\n\nBy the end, you'll have completed your charter application and a guided Chapter Plan — your readiness proof for your interview with Nationals. We walk with you every step.\n\nBuild the roots first. Everything else grows from here. For such a time as this. Every Future Fulfilled. 🕊️\n\n",
+      "published": true,
+      "image": "https://uploads.teachablecdn.com/attachments/4835458d4cae4449b1a9ae66c450151a.png",
+      "modules": [
+        {
+          "id": "13223311",
+          "title": "Module 1: Prepare to Lead",
+          "position": 1
+        },
+        {
+          "id": "13224464",
+          "title": "MODULE 2 — What Is Esther Funds Foundation?",
+          "position": 2
+        },
+        {
+          "id": "13224469",
+          "title": "MODULE 3 — The Chapter Lifecycle",
+          "position": 3
+        },
+        {
+          "id": "13224472",
+          "title": "MODULE 4/5 — Your Why & Your Calling & Character & Leadership: Lead Without the Power Trip",
+          "position": 4
+        },
+        {
+          "id": "13226703",
+          "title": "MODULE 5/6-Character & Leadership: Lead Without the Power Trip & Leadership Building",
+          "position": 5
+        },
+        {
+          "id": "13226710",
+          "title": "MODULE 7/8— Define Your Chapter's Mission & Vision & Executive Board",
+          "position": 6
+        },
+        {
+          "id": "13226718",
+          "title": "Module 9/10-Ground Rules & Complete Your Charter Application & Next Steps",
+          "position": 7
+        },
+        {
+          "id": "13226726",
+          "title": "MODULE 11 — Capstone: Plan Your Chapter",
+          "position": 8
+        },
+        {
+          "id": "13226734",
+          "title": "PREPARING FOR YOUR INTERVIEW",
+          "position": 9
+        },
+        {
+          "id": "13226735",
+          "title": "CLOSING",
+          "position": 10
+        }
+      ],
+      "lessons": [
+        {
+          "id": "66197199",
+          "title": "👋 Before anything else — introduce yourself",
+          "sectionId": "13223311",
+          "position": 1,
+          "markdown": "# 01-lesson-66197199\n\n_Written content was not exposed in the API response. See lesson.json._\n",
+          "quizzes": [],
+          "activities": [
+            "open_response_question"
+          ],
+          "assets": []
+        },
+        {
+          "id": "66197209",
+          "title": "What this course actually is (and what it isn't)",
+          "sectionId": "13223311",
+          "position": 2,
+          "markdown": "# 02-lesson-66197209\n\nWhat Rooted is: a short prep course to get you ready — your character, your \"why,\" and your plan — before you ever recruit or launch. Build the foundation first; everything else grows from it.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "66197211",
+          "title": "How the course works",
+          "sectionId": "13223311",
+          "position": 3,
+          "markdown": "# 03-lesson-66197211\n\nHow the course works\n\nHow it works: move through the modules in order. Each has a short lesson and a quick quiz. Finish this course and your charter application before your interview.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "66197215",
+          "title": "The ground rules — and why they exist",
+          "sectionId": "13223311",
+          "position": 4,
+          "markdown": "# 04-lesson-66197215\n\nGround rules (right now): You're not official yet. ✅ DO: learn, grow, plan, complete your application, build interest with the approved flyer. 🚫 DON'T yet: recruit a board, host events, post graphics, collect money, or start socials/an email. (These protect you and EFF legally and reputationally.)\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "66197217",
+          "title": "The road ahead",
+          "sectionId": "13223311",
+          "position": 5,
+          "markdown": "# 05-lesson-66197217\n\nThe road: Apply → Rooted + Capstone → Interview → Approved → recruit board & advisor → register → set foundation → chartered\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "66200656",
+          "title": "Module 1: Prepare to Lead",
+          "sectionId": "13223311",
+          "position": 6,
+          "markdown": "# 06-lesson-66200656\n\nLeadership in EFF is stewardship, not status. A steward cares for something valuable that isn't theirs — and you're entrusted with students' well-being, real money, and a ministry's name. That means serving with humility, leading with integrity, empowering others, and owning your mistakes. Like Nehemiah, you became a leader the moment a broken thing became your burden to carry — not when you got a title. So we prepare before we build: you can't give what you don't have, and the chapter will become whatever you become first. Pray first, plan well, persevere always.\n",
+          "quizzes": [
+            {
+              "id": 2942857,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "What is the primary focus of the Rooted course?",
+                  "question_type": "single",
+                  "answers": [
+                    "Preparation, character-building, and leadership development",
+                    "Recruiting members for the chapter",
+                    "Hosting fundraising events",
+                    "Posting on social media"
+                  ],
+                  "correct_answers": [
+                    "Preparation, character-building, and leadership development"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "According to the guide, what should you complete before your interview?",
+                  "question_type": "single",
+                  "answers": [
+                    "Your charter application and Capstone Chapter Plan",
+                    "Recruit a full board and advisors",
+                    "Start social media accounts",
+                    "Host an event using the approved flyer"
+                  ],
+                  "correct_answers": [
+                    "Your charter application and Capstone Chapter Plan"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Which activities are NOT allowed before official approval?",
+                  "question_type": "single",
+                  "answers": [
+                    "Recruiting a board, hosting events, posting graphics, collecting money, starting socials or emails",
+                    "Learning, growing, planning, completing your application",
+                    "Building interest with an approved flyer",
+                    "Moving through course modules in order"
+                  ],
+                  "correct_answers": [
+                    "Recruiting a board, hosting events, posting graphics, collecting money, starting socials or emails"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What metaphor does the guide use to describe when leadership begins?",
+                  "question_type": "single",
+                  "answers": [
+                    "Leadership begins when a broken thing becomes your burden to carry",
+                    "Leadership starts with gaining a title",
+                    "Leadership begins after recruitment",
+                    "Leadership starts when events are hosted"
+                  ],
+                  "correct_answers": [
+                    "Leadership begins when a broken thing becomes your burden to carry"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Which best summarizes the road to becoming an approved EFF chapter?",
+                  "question_type": "single",
+                  "answers": [
+                    "Apply → Rooted + Capstone → Interview → Approved → recruit board & advisor → register → set foundation → chartered",
+                    "Recruit board → host events → collect money → post graphics → approved",
+                    "Complete socials → launch chapter → recruit members → collect funds",
+                    "Start fundraising → apply → get approval → build foundation"
+                  ],
+                  "correct_answers": [
+                    "Apply → Rooted + Capstone → Interview → Approved → recruit board & advisor → register → set foundation → chartered"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "According to the guide, what leadership qualities does EFF emphasize?",
+                  "question_type": "single",
+                  "answers": [
+                    "Stewardship, humility, integrity, empowerment, and owning mistakes",
+                    "Status, gaining power, commanding others, collecting money",
+                    "Marketing skills, social media expertise, event planning, fundraising",
+                    "Technical skills, fundraising experience, leadership through title"
+                  ],
+                  "correct_answers": [
+                    "Stewardship, humility, integrity, empowerment, and owning mistakes"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [
+            "open_response_question"
+          ],
+          "assets": [
+            {
+              "name": "COLLEGIATE_LEADERSHIP_TRAINING_Founders_Welcome_Guidepdf_6Fak_AbE.pdf",
+              "kind": "pdf_embed",
+              "url": "https://uploads.teachablecdn.com/attachments/b1dc99d670b6438d8526346470ef1879.pdf?Expires=1783876744&Signature=bdqvV8paAsEBu30IOWW-OIyt1hK6JZeJIRn20uhFyyH0GYCMYCwqyWfNoKY4NXOzUofQc8dOZ21TBXagfO-9mqHS3xCHufla93z9c8VlfdFCFGfj1UcHuRQQD-0wNBGgjQYNHqsLeSqz60ibX30WVh6T~xwF2W3vb5Q6~zh5llYwCUyxJp0wZjcNA0NaQkDw~LqFigfCrnVjMiUS7lERabHECWWMazxCLqFmX5APBJIyUVHeMuEsG3-FtmZyTyrOFatY37oqoeFNg5KgRll-Lgb4K1wJpiAwISvgKxQZcKYjzuv5O24zlFktNfzdBxb1Wsredeyu3V94dk~vZnJBTg__&Key-Pair-Id=K1P55R7QWDGXRN"
+            }
+          ]
+        },
+        {
+          "id": "66200752",
+          "title": "What Is Esther Funds Foundation?",
+          "sectionId": "13224464",
+          "position": 1,
+          "markdown": "# 07-lesson-66200752\n\nEFF is a Christ-centered nonprofit that prevents college dropouts among minority, first-gen, and low-income students — founded Jan 23, 2024 by Shayna Vincent, who dropped out twice before finishing. Here's the key: students rarely drop out from lack of ability. They drop out because life hits a gap — money, housing, mental health, no roadmap — at a moment no one's there to catch them. Your chapter is that net. EFF runs on 4 pillars (Chapter Expansion, Scholarships, Faith-Based Support, Advocacy) and initiatives like the R.E.A.C.H. Project (replaced James Pillar), Esther's Light, and the Lift Fund, plus two branches (Black Girls Read and Rise; Pretty Girls Who Serve). A collegiate chapter is the student-led local arm of EFF on a campus — not an independent club. Everything a chapter does has one purpose: keeping a student in school.\n",
+          "quizzes": [
+            {
+              "id": 2942859,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "What is the primary mission of EFF?",
+                  "question_type": "single",
+                  "answers": [
+                    "Prevent college dropouts among minority, first-gen, and low-income students",
+                    "Provide housing for homeless college students",
+                    "Offer free tutoring services",
+                    "Fund college sports programs"
+                  ],
+                  "correct_answers": [
+                    "Prevent college dropouts among minority, first-gen, and low-income students"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Who founded EFF and when?",
+                  "question_type": "single",
+                  "answers": [
+                    "Shayna Vincent, January 23, 2024",
+                    "John Smith, January 1, 2023",
+                    "Shayna Vincent, December 31, 2023",
+                    "Maria Lopez, February 14, 2024"
+                  ],
+                  "correct_answers": [
+                    "Shayna Vincent, January 23, 2024"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "According to EFF, why do students rarely drop out of college?",
+                  "question_type": "single",
+                  "answers": [
+                    "They lack the ability",
+                    "They face life challenges with no support at critical moments",
+                    "Colleges don't offer enough courses",
+                    "They have poor study habits"
+                  ],
+                  "correct_answers": [
+                    "They face life challenges with no support at critical moments"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Which of the following is NOT one of the four pillars EFF runs on?",
+                  "question_type": "single",
+                  "answers": [
+                    "Chapter Expansion",
+                    "Scholarships",
+                    "Sports Programs",
+                    "Faith-Based Support"
+                  ],
+                  "correct_answers": [
+                    "Sports Programs"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What is a collegiate chapter in the context of EFF?",
+                  "question_type": "single",
+                  "answers": [
+                    "An independent campus club",
+                    "A student-led local arm of EFF on a campus",
+                    "A scholarship program",
+                    "A national fundraising event"
+                  ],
+                  "correct_answers": [
+                    "A student-led local arm of EFF on a campus"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Name two branches of EFF.",
+                  "question_type": "single",
+                  "answers": [
+                    "Black Girls Read and Rise; Pretty Girls Who Serve",
+                    "R. E. A. C. H. Project; Esther's Light",
+                    "Chapter Expansion; Lift Fund",
+                    "Scholarships; Advocacy"
+                  ],
+                  "correct_answers": [
+                    "Black Girls Read and Rise; Pretty Girls Who Serve"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [
+            "open_response_question"
+          ],
+          "assets": []
+        },
+        {
+          "id": "66200765",
+          "title": "MODULE 3 — The Chapter Lifecycle",
+          "sectionId": "13224469",
+          "position": 1,
+          "markdown": "# 08-lesson-66200765\n\nEvery healthy chapter moves through the same repeating cycle, so nothing surprises you: Charter & Launch → Recruit & Onboard → Operate → Serve the Mission → Stay Compliant → Grow & Sustain → Transition. It's a cycle, not a line — officer terms are one year, so leadership hands off and the cycle renews. Your job isn't just to run the chapter this year; it's to build something strong enough to be passed on and outlive you.\n",
+          "quizzes": [
+            {
+              "id": 2942860,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "What is the first stage in the healthy chapter cycle?",
+                  "question_type": "single",
+                  "answers": [
+                    "Recruit & Onboard",
+                    "Charter & Launch",
+                    "Operate",
+                    "Serve the Mission"
+                  ],
+                  "correct_answers": [
+                    "Charter & Launch"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "How long are officer terms in a healthy chapter?",
+                  "question_type": "single",
+                  "answers": [
+                    "Six months",
+                    "Two years",
+                    "One year",
+                    "Three years"
+                  ],
+                  "correct_answers": [
+                    "One year"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What is the purpose of the cycle being repeated annually?",
+                  "question_type": "single",
+                  "answers": [
+                    "To surprise the members",
+                    "To hand off leadership and renew the cycle",
+                    "To change the mission every year",
+                    "To disband and restart the chapter"
+                  ],
+                  "correct_answers": [
+                    "To hand off leadership and renew the cycle"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Which stage comes immediately after 'Operate' in the chapter cycle?",
+                  "question_type": "single",
+                  "answers": [
+                    "Recruit & Onboard",
+                    "Transition",
+                    "Serve the Mission",
+                    "Grow & Sustain"
+                  ],
+                  "correct_answers": [
+                    "Serve the Mission"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What is a key responsibility of chapter leaders during their term?",
+                  "question_type": "single",
+                  "answers": [
+                    "To run the chapter for this year only",
+                    "To create a new cycle from scratch",
+                    "To build something strong enough to be passed on and outlive them",
+                    "To change officer terms to two years"
+                  ],
+                  "correct_answers": [
+                    "To build something strong enough to be passed on and outlive them"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "How should the cycle of a healthy chapter be viewed?",
+                  "question_type": "single",
+                  "answers": [
+                    "As a straight line",
+                    "As a one-time process",
+                    "As a repeating cycle",
+                    "As a random sequence"
+                  ],
+                  "correct_answers": [
+                    "As a repeating cycle"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "66200770",
+          "title": "Your Why & Your Calling",
+          "sectionId": "13224472",
+          "position": 1,
+          "markdown": "# 09-lesson-66200770\n\nMotivation runs out; a clear \"why\" doesn't. People follow conviction, not titles — so before you lead anyone, get honest about why you're doing this. Count the cost now (time, energy, hard conversations) so you don't quit halfway. And remember: your own struggles are your fuel and your credibility. \"Who knows but that you have come to your position for such a time as this?\" (Esther 4:14).\n",
+          "quizzes": [],
+          "activities": [
+            "open_response_question"
+          ],
+          "assets": []
+        },
+        {
+          "id": "66200801",
+          "title": "Character & Leadership: Lead Without the Power Trip",
+          "sectionId": "13224472",
+          "position": 2,
+          "markdown": "# 10-lesson-66200801\n\nThe #1 thing that destroys chapters is a leader on a power trip — using authority to serve themselves. In a volunteer community held together only by trust, ego dissolves the glue and people leave. So flip it: authority is for serving, not controlling. Watch the warning signs in yourself (deciding alone, needing credit, favoritism, defensiveness). Remember: your character becomes the culture — people copy what you model. And consult, don't command — shared decisions are better decisions and build a team that will run through walls for you.\n",
+          "quizzes": [],
+          "activities": [
+            "open_response_question"
+          ],
+          "assets": [
+            {
+              "name": "COLLEGIATE_LEADERSHIP_TRAINING_Chapter_Culture_Blueprintpdf_jQUtqfDA.pdf",
+              "kind": "pdf_embed",
+              "url": "https://uploads.teachablecdn.com/attachments/c02c6bc609d74a7fab9ccf1ff4d95d3c.pdf?Expires=1783876745&Signature=ne-g1c3K0MrTQjtoX40vkdQG2RbKlUFQ7kX5uRkgpQnJZcVIGMfhp4abnKFV79TvWQeKKosrwxwphdpDKG5wdB4xPkobxZaQ2gRLlgONuDIUjh4OWg97ah0AsqwVLIMQupoLOWA3b9beOW9Nbxj4rbimSdZQUmqyp02OuXQkRuvpjH3Vp9I-fUQd0wussR7BMEBnz0HE8JNIRRi~B~9KgCcA0TCCenVGNtlXe6XRO1J6mdwea8DlehxhxCe-F1UWibJ5HK~1FsBNGvGZKDOxBVscGbwqDnSPFktPv-lxxXRMsJnP-m-d-qZht9pqDpefaRthwqxh4JvuyQ8fxmfixA__&Key-Pair-Id=K1P55R7QWDGXRN"
+            }
+          ]
+        },
+        {
+          "id": "66200850",
+          "title": "Quiz",
+          "sectionId": "13224472",
+          "position": 3,
+          "markdown": "# 11-lesson-66200850\n\n_Written content was not exposed in the API response. See lesson.json._\n",
+          "quizzes": [
+            {
+              "id": 2942864,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "According to the text, what is the primary motivation that sustains leadership?",
+                  "question_type": "single",
+                  "answers": [
+                    "A clear why or conviction",
+                    "A formal title or position",
+                    "Power and authority",
+                    "External rewards"
+                  ],
+                  "correct_answers": [
+                    "A clear why or conviction"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What is described as the #1 thing that destroys chapters?",
+                  "question_type": "single",
+                  "answers": [
+                    "A leader on a power trip",
+                    "Lack of communication",
+                    "Insufficient resources",
+                    "Poor meeting structure"
+                  ],
+                  "correct_answers": [
+                    "A leader on a power trip"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "In the comparison between Healthy Leadership and The Power Trip, which behavior belongs to a Healthy Leader?",
+                  "question_type": "single",
+                  "answers": [
+                    "Decides alone",
+                    "Shares credit and celebrates the team's wins",
+                    "Needs credit for others' work",
+                    "Plays favorites"
+                  ],
+                  "correct_answers": [
+                    "Shares credit and celebrates the team's wins"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "According to the Culture Blueprint, how should a leader handle conflict?",
+                  "question_type": "single",
+                  "answers": [
+                    "Address issues one-on-one first, privately, with grace",
+                    "Bring all issues to a public team meeting",
+                    "Ignore conflicts until they escalate",
+                    "Assign blame quickly to resolve issues"
+                  ],
+                  "correct_answers": [
+                    "Address issues one-on-one first, privately, with grace"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What does the text say about the relationship between a leader's character and chapter culture?",
+                  "question_type": "single",
+                  "answers": [
+                    "The culture reflects the character of its leader",
+                    "The culture is independent of the leader's character",
+                    "Only team members influence culture",
+                    "Culture is set by external rules"
+                  ],
+                  "correct_answers": [
+                    "The culture reflects the character of its leader"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "How does the text suggest leaders should view their authority?",
+                  "question_type": "single",
+                  "answers": [
+                    "Authority is for serving, not controlling",
+                    "Authority is to control and decide alone",
+                    "Authority means having the final say",
+                    "Authority is primarily a symbol of power"
+                  ],
+                  "correct_answers": [
+                    "Authority is for serving, not controlling"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "66211649",
+          "title": "Character & Leadership: Lead Without the Power Trip",
+          "sectionId": "13226703",
+          "position": 1,
+          "markdown": "# 12-lesson-66211649\n\nThe #1 thing that destroys chapters is a leader on a power trip — using authority to serve themselves. In a volunteer community held together only by trust, ego dissolves the glue and people leave. So flip it: authority is for serving, not controlling. Watch the warning signs in yourself (deciding alone, needing credit, favoritism, defensiveness). Remember: your character becomes the culture — people copy what you model. And consult, don't command — shared decisions are better decisions and build a team that will run through walls for you.\n",
+          "quizzes": [],
+          "activities": [
+            "open_response_question"
+          ],
+          "assets": [
+            {
+              "name": "COLLEGIATE_LEADERSHIP_TRAINING_Chapter_Culture_Blueprintpdf_jQUtqfDA (1).pdf",
+              "kind": "pdf_embed",
+              "url": "https://uploads.teachablecdn.com/attachments/b7497821b6894d459279045a3104a151.pdf?Expires=1783876746&Signature=rwo~n4rhGiOBQQwK4JTpxNDaSJP46T7Lpubhd2uYMLcaG2hfsMDlu0BUxrpW3VXv5dnweTCfK5uchzID-KVYfSE6s6ttCjuGw1HfE~SWFWKUNC0XbtBc1MrQWUqdvQ0C3fUyyTy0n8G8k02z8O3K0Kd-XkUzHvGdGJ7b5uF2d3nCIq9XyxAlBFg-uR7ZGy3EnVrEf43BrOk2LEtcsfOxK51SUmDOzI7CJESpbLsHAc2eE1-CjFeINXoTDm550R83-9MKX8XoxNigToHVWd0i2jLGGgqR23V5u88lts9NoyzPU34JHNGkB8qhWTOsys2BzW9a48HLCqt00hr0gs0bLA__&Key-Pair-Id=K1P55R7QWDGXRN"
+            },
+            {
+              "name": "COLLEGIATE_LEADERSHIP_TRAINING_Chapter_Culture_Blueprintpdf_jQUtqfDA (1).pdf",
+              "kind": "pdf_embed",
+              "url": "https://uploads.teachablecdn.com/attachments/a3f420887e4e4f9ca873ad21d41bd35c.pdf?Expires=1783876746&Signature=iiYBi~lsRefifGpB-oc-CTkIPbiv1jVvNSwYoyytT~51naFE4t4KYrHDbumBwJK03F~4c~pj7NOrzFgJZmeTF2yrRjjBVS-HeJh5x1S0IOxiGweGnPHvPEkvWCWsdRtYLhCuILNIZ9mFyO0hmwnHOCtSvvbuTQ5sGLQV8-XWEHOtkQk835w3BQ-EYr5IeVcgHutmukunZ1nMbiJlpP843kX3RmJQQwRU~k2MYlUI1LWVtSAbSOCMdrf561KvOmRaQpsKvGghSqlWQ4WsqlEJ0WrujFSisQIKV8RQQ4zThH3fyxNEXFugYROTS9Gr-u3Hc9-vQpIEUZOJjdD7ti-kAA__&Key-Pair-Id=K1P55R7QWDGXRN"
+            }
+          ]
+        },
+        {
+          "id": "66211653",
+          "title": "Leadership Building",
+          "sectionId": "13226703",
+          "position": 2,
+          "markdown": "# 13-lesson-66211653\n\nLeaders are built, not born — leadership is a set of skills you grow, not a personality you're stuck with. Commit to growing in: communication (listen more than you talk), delegation (entrust real responsibility), time management, conflict resolution (go directly & privately — Matthew 18), emotional intelligence, vision-casting, developing others, and teachability (the master skill — stay coachable). You don't have to master these yet; you just have to keep growing. Your chapter will never rise higher than your leadership.\n",
+          "quizzes": [],
+          "activities": [
+            "open_response_question"
+          ],
+          "assets": []
+        },
+        {
+          "id": "66211657",
+          "title": "Quiz",
+          "sectionId": "13226703",
+          "position": 3,
+          "markdown": "# 14-lesson-66211657\n\n_Written content was not exposed in the API response. See lesson.json._\n",
+          "quizzes": [
+            {
+              "id": 2943937,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "According to the Chapter Culture Blueprint, what is the primary purpose of authority in leadership?",
+                  "question_type": "single",
+                  "answers": [
+                    "Serving others",
+                    "Controlling others",
+                    "Gaining personal power",
+                    "Making decisions alone"
+                  ],
+                  "correct_answers": [
+                    "Serving others"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Which leadership behavior is associated with healthy leadership rather than a power trip?",
+                  "question_type": "single",
+                  "answers": [
+                    "Decides alone",
+                    "Shares credit",
+                    "Plays favorites",
+                    "Deflects blame"
+                  ],
+                  "correct_answers": [
+                    "Shares credit"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What is the recommended way to handle conflict within the chapter as per the blueprint?",
+                  "question_type": "single",
+                  "answers": [
+                    "Discuss publicly during meetings",
+                    "Address issues privately and directly 1-on-1",
+                    "Ignore conflicts to avoid drama",
+                    "Escalate issues immediately to the whole team"
+                  ],
+                  "correct_answers": [
+                    "Address issues privately and directly 1-on-1"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "In the context of leadership, what does the phrase 'Culture is caught, not just taught' imply?",
+                  "question_type": "single",
+                  "answers": [
+                    "Members learn culture by watching leaders' actions",
+                    "Culture should be explicitly taught through training",
+                    "Culture is irrelevant if leadership is strong",
+                    "Culture emerges without leader influence"
+                  ],
+                  "correct_answers": [
+                    "Members learn culture by watching leaders' actions"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Which of the following is NOT a trait of a leader on a power trip?",
+                  "question_type": "single",
+                  "answers": [
+                    "Consults the board before deciding",
+                    "Needs credit for others' work",
+                    "Secretive communication",
+                    "Plays favorites"
+                  ],
+                  "correct_answers": [
+                    "Consults the board before deciding"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What skill is described as the 'master skill' in leadership growth?",
+                  "question_type": "single",
+                  "answers": [
+                    "Teachability",
+                    "Conflict resolution",
+                    "Delegation",
+                    "Time management"
+                  ],
+                  "correct_answers": [
+                    "Teachability"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "66211663",
+          "title": "Define Your Chapter's Mission & Vision",
+          "sectionId": "13226710",
+          "position": 1,
+          "markdown": "# 15-lesson-66211663\n\nMission = what you do now; Vision = where you're going. They're not a box to check — they're the tool you'll use every week to decide what's worth your time and to keep the chapter from drifting into a purposeless social club. Write them down (a feeling in your head can't align a board or filter a decision). Make your mission flow from EFF's (dropout prevention through faith + support) and root it in your campus's real needs and real students. Aim for clear and true, not fancy.\n",
+          "quizzes": [],
+          "activities": [
+            "open_response_question"
+          ],
+          "assets": [
+            {
+              "name": "COLLEGIATE_LEADERSHIP_TRAINING_Chapter_Vision_and_Mission_Worksheetpdf_LF2TcUsh.pdf",
+              "kind": "pdf_embed",
+              "url": "https://uploads.teachablecdn.com/attachments/c4390cc672f84413ad4dee50af6c59a6.pdf?Expires=1783876747&Signature=WjV-w5vcT0L6EvLJaIEbKA4aqVhbs2HHEiWSDuAHoFQNF57gqkPfILIKjC4ud~ut5fQUXNG0Z7ttPbLEjMk~FSR~ip1AN~XwiSKQ5v-aPQZMJFCddbjYVDHNfV2-LxWp3IdtAjpYkGJWSzssjB4b-Hr5d5kOoo6YFmiA3HoMreDDKErjXcrqjoP5RHih87S04MvzVzEcbIu8aLETdYkggKUkF1FlLEN5bpIegXWO61VYkGvC-S7IwdTWpJDPokQrzRY6E216nzM1qCHt0OP3Q9HVvF0H~lkrqw9by8ksVqqH708PqEuXo5CJ0erpfRSriMEZREocP1cJ4rrYth4q7Q__&Key-Pair-Id=K1P55R7QWDGXRN"
+            }
+          ]
+        },
+        {
+          "id": "66211665",
+          "title": "Know & Choose a Strong Board",
+          "sectionId": "13226710",
+          "position": 2,
+          "markdown": "# 16-lesson-66211665\n\nYour biggest decision is who's on your board — and most leaders fail by picking friends. Choose on character and role-fit, not friendship, because a friend who underperforms endangers both the role and the friendship, and you can't easily remove people once they're on. Match the right person to the right role (a disorganized friend isn't your Treasurer). Know the 11 roles, watch red flags (in it for the title, gossips, can't take feedback, unreliable), and avoid cliques. Choose carefully up front — it saves a semester of drama.\n",
+          "quizzes": [],
+          "activities": [
+            "open_response_question"
+          ],
+          "assets": [
+            {
+              "name": "COLLEGIATE_LEADERSHIP_TRAINING_Executive_Board_Roles_Guidepdf_I4_VeXsh.pdf",
+              "kind": "pdf_embed",
+              "url": "https://uploads.teachablecdn.com/attachments/5b92ac39d0114bce8fb21c33e59a8512.pdf?Expires=1783876747&Signature=rRgp7OK8m9ybPQ1Toa1RlzfMXYGQO-3FiVimjVkMpgK~ieoy82VE8zIMuf8jI3H1sAJbA7qbT7QfddrkqlfRr6akk4BfZElBinPfOkzNSHGiGmUm~udVj6y3AqYuj66POCpCrC2zjBHZCP-QEFd2H-9mIzkHA5pn37VT-MB9GoIZaD7csaBIQ-AXMOgKXBI1Tr~k1XMF5HQwlYqPVezV1t2im1WTduFtSWXYLyiLlMKN461tWtOaBenvrv5Nk9r8XubMWqrZEUDvN-8dK6Co84hjSPgu-64dI-syE1voK1jCynCDYehMKecUQuMCUxBobgyWCxDiNXG5Qqtowzt7OQ__&Key-Pair-Id=K1P55R7QWDGXRN"
+            },
+            {
+              "name": "COLLEGIATE_LEADERSHIP_TRAINING_Board_Selection_Scorecardpdf_yFLD6f2Z.pdf",
+              "kind": "pdf_embed",
+              "url": "https://uploads.teachablecdn.com/attachments/32463a8052f24f3691871f7357fb4c93.pdf?Expires=1783876747&Signature=aahMN3YAuRUZp07iMS1PrPzqOQxn7mqc1rs8hRPHTgoG9iw9ZgrTlgWwr~My5kS85YAAPX1SDIG~AsndzOeqLi9-NRfjqdhcS-bPeYgRS9OJI2adUrg1BQtND4n0e~ohPV~03VOIAzRuPknzfuzi2GH2I2rI2bPCkBV59MML~2lvgT1LWYOhP7OVZJMBaBHTpxD7Tt-zZizACPKQDWcWXJOUL3wPWxupP5pd7kEQNgND~T06zWfQSJtjToMKbThkyRSH5M9pTMB0BtIwhiSP-Q2Z-ZZtAiC04W~Em8DT4vXLXKj74iTze1L6NcaZLt7unkmwJnlwd-Ak9nyNUDiBKw__&Key-Pair-Id=K1P55R7QWDGXRN"
+            },
+            {
+              "name": "COLLEGIATE_LEADERSHIP_TRAINING_Executive_Board_Applicationpdf_CJLr0frX.pdf",
+              "kind": "pdf_embed",
+              "url": "https://uploads.teachablecdn.com/attachments/dc7f99e50b6d4644bfe35f772189db56.pdf?Expires=1783876747&Signature=hD-f-OYRW7a0ch6--42RYl5k1pvvoPQOUci5z-HnwXpN6FAQYfJWfgzTy2DDB4k8dYLF0hfADy1Rq7Gv6g3xt5WJq~aBDND9zO~JYi-~lj~CSOirHqfyzHAR17vR-D9ZlAcNoDGSYqLkEza7MvaAaJeh00jjUn4Py98zCJHRHlfNbkYeFUS~~IN8SeL1fHEDGz6kx6X7mhvlfQ6hPlR~xXDwiHq-t6MSST8t2VxjvPgTJqjFe8RVUXjovvXo2DYE7GMCBmpGhiGIb1Nq89C6hhy5heq0i5RU~h8X6mxcB8-2qKwONvy3-ZbA1WvKadaIq7ygGWXqeEq1qvjGdcpyUg__&Key-Pair-Id=K1P55R7QWDGXRN"
+            }
+          ]
+        },
+        {
+          "id": "66211667",
+          "title": "Quiz",
+          "sectionId": "13226710",
+          "position": 3,
+          "markdown": "# 17-lesson-66211667\n\n_Written content was not exposed in the API response. See lesson.json._\n",
+          "quizzes": [
+            {
+              "id": 2943948,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "What is the primary difference between Mission and Vision for an EFF chapter?",
+                  "question_type": "single",
+                  "answers": [
+                    "Mission is what you do now; Vision is where you're going",
+                    "Mission is a fancy statement; Vision is a checklist",
+                    "Mission is the long-term goal; Vision is daily tasks",
+                    "Mission is the social aspect; Vision is the community"
+                  ],
+                  "correct_answers": [
+                    "Mission is what you do now; Vision is where you're going"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Which of the following is NOT a recommended factor when selecting executive board members for an EFF chapter?",
+                  "question_type": "single",
+                  "answers": [
+                    "Character and role-fit",
+                    "Picking friends based on friendship",
+                    "Reliability and follow-through",
+                    "Faith and mission fit"
+                  ],
+                  "correct_answers": [
+                    "Picking friends based on friendship"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What is a key responsibility of the Treasurer/Financial Officer in an EFF chapter?",
+                  "question_type": "single",
+                  "answers": [
+                    "Maintaining chapter meeting minutes",
+                    "Managing all chapter finances and ensuring compliance",
+                    "Developing social media content",
+                    "Leading spiritual life and faith integration"
+                  ],
+                  "correct_answers": [
+                    "Managing all chapter finances and ensuring compliance"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Which red flag indicates a potential problem when choosing board members?",
+                  "question_type": "single",
+                  "answers": [
+                    "Strong alignment with EFF's mission",
+                    "Motivated primarily by title or status",
+                    "Good academic standing",
+                    "Being teachable and coachable"
+                  ],
+                  "correct_answers": [
+                    "Motivated primarily by title or status"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What role does the Chaplain/Director of Collegiate Ministry serve in an EFF chapter?",
+                  "question_type": "single",
+                  "answers": [
+                    "Managing chapter records and archives",
+                    "Leading the chapter's spiritual life and faith-based events",
+                    "Organizing fundraising campaigns",
+                    "Overseeing member recruitment"
+                  ],
+                  "correct_answers": [
+                    "Leading the chapter's spiritual life and faith-based events"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "According to the Board Selection Scorecard, what total score range indicates a candidate is a 'Strong fit' for a board position?",
+                  "question_type": "single",
+                  "answers": [
+                    "25-30 points",
+                    "18-24 points",
+                    "Below 18 points",
+                    "15-20 points"
+                  ],
+                  "correct_answers": [
+                    "25-30 points"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "66211683",
+          "title": "Ground Rules & Complete Your Charter Application",
+          "sectionId": "13226718",
+          "position": 1,
+          "markdown": "# 18-lesson-66211683\n\nDiscipline protects the mission. Every \"don't do this yet\" rule exists because a past chapter learned it the hard way — acting official before you are creates real legal, financial, and reputational risk. The order never changes: application → course → interview → approval → then build. Honoring the rules when it's inconvenient is exactly what shows you can be trusted with a chapter. Complete your charter application (fully and honestly) before your interview.\n\nRooted prepares you. Once approved and chartered, you and your whole board complete the Core Course, which covers how to actually run a chapter: the 2026 Bylaws & Code of Conduct, governance & chain of command, the accountability systems (15-point & 3-strike), financial integrity with Mercury, compliance & good standing, membership & recruitment, events & R.E.A.C.H., and brand standards. You don't have to know it yet — get here, get approved, and we'll fully equip you.\n",
+          "quizzes": [
+            {
+              "id": 2943954,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "What is the correct order of steps before building a chapter?",
+                  "question_type": "single",
+                  "answers": [
+                    "Interview → Application → Course → Approval → Build",
+                    "Application → Course → Interview → Approval → Build",
+                    "Course → Interview → Approval → Application → Build",
+                    "Approval → Application → Interview → Course → Build"
+                  ],
+                  "correct_answers": [
+                    "Application → Course → Interview → Approval → Build"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Why do 'don't do this yet' rules exist?",
+                  "question_type": "single",
+                  "answers": [
+                    "To make the process longer",
+                    "Because past chapters learned the hard way about risks",
+                    "To confuse applicants",
+                    "To reduce the number of chapters"
+                  ],
+                  "correct_answers": [
+                    "Because past chapters learned the hard way about risks"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What should you complete fully and honestly before your interview?",
+                  "question_type": "single",
+                  "answers": [
+                    "The Core Course",
+                    "The charter application",
+                    "The financial integrity check",
+                    "The 15-point accountability system"
+                  ],
+                  "correct_answers": [
+                    "The charter application"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What does the Core Course cover after your chapter is approved?",
+                  "question_type": "single",
+                  "answers": [
+                    "Only event planning and brand standards",
+                    "Legal, financial, and reputational risks only",
+                    "All aspects of running a chapter including governance, accountability, and recruitment",
+                    "Just how to do interviews"
+                  ],
+                  "correct_answers": [
+                    "All aspects of running a chapter including governance, accountability, and recruitment"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Which of the following is part of the Core Course topics?",
+                  "question_type": "single",
+                  "answers": [
+                    "Running the 2026 Bylaws & Code of Conduct",
+                    "Setting financial prices for members",
+                    "Writing the charter application",
+                    "Selecting board members"
+                  ],
+                  "correct_answers": [
+                    "Running the 2026 Bylaws & Code of Conduct"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What shows you can be trusted with a chapter?",
+                  "question_type": "single",
+                  "answers": [
+                    "Honoring the rules when inconvenient",
+                    "Skipping steps to save time",
+                    "Doing the interview before application",
+                    "Ignoring the accountability systems"
+                  ],
+                  "correct_answers": [
+                    "Honoring the rules when inconvenient"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "66211703",
+          "title": "Capstone: Plan Your Chapter",
+          "sectionId": "13226726",
+          "position": 1,
+          "markdown": "# 19-lesson-66211703\n\nEverything comes together in your Chapter Plan — a plan turns a wish into a strategy and is your readiness proof for the interview. It pulls together your why, mission & vision, culture statement, target board, a first-year snapshot, and a few mission-aligned event ideas. We help you build it — aim for clear and honest, not perfect. \n\n\n\n\n📎 Capstone Chapter Plan Template\n",
+          "quizzes": [
+            {
+              "id": 2943961,
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "What is the primary purpose of the Chapter Plan in the ROOTED Program?",
+                  "question_type": "single",
+                  "answers": [
+                    "To turn a wish into a strategy and show readiness for the interview",
+                    "To serve as a financial report for the chapter",
+                    "To replace the chapter's mission and vision statements",
+                    "To document only the goals for the spring semester"
+                  ],
+                  "correct_answers": [
+                    "To turn a wish into a strategy and show readiness for the interview"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "Which of the following is NOT a required component to include in the Chapter Plan?",
+                  "question_type": "single",
+                  "answers": [
+                    "Chapter Mission Statement",
+                    "First-Year Snapshot goals",
+                    "List of targeted executive board roles",
+                    "Detailed budget report"
+                  ],
+                  "correct_answers": [
+                    "Detailed budget report"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "How many officer roles plus advisor must be listed for full standing in the Target Executive Board?",
+                  "question_type": "single",
+                  "answers": [
+                    "11 officer roles plus Advisor",
+                    "Only 5 officer roles",
+                    "7 officer roles without Advisor",
+                    "No specific number required"
+                  ],
+                  "correct_answers": [
+                    "11 officer roles plus Advisor"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What type of event ideas are suggested to include in the Chapter Plan?",
+                  "question_type": "single",
+                  "answers": [
+                    "Mission-aligned events like tutoring sessions, resource fairs, and mentorship mixers",
+                    "Only social events like parties and celebrations",
+                    "Fundraising events unrelated to the mission",
+                    "Events focusing solely on sports activities"
+                  ],
+                  "correct_answers": [
+                    "Mission-aligned events like tutoring sessions, resource fairs, and mentorship mixers"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What should the 'My Why' section in the Chapter Plan contain?",
+                  "question_type": "single",
+                  "answers": [
+                    "Your personal story and motivation for starting the chapter",
+                    "A list of fundraising targets",
+                    "The chapter's financial statements",
+                    "Only the chapter's vision statement"
+                  ],
+                  "correct_answers": [
+                    "Your personal story and motivation for starting the chapter"
+                  ],
+                  "graded": true
+                },
+                {
+                  "question": "What kind of support can be requested from Nationals in the Chapter Plan?",
+                  "question_type": "single",
+                  "answers": [
+                    "Training, resources, connections, mentorship, materials",
+                    "Only financial funding",
+                    "Marketing advice exclusively",
+                    "No support; the chapter must be independent"
+                  ],
+                  "correct_answers": [
+                    "Training, resources, connections, mentorship, materials"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [],
+          "assets": [
+            {
+              "name": "COLLEGIATE_LEADERSHIP_TRAINING_Capstone_Chapter_Plan_Templatepdf_jeCQ-w1V.pdf",
+              "kind": "pdf_embed",
+              "url": "https://uploads.teachablecdn.com/attachments/d8730b6ac0f74baeb73f919560465d72.pdf?Expires=1783876748&Signature=H~9mLOV9pC1bDXsCNuE4ykmmXHWq1WLx9nVBJR5tMNMYb6aBvK3u7~xT0xVMPNhe7akjL3eonHwbZfVjr4a~g5288zplpBFQlj4jE0~gwN~P0661VcTny418QqLbnrRUu2W7aCvZ2CG1yyYEKAYM6FvF90HSICQGtBHrbeMS2-J1Jj~N5XK-m5mGSZqsyBQmIEZIF5SQekiBrMwC70t-FVJT0Ga76czf8EGl867AzoYan3kC7mQWyNjWEqX7Y-DuTiWxnR5HyqIx0eqJAE-lAjQgAknmo0tu30CdcI7WJi7mVQPrrTp7Edihwzy5sl58HYHdMPN-oqzbw9XVhAtcfA__&Key-Pair-Id=K1P55R7QWDGXRN"
+            }
+          ]
+        },
+        {
+          "id": "66211737",
+          "title": "PREPARING FOR YOUR INTERVIEW",
+          "sectionId": "13226734",
+          "position": 1,
+          "markdown": "# 20-lesson-66211737\n\nIt's a warm 30–45 min conversation, not a test. Bring your Chapter Plan and application. They'll ask about your calling & faith, a time you led when it was hard, your vision, how you'll prevent dropouts, and how you handle conflict — all things you've already worked through here. Come prayerful, honest, and ready to serve.\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        },
+        {
+          "id": "66211740",
+          "title": "CLOSING",
+          "sectionId": "13226735",
+          "position": 1,
+          "markdown": "# 21-lesson-66211740\n\nIf you did this honestly, you're not the same leader who started. You know your why, you understand the mission, you've decided the culture you'll build, and you have a real plan. Build the roots first — and watch what grows. For such a time as this. Every Future Fulfilled. 🕊️\n",
+          "quizzes": [],
+          "activities": [],
+          "assets": []
+        }
+      ]
+    },
+    {
+      "id": "eff-ecosystem-board-excellence",
+      "title": "EFF Ecosystem & Board Excellence",
+      "description": "A required practical pathway for leaders who need to confidently use every major EFF resource, guide students to the right support, run organized board meetings, and respond to conflict with care and accountability.",
+      "published": true,
+      "image": "assets/academy-visual-board.png",
+      "modules": [
+        {
+          "id": "ecosystem-map",
+          "title": "Module 1 — The EFF Ecosystem",
+          "position": 1
+        },
+        {
+          "id": "chapter-hub",
+          "title": "Module 2 — Mastering the Chapter Hub",
+          "position": 2
+        },
+        {
+          "id": "board-excellence",
+          "title": "Module 3 — Board Meetings, Communication & Conflict",
+          "position": 3
+        }
+      ],
+      "lessons": [
+        {
+          "id": "eco-01",
+          "title": "Welcome: You Are a Resource Guide",
+          "sectionId": "ecosystem-map",
+          "position": 1,
+          "markdown": "# Welcome: You Are a Resource Guide\n\nEFF leaders do more than host events. You are often the first person a student trusts when they need help staying enrolled, finding community, asking for prayer, or getting connected to an opportunity.\n\nThis pathway teaches you how to navigate the full EFF ecosystem with confidence. Your job is not to promise every answer. Your job is to listen carefully, protect privacy, and make the right next connection.\n\nBefore you continue, open the official [EFF website](https://estherfundsfoundation.org/) in a new tab. Notice the programs, REACH Action Hub, EFF Chapter Hub, ministry, and Pretty Girls Who Serve links.",
+          "quizzes": [
+            {
+              "id": "ecosystem-WhatisanEFFleader",
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "What is an EFF leader’s first responsibility when a student needs help?",
+                  "question_type": "single",
+                  "answers": [
+                    "Listen, protect privacy, and connect them to an appropriate next step",
+                    "Promise that EFF can solve every problem immediately",
+                    "Send every student to the same resource without asking questions"
+                  ],
+                  "correct_answers": [
+                    "Listen, protect privacy, and connect them to an appropriate next step"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [
+            "open_response_question"
+          ],
+          "assets": []
+        },
+        {
+          "id": "eco-02",
+          "title": "The EFF Website: Know the Front Door",
+          "sectionId": "ecosystem-map",
+          "position": 2,
+          "markdown": "# The EFF Website: Know the Front Door\n\nThe official EFF website is the home base for our mission, public programs, national resources, and the stories that show students they are not alone. Learn where each major experience begins so you can give students a clear link instead of vague directions.\n\nUse the website when someone asks: “What is EFF?”, “How do I get involved?”, “Where can I find support?”, or “How does my campus start a chapter?”\n\n**Practice:** Write a two-sentence message you could send to a new student introducing EFF and naming one page they should visit first.",
+          "quizzes": [
+            {
+              "id": "ecosystem-Whichpageshouldbey",
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "Which page should be your starting point when explaining EFF publicly?",
+                  "question_type": "single",
+                  "answers": [
+                    "The official Esther Funds Foundation website",
+                    "A personal social-media post",
+                    "An unofficial screenshot from a group chat"
+                  ],
+                  "correct_answers": [
+                    "The official Esther Funds Foundation website"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [
+            "open_response_question"
+          ],
+          "assets": []
+        },
+        {
+          "id": "eco-03",
+          "title": "REACH: Match the Need to a Pathway",
+          "sectionId": "ecosystem-map",
+          "position": 3,
+          "markdown": "# REACH: Match the Need to a Pathway\n\nREACH helps students take action before challenges become reasons to leave school. Leaders should know the seven pathways:\n\n- [Reach for Yourself](https://estherfundsfoundation.org/reach-yourself): personal support, scholarships, emergency aid, food, housing, hygiene, academic and mental-health resources.\n- [Reach for a Friend](https://estherfundsfoundation.org/reach-a-friend): listen, encourage, connect, and follow up.\n- [Reach Your Campus](https://estherfundsfoundation.org/reach-your-campus-1): host workshops, scholarship search parties, resource drives, and campus events.\n- [Reach Your Community](https://estherfundsfoundation.org/reach-your-community): student-run projects and service.\n- [Reach Beyond Your Campus](https://estherfundsfoundation.org/beyond-your-campus): advocacy, partnerships, chapters, and ambassadors.\n- [Reach K-12](https://estherfundsfoundation.org/reach-k-12): mentoring, readiness workshops, tutoring, and family support.\n- [Reach for Professionals](https://estherfundsfoundation.org/reach-for-professionals): mentors, sponsors, internships, and advisory support.\n\n**Scenario:** A student says her groceries are running out and she is thinking about leaving campus. Explain what you would say first, and which pathway you would open with her.",
+          "quizzes": [
+            {
+              "id": "ecosystem-WhichREACHpathwayis",
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "Which REACH pathway is built for a student seeking direct support for herself?",
+                  "question_type": "single",
+                  "answers": [
+                    "Reach for Yourself",
+                    "Reach Your Campus",
+                    "Reach for Professionals"
+                  ],
+                  "correct_answers": [
+                    "Reach for Yourself"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [
+            "open_response_question"
+          ],
+          "assets": []
+        },
+        {
+          "id": "eco-04",
+          "title": "REACH Action Hub: Turn Concern into Action",
+          "sectionId": "ecosystem-map",
+          "position": 4,
+          "markdown": "# REACH Action Hub: Turn Concern into Action\n\nThe [REACH Action Hub](https://estherfundsfoundation.org/reach-action-hub) is where a concern turns into a practical action plan. Use it when your chapter needs to decide how to support a student, plan a campus activation, or connect a friend without trying to carry the whole situation alone.\n\nLeaders should follow up after referring someone. A follow-up can be as simple as: “I am thinking of you. Were you able to open the resource? What would be helpful as your next step?”\n\nDo not collect personal crisis details in a public group chat or promise confidentiality you cannot keep. In an immediate emergency, contact 911; for a mental-health crisis in the U.S., call or text 988.",
+          "quizzes": [
+            {
+              "id": "ecosystem-WhatshouldanEFFlea",
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "What should an EFF leader do after sharing a REACH resource?",
+                  "question_type": "single",
+                  "answers": [
+                    "Follow up respectfully and ask what next support would help",
+                    "Assume the link fixed everything",
+                    "Post the student’s situation publicly so others can advise"
+                  ],
+                  "correct_answers": [
+                    "Follow up respectfully and ask what next support would help"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [
+            "open_response_question"
+          ],
+          "assets": []
+        },
+        {
+          "id": "eco-05",
+          "title": "Esther’s Light: Ministry with Care",
+          "sectionId": "ecosystem-map",
+          "position": 5,
+          "markdown": "# Esther’s Light: Ministry with Care\n\n[Esther’s Light](https://esthers-light.vercel.app/) is a faith-centered place for reflection, Scripture, prayer, Bible plans, and encouragement. It can support a leader’s personal walk and help a chapter create spiritually grounded moments.\n\nMinistry is not pressure. Invite students; do not shame them. Keep Scripture, personal reflection, and practical help distinct. Prayer can accompany a referral, but it is not a substitute for healthcare, counseling, emergency services, or campus support.\n\n**Practice:** Draft a short invitation to a Bible study that is warm, optional, and welcoming to a student who is under stress.",
+          "quizzes": [
+            {
+              "id": "ecosystem-Whatisthehealthiest",
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "What is the healthiest way to offer a ministry resource?",
+                  "question_type": "single",
+                  "answers": [
+                    "Offer it as an invitation while respecting the student’s choice and practical needs",
+                    "Use it to pressure every student to disclose personal struggles",
+                    "Treat prayer as a replacement for urgent professional support"
+                  ],
+                  "correct_answers": [
+                    "Offer it as an invitation while respecting the student’s choice and practical needs"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [
+            "open_response_question"
+          ],
+          "assets": []
+        },
+        {
+          "id": "eco-06",
+          "title": "Pretty Girls Who Serve: Sisterhood with Purpose",
+          "sectionId": "ecosystem-map",
+          "position": 6,
+          "markdown": "# Pretty Girls Who Serve: Sisterhood with Purpose\n\n[Pretty Girls Who Serve](https://pretty-girls-who-serve.vercel.app/) is an EFF sisterhood branch focused on faith, service, confidence, leadership, and becoming women of purpose. Leaders should understand when it is the right invitation for someone seeking a women-centered community, mentorship, ministry, chapter connection, or self-esteem support.\n\nNever use beauty language to exclude or rank people. The heart of this experience is dignity, service, confidence, and growth.\n\n**Practice:** Compare a REACH referral and a PGWS invitation. Write one sentence explaining when you would use each.",
+          "quizzes": [
+            {
+              "id": "ecosystem-Whatshouldbeatthe",
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "What should be at the center of a PGWS invitation?",
+                  "question_type": "single",
+                  "answers": [
+                    "Dignity, sisterhood, service, confidence, and purposeful growth",
+                    "Competition over who looks best",
+                    "Pressure to join before learning about the community"
+                  ],
+                  "correct_answers": [
+                    "Dignity, sisterhood, service, confidence, and purposeful growth"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [
+            "open_response_question"
+          ],
+          "assets": []
+        },
+        {
+          "id": "eco-07",
+          "title": "The Member Experience: Belonging Beyond One Event",
+          "sectionId": "ecosystem-map",
+          "position": 7,
+          "markdown": "# The Member Experience: Belonging Beyond One Event\n\nThe [EFF Membership Hub](https://eff-membership-hub.vercel.app/) helps members continue their journey through national membership, the Esther Experience, service tracking, fundraising participation, scholarships, mentoring, community, and recognition.\n\nUse the Membership Hub when a student asks what happens after joining, how to document service, how to stay engaged between meetings, or where to find national opportunities. It is not enough to recruit members—leaders must make the next step clear.\n\n**Practice:** Create a first-week welcome checklist for a new member. Include one relationship-building action, one learning action, and one service action.",
+          "quizzes": [
+            {
+              "id": "ecosystem-Whatturnsrecruitment",
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "What turns recruitment into retention?",
+                  "question_type": "single",
+                  "answers": [
+                    "A clear and caring next-step experience after someone joins",
+                    "Only contacting members when you need volunteers",
+                    "Giving members no place to grow after the first event"
+                  ],
+                  "correct_answers": [
+                    "A clear and caring next-step experience after someone joins"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [
+            "open_response_question"
+          ],
+          "assets": []
+        },
+        {
+          "id": "eco-08",
+          "title": "Chapter Hub: Start with Governance",
+          "sectionId": "chapter-hub",
+          "position": 1,
+          "markdown": "# Chapter Hub: Start with Governance\n\nThe [EFF Chapter Resource Hub](https://estherfundsfoundation.org/eff-chapter-resources) is the operational home for chapters. Start with **Governance**: the National Bylaws, Chapter Constitution, Code of Conduct, Chapter Agreement, and expectations each chapter agrees to uphold.\n\nThese documents do not exist to make leadership difficult. They protect students, clarify authority, and create consistency across the national movement. Read them before building policies of your own.\n\n**Practice:** Name one decision your board should never make without first checking the governing documents. Explain why.",
+          "quizzes": [
+            {
+              "id": "ecosystem-Whichresourcesestabl",
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "Which resources establish the foundation every EFF chapter is expected to uphold?",
+                  "question_type": "single",
+                  "answers": [
+                    "Bylaws, constitution, code of conduct, chapter agreement, and expectations",
+                    "Only social-media templates",
+                    "Only last year’s event flyers"
+                  ],
+                  "correct_answers": [
+                    "Bylaws, constitution, code of conduct, chapter agreement, and expectations"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [
+            "open_response_question"
+          ],
+          "assets": []
+        },
+        {
+          "id": "eco-09",
+          "title": "Chapter Hub: Operations, Forms & Financial Order",
+          "sectionId": "chapter-hub",
+          "position": 2,
+          "markdown": "# Chapter Hub: Operations, Forms & Financial Order\n\nThe **Operations & Forms** section of the Chapter Hub is your repeat-use toolbox: meeting agendas and minutes, financial tracking, event planning, officer applications and transitions, and recurring request forms.\n\nStrong chapters document decisions while they are fresh. The secretary protects the record; the treasurer protects the financial trail; the president protects follow-through. Use the official forms rather than keeping critical information scattered across personal notes and chats.\n\n**Practice:** Write the three documents you would prepare before a chapter event involving money.",
+          "quizzes": [
+            {
+              "id": "ecosystem-Whyshouldchaptersus",
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "Why should chapters use the official operations forms?",
+                  "question_type": "single",
+                  "answers": [
+                    "They keep decisions, responsibilities, and financial records organized and consistent",
+                    "They make meetings longer without a purpose",
+                    "They remove the need for any board communication"
+                  ],
+                  "correct_answers": [
+                    "They keep decisions, responsibilities, and financial records organized and consistent"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [
+            "open_response_question"
+          ],
+          "assets": []
+        },
+        {
+          "id": "eco-10",
+          "title": "Chapter Hub: Programming, Branding & Training",
+          "sectionId": "chapter-hub",
+          "position": 3,
+          "markdown": "# Chapter Hub: Programming, Branding & Training\n\nThe Chapter Hub includes ready-to-use programming toolkits for tabling, fundraising, icebreakers, REACH Week, and campus programming. It also includes official brand guidance, social-media materials, templates, and leadership training.\n\nStart with the mission and the student need—not the flyer. Then choose an official toolkit, create a simple plan, assign owners, and represent the EFF name with care.\n\n**Practice:** Choose one student need on your campus. Write a three-part event concept: purpose, activity, and follow-up.",
+          "quizzes": [
+            {
+              "id": "ecosystem-Whatshouldcomebefor",
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "What should come before designing an event flyer?",
+                  "question_type": "single",
+                  "answers": [
+                    "Identifying the student need and selecting the right mission-aligned toolkit",
+                    "Posting a graphic before a plan exists",
+                    "Choosing a theme with no student purpose"
+                  ],
+                  "correct_answers": [
+                    "Identifying the student need and selecting the right mission-aligned toolkit"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [
+            "open_response_question"
+          ],
+          "assets": []
+        },
+        {
+          "id": "eco-11",
+          "title": "Chapter Hub: Compliance, Recruitment & Service",
+          "sectionId": "chapter-hub",
+          "position": 4,
+          "markdown": "# Chapter Hub: Compliance, Recruitment & Service\n\nThe Chapter Hub connects you to semesterly compliance reporting, the good-standing checklist, advisor guidance, membership and recruitment materials, the Esther Experience, and community-service resources.\n\nCompliance is not punishment. It is how national EFF knows a chapter is supported, active, accountable, and eligible for access to resources. Recruitment is not a one-day rush; it is a process of welcome, induction, training, and care.\n\n**Practice:** Make a mini calendar with one compliance deadline, one recruitment moment, and one service action your board should track this semester.",
+          "quizzes": [
+            {
+              "id": "ecosystem-Whatisthepurposeof",
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "What is the purpose of compliance reporting?",
+                  "question_type": "single",
+                  "answers": [
+                    "To help chapters remain supported, accountable, and in good standing",
+                    "To replace all chapter programming",
+                    "To rank students by popularity"
+                  ],
+                  "correct_answers": [
+                    "To help chapters remain supported, accountable, and in good standing"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [
+            "open_response_question"
+          ],
+          "assets": []
+        },
+        {
+          "id": "eco-12",
+          "title": "How to Run a Board Meeting that Moves Work Forward",
+          "sectionId": "board-excellence",
+          "position": 1,
+          "markdown": "# How to Run a Board Meeting that Moves Work Forward\n\nA strong board meeting has a written agenda, a clear facilitator, a timekeeper, notes, decisions, owners, and deadlines. The goal is not to talk the longest. The goal is to leave with work that can actually be completed.\n\n**Simple meeting flow:** opening and purpose; review of previous action items; financial and program updates; decisions; upcoming dates; assignments; closing and follow-up.\n\nSend the agenda early. Keep minutes during the meeting. End by reading each action item out loud: who owns it, what they will do, and by when.\n\n**Practice:** Draft a 30-minute agenda for your next board meeting with at least four timed sections.",
+          "quizzes": [
+            {
+              "id": "ecosystem-Whatmusteveryaction",
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "What must every actionable board decision include?",
+                  "question_type": "single",
+                  "answers": [
+                    "An owner and a deadline",
+                    "Only a general group agreement",
+                    "A promise to remember it later"
+                  ],
+                  "correct_answers": [
+                    "An owner and a deadline"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [
+            "open_response_question"
+          ],
+          "assets": []
+        },
+        {
+          "id": "eco-13",
+          "title": "Board Communication: Decisions, Documentation & Accountability",
+          "sectionId": "board-excellence",
+          "position": 2,
+          "markdown": "# Board Communication: Decisions, Documentation & Accountability\n\nHealthy boards communicate in ways people can find later. Put final decisions, deadlines, meeting minutes, and approved files in the chapter’s agreed workspace. Do not rely on disappearing messages for important records.\n\nClarify the difference between brainstorming and a decision. A vote, officer authority, or national guidance may be required depending on the issue. When you are unsure, pause and check the bylaws or ask National EFF—not a public group chat.\n\n**Practice:** Turn this vague message into an accountable action item: “Someone should work on the event soon.”",
+          "quizzes": [
+            {
+              "id": "ecosystem-Whichmessageisanac",
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "Which message is an accountable action item?",
+                  "question_type": "single",
+                  "answers": [
+                    "Jordan will finalize the event room request by Friday at 5 p.m.",
+                    "We should probably do the room request eventually",
+                    "Everybody needs to figure it out"
+                  ],
+                  "correct_answers": [
+                    "Jordan will finalize the event room request by Friday at 5 p.m."
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [
+            "open_response_question"
+          ],
+          "assets": []
+        },
+        {
+          "id": "eco-14",
+          "title": "Conflict Resolution: Address It Early, Respectfully & Privately",
+          "sectionId": "board-excellence",
+          "position": 3,
+          "markdown": "# Conflict Resolution: Address It Early, Respectfully & Privately\n\nConflict is normal; disrespect, avoidance, gossip, and public humiliation are not. Begin privately and directly when it is safe to do so. Describe the specific behavior, explain the impact, listen without interrupting, identify a shared next step, and document agreements when the issue affects chapter work.\n\nUse the [EFF conflict-resolution resource](https://estherfundsfoundation.org/conflict-resolution) and Code of Conduct. Involve an advisor or National EFF when the issue is serious, ongoing, involves safety, harassment, discrimination, finances, or a conflict of interest. Do not investigate serious allegations alone.\n\n**Practice:** Write a calm opening sentence for a private conversation with a board member who has missed two agreed deadlines.",
+          "quizzes": [
+            {
+              "id": "ecosystem-Whatisthebestfirst",
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "What is the best first step for a manageable board conflict?",
+                  "question_type": "single",
+                  "answers": [
+                    "Address the specific issue respectfully and privately when it is safe",
+                    "Post about it in the chapter group chat",
+                    "Ignore it until it becomes a larger problem"
+                  ],
+                  "correct_answers": [
+                    "Address the specific issue respectfully and privately when it is safe"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [
+            "open_response_question"
+          ],
+          "assets": []
+        },
+        {
+          "id": "eco-15",
+          "title": "Board Excellence Capstone: Build Your Campus Resource Plan",
+          "sectionId": "board-excellence",
+          "position": 4,
+          "markdown": "# Board Excellence Capstone: Build Your Campus Resource Plan\n\nYou now know the EFF ecosystem, the Chapter Hub, and the practices that make a board trustworthy. Complete this capstone as if your board were preparing for the next 30 days.\n\nIn your submission, include:\n\n1. One student-support need and the EFF resource you would use.\n2. One REACH action your chapter will take.\n3. One Chapter Hub tool your board will use this month.\n4. A date for your next board meeting, with an agenda owner.\n5. One respectful step your board will take to prevent or address conflict.\n\nThis is a working leadership plan—not a perfect document. Keep it, bring it to your board, and update it as you lead.",
+          "quizzes": [
+            {
+              "id": "ecosystem-Whatdoesthecapstone",
+              "type": "Quiz",
+              "questions": [
+                {
+                  "question": "What does the capstone prove?",
+                  "question_type": "single",
+                  "answers": [
+                    "You can turn EFF resources into a clear, accountable campus action plan",
+                    "You memorized a list of links without applying them",
+                    "You can complete a lesson without making decisions"
+                  ],
+                  "correct_answers": [
+                    "You can turn EFF resources into a clear, accountable campus action plan"
+                  ],
+                  "graded": true
+                }
+              ]
+            }
+          ],
+          "activities": [
+            "open_response_question"
+          ],
+          "assets": []
+        }
+      ]
+    }
   ]
-};
-
-data.courses = data.courses.filter((item) => item.id !== course.id);
-data.courses.push(course);
-data.generatedAt = new Date().toISOString();
-fs.writeFileSync(file, JSON.stringify(data, null, 2));
-console.log(`Added ${course.title}: ${course.lessons.length} lessons.`);
+}
