@@ -2,6 +2,18 @@
   "generatedAt": "2026-07-12T17:47:35.636Z",
   "courses": [
     {
+      "id": "financial-aid-peer-mentor-v1",
+      "title": "EFF Financial Aid Peer Mentor",
+      "description": "Learn how to help students navigate FAFSA and financial-aid roadblocks without taking over, collecting private information, or replacing a financial-aid professional. Complete eight interactive levels, official-source practice, real student scenarios, and an 80% final assessment to earn an EFF course-completion certificate.",
+      "published": true,
+      "featured": true,
+      "category": "Featured Student Support Training",
+      "externalUrl": "https://portal.estherfundsfoundation.org/academy/financial-aid-peer-mentor",
+      "duration": "About 3 hours",
+      "modules": [],
+      "lessons": []
+    },
+    {
       "id": "2788873",
       "title": "Called to Completion: Leading with Integrity, Faith & Excellence in Esther Funds Foundation",
       "description": "Called to Completion is the official Esther Funds Foundation leadership training and certification course for executive board members, ambassadors, and chapter founders. Rooted in the Book of Nehemiah, this course equips students to lead with spiritual integrity, organizational excellence, and faith-based purpose. You'll learn chapter operations, financial management, event planning, ministry integration, and more. Each module includes lessons, quizzes, and practical tools to guide your leadership journey. Certification is awarded after completing the course and final exam. All leaders must complete this course to serve.",
