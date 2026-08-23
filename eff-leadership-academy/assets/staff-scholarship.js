@@ -37,22 +37,35 @@ async function loadStaff() {
   if (!session) { gate.innerHTML = '<b>Staff sign-in required</b><p><a href="auth.html">Sign in with your designated EFF staff account →</a></p>'; return; }
   const { data: role } = await client.from('academy_staff').select('role').eq('email', session.user.email).maybeSingle();
   if (!role) { gate.innerHTML = '<b>Verified staff only</b><p>Your account is signed in, but it has not been assigned Academy staff access yet.</p>'; return; }
+  const courseResponse = await fetch('data/courses.json');
+  const courseCatalog = courseResponse.ok ? await courseResponse.json() : { courses: [] };
+  const requiredCourse = (courseCatalog.courses || []).find(course => course.id === '2788873');
+  const requiredLessonIds = new Set((requiredCourse?.lessons || []).map(lesson => String(lesson.id)));
+  const requiredTotal = requiredLessonIds.size;
   const [{ data: profiles, error: profileError }, { data: progress, error: progressError }, { data: submissions, error: submissionError }, { data: applications, error: scholarshipError }] = await Promise.all([
-    client.from('academy_profiles').select('id,email,full_name,chapter,position,member_type'),
-    client.from('academy_progress').select('user_id,updated_at'),
+    client.from('academy_profiles').select('id,email,full_name,university,chapter,position,member_type'),
+    client.from('academy_progress').select('user_id,course_id,lesson_id,updated_at'),
     client.from('academy_submissions').select('user_id,lesson_id,assignment_title,response,submitted_at,status'),
     client.from('academy_scholarship_applications').select('id,member_id,payload,status,fall_service_hours,recommendation_path,recommendation_name,submitted_at,reviewer_notes').order('submitted_at', { ascending: false })
   ]);
   if (profileError || progressError || submissionError || scholarshipError) { gate.innerHTML = '<b>The Command Center could not load data yet.</b><p>Please refresh and try again.</p>'; return; }
   gate.hidden = true; dashboard.hidden = false;
   const grouped = {};
-  for (const item of progress || []) { grouped[item.user_id] ||= { count: 0, last: '' }; grouped[item.user_id].count++; if (!grouped[item.user_id].last || item.updated_at > grouped[item.user_id].last) grouped[item.user_id].last = item.updated_at; }
-  const users = (profiles || []).map(profile => ({ ...profile, ...(grouped[profile.id] || { count: 0, last: '' }) }));
+  for (const item of progress || []) {
+    grouped[item.user_id] ||= { count: 0, requiredCompleted: new Set(), last: '' };
+    grouped[item.user_id].count++;
+    if (String(item.course_id) === '2788873' && requiredLessonIds.has(String(item.lesson_id))) grouped[item.user_id].requiredCompleted.add(String(item.lesson_id));
+    if (!grouped[item.user_id].last || item.updated_at > grouped[item.user_id].last) grouped[item.user_id].last = item.updated_at;
+  }
+  const users = (profiles || []).map(profile => {
+    const activity = grouped[profile.id] || { count: 0, requiredCompleted: new Set(), last: '' };
+    return { ...profile, ...activity, requiredDone: activity.requiredCompleted.size, requiredTotal, requiredComplete: requiredTotal > 0 && activity.requiredCompleted.size === requiredTotal };
+  });
   const byUser = Object.fromEntries(users.map(item => [item.id, item]));
   document.querySelector('#learnerCount').textContent = users.length;
-  document.querySelector('#completionCount').textContent = (progress || []).length;
+  document.querySelector('#requiredCourseCount').textContent = users.filter(user => user.requiredComplete).length;
   document.querySelector('#submissionCount').textContent = (submissions || []).length;
-  const draw = filter => document.querySelector('#staffRows').innerHTML = users.filter(row => JSON.stringify(row).toLowerCase().includes(filter.toLowerCase())).sort((a,b) => b.count-a.count).map(row => `<tr><td><b>${safe(row.full_name || 'EFF learner')}</b><br><small>${safe(row.email)}</small></td><td>${safe(row.chapter || '—')}<br><small>${safe(row.position || row.member_type || 'Role not set')}</small></td><td>${row.count}</td><td>${formatDate(row.last)}</td></tr>`).join('') || '<tr><td colspan="4">No learners match that search.</td></tr>';
+  const draw = filter => document.querySelector('#staffRows').innerHTML = users.filter(row => JSON.stringify({...row, requiredCompleted: undefined}).toLowerCase().includes(filter.toLowerCase())).sort((a,b) => Number(b.requiredComplete)-Number(a.requiredComplete) || b.requiredDone-a.requiredDone).map(row => `<tr><td><b>${safe(row.full_name || 'EFF learner')}</b><br><small>${safe(row.email)}</small></td><td><b>${safe(row.university || 'University not listed')}</b><br><small>${safe(row.chapter || 'Chapter not listed')}</small></td><td>${safe(row.position || row.member_type || 'Role not set')}</td><td><span class="status ${row.requiredComplete ? 'status-complete' : ''}">${row.requiredComplete ? 'Completed' : 'In progress'}</span><br><small>${row.requiredDone} of ${row.requiredTotal} lessons</small></td><td>${formatDate(row.last)}</td></tr>`).join('') || '<tr><td colspan="5">No learners match that search.</td></tr>';
   draw(''); document.querySelector('#staffSearch').oninput = event => draw(event.target.value);
   document.querySelector('#submissionRows').innerHTML = (submissions || []).sort((a,b) => new Date(b.submitted_at)-new Date(a.submitted_at)).map(item => { const learner = byUser[item.user_id] || {}; return `<tr><td><b>${safe(learner.full_name || 'EFF learner')}</b><br><small>${safe(learner.email)}</small></td><td>${safe(item.assignment_title || item.lesson_id)}</td><td>${safe(item.response).slice(0,330)}${item.response?.length > 330 ? '…' : ''}</td><td>${formatDate(item.submitted_at)}</td></tr>`; }).join('') || '<tr><td colspan="4">No assignments submitted yet.</td></tr>';
   scholarshipPanel(applications || [], profiles || []);

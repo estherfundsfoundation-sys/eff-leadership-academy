@@ -18,13 +18,14 @@ document.querySelector('#signUpForm').addEventListener('submit', async event => 
   if (!client) return;
   const form = new FormData(event.currentTarget);
   const fullName = form.get('name').trim();
+  const university = form.get('university').trim();
   const chapter = form.get('chapter').trim();
   const position = form.get('position');
   const { error } = await client.auth.signUp({
     email: form.get('email'),
     password: form.get('password'),
     options: {
-      data: { full_name: fullName, chapter, position },
+      data: { full_name: fullName, university, chapter, position },
       emailRedirectTo: location.origin + '/dashboard.html'
     }
   });
