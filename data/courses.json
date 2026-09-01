@@ -1,5 +1,6 @@
 {
-  "generatedAt": "2026-07-12T16:36:44.265Z",
+  "generatedAt": "2026-08-30T07:17:35.278Z",
+  "version": "2026.1",
   "courses": [
     {
       "id": "2788873",
@@ -140,7 +141,8 @@
             {
               "name": "Banner.png",
               "kind": "image",
-              "url": "https://uploads.teachablecdn.com/attachments/0jzgvgySRwKfn3BQ63QP_Banner.png"
+              "url": "assets/course-media/2788873--61433404--a76d60fcb7--Banner.png",
+              "sourceUrl": "https://uploads.teachablecdn.com/attachments/0jzgvgySRwKfn3BQ63QP_Banner.png"
             }
           ]
         },
@@ -169,7 +171,8 @@
             {
               "name": "ADX06910 (2).jpg",
               "kind": "image",
-              "url": "https://uploads.teachablecdn.com/attachments/2P6ajVrjROSw67rBZdgm_ADX06910+%282%29.jpg"
+              "url": "assets/course-media/2788873--61476825--85bdeb7ca4--ADX06910-2.jpg",
+              "sourceUrl": "https://uploads.teachablecdn.com/attachments/2P6ajVrjROSw67rBZdgm_ADX06910+%282%29.jpg"
             }
           ]
         },
@@ -198,7 +201,8 @@
             {
               "name": "ttsMP3.com_VoiceText_2025-5-21_11-18-53.mp3",
               "kind": "audio",
-              "url": "https://uploads.teachablecdn.com/attachments/S1e2lucoS12SxhlvMC1Z_ttsMP3.com_VoiceText_2025-5-21_11-18-53.mp3"
+              "url": "assets/course-media/2788873--61433728--ba5dd49891--ttsMP3.com_VoiceText_2025-5-21_11-18-53.mp3",
+              "sourceUrl": "https://uploads.teachablecdn.com/attachments/S1e2lucoS12SxhlvMC1Z_ttsMP3.com_VoiceText_2025-5-21_11-18-53.mp3"
             }
           ]
         },
@@ -217,12 +221,14 @@
             {
               "name": "ttsMP3.com_VoiceText_2025-5-21_11-23-1.mp3",
               "kind": "audio",
-              "url": "https://uploads.teachablecdn.com/attachments/udKow2j1TKCBLKKD69ix_ttsMP3.com_VoiceText_2025-5-21_11-23-1.mp3"
+              "url": "assets/course-media/2788873--61433744--1fd8a9af39--ttsMP3.com_VoiceText_2025-5-21_11-23-1.mp3",
+              "sourceUrl": "https://uploads.teachablecdn.com/attachments/udKow2j1TKCBLKKD69ix_ttsMP3.com_VoiceText_2025-5-21_11-23-1.mp3"
             },
             {
               "name": "IMG_0005.jpeg",
               "kind": "image",
-              "url": "https://uploads.teachablecdn.com/attachments/j8XhmgW6QcaLHr9uXmhF_IMG_0005.jpeg"
+              "url": "assets/course-media/2788873--61433744--0d980cda5f--IMG_0005.jpeg",
+              "sourceUrl": "https://uploads.teachablecdn.com/attachments/j8XhmgW6QcaLHr9uXmhF_IMG_0005.jpeg"
             }
           ]
         },
@@ -240,7 +246,8 @@
             {
               "name": "IMG_9533.jpg",
               "kind": "image",
-              "url": "https://uploads.teachablecdn.com/attachments/5ss7iZl9QX6ZA4y5sN4J_IMG_9533.jpg"
+              "url": "assets/course-media/2788873--61435431--cd1d5043d1--IMG_9533.jpg",
+              "sourceUrl": "https://uploads.teachablecdn.com/attachments/5ss7iZl9QX6ZA4y5sN4J_IMG_9533.jpg"
             }
           ]
         },
@@ -256,7 +263,8 @@
             {
               "name": "ttsMP3.com_VoiceText_2025-5-21_11-30-20.mp3",
               "kind": "audio",
-              "url": "https://uploads.teachablecdn.com/attachments/WO7fdPzKRrqEu5xoeWbV_ttsMP3.com_VoiceText_2025-5-21_11-30-20.mp3"
+              "url": "assets/course-media/2788873--61435590--942a3d8735--ttsMP3.com_VoiceText_2025-5-21_11-30-20.mp3",
+              "sourceUrl": "https://uploads.teachablecdn.com/attachments/WO7fdPzKRrqEu5xoeWbV_ttsMP3.com_VoiceText_2025-5-21_11-30-20.mp3"
             }
           ]
         },
@@ -293,12 +301,14 @@
             {
               "name": "ttsMP3.com_VoiceText_2025-5-21_11-32-38.mp3",
               "kind": "audio",
-              "url": "https://uploads.teachablecdn.com/attachments/dybxyjuMRAOzGoN6yxEY_ttsMP3.com_VoiceText_2025-5-21_11-32-38.mp3"
+              "url": "assets/course-media/2788873--61463442--987a33c835--ttsMP3.com_VoiceText_2025-5-21_11-32-38.mp3",
+              "sourceUrl": "https://uploads.teachablecdn.com/attachments/dybxyjuMRAOzGoN6yxEY_ttsMP3.com_VoiceText_2025-5-21_11-32-38.mp3"
             },
             {
               "name": "istockphoto-1135067042-612x612.jpg",
               "kind": "image",
-              "url": "https://uploads.teachablecdn.com/attachments/JKmE7HHBQvCxmhsWJA5v_istockphoto-1135067042-612x612.jpg"
+              "url": "assets/course-media/2788873--61463442--2a9ff502ad--istockphoto-1135067042-612x612.jpg",
+              "sourceUrl": "https://uploads.teachablecdn.com/attachments/JKmE7HHBQvCxmhsWJA5v_istockphoto-1135067042-612x612.jpg"
             }
           ]
         },
@@ -639,7 +649,8 @@
             {
               "name": "Graduate_1-1.jpg",
               "kind": "image",
-              "url": "https://uploads.teachablecdn.com/attachments/E1Vd2fxbTYC0WD3YHRWG_Graduate_1-1.jpg"
+              "url": "assets/course-media/2788873--61463589--be606a97f3--Graduate_1-1.jpg",
+              "sourceUrl": "https://uploads.teachablecdn.com/attachments/E1Vd2fxbTYC0WD3YHRWG_Graduate_1-1.jpg"
             }
           ]
         },
@@ -769,7 +780,8 @@
             {
               "name": "IMG_3833 (2).jpg",
               "kind": "image",
-              "url": "https://uploads.teachablecdn.com/attachments/N5JmDqRKQ4CFWLpCaKnB_IMG_3833+%282%29.jpg"
+              "url": "assets/course-media/2788873--61463707--8f6205091b--IMG_3833-2.jpg",
+              "sourceUrl": "https://uploads.teachablecdn.com/attachments/N5JmDqRKQ4CFWLpCaKnB_IMG_3833+%282%29.jpg"
             }
           ]
         },
@@ -808,7 +820,8 @@
             {
               "name": "webimage-24B2AE38-4CF5-4254-9BA93F03C8B2FCEA.png",
               "kind": "image",
-              "url": "https://uploads.teachablecdn.com/attachments/f0JzV1TAQauQppwHvhqf_webimage-24B2AE38-4CF5-4254-9BA93F03C8B2FCEA.png"
+              "url": "assets/course-media/2788873--61463810--ca4847a22a--webimage-24B2AE38-4CF5-4254-9BA93F03C8B2FCEA.png",
+              "sourceUrl": "https://uploads.teachablecdn.com/attachments/f0JzV1TAQauQppwHvhqf_webimage-24B2AE38-4CF5-4254-9BA93F03C8B2FCEA.png"
             }
           ]
         },
@@ -954,7 +967,8 @@
             {
               "name": "IMG_9290.jpg",
               "kind": "image",
-              "url": "https://uploads.teachablecdn.com/attachments/GU0TSIJ5TAmYkCxEN7Hc_IMG_9290.jpg"
+              "url": "assets/course-media/2788873--61463925--11b79e0e5f--IMG_9290.jpg",
+              "sourceUrl": "https://uploads.teachablecdn.com/attachments/GU0TSIJ5TAmYkCxEN7Hc_IMG_9290.jpg"
             }
           ]
         },
@@ -980,7 +994,8 @@
             {
               "name": "boundaries-clipart-1.png",
               "kind": "image",
-              "url": "https://uploads.teachablecdn.com/attachments/mjmhPMPeTY2x8FvvZQzp_boundaries-clipart-1.png"
+              "url": "assets/course-media/2788873--61463929--6c0eb61edb--boundaries-clipart-1.png",
+              "sourceUrl": "https://uploads.teachablecdn.com/attachments/mjmhPMPeTY2x8FvvZQzp_boundaries-clipart-1.png"
             }
           ]
         },
@@ -999,7 +1014,8 @@
             {
               "name": "no-sign-empty-red-crossed-out-circle-not-allowed-sign-isolate-on-white-background-illustration-eps-10-free-vector.jpg",
               "kind": "image",
-              "url": "https://uploads.teachablecdn.com/attachments/D1WHyMHCQpAdxgfYoiQj_no-sign-empty-red-crossed-out-circle-not-allowed-sign-isolate-on-white-background-illustration-eps-10-free-vector.jpg"
+              "url": "assets/course-media/2788873--61463930--365c7ef647--no-sign-empty-red-crossed-out-circle-not-allowed-sign-isolate-on-white-background-illustration-eps-10-free-vec.jpg",
+              "sourceUrl": "https://uploads.teachablecdn.com/attachments/D1WHyMHCQpAdxgfYoiQj_no-sign-empty-red-crossed-out-circle-not-allowed-sign-isolate-on-white-background-illustration-eps-10-free-vector.jpg"
             },
             {
               "name": "Esther Funds Foundation National Code of Condu (1).pdf",
@@ -1040,7 +1056,8 @@
             {
               "name": "ADX06878 (6).jpg",
               "kind": "image",
-              "url": "https://uploads.teachablecdn.com/attachments/cbusUYaEQRuOHvy8nM8t_ADX06878+%286%29.jpg"
+              "url": "assets/course-media/2788873--61463985--e765fc4423--ADX06878-6.jpg",
+              "sourceUrl": "https://uploads.teachablecdn.com/attachments/cbusUYaEQRuOHvy8nM8t_ADX06878+%286%29.jpg"
             }
           ]
         },
@@ -1296,7 +1313,7 @@
           "title": "Lesson 8: Merchandise & Brand Integrity",
           "sectionId": "12235763",
           "position": 9,
-          "markdown": "# 48-lesson-61491130\n\nMerchandise & Brand Integrity\n\nEFF merch is part of the movement—but it must be ordered, posted, and worn correctly.\n\n✅ All merch must:\n\n\nBe approved and/or purchased through the national merch store or bulk order form\n\nUse official colors and logos only\nNever be modified or reproduced independently\n➡️ You cannot make your own merch without national approval.\n\nAll approved merch can be found on store at estherfundsfoundation.store\n",
+          "markdown": "# 48-lesson-61491130\n\nMerchandise & Brand Integrity\n\nEFF merch is part of the movement—but it must be ordered, posted, and worn correctly.\n\n✅ All merch must:\n\n\nBe approved and/or purchased through the national merch store or bulk order form\n\nUse official colors and logos only\nNever be modified or reproduced independently\n➡️ You cannot make your own merch without national approval.\n\nUse only the current, verified merchandise link published on the official EFF website or Chapter Resource Hub. Do not use legacy merchandise domains.\n",
           "quizzes": [
             {
               "id": 2594429,
@@ -1306,13 +1323,13 @@
                   "question": "Where can approved EFF merchandise be found?",
                   "question_type": "single",
                   "answers": [
-                    "estherfundsfoundation.store",
-                    "estherfundsfoundation.org",
+                    "The current verified merchandise link on the official EFF website or Chapter Resource Hub",
+                    "An old merchandise domain from a prior training",
                     "estherfundsfoundation.com",
                     "estherfundsfoundation.co"
                   ],
                   "correct_answers": [
-                    "estherfundsfoundation.store"
+                    "The current verified merchandise link on the official EFF website or Chapter Resource Hub"
                   ],
                   "graded": true
                 }
@@ -1887,7 +1904,8 @@
             {
               "name": "christian-college-degrees-students-studying.jpg",
               "kind": "image",
-              "url": "https://uploads.teachablecdn.com/attachments/L2YrxFknSbGuBws71kGf_christian-college-degrees-students-studying.jpg"
+              "url": "assets/course-media/2788873--61464671--4e01357bcc--christian-college-degrees-students-studying.jpg",
+              "sourceUrl": "https://uploads.teachablecdn.com/attachments/L2YrxFknSbGuBws71kGf_christian-college-degrees-students-studying.jpg"
             }
           ]
         },
@@ -1903,7 +1921,8 @@
             {
               "name": "pexels-photo-7683882.jpeg",
               "kind": "image",
-              "url": "https://uploads.teachablecdn.com/attachments/4i0GugxRq6sRnqd2pffC_pexels-photo-7683882.jpeg"
+              "url": "assets/course-media/2788873--61464676--a6ec43b1c5--pexels-photo-7683882.jpeg",
+              "sourceUrl": "https://uploads.teachablecdn.com/attachments/4i0GugxRq6sRnqd2pffC_pexels-photo-7683882.jpeg"
             }
           ]
         },
@@ -1919,7 +1938,8 @@
             {
               "name": "IMG_1514.JPG",
               "kind": "image",
-              "url": "https://uploads.teachablecdn.com/attachments/QF4dXgFSQhSeS9X4JEhC_IMG_1514.JPG"
+              "url": "assets/course-media/2788873--61464680--7a4145e493--IMG_1514.JPG",
+              "sourceUrl": "https://uploads.teachablecdn.com/attachments/QF4dXgFSQhSeS9X4JEhC_IMG_1514.JPG"
             }
           ]
         },
@@ -1935,7 +1955,8 @@
             {
               "name": "bible-study.webp",
               "kind": "image",
-              "url": "https://uploads.teachablecdn.com/attachments/1dNE8adTKS0snh2CLOYC_bible-study.webp"
+              "url": "assets/course-media/2788873--61464685--bc276cb556--bible-study.webp",
+              "sourceUrl": "https://uploads.teachablecdn.com/attachments/1dNE8adTKS0snh2CLOYC_bible-study.webp"
             }
           ]
         },
@@ -1951,7 +1972,8 @@
             {
               "name": "47910-church-fellowship-1200.1200w.tn.jpg",
               "kind": "image",
-              "url": "https://uploads.teachablecdn.com/attachments/P9MZQFmoSOGiKeMBB8zg_47910-church-fellowship-1200.1200w.tn.jpg"
+              "url": "assets/course-media/2788873--61464687--0f40344b4a--47910-church-fellowship-1200.1200w.tn.jpg",
+              "sourceUrl": "https://uploads.teachablecdn.com/attachments/P9MZQFmoSOGiKeMBB8zg_47910-church-fellowship-1200.1200w.tn.jpg"
             }
           ]
         },
@@ -1980,7 +2002,8 @@
             {
               "name": "istockphoto-174792161-612x612.jpg",
               "kind": "image",
-              "url": "https://uploads.teachablecdn.com/attachments/s5uB0i6ETPsTXqvf2hEn_istockphoto-174792161-612x612.jpg"
+              "url": "assets/course-media/2788873--61482411--09e6e7b47c--istockphoto-174792161-612x612.jpg",
+              "sourceUrl": "https://uploads.teachablecdn.com/attachments/s5uB0i6ETPsTXqvf2hEn_istockphoto-174792161-612x612.jpg"
             }
           ]
         },
@@ -2085,7 +2108,8 @@
             {
               "name": "istockphoto-904060854-612x612.jpg",
               "kind": "image",
-              "url": "https://uploads.teachablecdn.com/attachments/xf4VVB4wQ7OQPJcJalnb_istockphoto-904060854-612x612.jpg"
+              "url": "assets/course-media/2788873--61478853--52ec9d90cf--istockphoto-904060854-612x612.jpg",
+              "sourceUrl": "https://uploads.teachablecdn.com/attachments/xf4VVB4wQ7OQPJcJalnb_istockphoto-904060854-612x612.jpg"
             }
           ]
         },
@@ -2113,7 +2137,8 @@
             {
               "name": "IMG_2587.jpg",
               "kind": "image",
-              "url": "https://uploads.teachablecdn.com/attachments/gXXDApkWSLSCbDE2mQvp_IMG_2587.jpg"
+              "url": "assets/course-media/2788873--61464727--e0f6156826--IMG_2587.jpg",
+              "sourceUrl": "https://uploads.teachablecdn.com/attachments/gXXDApkWSLSCbDE2mQvp_IMG_2587.jpg"
             }
           ]
         },
@@ -2749,7 +2774,8 @@
             {
               "name": "number-1-purple-o0K99yF-600.jpg",
               "kind": "image",
-              "url": "https://uploads.teachablecdn.com/attachments/jVmNwGIAQXC3ly11VUqJ_number-1-purple-o0K99yF-600.jpg"
+              "url": "assets/course-media/2788873--61478788--379a433991--number-1-purple-o0K99yF-600.jpg",
+              "sourceUrl": "https://uploads.teachablecdn.com/attachments/jVmNwGIAQXC3ly11VUqJ_number-1-purple-o0K99yF-600.jpg"
             }
           ]
         },
@@ -2765,7 +2791,8 @@
             {
               "name": "IMG_6726.jpg",
               "kind": "image",
-              "url": "https://uploads.teachablecdn.com/attachments/ys5VttHjSigLVFNmHL3c_IMG_6726.jpg"
+              "url": "assets/course-media/2788873--61465089--665c3aa80e--IMG_6726.jpg",
+              "sourceUrl": "https://uploads.teachablecdn.com/attachments/ys5VttHjSigLVFNmHL3c_IMG_6726.jpg"
             }
           ]
         },
@@ -2781,7 +2808,8 @@
             {
               "name": "istockphoto-936011660-612x612.jpg",
               "kind": "image",
-              "url": "https://uploads.teachablecdn.com/attachments/dJdnSMfPQwaysV8JxnWE_istockphoto-936011660-612x612.jpg"
+              "url": "assets/course-media/2788873--61465094--f98409d04f--istockphoto-936011660-612x612.jpg",
+              "sourceUrl": "https://uploads.teachablecdn.com/attachments/dJdnSMfPQwaysV8JxnWE_istockphoto-936011660-612x612.jpg"
             }
           ]
         },
@@ -2809,7 +2837,8 @@
             {
               "name": "IMG_8463.jpg",
               "kind": "image",
-              "url": "https://uploads.teachablecdn.com/attachments/cqB5I879SO2DsRIb6tjs_IMG_8463.jpg"
+              "url": "assets/course-media/2788873--61465102--1351ecc14c--IMG_8463.jpg",
+              "sourceUrl": "https://uploads.teachablecdn.com/attachments/cqB5I879SO2DsRIb6tjs_IMG_8463.jpg"
             }
           ]
         },
@@ -2904,7 +2933,8 @@
             {
               "name": "IMG_5525.JPG",
               "kind": "image",
-              "url": "https://uploads.teachablecdn.com/attachments/6bCJpPCSJaRIG4feW3uQ_IMG_5525.JPG"
+              "url": "assets/course-media/2788873--61478791--84a0ffd4b2--IMG_5525.JPG",
+              "sourceUrl": "https://uploads.teachablecdn.com/attachments/6bCJpPCSJaRIG4feW3uQ_IMG_5525.JPG"
             }
           ]
         },
@@ -2950,7 +2980,8 @@
             {
               "name": "student-speaking-at-spdp-800.jpg",
               "kind": "image",
-              "url": "https://uploads.teachablecdn.com/attachments/ojCoFw0PRqOVii1PMP45_student-speaking-at-spdp-800.jpg"
+              "url": "assets/course-media/2788873--61465160--c285b47ead--student-speaking-at-spdp-800.jpg",
+              "sourceUrl": "https://uploads.teachablecdn.com/attachments/ojCoFw0PRqOVii1PMP45_student-speaking-at-spdp-800.jpg"
             }
           ]
         },
@@ -2966,7 +2997,8 @@
             {
               "name": "accountability-1024x518.webp",
               "kind": "image",
-              "url": "https://uploads.teachablecdn.com/attachments/ZxDaPhqUSb2OuejfA2l8_accountability-1024x518.webp"
+              "url": "assets/course-media/2788873--61482975--3cdeb280f5--accountability-1024x518.webp",
+              "sourceUrl": "https://uploads.teachablecdn.com/attachments/ZxDaPhqUSb2OuejfA2l8_accountability-1024x518.webp"
             }
           ]
         },
@@ -3241,11 +3273,11 @@
                   "answers": [
                     "a) Canva",
                     "b) Amazon",
-                    "c) estherfundsfoundation.store",
+                    "c) The current verified merchandise link on the official EFF website or Chapter Resource Hub",
                     "d) Custom vendors"
                   ],
                   "correct_answers": [
-                    "c) estherfundsfoundation.store"
+                    "c) The current verified merchandise link on the official EFF website or Chapter Resource Hub"
                   ],
                   "graded": true
                 },
@@ -3761,7 +3793,8 @@
           ],
           "assets": []
         }
-      ]
+      ],
+      "category": "Foundational EFF Training"
     },
     {
       "id": "2921485",
@@ -3831,7 +3864,8 @@
             {
               "name": "Gemini_Generated_Image_janomjjanomjjano.png",
               "kind": "image",
-              "url": "https://uploads.teachablecdn.com/attachments/2d0cab705e2a4b4e826996529e546de9.png"
+              "url": "assets/course-media/2921485--64234922--3a20a712cd--Gemini_Generated_Image_janomjjanomjjano.png",
+              "sourceUrl": "https://uploads.teachablecdn.com/attachments/2d0cab705e2a4b4e826996529e546de9.png"
             }
           ]
         },
@@ -4618,11 +4652,13 @@
             {
               "name": "Gemini_Generated_Image_janomjjanomjjano.png",
               "kind": "image",
-              "url": "https://uploads.teachablecdn.com/attachments/5ca8fc99bfc34b84a2bbe744c3cc2f4e.png"
+              "url": "assets/course-media/2921485--64235277--b3b3130dcd--Gemini_Generated_Image_janomjjanomjjano.png",
+              "sourceUrl": "https://uploads.teachablecdn.com/attachments/5ca8fc99bfc34b84a2bbe744c3cc2f4e.png"
             }
           ]
         }
-      ]
+      ],
+      "category": "Foundational EFF Training"
     },
     {
       "id": "2998574",
@@ -5690,7 +5726,2025 @@
           "activities": [],
           "assets": []
         }
+      ],
+      "category": "Foundational EFF Training"
+    },
+    {
+      "id": "eff-2026-governance-fiduciary-duty",
+      "title": "National Governance & Fiduciary Duty",
+      "category": "2026 Leadership Core",
+      "audience": "Presidents, advisors, national and regional leaders",
+      "duration": "75 minutes",
+      "purpose": "Lead within EFF authority, protect the mission, and make documented decisions with care.",
+      "concepts": [
+        "the duty of care, loyalty, and obedience",
+        "the difference between national, chapter, advisor, and campus authority",
+        "conflicts of interest and recusal",
+        "minutes, approvals, and a defensible decision record"
+      ],
+      "scenario": "A sponsor offers money but asks the chapter to promote a product that conflicts with EFF values. The president wants to accept before Nationals reviews the terms.",
+      "tool": "one-page decision and escalation memo",
+      "right": "Pause the commitment, document the offer and conflict, and send it through the authorized review path",
+      "wrong": [
+        "Accept it because the chapter needs funds",
+        "Let one officer decide without a record"
+      ],
+      "description": "Lead within EFF authority, protect the mission, and make documented decisions with care.",
+      "version": "2026.1",
+      "updatedAt": "2026-08-30",
+      "modules": [
+        {
+          "id": "eff-2026-governance-fiduciary-duty-foundation",
+          "title": "Foundation & role clarity",
+          "position": 1
+        },
+        {
+          "id": "eff-2026-governance-fiduciary-duty-practice",
+          "title": "Practice, judgment & documentation",
+          "position": 2
+        },
+        {
+          "id": "eff-2026-governance-fiduciary-duty-certification",
+          "title": "Certification & field application",
+          "position": 3
+        }
+      ],
+      "lessons": [
+        {
+          "id": "eff-2026-governance-fiduciary-duty-standard",
+          "sectionId": "eff-2026-governance-fiduciary-duty-foundation",
+          "position": 1,
+          "title": "The EFF standard for National Governance & Fiduciary Duty",
+          "markdown": "## Purpose\nLead within EFF authority, protect the mission, and make documented decisions with care.\n\n## By the end of this course\nYou will be able to explain the duty of care, loyalty, and obedience; apply the difference between national, chapter, advisor, and campus authority; recognize conflicts of interest and recusal; and produce minutes, approvals, and a defensible decision record.\n\n## Leadership standard\nAn EFF leader acts within role, protects student dignity, uses approved policy and resources, documents decisions, and escalates concerns that exceed chapter authority. Speed never replaces safety, fairness, or a reliable record.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "Which statement best reflects the EFF leadership standard?",
+                  "answers": [
+                    "Act within role, document decisions, and escalate when authority or safety requires it",
+                    "Move quickly even when approval is unclear",
+                    "Keep important decisions verbal to preserve flexibility"
+                  ],
+                  "correct_answers": [
+                    "Act within role, document decisions, and escalate when authority or safety requires it"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-governance-fiduciary-duty-roles",
+          "sectionId": "eff-2026-governance-fiduciary-duty-foundation",
+          "position": 2,
+          "title": "Roles, authority & non-negotiable boundaries",
+          "markdown": "## Know what belongs to your role\nBefore acting, identify: who owns the decision, what policy controls it, whose consent or approval is required, and where the record belongs.\n\n### Apply these four questions\n1. Is this within my assigned authority?\n2. Could this affect safety, money, privacy, legal rights, or chapter standing?\n3. What written approval or record is required?\n4. Who must be informed, consulted, or asked to decide?\n\n### Course-specific boundary\nFor National Governance & Fiduciary Duty, leaders must be especially fluent in the duty of care, loyalty, and obedience and the difference between national, chapter, advisor, and campus authority. When facts are incomplete or consequences are significant, pause and escalate rather than improvise.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "What should a leader do when authority is unclear and the decision could affect chapter standing?",
+                  "answers": [
+                    "Pause, document the question, and use the authorized escalation path",
+                    "Assume authority if the deadline is close",
+                    "Ask social media followers what to do"
+                  ],
+                  "correct_answers": [
+                    "Pause, document the question, and use the authorized escalation path"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-governance-fiduciary-duty-playbook",
+          "sectionId": "eff-2026-governance-fiduciary-duty-practice",
+          "position": 3,
+          "title": "The field playbook",
+          "markdown": "## A repeatable workflow\n**Prepare.** Define the need, intended outcome, people affected, policy, owner, deadline, approvals, risks, and evidence of completion.\n\n**Act.** Communicate roles and expectations; use the approved tool; protect access and private information; record material decisions as they occur.\n\n**Review.** Compare the result with the intended outcome; reconcile open items; report exceptions; assign follow-up; store the record in the approved location.\n\n### Your course tool\nBuild a one-page decision and escalation memo. It should be usable by another trained leader without relying on your memory. Include an owner, date, status, approval evidence, unresolved issues, and next action.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "Which deliverable best demonstrates readiness in National Governance & Fiduciary Duty?",
+                  "answers": [
+                    "A completed one-page decision and escalation memo with owners, approvals, status, and follow-up",
+                    "A verbal summary with no supporting record",
+                    "A promotional graphic announcing success"
+                  ],
+                  "correct_answers": [
+                    "A completed one-page decision and escalation memo with owners, approvals, status, and follow-up"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-governance-fiduciary-duty-scenario",
+          "sectionId": "eff-2026-governance-fiduciary-duty-practice",
+          "position": 4,
+          "title": "Scenario lab: make the defensible decision",
+          "markdown": "## Situation\nA sponsor offers money but asks the chapter to promote a product that conflicts with EFF values. The president wants to accept before Nationals reviews the terms.\n\n## Work the decision\nWrite the known facts separately from assumptions. Name the people affected, immediate risk, controlling policy or standard, decision owner, required consultation, and the record that must be preserved.\n\n## Model response\nPause the commitment, document the offer and conflict, and send it through the authorized review path. Communicate respectfully and share only the minimum information needed with authorized people. Set a follow-up date; do not treat escalation as abandonment.\n\n## Debrief\nThe strongest decision is not merely the fastest or most popular. It is mission-aligned, within authority, proportionate to risk, consistent with policy, and supported by a clear record.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "What is the strongest response to this scenario?",
+                  "answers": [
+                    "Pause the commitment, document the offer and conflict, and send it through the authorized review path",
+                    "Accept it because the chapter needs funds",
+                    "Let one officer decide without a record"
+                  ],
+                  "correct_answers": [
+                    "Pause the commitment, document the offer and conflict, and send it through the authorized review path"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-governance-fiduciary-duty-capstone",
+          "sectionId": "eff-2026-governance-fiduciary-duty-certification",
+          "position": 5,
+          "title": "Certification capstone & 30-day application",
+          "markdown": "## Capstone\nComplete your one-page decision and escalation memo for a real or realistic chapter situation. Remove unnecessary private information, but make the work specific enough for an authorized reviewer to assess.\n\n## Required elements\n- the need and mission connection;\n- applicable role, policy, or boundary;\n- decision owner and approvals;\n- step-by-step workflow with deadlines;\n- risk and escalation triggers;\n- evidence of completion and follow-up.\n\n## Thirty-day commitment\nName one practice you will begin, one practice you will stop, and one record or control you will strengthen. Revisit the commitment with your president, advisor, supervisor, or national liaison within 30 days.\n\nCertification confirms course completion; it does not expand a learner’s authority beyond current EFF policy or assigned role.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "What does this certification authorize?",
+                  "answers": [
+                    "It verifies learning but does not expand authority beyond current policy or assigned role",
+                    "It permits the learner to override chapter policy",
+                    "It replaces required national approval"
+                  ],
+                  "correct_answers": [
+                    "It verifies learning but does not expand authority beyond current policy or assigned role"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eff-2026-president-certification",
+      "title": "Chapter President Certification",
+      "category": "2026 Leadership Core",
+      "audience": "Chapter presidents and founders",
+      "duration": "90 minutes",
+      "purpose": "Turn mission into a disciplined semester plan while leading people with clarity, accountability, and care.",
+      "concepts": [
+        "the president’s weekly operating rhythm",
+        "delegation with owners and deadlines",
+        "executive-board accountability conversations",
+        "semester scorecards, succession, and officer continuity"
+      ],
+      "scenario": "Two officers repeatedly miss deadlines, while the president quietly completes their work and begins to burn out.",
+      "tool": "30-60-90 day presidential operating plan",
+      "right": "Reset expectations privately, assign clear owners and dates, document support, and escalate repeated nonperformance",
+      "wrong": [
+        "Keep doing every task alone",
+        "Criticize the officers in the chapter group chat"
+      ],
+      "description": "Turn mission into a disciplined semester plan while leading people with clarity, accountability, and care.",
+      "version": "2026.1",
+      "updatedAt": "2026-08-30",
+      "modules": [
+        {
+          "id": "eff-2026-president-certification-foundation",
+          "title": "Foundation & role clarity",
+          "position": 1
+        },
+        {
+          "id": "eff-2026-president-certification-practice",
+          "title": "Practice, judgment & documentation",
+          "position": 2
+        },
+        {
+          "id": "eff-2026-president-certification-certification",
+          "title": "Certification & field application",
+          "position": 3
+        }
+      ],
+      "lessons": [
+        {
+          "id": "eff-2026-president-certification-standard",
+          "sectionId": "eff-2026-president-certification-foundation",
+          "position": 1,
+          "title": "The EFF standard for Chapter President Certification",
+          "markdown": "## Purpose\nTurn mission into a disciplined semester plan while leading people with clarity, accountability, and care.\n\n## By the end of this course\nYou will be able to explain the president’s weekly operating rhythm; apply delegation with owners and deadlines; recognize executive-board accountability conversations; and produce semester scorecards, succession, and officer continuity.\n\n## Leadership standard\nAn EFF leader acts within role, protects student dignity, uses approved policy and resources, documents decisions, and escalates concerns that exceed chapter authority. Speed never replaces safety, fairness, or a reliable record.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "Which statement best reflects the EFF leadership standard?",
+                  "answers": [
+                    "Act within role, document decisions, and escalate when authority or safety requires it",
+                    "Move quickly even when approval is unclear",
+                    "Keep important decisions verbal to preserve flexibility"
+                  ],
+                  "correct_answers": [
+                    "Act within role, document decisions, and escalate when authority or safety requires it"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-president-certification-roles",
+          "sectionId": "eff-2026-president-certification-foundation",
+          "position": 2,
+          "title": "Roles, authority & non-negotiable boundaries",
+          "markdown": "## Know what belongs to your role\nBefore acting, identify: who owns the decision, what policy controls it, whose consent or approval is required, and where the record belongs.\n\n### Apply these four questions\n1. Is this within my assigned authority?\n2. Could this affect safety, money, privacy, legal rights, or chapter standing?\n3. What written approval or record is required?\n4. Who must be informed, consulted, or asked to decide?\n\n### Course-specific boundary\nFor Chapter President Certification, leaders must be especially fluent in the president’s weekly operating rhythm and delegation with owners and deadlines. When facts are incomplete or consequences are significant, pause and escalate rather than improvise.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "What should a leader do when authority is unclear and the decision could affect chapter standing?",
+                  "answers": [
+                    "Pause, document the question, and use the authorized escalation path",
+                    "Assume authority if the deadline is close",
+                    "Ask social media followers what to do"
+                  ],
+                  "correct_answers": [
+                    "Pause, document the question, and use the authorized escalation path"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-president-certification-playbook",
+          "sectionId": "eff-2026-president-certification-practice",
+          "position": 3,
+          "title": "The field playbook",
+          "markdown": "## A repeatable workflow\n**Prepare.** Define the need, intended outcome, people affected, policy, owner, deadline, approvals, risks, and evidence of completion.\n\n**Act.** Communicate roles and expectations; use the approved tool; protect access and private information; record material decisions as they occur.\n\n**Review.** Compare the result with the intended outcome; reconcile open items; report exceptions; assign follow-up; store the record in the approved location.\n\n### Your course tool\nBuild a 30-60-90 day presidential operating plan. It should be usable by another trained leader without relying on your memory. Include an owner, date, status, approval evidence, unresolved issues, and next action.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "Which deliverable best demonstrates readiness in Chapter President Certification?",
+                  "answers": [
+                    "A completed 30-60-90 day presidential operating plan with owners, approvals, status, and follow-up",
+                    "A verbal summary with no supporting record",
+                    "A promotional graphic announcing success"
+                  ],
+                  "correct_answers": [
+                    "A completed 30-60-90 day presidential operating plan with owners, approvals, status, and follow-up"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-president-certification-scenario",
+          "sectionId": "eff-2026-president-certification-practice",
+          "position": 4,
+          "title": "Scenario lab: make the defensible decision",
+          "markdown": "## Situation\nTwo officers repeatedly miss deadlines, while the president quietly completes their work and begins to burn out.\n\n## Work the decision\nWrite the known facts separately from assumptions. Name the people affected, immediate risk, controlling policy or standard, decision owner, required consultation, and the record that must be preserved.\n\n## Model response\nReset expectations privately, assign clear owners and dates, document support, and escalate repeated nonperformance. Communicate respectfully and share only the minimum information needed with authorized people. Set a follow-up date; do not treat escalation as abandonment.\n\n## Debrief\nThe strongest decision is not merely the fastest or most popular. It is mission-aligned, within authority, proportionate to risk, consistent with policy, and supported by a clear record.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "What is the strongest response to this scenario?",
+                  "answers": [
+                    "Reset expectations privately, assign clear owners and dates, document support, and escalate repeated nonperformance",
+                    "Keep doing every task alone",
+                    "Criticize the officers in the chapter group chat"
+                  ],
+                  "correct_answers": [
+                    "Reset expectations privately, assign clear owners and dates, document support, and escalate repeated nonperformance"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-president-certification-capstone",
+          "sectionId": "eff-2026-president-certification-certification",
+          "position": 5,
+          "title": "Certification capstone & 30-day application",
+          "markdown": "## Capstone\nComplete your 30-60-90 day presidential operating plan for a real or realistic chapter situation. Remove unnecessary private information, but make the work specific enough for an authorized reviewer to assess.\n\n## Required elements\n- the need and mission connection;\n- applicable role, policy, or boundary;\n- decision owner and approvals;\n- step-by-step workflow with deadlines;\n- risk and escalation triggers;\n- evidence of completion and follow-up.\n\n## Thirty-day commitment\nName one practice you will begin, one practice you will stop, and one record or control you will strengthen. Revisit the commitment with your president, advisor, supervisor, or national liaison within 30 days.\n\nCertification confirms course completion; it does not expand a learner’s authority beyond current EFF policy or assigned role.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "What does this certification authorize?",
+                  "answers": [
+                    "It verifies learning but does not expand authority beyond current policy or assigned role",
+                    "It permits the learner to override chapter policy",
+                    "It replaces required national approval"
+                  ],
+                  "correct_answers": [
+                    "It verifies learning but does not expand authority beyond current policy or assigned role"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eff-2026-treasurer-financial-stewardship",
+      "title": "Treasurer & Financial Stewardship Certification",
+      "category": "2026 Leadership Core",
+      "audience": "Treasurers, presidents, advisors, and finance reviewers",
+      "duration": "95 minutes",
+      "purpose": "Protect chapter funds through budgets, approvals, receipts, reconciliation, and transparent reporting.",
+      "concepts": [
+        "budgeting by approved program purpose",
+        "pre-approval, purchasing, reimbursement, and receipt controls",
+        "restricted versus unrestricted money",
+        "monthly reconciliation, exception review, and officer transition"
+      ],
+      "scenario": "A member paid for an unapproved event purchase with a personal card and requests immediate reimbursement without an itemized receipt.",
+      "tool": "monthly finance packet with budget-to-actual review",
+      "right": "Follow the written reimbursement exception process and do not bypass documentation or approval controls",
+      "wrong": [
+        "Reimburse from cash to avoid delay",
+        "Create a receipt after the fact"
+      ],
+      "description": "Protect chapter funds through budgets, approvals, receipts, reconciliation, and transparent reporting.",
+      "version": "2026.1",
+      "updatedAt": "2026-08-30",
+      "modules": [
+        {
+          "id": "eff-2026-treasurer-financial-stewardship-foundation",
+          "title": "Foundation & role clarity",
+          "position": 1
+        },
+        {
+          "id": "eff-2026-treasurer-financial-stewardship-practice",
+          "title": "Practice, judgment & documentation",
+          "position": 2
+        },
+        {
+          "id": "eff-2026-treasurer-financial-stewardship-certification",
+          "title": "Certification & field application",
+          "position": 3
+        }
+      ],
+      "lessons": [
+        {
+          "id": "eff-2026-treasurer-financial-stewardship-standard",
+          "sectionId": "eff-2026-treasurer-financial-stewardship-foundation",
+          "position": 1,
+          "title": "The EFF standard for Treasurer & Financial Stewardship Certification",
+          "markdown": "## Purpose\nProtect chapter funds through budgets, approvals, receipts, reconciliation, and transparent reporting.\n\n## By the end of this course\nYou will be able to explain budgeting by approved program purpose; apply pre-approval, purchasing, reimbursement, and receipt controls; recognize restricted versus unrestricted money; and produce monthly reconciliation, exception review, and officer transition.\n\n## Leadership standard\nAn EFF leader acts within role, protects student dignity, uses approved policy and resources, documents decisions, and escalates concerns that exceed chapter authority. Speed never replaces safety, fairness, or a reliable record.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "Which statement best reflects the EFF leadership standard?",
+                  "answers": [
+                    "Act within role, document decisions, and escalate when authority or safety requires it",
+                    "Move quickly even when approval is unclear",
+                    "Keep important decisions verbal to preserve flexibility"
+                  ],
+                  "correct_answers": [
+                    "Act within role, document decisions, and escalate when authority or safety requires it"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-treasurer-financial-stewardship-roles",
+          "sectionId": "eff-2026-treasurer-financial-stewardship-foundation",
+          "position": 2,
+          "title": "Roles, authority & non-negotiable boundaries",
+          "markdown": "## Know what belongs to your role\nBefore acting, identify: who owns the decision, what policy controls it, whose consent or approval is required, and where the record belongs.\n\n### Apply these four questions\n1. Is this within my assigned authority?\n2. Could this affect safety, money, privacy, legal rights, or chapter standing?\n3. What written approval or record is required?\n4. Who must be informed, consulted, or asked to decide?\n\n### Course-specific boundary\nFor Treasurer & Financial Stewardship Certification, leaders must be especially fluent in budgeting by approved program purpose and pre-approval, purchasing, reimbursement, and receipt controls. When facts are incomplete or consequences are significant, pause and escalate rather than improvise.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "What should a leader do when authority is unclear and the decision could affect chapter standing?",
+                  "answers": [
+                    "Pause, document the question, and use the authorized escalation path",
+                    "Assume authority if the deadline is close",
+                    "Ask social media followers what to do"
+                  ],
+                  "correct_answers": [
+                    "Pause, document the question, and use the authorized escalation path"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-treasurer-financial-stewardship-playbook",
+          "sectionId": "eff-2026-treasurer-financial-stewardship-practice",
+          "position": 3,
+          "title": "The field playbook",
+          "markdown": "## A repeatable workflow\n**Prepare.** Define the need, intended outcome, people affected, policy, owner, deadline, approvals, risks, and evidence of completion.\n\n**Act.** Communicate roles and expectations; use the approved tool; protect access and private information; record material decisions as they occur.\n\n**Review.** Compare the result with the intended outcome; reconcile open items; report exceptions; assign follow-up; store the record in the approved location.\n\n### Your course tool\nBuild a monthly finance packet with budget-to-actual review. It should be usable by another trained leader without relying on your memory. Include an owner, date, status, approval evidence, unresolved issues, and next action.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "Which deliverable best demonstrates readiness in Treasurer & Financial Stewardship Certification?",
+                  "answers": [
+                    "A completed monthly finance packet with budget-to-actual review with owners, approvals, status, and follow-up",
+                    "A verbal summary with no supporting record",
+                    "A promotional graphic announcing success"
+                  ],
+                  "correct_answers": [
+                    "A completed monthly finance packet with budget-to-actual review with owners, approvals, status, and follow-up"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-treasurer-financial-stewardship-scenario",
+          "sectionId": "eff-2026-treasurer-financial-stewardship-practice",
+          "position": 4,
+          "title": "Scenario lab: make the defensible decision",
+          "markdown": "## Situation\nA member paid for an unapproved event purchase with a personal card and requests immediate reimbursement without an itemized receipt.\n\n## Work the decision\nWrite the known facts separately from assumptions. Name the people affected, immediate risk, controlling policy or standard, decision owner, required consultation, and the record that must be preserved.\n\n## Model response\nFollow the written reimbursement exception process and do not bypass documentation or approval controls. Communicate respectfully and share only the minimum information needed with authorized people. Set a follow-up date; do not treat escalation as abandonment.\n\n## Debrief\nThe strongest decision is not merely the fastest or most popular. It is mission-aligned, within authority, proportionate to risk, consistent with policy, and supported by a clear record.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "What is the strongest response to this scenario?",
+                  "answers": [
+                    "Follow the written reimbursement exception process and do not bypass documentation or approval controls",
+                    "Reimburse from cash to avoid delay",
+                    "Create a receipt after the fact"
+                  ],
+                  "correct_answers": [
+                    "Follow the written reimbursement exception process and do not bypass documentation or approval controls"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-treasurer-financial-stewardship-capstone",
+          "sectionId": "eff-2026-treasurer-financial-stewardship-certification",
+          "position": 5,
+          "title": "Certification capstone & 30-day application",
+          "markdown": "## Capstone\nComplete your monthly finance packet with budget-to-actual review for a real or realistic chapter situation. Remove unnecessary private information, but make the work specific enough for an authorized reviewer to assess.\n\n## Required elements\n- the need and mission connection;\n- applicable role, policy, or boundary;\n- decision owner and approvals;\n- step-by-step workflow with deadlines;\n- risk and escalation triggers;\n- evidence of completion and follow-up.\n\n## Thirty-day commitment\nName one practice you will begin, one practice you will stop, and one record or control you will strengthen. Revisit the commitment with your president, advisor, supervisor, or national liaison within 30 days.\n\nCertification confirms course completion; it does not expand a learner’s authority beyond current EFF policy or assigned role.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "What does this certification authorize?",
+                  "answers": [
+                    "It verifies learning but does not expand authority beyond current policy or assigned role",
+                    "It permits the learner to override chapter policy",
+                    "It replaces required national approval"
+                  ],
+                  "correct_answers": [
+                    "It verifies learning but does not expand authority beyond current policy or assigned role"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eff-2026-secretary-records-compliance",
+      "title": "Secretary, Records & Chapter Compliance",
+      "category": "2026 Leadership Core",
+      "audience": "Secretaries, presidents, compliance chairs, and advisors",
+      "duration": "70 minutes",
+      "purpose": "Create accurate records that preserve decisions, protect members, and keep the chapter in good standing.",
+      "concepts": [
+        "agenda and minutes standards",
+        "attendance, motions, votes, and action logs",
+        "secure records and retention",
+        "semester reporting and a compliance calendar"
+      ],
+      "scenario": "A disputed spending decision was discussed verbally, but the minutes do not show a motion, vote, or approval.",
+      "tool": "meeting record and compliance calendar packet",
+      "right": "Record what is verifiable, flag the missing approval, and route the matter for proper review",
+      "wrong": [
+        "Rewrite the minutes to imply approval",
+        "Delete the incomplete record"
+      ],
+      "description": "Create accurate records that preserve decisions, protect members, and keep the chapter in good standing.",
+      "version": "2026.1",
+      "updatedAt": "2026-08-30",
+      "modules": [
+        {
+          "id": "eff-2026-secretary-records-compliance-foundation",
+          "title": "Foundation & role clarity",
+          "position": 1
+        },
+        {
+          "id": "eff-2026-secretary-records-compliance-practice",
+          "title": "Practice, judgment & documentation",
+          "position": 2
+        },
+        {
+          "id": "eff-2026-secretary-records-compliance-certification",
+          "title": "Certification & field application",
+          "position": 3
+        }
+      ],
+      "lessons": [
+        {
+          "id": "eff-2026-secretary-records-compliance-standard",
+          "sectionId": "eff-2026-secretary-records-compliance-foundation",
+          "position": 1,
+          "title": "The EFF standard for Secretary, Records & Chapter Compliance",
+          "markdown": "## Purpose\nCreate accurate records that preserve decisions, protect members, and keep the chapter in good standing.\n\n## By the end of this course\nYou will be able to explain agenda and minutes standards; apply attendance, motions, votes, and action logs; recognize secure records and retention; and produce semester reporting and a compliance calendar.\n\n## Leadership standard\nAn EFF leader acts within role, protects student dignity, uses approved policy and resources, documents decisions, and escalates concerns that exceed chapter authority. Speed never replaces safety, fairness, or a reliable record.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "Which statement best reflects the EFF leadership standard?",
+                  "answers": [
+                    "Act within role, document decisions, and escalate when authority or safety requires it",
+                    "Move quickly even when approval is unclear",
+                    "Keep important decisions verbal to preserve flexibility"
+                  ],
+                  "correct_answers": [
+                    "Act within role, document decisions, and escalate when authority or safety requires it"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-secretary-records-compliance-roles",
+          "sectionId": "eff-2026-secretary-records-compliance-foundation",
+          "position": 2,
+          "title": "Roles, authority & non-negotiable boundaries",
+          "markdown": "## Know what belongs to your role\nBefore acting, identify: who owns the decision, what policy controls it, whose consent or approval is required, and where the record belongs.\n\n### Apply these four questions\n1. Is this within my assigned authority?\n2. Could this affect safety, money, privacy, legal rights, or chapter standing?\n3. What written approval or record is required?\n4. Who must be informed, consulted, or asked to decide?\n\n### Course-specific boundary\nFor Secretary, Records & Chapter Compliance, leaders must be especially fluent in agenda and minutes standards and attendance, motions, votes, and action logs. When facts are incomplete or consequences are significant, pause and escalate rather than improvise.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "What should a leader do when authority is unclear and the decision could affect chapter standing?",
+                  "answers": [
+                    "Pause, document the question, and use the authorized escalation path",
+                    "Assume authority if the deadline is close",
+                    "Ask social media followers what to do"
+                  ],
+                  "correct_answers": [
+                    "Pause, document the question, and use the authorized escalation path"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-secretary-records-compliance-playbook",
+          "sectionId": "eff-2026-secretary-records-compliance-practice",
+          "position": 3,
+          "title": "The field playbook",
+          "markdown": "## A repeatable workflow\n**Prepare.** Define the need, intended outcome, people affected, policy, owner, deadline, approvals, risks, and evidence of completion.\n\n**Act.** Communicate roles and expectations; use the approved tool; protect access and private information; record material decisions as they occur.\n\n**Review.** Compare the result with the intended outcome; reconcile open items; report exceptions; assign follow-up; store the record in the approved location.\n\n### Your course tool\nBuild a meeting record and compliance calendar packet. It should be usable by another trained leader without relying on your memory. Include an owner, date, status, approval evidence, unresolved issues, and next action.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "Which deliverable best demonstrates readiness in Secretary, Records & Chapter Compliance?",
+                  "answers": [
+                    "A completed meeting record and compliance calendar packet with owners, approvals, status, and follow-up",
+                    "A verbal summary with no supporting record",
+                    "A promotional graphic announcing success"
+                  ],
+                  "correct_answers": [
+                    "A completed meeting record and compliance calendar packet with owners, approvals, status, and follow-up"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-secretary-records-compliance-scenario",
+          "sectionId": "eff-2026-secretary-records-compliance-practice",
+          "position": 4,
+          "title": "Scenario lab: make the defensible decision",
+          "markdown": "## Situation\nA disputed spending decision was discussed verbally, but the minutes do not show a motion, vote, or approval.\n\n## Work the decision\nWrite the known facts separately from assumptions. Name the people affected, immediate risk, controlling policy or standard, decision owner, required consultation, and the record that must be preserved.\n\n## Model response\nRecord what is verifiable, flag the missing approval, and route the matter for proper review. Communicate respectfully and share only the minimum information needed with authorized people. Set a follow-up date; do not treat escalation as abandonment.\n\n## Debrief\nThe strongest decision is not merely the fastest or most popular. It is mission-aligned, within authority, proportionate to risk, consistent with policy, and supported by a clear record.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "What is the strongest response to this scenario?",
+                  "answers": [
+                    "Record what is verifiable, flag the missing approval, and route the matter for proper review",
+                    "Rewrite the minutes to imply approval",
+                    "Delete the incomplete record"
+                  ],
+                  "correct_answers": [
+                    "Record what is verifiable, flag the missing approval, and route the matter for proper review"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-secretary-records-compliance-capstone",
+          "sectionId": "eff-2026-secretary-records-compliance-certification",
+          "position": 5,
+          "title": "Certification capstone & 30-day application",
+          "markdown": "## Capstone\nComplete your meeting record and compliance calendar packet for a real or realistic chapter situation. Remove unnecessary private information, but make the work specific enough for an authorized reviewer to assess.\n\n## Required elements\n- the need and mission connection;\n- applicable role, policy, or boundary;\n- decision owner and approvals;\n- step-by-step workflow with deadlines;\n- risk and escalation triggers;\n- evidence of completion and follow-up.\n\n## Thirty-day commitment\nName one practice you will begin, one practice you will stop, and one record or control you will strengthen. Revisit the commitment with your president, advisor, supervisor, or national liaison within 30 days.\n\nCertification confirms course completion; it does not expand a learner’s authority beyond current EFF policy or assigned role.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "What does this certification authorize?",
+                  "answers": [
+                    "It verifies learning but does not expand authority beyond current policy or assigned role",
+                    "It permits the learner to override chapter policy",
+                    "It replaces required national approval"
+                  ],
+                  "correct_answers": [
+                    "It verifies learning but does not expand authority beyond current policy or assigned role"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eff-2026-student-safety-privacy",
+      "title": "Student Safety, Privacy & Crisis Escalation",
+      "category": "2026 Leadership Core",
+      "audience": "All chapter and program leaders",
+      "duration": "100 minutes",
+      "purpose": "Respond to sensitive concerns without investigating beyond role, promising secrecy, or delaying urgent help.",
+      "concepts": [
+        "privacy, consent, and minimum-necessary information",
+        "urgent danger versus routine support",
+        "supportive listening without acting as a counselor",
+        "incident documentation and authorized escalation"
+      ],
+      "scenario": "A student tells an officer she may be unsafe tonight and asks the officer to promise not to tell anyone.",
+      "tool": "safety response and escalation checklist",
+      "right": "Explain the limit of confidentiality, stay supportive, and connect the student to immediate authorized help",
+      "wrong": [
+        "Promise complete secrecy",
+        "Investigate the situation alone before telling anyone"
+      ],
+      "description": "Respond to sensitive concerns without investigating beyond role, promising secrecy, or delaying urgent help.",
+      "version": "2026.1",
+      "updatedAt": "2026-08-30",
+      "modules": [
+        {
+          "id": "eff-2026-student-safety-privacy-foundation",
+          "title": "Foundation & role clarity",
+          "position": 1
+        },
+        {
+          "id": "eff-2026-student-safety-privacy-practice",
+          "title": "Practice, judgment & documentation",
+          "position": 2
+        },
+        {
+          "id": "eff-2026-student-safety-privacy-certification",
+          "title": "Certification & field application",
+          "position": 3
+        }
+      ],
+      "lessons": [
+        {
+          "id": "eff-2026-student-safety-privacy-standard",
+          "sectionId": "eff-2026-student-safety-privacy-foundation",
+          "position": 1,
+          "title": "The EFF standard for Student Safety, Privacy & Crisis Escalation",
+          "markdown": "## Purpose\nRespond to sensitive concerns without investigating beyond role, promising secrecy, or delaying urgent help.\n\n## By the end of this course\nYou will be able to explain privacy, consent, and minimum-necessary information; apply urgent danger versus routine support; recognize supportive listening without acting as a counselor; and produce incident documentation and authorized escalation.\n\n## Leadership standard\nAn EFF leader acts within role, protects student dignity, uses approved policy and resources, documents decisions, and escalates concerns that exceed chapter authority. Speed never replaces safety, fairness, or a reliable record.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "Which statement best reflects the EFF leadership standard?",
+                  "answers": [
+                    "Act within role, document decisions, and escalate when authority or safety requires it",
+                    "Move quickly even when approval is unclear",
+                    "Keep important decisions verbal to preserve flexibility"
+                  ],
+                  "correct_answers": [
+                    "Act within role, document decisions, and escalate when authority or safety requires it"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-student-safety-privacy-roles",
+          "sectionId": "eff-2026-student-safety-privacy-foundation",
+          "position": 2,
+          "title": "Roles, authority & non-negotiable boundaries",
+          "markdown": "## Know what belongs to your role\nBefore acting, identify: who owns the decision, what policy controls it, whose consent or approval is required, and where the record belongs.\n\n### Apply these four questions\n1. Is this within my assigned authority?\n2. Could this affect safety, money, privacy, legal rights, or chapter standing?\n3. What written approval or record is required?\n4. Who must be informed, consulted, or asked to decide?\n\n### Course-specific boundary\nFor Student Safety, Privacy & Crisis Escalation, leaders must be especially fluent in privacy, consent, and minimum-necessary information and urgent danger versus routine support. When facts are incomplete or consequences are significant, pause and escalate rather than improvise.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "What should a leader do when authority is unclear and the decision could affect chapter standing?",
+                  "answers": [
+                    "Pause, document the question, and use the authorized escalation path",
+                    "Assume authority if the deadline is close",
+                    "Ask social media followers what to do"
+                  ],
+                  "correct_answers": [
+                    "Pause, document the question, and use the authorized escalation path"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-student-safety-privacy-playbook",
+          "sectionId": "eff-2026-student-safety-privacy-practice",
+          "position": 3,
+          "title": "The field playbook",
+          "markdown": "## A repeatable workflow\n**Prepare.** Define the need, intended outcome, people affected, policy, owner, deadline, approvals, risks, and evidence of completion.\n\n**Act.** Communicate roles and expectations; use the approved tool; protect access and private information; record material decisions as they occur.\n\n**Review.** Compare the result with the intended outcome; reconcile open items; report exceptions; assign follow-up; store the record in the approved location.\n\n### Your course tool\nBuild a safety response and escalation checklist. It should be usable by another trained leader without relying on your memory. Include an owner, date, status, approval evidence, unresolved issues, and next action.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "Which deliverable best demonstrates readiness in Student Safety, Privacy & Crisis Escalation?",
+                  "answers": [
+                    "A completed safety response and escalation checklist with owners, approvals, status, and follow-up",
+                    "A verbal summary with no supporting record",
+                    "A promotional graphic announcing success"
+                  ],
+                  "correct_answers": [
+                    "A completed safety response and escalation checklist with owners, approvals, status, and follow-up"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-student-safety-privacy-scenario",
+          "sectionId": "eff-2026-student-safety-privacy-practice",
+          "position": 4,
+          "title": "Scenario lab: make the defensible decision",
+          "markdown": "## Situation\nA student tells an officer she may be unsafe tonight and asks the officer to promise not to tell anyone.\n\n## Work the decision\nWrite the known facts separately from assumptions. Name the people affected, immediate risk, controlling policy or standard, decision owner, required consultation, and the record that must be preserved.\n\n## Model response\nExplain the limit of confidentiality, stay supportive, and connect the student to immediate authorized help. Communicate respectfully and share only the minimum information needed with authorized people. Set a follow-up date; do not treat escalation as abandonment.\n\n## Debrief\nThe strongest decision is not merely the fastest or most popular. It is mission-aligned, within authority, proportionate to risk, consistent with policy, and supported by a clear record.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "What is the strongest response to this scenario?",
+                  "answers": [
+                    "Explain the limit of confidentiality, stay supportive, and connect the student to immediate authorized help",
+                    "Promise complete secrecy",
+                    "Investigate the situation alone before telling anyone"
+                  ],
+                  "correct_answers": [
+                    "Explain the limit of confidentiality, stay supportive, and connect the student to immediate authorized help"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-student-safety-privacy-capstone",
+          "sectionId": "eff-2026-student-safety-privacy-certification",
+          "position": 5,
+          "title": "Certification capstone & 30-day application",
+          "markdown": "## Capstone\nComplete your safety response and escalation checklist for a real or realistic chapter situation. Remove unnecessary private information, but make the work specific enough for an authorized reviewer to assess.\n\n## Required elements\n- the need and mission connection;\n- applicable role, policy, or boundary;\n- decision owner and approvals;\n- step-by-step workflow with deadlines;\n- risk and escalation triggers;\n- evidence of completion and follow-up.\n\n## Thirty-day commitment\nName one practice you will begin, one practice you will stop, and one record or control you will strengthen. Revisit the commitment with your president, advisor, supervisor, or national liaison within 30 days.\n\nCertification confirms course completion; it does not expand a learner’s authority beyond current EFF policy or assigned role.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "What does this certification authorize?",
+                  "answers": [
+                    "It verifies learning but does not expand authority beyond current policy or assigned role",
+                    "It permits the learner to override chapter policy",
+                    "It replaces required national approval"
+                  ],
+                  "correct_answers": [
+                    "It verifies learning but does not expand authority beyond current policy or assigned role"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eff-2026-program-design-impact",
+      "title": "Program Design & Impact Measurement",
+      "category": "2026 Leadership Core",
+      "audience": "Program chairs, presidents, service chairs, and impact teams",
+      "duration": "85 minutes",
+      "purpose": "Build mission-aligned programs with a real student outcome—not activity for activity’s sake.",
+      "concepts": [
+        "needs statements and target participants",
+        "outcomes, outputs, and indicators",
+        "accessible program design and risk planning",
+        "feedback, evidence, and an honest impact story"
+      ],
+      "scenario": "A chapter reports an event as successful because 80 people attended, but it collected no evidence that students received the intended benefit.",
+      "tool": "program logic model and after-action report",
+      "right": "Define the intended change, collect proportionate evidence, and report both reach and results",
+      "wrong": [
+        "Treat attendance as proof of impact",
+        "Only collect flattering comments"
+      ],
+      "description": "Build mission-aligned programs with a real student outcome—not activity for activity’s sake.",
+      "version": "2026.1",
+      "updatedAt": "2026-08-30",
+      "modules": [
+        {
+          "id": "eff-2026-program-design-impact-foundation",
+          "title": "Foundation & role clarity",
+          "position": 1
+        },
+        {
+          "id": "eff-2026-program-design-impact-practice",
+          "title": "Practice, judgment & documentation",
+          "position": 2
+        },
+        {
+          "id": "eff-2026-program-design-impact-certification",
+          "title": "Certification & field application",
+          "position": 3
+        }
+      ],
+      "lessons": [
+        {
+          "id": "eff-2026-program-design-impact-standard",
+          "sectionId": "eff-2026-program-design-impact-foundation",
+          "position": 1,
+          "title": "The EFF standard for Program Design & Impact Measurement",
+          "markdown": "## Purpose\nBuild mission-aligned programs with a real student outcome—not activity for activity’s sake.\n\n## By the end of this course\nYou will be able to explain needs statements and target participants; apply outcomes, outputs, and indicators; recognize accessible program design and risk planning; and produce feedback, evidence, and an honest impact story.\n\n## Leadership standard\nAn EFF leader acts within role, protects student dignity, uses approved policy and resources, documents decisions, and escalates concerns that exceed chapter authority. Speed never replaces safety, fairness, or a reliable record.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "Which statement best reflects the EFF leadership standard?",
+                  "answers": [
+                    "Act within role, document decisions, and escalate when authority or safety requires it",
+                    "Move quickly even when approval is unclear",
+                    "Keep important decisions verbal to preserve flexibility"
+                  ],
+                  "correct_answers": [
+                    "Act within role, document decisions, and escalate when authority or safety requires it"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-program-design-impact-roles",
+          "sectionId": "eff-2026-program-design-impact-foundation",
+          "position": 2,
+          "title": "Roles, authority & non-negotiable boundaries",
+          "markdown": "## Know what belongs to your role\nBefore acting, identify: who owns the decision, what policy controls it, whose consent or approval is required, and where the record belongs.\n\n### Apply these four questions\n1. Is this within my assigned authority?\n2. Could this affect safety, money, privacy, legal rights, or chapter standing?\n3. What written approval or record is required?\n4. Who must be informed, consulted, or asked to decide?\n\n### Course-specific boundary\nFor Program Design & Impact Measurement, leaders must be especially fluent in needs statements and target participants and outcomes, outputs, and indicators. When facts are incomplete or consequences are significant, pause and escalate rather than improvise.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "What should a leader do when authority is unclear and the decision could affect chapter standing?",
+                  "answers": [
+                    "Pause, document the question, and use the authorized escalation path",
+                    "Assume authority if the deadline is close",
+                    "Ask social media followers what to do"
+                  ],
+                  "correct_answers": [
+                    "Pause, document the question, and use the authorized escalation path"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-program-design-impact-playbook",
+          "sectionId": "eff-2026-program-design-impact-practice",
+          "position": 3,
+          "title": "The field playbook",
+          "markdown": "## A repeatable workflow\n**Prepare.** Define the need, intended outcome, people affected, policy, owner, deadline, approvals, risks, and evidence of completion.\n\n**Act.** Communicate roles and expectations; use the approved tool; protect access and private information; record material decisions as they occur.\n\n**Review.** Compare the result with the intended outcome; reconcile open items; report exceptions; assign follow-up; store the record in the approved location.\n\n### Your course tool\nBuild a program logic model and after-action report. It should be usable by another trained leader without relying on your memory. Include an owner, date, status, approval evidence, unresolved issues, and next action.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "Which deliverable best demonstrates readiness in Program Design & Impact Measurement?",
+                  "answers": [
+                    "A completed program logic model and after-action report with owners, approvals, status, and follow-up",
+                    "A verbal summary with no supporting record",
+                    "A promotional graphic announcing success"
+                  ],
+                  "correct_answers": [
+                    "A completed program logic model and after-action report with owners, approvals, status, and follow-up"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-program-design-impact-scenario",
+          "sectionId": "eff-2026-program-design-impact-practice",
+          "position": 4,
+          "title": "Scenario lab: make the defensible decision",
+          "markdown": "## Situation\nA chapter reports an event as successful because 80 people attended, but it collected no evidence that students received the intended benefit.\n\n## Work the decision\nWrite the known facts separately from assumptions. Name the people affected, immediate risk, controlling policy or standard, decision owner, required consultation, and the record that must be preserved.\n\n## Model response\nDefine the intended change, collect proportionate evidence, and report both reach and results. Communicate respectfully and share only the minimum information needed with authorized people. Set a follow-up date; do not treat escalation as abandonment.\n\n## Debrief\nThe strongest decision is not merely the fastest or most popular. It is mission-aligned, within authority, proportionate to risk, consistent with policy, and supported by a clear record.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "What is the strongest response to this scenario?",
+                  "answers": [
+                    "Define the intended change, collect proportionate evidence, and report both reach and results",
+                    "Treat attendance as proof of impact",
+                    "Only collect flattering comments"
+                  ],
+                  "correct_answers": [
+                    "Define the intended change, collect proportionate evidence, and report both reach and results"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-program-design-impact-capstone",
+          "sectionId": "eff-2026-program-design-impact-certification",
+          "position": 5,
+          "title": "Certification capstone & 30-day application",
+          "markdown": "## Capstone\nComplete your program logic model and after-action report for a real or realistic chapter situation. Remove unnecessary private information, but make the work specific enough for an authorized reviewer to assess.\n\n## Required elements\n- the need and mission connection;\n- applicable role, policy, or boundary;\n- decision owner and approvals;\n- step-by-step workflow with deadlines;\n- risk and escalation triggers;\n- evidence of completion and follow-up.\n\n## Thirty-day commitment\nName one practice you will begin, one practice you will stop, and one record or control you will strengthen. Revisit the commitment with your president, advisor, supervisor, or national liaison within 30 days.\n\nCertification confirms course completion; it does not expand a learner’s authority beyond current EFF policy or assigned role.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "What does this certification authorize?",
+                  "answers": [
+                    "It verifies learning but does not expand authority beyond current policy or assigned role",
+                    "It permits the learner to override chapter policy",
+                    "It replaces required national approval"
+                  ],
+                  "correct_answers": [
+                    "It verifies learning but does not expand authority beyond current policy or assigned role"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eff-2026-financial-assistance-case-management",
+      "title": "Financial Assistance Case Management",
+      "category": "2026 Leadership Core",
+      "audience": "Help-desk staff, student-support leaders, reviewers, and program managers",
+      "duration": "110 minutes",
+      "purpose": "Support students with dignity through consistent intake, verification, referrals, decisions, and follow-up.",
+      "concepts": [
+        "trauma-aware intake and informed consent",
+        "eligibility evidence and equitable triage",
+        "warm referrals and case notes",
+        "decision notices, appeals, privacy, and closure"
+      ],
+      "scenario": "Two students have urgent requests, but funds can cover only one. One student is personally known by a reviewer.",
+      "tool": "case plan, referral log, and documented decision rubric",
+      "right": "Use the approved criteria, disclose the conflict, recuse when required, and document the decision",
+      "wrong": [
+        "Prioritize the student the reviewer knows",
+        "Share both cases in a volunteer group chat"
+      ],
+      "description": "Support students with dignity through consistent intake, verification, referrals, decisions, and follow-up.",
+      "version": "2026.1",
+      "updatedAt": "2026-08-30",
+      "modules": [
+        {
+          "id": "eff-2026-financial-assistance-case-management-foundation",
+          "title": "Foundation & role clarity",
+          "position": 1
+        },
+        {
+          "id": "eff-2026-financial-assistance-case-management-practice",
+          "title": "Practice, judgment & documentation",
+          "position": 2
+        },
+        {
+          "id": "eff-2026-financial-assistance-case-management-certification",
+          "title": "Certification & field application",
+          "position": 3
+        }
+      ],
+      "lessons": [
+        {
+          "id": "eff-2026-financial-assistance-case-management-standard",
+          "sectionId": "eff-2026-financial-assistance-case-management-foundation",
+          "position": 1,
+          "title": "The EFF standard for Financial Assistance Case Management",
+          "markdown": "## Purpose\nSupport students with dignity through consistent intake, verification, referrals, decisions, and follow-up.\n\n## By the end of this course\nYou will be able to explain trauma-aware intake and informed consent; apply eligibility evidence and equitable triage; recognize warm referrals and case notes; and produce decision notices, appeals, privacy, and closure.\n\n## Leadership standard\nAn EFF leader acts within role, protects student dignity, uses approved policy and resources, documents decisions, and escalates concerns that exceed chapter authority. Speed never replaces safety, fairness, or a reliable record.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "Which statement best reflects the EFF leadership standard?",
+                  "answers": [
+                    "Act within role, document decisions, and escalate when authority or safety requires it",
+                    "Move quickly even when approval is unclear",
+                    "Keep important decisions verbal to preserve flexibility"
+                  ],
+                  "correct_answers": [
+                    "Act within role, document decisions, and escalate when authority or safety requires it"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-financial-assistance-case-management-roles",
+          "sectionId": "eff-2026-financial-assistance-case-management-foundation",
+          "position": 2,
+          "title": "Roles, authority & non-negotiable boundaries",
+          "markdown": "## Know what belongs to your role\nBefore acting, identify: who owns the decision, what policy controls it, whose consent or approval is required, and where the record belongs.\n\n### Apply these four questions\n1. Is this within my assigned authority?\n2. Could this affect safety, money, privacy, legal rights, or chapter standing?\n3. What written approval or record is required?\n4. Who must be informed, consulted, or asked to decide?\n\n### Course-specific boundary\nFor Financial Assistance Case Management, leaders must be especially fluent in trauma-aware intake and informed consent and eligibility evidence and equitable triage. When facts are incomplete or consequences are significant, pause and escalate rather than improvise.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "What should a leader do when authority is unclear and the decision could affect chapter standing?",
+                  "answers": [
+                    "Pause, document the question, and use the authorized escalation path",
+                    "Assume authority if the deadline is close",
+                    "Ask social media followers what to do"
+                  ],
+                  "correct_answers": [
+                    "Pause, document the question, and use the authorized escalation path"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-financial-assistance-case-management-playbook",
+          "sectionId": "eff-2026-financial-assistance-case-management-practice",
+          "position": 3,
+          "title": "The field playbook",
+          "markdown": "## A repeatable workflow\n**Prepare.** Define the need, intended outcome, people affected, policy, owner, deadline, approvals, risks, and evidence of completion.\n\n**Act.** Communicate roles and expectations; use the approved tool; protect access and private information; record material decisions as they occur.\n\n**Review.** Compare the result with the intended outcome; reconcile open items; report exceptions; assign follow-up; store the record in the approved location.\n\n### Your course tool\nBuild a case plan, referral log, and documented decision rubric. It should be usable by another trained leader without relying on your memory. Include an owner, date, status, approval evidence, unresolved issues, and next action.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "Which deliverable best demonstrates readiness in Financial Assistance Case Management?",
+                  "answers": [
+                    "A completed case plan, referral log, and documented decision rubric with owners, approvals, status, and follow-up",
+                    "A verbal summary with no supporting record",
+                    "A promotional graphic announcing success"
+                  ],
+                  "correct_answers": [
+                    "A completed case plan, referral log, and documented decision rubric with owners, approvals, status, and follow-up"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-financial-assistance-case-management-scenario",
+          "sectionId": "eff-2026-financial-assistance-case-management-practice",
+          "position": 4,
+          "title": "Scenario lab: make the defensible decision",
+          "markdown": "## Situation\nTwo students have urgent requests, but funds can cover only one. One student is personally known by a reviewer.\n\n## Work the decision\nWrite the known facts separately from assumptions. Name the people affected, immediate risk, controlling policy or standard, decision owner, required consultation, and the record that must be preserved.\n\n## Model response\nUse the approved criteria, disclose the conflict, recuse when required, and document the decision. Communicate respectfully and share only the minimum information needed with authorized people. Set a follow-up date; do not treat escalation as abandonment.\n\n## Debrief\nThe strongest decision is not merely the fastest or most popular. It is mission-aligned, within authority, proportionate to risk, consistent with policy, and supported by a clear record.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "What is the strongest response to this scenario?",
+                  "answers": [
+                    "Use the approved criteria, disclose the conflict, recuse when required, and document the decision",
+                    "Prioritize the student the reviewer knows",
+                    "Share both cases in a volunteer group chat"
+                  ],
+                  "correct_answers": [
+                    "Use the approved criteria, disclose the conflict, recuse when required, and document the decision"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-financial-assistance-case-management-capstone",
+          "sectionId": "eff-2026-financial-assistance-case-management-certification",
+          "position": 5,
+          "title": "Certification capstone & 30-day application",
+          "markdown": "## Capstone\nComplete your case plan, referral log, and documented decision rubric for a real or realistic chapter situation. Remove unnecessary private information, but make the work specific enough for an authorized reviewer to assess.\n\n## Required elements\n- the need and mission connection;\n- applicable role, policy, or boundary;\n- decision owner and approvals;\n- step-by-step workflow with deadlines;\n- risk and escalation triggers;\n- evidence of completion and follow-up.\n\n## Thirty-day commitment\nName one practice you will begin, one practice you will stop, and one record or control you will strengthen. Revisit the commitment with your president, advisor, supervisor, or national liaison within 30 days.\n\nCertification confirms course completion; it does not expand a learner’s authority beyond current EFF policy or assigned role.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "What does this certification authorize?",
+                  "answers": [
+                    "It verifies learning but does not expand authority beyond current policy or assigned role",
+                    "It permits the learner to override chapter policy",
+                    "It replaces required national approval"
+                  ],
+                  "correct_answers": [
+                    "It verifies learning but does not expand authority beyond current policy or assigned role"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eff-2026-fundraising-sponsors",
+      "title": "Fundraising, Sponsors & Ethical Partnerships",
+      "category": "2026 Leadership Core",
+      "audience": "Fundraising chairs, presidents, partnership teams, and national staff",
+      "duration": "95 minutes",
+      "purpose": "Raise support with accurate claims, appropriate approvals, donor care, and mission-aligned partnerships.",
+      "concepts": [
+        "case-for-support and specific funding needs",
+        "sponsor qualification and outreach",
+        "gift restrictions, benefits, and written agreements",
+        "donor stewardship and truthful tax language"
+      ],
+      "scenario": "A chapter wants to advertise every campaign payment as tax-deductible before confirming the receiving entity and purpose.",
+      "tool": "sponsor pipeline and gift-acceptance checklist",
+      "right": "Use only approved donation language and verify the receiving entity, restriction, and acknowledgment process",
+      "wrong": [
+        "Promise deductibility to increase conversions",
+        "Route funds through a personal payment account"
+      ],
+      "description": "Raise support with accurate claims, appropriate approvals, donor care, and mission-aligned partnerships.",
+      "version": "2026.1",
+      "updatedAt": "2026-08-30",
+      "modules": [
+        {
+          "id": "eff-2026-fundraising-sponsors-foundation",
+          "title": "Foundation & role clarity",
+          "position": 1
+        },
+        {
+          "id": "eff-2026-fundraising-sponsors-practice",
+          "title": "Practice, judgment & documentation",
+          "position": 2
+        },
+        {
+          "id": "eff-2026-fundraising-sponsors-certification",
+          "title": "Certification & field application",
+          "position": 3
+        }
+      ],
+      "lessons": [
+        {
+          "id": "eff-2026-fundraising-sponsors-standard",
+          "sectionId": "eff-2026-fundraising-sponsors-foundation",
+          "position": 1,
+          "title": "The EFF standard for Fundraising, Sponsors & Ethical Partnerships",
+          "markdown": "## Purpose\nRaise support with accurate claims, appropriate approvals, donor care, and mission-aligned partnerships.\n\n## By the end of this course\nYou will be able to explain case-for-support and specific funding needs; apply sponsor qualification and outreach; recognize gift restrictions, benefits, and written agreements; and produce donor stewardship and truthful tax language.\n\n## Leadership standard\nAn EFF leader acts within role, protects student dignity, uses approved policy and resources, documents decisions, and escalates concerns that exceed chapter authority. Speed never replaces safety, fairness, or a reliable record.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "Which statement best reflects the EFF leadership standard?",
+                  "answers": [
+                    "Act within role, document decisions, and escalate when authority or safety requires it",
+                    "Move quickly even when approval is unclear",
+                    "Keep important decisions verbal to preserve flexibility"
+                  ],
+                  "correct_answers": [
+                    "Act within role, document decisions, and escalate when authority or safety requires it"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-fundraising-sponsors-roles",
+          "sectionId": "eff-2026-fundraising-sponsors-foundation",
+          "position": 2,
+          "title": "Roles, authority & non-negotiable boundaries",
+          "markdown": "## Know what belongs to your role\nBefore acting, identify: who owns the decision, what policy controls it, whose consent or approval is required, and where the record belongs.\n\n### Apply these four questions\n1. Is this within my assigned authority?\n2. Could this affect safety, money, privacy, legal rights, or chapter standing?\n3. What written approval or record is required?\n4. Who must be informed, consulted, or asked to decide?\n\n### Course-specific boundary\nFor Fundraising, Sponsors & Ethical Partnerships, leaders must be especially fluent in case-for-support and specific funding needs and sponsor qualification and outreach. When facts are incomplete or consequences are significant, pause and escalate rather than improvise.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "What should a leader do when authority is unclear and the decision could affect chapter standing?",
+                  "answers": [
+                    "Pause, document the question, and use the authorized escalation path",
+                    "Assume authority if the deadline is close",
+                    "Ask social media followers what to do"
+                  ],
+                  "correct_answers": [
+                    "Pause, document the question, and use the authorized escalation path"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-fundraising-sponsors-playbook",
+          "sectionId": "eff-2026-fundraising-sponsors-practice",
+          "position": 3,
+          "title": "The field playbook",
+          "markdown": "## A repeatable workflow\n**Prepare.** Define the need, intended outcome, people affected, policy, owner, deadline, approvals, risks, and evidence of completion.\n\n**Act.** Communicate roles and expectations; use the approved tool; protect access and private information; record material decisions as they occur.\n\n**Review.** Compare the result with the intended outcome; reconcile open items; report exceptions; assign follow-up; store the record in the approved location.\n\n### Your course tool\nBuild a sponsor pipeline and gift-acceptance checklist. It should be usable by another trained leader without relying on your memory. Include an owner, date, status, approval evidence, unresolved issues, and next action.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "Which deliverable best demonstrates readiness in Fundraising, Sponsors & Ethical Partnerships?",
+                  "answers": [
+                    "A completed sponsor pipeline and gift-acceptance checklist with owners, approvals, status, and follow-up",
+                    "A verbal summary with no supporting record",
+                    "A promotional graphic announcing success"
+                  ],
+                  "correct_answers": [
+                    "A completed sponsor pipeline and gift-acceptance checklist with owners, approvals, status, and follow-up"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-fundraising-sponsors-scenario",
+          "sectionId": "eff-2026-fundraising-sponsors-practice",
+          "position": 4,
+          "title": "Scenario lab: make the defensible decision",
+          "markdown": "## Situation\nA chapter wants to advertise every campaign payment as tax-deductible before confirming the receiving entity and purpose.\n\n## Work the decision\nWrite the known facts separately from assumptions. Name the people affected, immediate risk, controlling policy or standard, decision owner, required consultation, and the record that must be preserved.\n\n## Model response\nUse only approved donation language and verify the receiving entity, restriction, and acknowledgment process. Communicate respectfully and share only the minimum information needed with authorized people. Set a follow-up date; do not treat escalation as abandonment.\n\n## Debrief\nThe strongest decision is not merely the fastest or most popular. It is mission-aligned, within authority, proportionate to risk, consistent with policy, and supported by a clear record.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "What is the strongest response to this scenario?",
+                  "answers": [
+                    "Use only approved donation language and verify the receiving entity, restriction, and acknowledgment process",
+                    "Promise deductibility to increase conversions",
+                    "Route funds through a personal payment account"
+                  ],
+                  "correct_answers": [
+                    "Use only approved donation language and verify the receiving entity, restriction, and acknowledgment process"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-fundraising-sponsors-capstone",
+          "sectionId": "eff-2026-fundraising-sponsors-certification",
+          "position": 5,
+          "title": "Certification capstone & 30-day application",
+          "markdown": "## Capstone\nComplete your sponsor pipeline and gift-acceptance checklist for a real or realistic chapter situation. Remove unnecessary private information, but make the work specific enough for an authorized reviewer to assess.\n\n## Required elements\n- the need and mission connection;\n- applicable role, policy, or boundary;\n- decision owner and approvals;\n- step-by-step workflow with deadlines;\n- risk and escalation triggers;\n- evidence of completion and follow-up.\n\n## Thirty-day commitment\nName one practice you will begin, one practice you will stop, and one record or control you will strengthen. Revisit the commitment with your president, advisor, supervisor, or national liaison within 30 days.\n\nCertification confirms course completion; it does not expand a learner’s authority beyond current EFF policy or assigned role.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "What does this certification authorize?",
+                  "answers": [
+                    "It verifies learning but does not expand authority beyond current policy or assigned role",
+                    "It permits the learner to override chapter policy",
+                    "It replaces required national approval"
+                  ],
+                  "correct_answers": [
+                    "It verifies learning but does not expand authority beyond current policy or assigned role"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eff-2026-brand-communications",
+      "title": "Brand, Communications & Social Media Leadership",
+      "category": "2026 Leadership Core",
+      "audience": "Communications chairs, social-media teams, presidents, and spokespersons",
+      "duration": "80 minutes",
+      "purpose": "Represent EFF consistently while protecting student dignity, privacy, and organizational credibility.",
+      "concepts": [
+        "brand hierarchy and approved visual identity",
+        "consent for stories, images, and testimonials",
+        "accessible content and editorial review",
+        "comments, complaints, corrections, and media escalation"
+      ],
+      "scenario": "A volunteer posts a student’s hardship story and photo without documented permission because the story may attract donations.",
+      "tool": "30-day editorial calendar and content approval checklist",
+      "right": "Remove or pause the content, protect the student, verify consent, and follow the correction process",
+      "wrong": [
+        "Keep it live because engagement is high",
+        "Ask followers whether it should stay up"
+      ],
+      "description": "Represent EFF consistently while protecting student dignity, privacy, and organizational credibility.",
+      "version": "2026.1",
+      "updatedAt": "2026-08-30",
+      "modules": [
+        {
+          "id": "eff-2026-brand-communications-foundation",
+          "title": "Foundation & role clarity",
+          "position": 1
+        },
+        {
+          "id": "eff-2026-brand-communications-practice",
+          "title": "Practice, judgment & documentation",
+          "position": 2
+        },
+        {
+          "id": "eff-2026-brand-communications-certification",
+          "title": "Certification & field application",
+          "position": 3
+        }
+      ],
+      "lessons": [
+        {
+          "id": "eff-2026-brand-communications-standard",
+          "sectionId": "eff-2026-brand-communications-foundation",
+          "position": 1,
+          "title": "The EFF standard for Brand, Communications & Social Media Leadership",
+          "markdown": "## Purpose\nRepresent EFF consistently while protecting student dignity, privacy, and organizational credibility.\n\n## By the end of this course\nYou will be able to explain brand hierarchy and approved visual identity; apply consent for stories, images, and testimonials; recognize accessible content and editorial review; and produce comments, complaints, corrections, and media escalation.\n\n## Leadership standard\nAn EFF leader acts within role, protects student dignity, uses approved policy and resources, documents decisions, and escalates concerns that exceed chapter authority. Speed never replaces safety, fairness, or a reliable record.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "Which statement best reflects the EFF leadership standard?",
+                  "answers": [
+                    "Act within role, document decisions, and escalate when authority or safety requires it",
+                    "Move quickly even when approval is unclear",
+                    "Keep important decisions verbal to preserve flexibility"
+                  ],
+                  "correct_answers": [
+                    "Act within role, document decisions, and escalate when authority or safety requires it"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-brand-communications-roles",
+          "sectionId": "eff-2026-brand-communications-foundation",
+          "position": 2,
+          "title": "Roles, authority & non-negotiable boundaries",
+          "markdown": "## Know what belongs to your role\nBefore acting, identify: who owns the decision, what policy controls it, whose consent or approval is required, and where the record belongs.\n\n### Apply these four questions\n1. Is this within my assigned authority?\n2. Could this affect safety, money, privacy, legal rights, or chapter standing?\n3. What written approval or record is required?\n4. Who must be informed, consulted, or asked to decide?\n\n### Course-specific boundary\nFor Brand, Communications & Social Media Leadership, leaders must be especially fluent in brand hierarchy and approved visual identity and consent for stories, images, and testimonials. When facts are incomplete or consequences are significant, pause and escalate rather than improvise.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "What should a leader do when authority is unclear and the decision could affect chapter standing?",
+                  "answers": [
+                    "Pause, document the question, and use the authorized escalation path",
+                    "Assume authority if the deadline is close",
+                    "Ask social media followers what to do"
+                  ],
+                  "correct_answers": [
+                    "Pause, document the question, and use the authorized escalation path"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-brand-communications-playbook",
+          "sectionId": "eff-2026-brand-communications-practice",
+          "position": 3,
+          "title": "The field playbook",
+          "markdown": "## A repeatable workflow\n**Prepare.** Define the need, intended outcome, people affected, policy, owner, deadline, approvals, risks, and evidence of completion.\n\n**Act.** Communicate roles and expectations; use the approved tool; protect access and private information; record material decisions as they occur.\n\n**Review.** Compare the result with the intended outcome; reconcile open items; report exceptions; assign follow-up; store the record in the approved location.\n\n### Your course tool\nBuild a 30-day editorial calendar and content approval checklist. It should be usable by another trained leader without relying on your memory. Include an owner, date, status, approval evidence, unresolved issues, and next action.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "Which deliverable best demonstrates readiness in Brand, Communications & Social Media Leadership?",
+                  "answers": [
+                    "A completed 30-day editorial calendar and content approval checklist with owners, approvals, status, and follow-up",
+                    "A verbal summary with no supporting record",
+                    "A promotional graphic announcing success"
+                  ],
+                  "correct_answers": [
+                    "A completed 30-day editorial calendar and content approval checklist with owners, approvals, status, and follow-up"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-brand-communications-scenario",
+          "sectionId": "eff-2026-brand-communications-practice",
+          "position": 4,
+          "title": "Scenario lab: make the defensible decision",
+          "markdown": "## Situation\nA volunteer posts a student’s hardship story and photo without documented permission because the story may attract donations.\n\n## Work the decision\nWrite the known facts separately from assumptions. Name the people affected, immediate risk, controlling policy or standard, decision owner, required consultation, and the record that must be preserved.\n\n## Model response\nRemove or pause the content, protect the student, verify consent, and follow the correction process. Communicate respectfully and share only the minimum information needed with authorized people. Set a follow-up date; do not treat escalation as abandonment.\n\n## Debrief\nThe strongest decision is not merely the fastest or most popular. It is mission-aligned, within authority, proportionate to risk, consistent with policy, and supported by a clear record.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "What is the strongest response to this scenario?",
+                  "answers": [
+                    "Remove or pause the content, protect the student, verify consent, and follow the correction process",
+                    "Keep it live because engagement is high",
+                    "Ask followers whether it should stay up"
+                  ],
+                  "correct_answers": [
+                    "Remove or pause the content, protect the student, verify consent, and follow the correction process"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-brand-communications-capstone",
+          "sectionId": "eff-2026-brand-communications-certification",
+          "position": 5,
+          "title": "Certification capstone & 30-day application",
+          "markdown": "## Capstone\nComplete your 30-day editorial calendar and content approval checklist for a real or realistic chapter situation. Remove unnecessary private information, but make the work specific enough for an authorized reviewer to assess.\n\n## Required elements\n- the need and mission connection;\n- applicable role, policy, or boundary;\n- decision owner and approvals;\n- step-by-step workflow with deadlines;\n- risk and escalation triggers;\n- evidence of completion and follow-up.\n\n## Thirty-day commitment\nName one practice you will begin, one practice you will stop, and one record or control you will strengthen. Revisit the commitment with your president, advisor, supervisor, or national liaison within 30 days.\n\nCertification confirms course completion; it does not expand a learner’s authority beyond current EFF policy or assigned role.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "What does this certification authorize?",
+                  "answers": [
+                    "It verifies learning but does not expand authority beyond current policy or assigned role",
+                    "It permits the learner to override chapter policy",
+                    "It replaces required national approval"
+                  ],
+                  "correct_answers": [
+                    "It verifies learning but does not expand authority beyond current policy or assigned role"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eff-2026-conflict-restorative-leadership",
+      "title": "Conflict Resolution & Restorative Leadership",
+      "category": "2026 Leadership Core",
+      "audience": "All officers, advisors, and people leaders",
+      "duration": "90 minutes",
+      "purpose": "Address conflict early, fairly, privately, and without retaliation or public humiliation.",
+      "concepts": [
+        "facts, impact, assumptions, and interests",
+        "private conversation and neutral facilitation",
+        "conduct concerns versus ordinary disagreement",
+        "written agreements, follow-up, and anti-retaliation"
+      ],
+      "scenario": "Two officers trade accusations in GroupMe, and members begin choosing sides before either officer has been heard privately.",
+      "tool": "conflict preparation worksheet and written resolution plan",
+      "right": "Pause public debate, preserve relevant facts, meet through the proper pathway, and document agreed next steps",
+      "wrong": [
+        "Hold a public vote on who is right",
+        "Remove an officer without process"
+      ],
+      "description": "Address conflict early, fairly, privately, and without retaliation or public humiliation.",
+      "version": "2026.1",
+      "updatedAt": "2026-08-30",
+      "modules": [
+        {
+          "id": "eff-2026-conflict-restorative-leadership-foundation",
+          "title": "Foundation & role clarity",
+          "position": 1
+        },
+        {
+          "id": "eff-2026-conflict-restorative-leadership-practice",
+          "title": "Practice, judgment & documentation",
+          "position": 2
+        },
+        {
+          "id": "eff-2026-conflict-restorative-leadership-certification",
+          "title": "Certification & field application",
+          "position": 3
+        }
+      ],
+      "lessons": [
+        {
+          "id": "eff-2026-conflict-restorative-leadership-standard",
+          "sectionId": "eff-2026-conflict-restorative-leadership-foundation",
+          "position": 1,
+          "title": "The EFF standard for Conflict Resolution & Restorative Leadership",
+          "markdown": "## Purpose\nAddress conflict early, fairly, privately, and without retaliation or public humiliation.\n\n## By the end of this course\nYou will be able to explain facts, impact, assumptions, and interests; apply private conversation and neutral facilitation; recognize conduct concerns versus ordinary disagreement; and produce written agreements, follow-up, and anti-retaliation.\n\n## Leadership standard\nAn EFF leader acts within role, protects student dignity, uses approved policy and resources, documents decisions, and escalates concerns that exceed chapter authority. Speed never replaces safety, fairness, or a reliable record.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "Which statement best reflects the EFF leadership standard?",
+                  "answers": [
+                    "Act within role, document decisions, and escalate when authority or safety requires it",
+                    "Move quickly even when approval is unclear",
+                    "Keep important decisions verbal to preserve flexibility"
+                  ],
+                  "correct_answers": [
+                    "Act within role, document decisions, and escalate when authority or safety requires it"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-conflict-restorative-leadership-roles",
+          "sectionId": "eff-2026-conflict-restorative-leadership-foundation",
+          "position": 2,
+          "title": "Roles, authority & non-negotiable boundaries",
+          "markdown": "## Know what belongs to your role\nBefore acting, identify: who owns the decision, what policy controls it, whose consent or approval is required, and where the record belongs.\n\n### Apply these four questions\n1. Is this within my assigned authority?\n2. Could this affect safety, money, privacy, legal rights, or chapter standing?\n3. What written approval or record is required?\n4. Who must be informed, consulted, or asked to decide?\n\n### Course-specific boundary\nFor Conflict Resolution & Restorative Leadership, leaders must be especially fluent in facts, impact, assumptions, and interests and private conversation and neutral facilitation. When facts are incomplete or consequences are significant, pause and escalate rather than improvise.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "What should a leader do when authority is unclear and the decision could affect chapter standing?",
+                  "answers": [
+                    "Pause, document the question, and use the authorized escalation path",
+                    "Assume authority if the deadline is close",
+                    "Ask social media followers what to do"
+                  ],
+                  "correct_answers": [
+                    "Pause, document the question, and use the authorized escalation path"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-conflict-restorative-leadership-playbook",
+          "sectionId": "eff-2026-conflict-restorative-leadership-practice",
+          "position": 3,
+          "title": "The field playbook",
+          "markdown": "## A repeatable workflow\n**Prepare.** Define the need, intended outcome, people affected, policy, owner, deadline, approvals, risks, and evidence of completion.\n\n**Act.** Communicate roles and expectations; use the approved tool; protect access and private information; record material decisions as they occur.\n\n**Review.** Compare the result with the intended outcome; reconcile open items; report exceptions; assign follow-up; store the record in the approved location.\n\n### Your course tool\nBuild a conflict preparation worksheet and written resolution plan. It should be usable by another trained leader without relying on your memory. Include an owner, date, status, approval evidence, unresolved issues, and next action.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "Which deliverable best demonstrates readiness in Conflict Resolution & Restorative Leadership?",
+                  "answers": [
+                    "A completed conflict preparation worksheet and written resolution plan with owners, approvals, status, and follow-up",
+                    "A verbal summary with no supporting record",
+                    "A promotional graphic announcing success"
+                  ],
+                  "correct_answers": [
+                    "A completed conflict preparation worksheet and written resolution plan with owners, approvals, status, and follow-up"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-conflict-restorative-leadership-scenario",
+          "sectionId": "eff-2026-conflict-restorative-leadership-practice",
+          "position": 4,
+          "title": "Scenario lab: make the defensible decision",
+          "markdown": "## Situation\nTwo officers trade accusations in GroupMe, and members begin choosing sides before either officer has been heard privately.\n\n## Work the decision\nWrite the known facts separately from assumptions. Name the people affected, immediate risk, controlling policy or standard, decision owner, required consultation, and the record that must be preserved.\n\n## Model response\nPause public debate, preserve relevant facts, meet through the proper pathway, and document agreed next steps. Communicate respectfully and share only the minimum information needed with authorized people. Set a follow-up date; do not treat escalation as abandonment.\n\n## Debrief\nThe strongest decision is not merely the fastest or most popular. It is mission-aligned, within authority, proportionate to risk, consistent with policy, and supported by a clear record.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "What is the strongest response to this scenario?",
+                  "answers": [
+                    "Pause public debate, preserve relevant facts, meet through the proper pathway, and document agreed next steps",
+                    "Hold a public vote on who is right",
+                    "Remove an officer without process"
+                  ],
+                  "correct_answers": [
+                    "Pause public debate, preserve relevant facts, meet through the proper pathway, and document agreed next steps"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-conflict-restorative-leadership-capstone",
+          "sectionId": "eff-2026-conflict-restorative-leadership-certification",
+          "position": 5,
+          "title": "Certification capstone & 30-day application",
+          "markdown": "## Capstone\nComplete your conflict preparation worksheet and written resolution plan for a real or realistic chapter situation. Remove unnecessary private information, but make the work specific enough for an authorized reviewer to assess.\n\n## Required elements\n- the need and mission connection;\n- applicable role, policy, or boundary;\n- decision owner and approvals;\n- step-by-step workflow with deadlines;\n- risk and escalation triggers;\n- evidence of completion and follow-up.\n\n## Thirty-day commitment\nName one practice you will begin, one practice you will stop, and one record or control you will strengthen. Revisit the commitment with your president, advisor, supervisor, or national liaison within 30 days.\n\nCertification confirms course completion; it does not expand a learner’s authority beyond current EFF policy or assigned role.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "What does this certification authorize?",
+                  "answers": [
+                    "It verifies learning but does not expand authority beyond current policy or assigned role",
+                    "It permits the learner to override chapter policy",
+                    "It replaces required national approval"
+                  ],
+                  "correct_answers": [
+                    "It verifies learning but does not expand authority beyond current policy or assigned role"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eff-2026-volunteer-service-operations",
+      "title": "Volunteer Management & Service Operations",
+      "category": "2026 Leadership Core",
+      "audience": "Service chairs, volunteer coordinators, event leads, and chapter officers",
+      "duration": "80 minutes",
+      "purpose": "Deliver safe, organized service through clear roles, preparation, supervision, documentation, and follow-up.",
+      "concepts": [
+        "partner scope and service agreements",
+        "volunteer role descriptions and orientation",
+        "accessibility, safety, and incident readiness",
+        "hours verification, appreciation, and after-action review"
+      ],
+      "scenario": "A community partner changes volunteer duties on arrival and asks students to perform tasks not covered in the chapter’s plan.",
+      "tool": "service event operations packet",
+      "right": "Pause, assess safety and scope, contact the authorized leader, and revise or decline duties as needed",
+      "wrong": [
+        "Tell volunteers to comply with every request",
+        "Leave without documenting the change"
+      ],
+      "description": "Deliver safe, organized service through clear roles, preparation, supervision, documentation, and follow-up.",
+      "version": "2026.1",
+      "updatedAt": "2026-08-30",
+      "modules": [
+        {
+          "id": "eff-2026-volunteer-service-operations-foundation",
+          "title": "Foundation & role clarity",
+          "position": 1
+        },
+        {
+          "id": "eff-2026-volunteer-service-operations-practice",
+          "title": "Practice, judgment & documentation",
+          "position": 2
+        },
+        {
+          "id": "eff-2026-volunteer-service-operations-certification",
+          "title": "Certification & field application",
+          "position": 3
+        }
+      ],
+      "lessons": [
+        {
+          "id": "eff-2026-volunteer-service-operations-standard",
+          "sectionId": "eff-2026-volunteer-service-operations-foundation",
+          "position": 1,
+          "title": "The EFF standard for Volunteer Management & Service Operations",
+          "markdown": "## Purpose\nDeliver safe, organized service through clear roles, preparation, supervision, documentation, and follow-up.\n\n## By the end of this course\nYou will be able to explain partner scope and service agreements; apply volunteer role descriptions and orientation; recognize accessibility, safety, and incident readiness; and produce hours verification, appreciation, and after-action review.\n\n## Leadership standard\nAn EFF leader acts within role, protects student dignity, uses approved policy and resources, documents decisions, and escalates concerns that exceed chapter authority. Speed never replaces safety, fairness, or a reliable record.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "Which statement best reflects the EFF leadership standard?",
+                  "answers": [
+                    "Act within role, document decisions, and escalate when authority or safety requires it",
+                    "Move quickly even when approval is unclear",
+                    "Keep important decisions verbal to preserve flexibility"
+                  ],
+                  "correct_answers": [
+                    "Act within role, document decisions, and escalate when authority or safety requires it"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-volunteer-service-operations-roles",
+          "sectionId": "eff-2026-volunteer-service-operations-foundation",
+          "position": 2,
+          "title": "Roles, authority & non-negotiable boundaries",
+          "markdown": "## Know what belongs to your role\nBefore acting, identify: who owns the decision, what policy controls it, whose consent or approval is required, and where the record belongs.\n\n### Apply these four questions\n1. Is this within my assigned authority?\n2. Could this affect safety, money, privacy, legal rights, or chapter standing?\n3. What written approval or record is required?\n4. Who must be informed, consulted, or asked to decide?\n\n### Course-specific boundary\nFor Volunteer Management & Service Operations, leaders must be especially fluent in partner scope and service agreements and volunteer role descriptions and orientation. When facts are incomplete or consequences are significant, pause and escalate rather than improvise.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "What should a leader do when authority is unclear and the decision could affect chapter standing?",
+                  "answers": [
+                    "Pause, document the question, and use the authorized escalation path",
+                    "Assume authority if the deadline is close",
+                    "Ask social media followers what to do"
+                  ],
+                  "correct_answers": [
+                    "Pause, document the question, and use the authorized escalation path"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-volunteer-service-operations-playbook",
+          "sectionId": "eff-2026-volunteer-service-operations-practice",
+          "position": 3,
+          "title": "The field playbook",
+          "markdown": "## A repeatable workflow\n**Prepare.** Define the need, intended outcome, people affected, policy, owner, deadline, approvals, risks, and evidence of completion.\n\n**Act.** Communicate roles and expectations; use the approved tool; protect access and private information; record material decisions as they occur.\n\n**Review.** Compare the result with the intended outcome; reconcile open items; report exceptions; assign follow-up; store the record in the approved location.\n\n### Your course tool\nBuild a service event operations packet. It should be usable by another trained leader without relying on your memory. Include an owner, date, status, approval evidence, unresolved issues, and next action.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "Which deliverable best demonstrates readiness in Volunteer Management & Service Operations?",
+                  "answers": [
+                    "A completed service event operations packet with owners, approvals, status, and follow-up",
+                    "A verbal summary with no supporting record",
+                    "A promotional graphic announcing success"
+                  ],
+                  "correct_answers": [
+                    "A completed service event operations packet with owners, approvals, status, and follow-up"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-volunteer-service-operations-scenario",
+          "sectionId": "eff-2026-volunteer-service-operations-practice",
+          "position": 4,
+          "title": "Scenario lab: make the defensible decision",
+          "markdown": "## Situation\nA community partner changes volunteer duties on arrival and asks students to perform tasks not covered in the chapter’s plan.\n\n## Work the decision\nWrite the known facts separately from assumptions. Name the people affected, immediate risk, controlling policy or standard, decision owner, required consultation, and the record that must be preserved.\n\n## Model response\nPause, assess safety and scope, contact the authorized leader, and revise or decline duties as needed. Communicate respectfully and share only the minimum information needed with authorized people. Set a follow-up date; do not treat escalation as abandonment.\n\n## Debrief\nThe strongest decision is not merely the fastest or most popular. It is mission-aligned, within authority, proportionate to risk, consistent with policy, and supported by a clear record.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "What is the strongest response to this scenario?",
+                  "answers": [
+                    "Pause, assess safety and scope, contact the authorized leader, and revise or decline duties as needed",
+                    "Tell volunteers to comply with every request",
+                    "Leave without documenting the change"
+                  ],
+                  "correct_answers": [
+                    "Pause, assess safety and scope, contact the authorized leader, and revise or decline duties as needed"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-volunteer-service-operations-capstone",
+          "sectionId": "eff-2026-volunteer-service-operations-certification",
+          "position": 5,
+          "title": "Certification capstone & 30-day application",
+          "markdown": "## Capstone\nComplete your service event operations packet for a real or realistic chapter situation. Remove unnecessary private information, but make the work specific enough for an authorized reviewer to assess.\n\n## Required elements\n- the need and mission connection;\n- applicable role, policy, or boundary;\n- decision owner and approvals;\n- step-by-step workflow with deadlines;\n- risk and escalation triggers;\n- evidence of completion and follow-up.\n\n## Thirty-day commitment\nName one practice you will begin, one practice you will stop, and one record or control you will strengthen. Revisit the commitment with your president, advisor, supervisor, or national liaison within 30 days.\n\nCertification confirms course completion; it does not expand a learner’s authority beyond current EFF policy or assigned role.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "What does this certification authorize?",
+                  "answers": [
+                    "It verifies learning but does not expand authority beyond current policy or assigned role",
+                    "It permits the learner to override chapter policy",
+                    "It replaces required national approval"
+                  ],
+                  "correct_answers": [
+                    "It verifies learning but does not expand authority beyond current policy or assigned role"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eff-2026-transition-succession",
+      "title": "Officer Transition, Succession & Chapter Continuity",
+      "category": "2026 Leadership Core",
+      "audience": "Outgoing and incoming officers, founders, presidents, and advisors",
+      "duration": "75 minutes",
+      "purpose": "Transfer knowledge, records, access, relationships, and responsibilities without losing chapter momentum.",
+      "concepts": [
+        "transition timelines and overlap",
+        "records, passwords, assets, and access transfer",
+        "open obligations, risks, and stakeholder introductions",
+        "first-30-day priorities and leadership reflection"
+      ],
+      "scenario": "An outgoing officer controls a chapter account through a personal email and does not respond after graduation.",
+      "tool": "signed officer transition and access inventory",
+      "right": "Use organization-controlled access, document the gap, and escalate recovery through the authorized process",
+      "wrong": [
+        "Create a second unofficial account",
+        "Ask members to share personal passwords"
+      ],
+      "description": "Transfer knowledge, records, access, relationships, and responsibilities without losing chapter momentum.",
+      "version": "2026.1",
+      "updatedAt": "2026-08-30",
+      "modules": [
+        {
+          "id": "eff-2026-transition-succession-foundation",
+          "title": "Foundation & role clarity",
+          "position": 1
+        },
+        {
+          "id": "eff-2026-transition-succession-practice",
+          "title": "Practice, judgment & documentation",
+          "position": 2
+        },
+        {
+          "id": "eff-2026-transition-succession-certification",
+          "title": "Certification & field application",
+          "position": 3
+        }
+      ],
+      "lessons": [
+        {
+          "id": "eff-2026-transition-succession-standard",
+          "sectionId": "eff-2026-transition-succession-foundation",
+          "position": 1,
+          "title": "The EFF standard for Officer Transition, Succession & Chapter Continuity",
+          "markdown": "## Purpose\nTransfer knowledge, records, access, relationships, and responsibilities without losing chapter momentum.\n\n## By the end of this course\nYou will be able to explain transition timelines and overlap; apply records, passwords, assets, and access transfer; recognize open obligations, risks, and stakeholder introductions; and produce first-30-day priorities and leadership reflection.\n\n## Leadership standard\nAn EFF leader acts within role, protects student dignity, uses approved policy and resources, documents decisions, and escalates concerns that exceed chapter authority. Speed never replaces safety, fairness, or a reliable record.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "Which statement best reflects the EFF leadership standard?",
+                  "answers": [
+                    "Act within role, document decisions, and escalate when authority or safety requires it",
+                    "Move quickly even when approval is unclear",
+                    "Keep important decisions verbal to preserve flexibility"
+                  ],
+                  "correct_answers": [
+                    "Act within role, document decisions, and escalate when authority or safety requires it"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-transition-succession-roles",
+          "sectionId": "eff-2026-transition-succession-foundation",
+          "position": 2,
+          "title": "Roles, authority & non-negotiable boundaries",
+          "markdown": "## Know what belongs to your role\nBefore acting, identify: who owns the decision, what policy controls it, whose consent or approval is required, and where the record belongs.\n\n### Apply these four questions\n1. Is this within my assigned authority?\n2. Could this affect safety, money, privacy, legal rights, or chapter standing?\n3. What written approval or record is required?\n4. Who must be informed, consulted, or asked to decide?\n\n### Course-specific boundary\nFor Officer Transition, Succession & Chapter Continuity, leaders must be especially fluent in transition timelines and overlap and records, passwords, assets, and access transfer. When facts are incomplete or consequences are significant, pause and escalate rather than improvise.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "What should a leader do when authority is unclear and the decision could affect chapter standing?",
+                  "answers": [
+                    "Pause, document the question, and use the authorized escalation path",
+                    "Assume authority if the deadline is close",
+                    "Ask social media followers what to do"
+                  ],
+                  "correct_answers": [
+                    "Pause, document the question, and use the authorized escalation path"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-transition-succession-playbook",
+          "sectionId": "eff-2026-transition-succession-practice",
+          "position": 3,
+          "title": "The field playbook",
+          "markdown": "## A repeatable workflow\n**Prepare.** Define the need, intended outcome, people affected, policy, owner, deadline, approvals, risks, and evidence of completion.\n\n**Act.** Communicate roles and expectations; use the approved tool; protect access and private information; record material decisions as they occur.\n\n**Review.** Compare the result with the intended outcome; reconcile open items; report exceptions; assign follow-up; store the record in the approved location.\n\n### Your course tool\nBuild a signed officer transition and access inventory. It should be usable by another trained leader without relying on your memory. Include an owner, date, status, approval evidence, unresolved issues, and next action.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "Which deliverable best demonstrates readiness in Officer Transition, Succession & Chapter Continuity?",
+                  "answers": [
+                    "A completed signed officer transition and access inventory with owners, approvals, status, and follow-up",
+                    "A verbal summary with no supporting record",
+                    "A promotional graphic announcing success"
+                  ],
+                  "correct_answers": [
+                    "A completed signed officer transition and access inventory with owners, approvals, status, and follow-up"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-transition-succession-scenario",
+          "sectionId": "eff-2026-transition-succession-practice",
+          "position": 4,
+          "title": "Scenario lab: make the defensible decision",
+          "markdown": "## Situation\nAn outgoing officer controls a chapter account through a personal email and does not respond after graduation.\n\n## Work the decision\nWrite the known facts separately from assumptions. Name the people affected, immediate risk, controlling policy or standard, decision owner, required consultation, and the record that must be preserved.\n\n## Model response\nUse organization-controlled access, document the gap, and escalate recovery through the authorized process. Communicate respectfully and share only the minimum information needed with authorized people. Set a follow-up date; do not treat escalation as abandonment.\n\n## Debrief\nThe strongest decision is not merely the fastest or most popular. It is mission-aligned, within authority, proportionate to risk, consistent with policy, and supported by a clear record.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "What is the strongest response to this scenario?",
+                  "answers": [
+                    "Use organization-controlled access, document the gap, and escalate recovery through the authorized process",
+                    "Create a second unofficial account",
+                    "Ask members to share personal passwords"
+                  ],
+                  "correct_answers": [
+                    "Use organization-controlled access, document the gap, and escalate recovery through the authorized process"
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "eff-2026-transition-succession-capstone",
+          "sectionId": "eff-2026-transition-succession-certification",
+          "position": 5,
+          "title": "Certification capstone & 30-day application",
+          "markdown": "## Capstone\nComplete your signed officer transition and access inventory for a real or realistic chapter situation. Remove unnecessary private information, but make the work specific enough for an authorized reviewer to assess.\n\n## Required elements\n- the need and mission connection;\n- applicable role, policy, or boundary;\n- decision owner and approvals;\n- step-by-step workflow with deadlines;\n- risk and escalation triggers;\n- evidence of completion and follow-up.\n\n## Thirty-day commitment\nName one practice you will begin, one practice you will stop, and one record or control you will strengthen. Revisit the commitment with your president, advisor, supervisor, or national liaison within 30 days.\n\nCertification confirms course completion; it does not expand a learner’s authority beyond current EFF policy or assigned role.",
+          "assets": [],
+          "quizzes": [
+            {
+              "questions": [
+                {
+                  "question": "What does this certification authorize?",
+                  "answers": [
+                    "It verifies learning but does not expand authority beyond current policy or assigned role",
+                    "It permits the learner to override chapter policy",
+                    "It replaces required national approval"
+                  ],
+                  "correct_answers": [
+                    "It verifies learning but does not expand authority beyond current policy or assigned role"
+                  ]
+                }
+              ]
+            }
+          ]
+        }
       ]
     }
-  ]
+  ],
+  "mediaMigratedAt": "2026-09-01T06:54:32.046Z"
 }
