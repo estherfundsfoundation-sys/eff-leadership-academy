@@ -43,6 +43,24 @@ document.querySelector('#sendReset').addEventListener('click', async () => {
   show('A password-reset link was sent. Check your inbox and spam folder, then use the link to choose a new password.');
 });
 
+document.querySelector('#resendVerification').addEventListener('click', async () => {
+  if (!client) return;
+  const email = document.querySelector('#signUpForm [name="email"]').value.trim();
+  if (!email) return show('Enter the email you used to create your Academy account, then select “Resend verification email.”');
+  const button = document.querySelector('#resendVerification');
+  button.disabled = true;
+  button.textContent = 'Sending…';
+  const { error } = await client.auth.resend({
+    type: 'signup',
+    email,
+    options: { emailRedirectTo: `${location.origin}/dashboard.html` }
+  });
+  button.disabled = false;
+  button.textContent = 'Resend verification email';
+  if (error) return show(error.message);
+  show(`A fresh verification email was sent to ${email}. Open the newest message from the EFF Leadership Academy, then return here to sign in.`);
+});
+
 client?.auth.onAuthStateChange((event) => {
   if (event === 'PASSWORD_RECOVERY') {
     document.querySelector('#resetCard').hidden = false;
